@@ -22,14 +22,19 @@
   font-weight: 400;
 }
 
+a {
+  text-decoration: none;
+}
+
 :root {
   --main-bg-color: #030303;
+  --bg-light: #e5e5e5;
 }
 
 .wrap {
-  max-width: 1455px;
+  max-width: 1440px;
   margin: 0 auto;
-  /* padding: 0 40px; */
+  padding: 0 40px;
 }
 .header {
   background-color: var(--main-bg-color);
@@ -47,10 +52,10 @@
 }
 .logo-img {
   background: url(../assets/svg/logo.svg) center no-repeat;
-  /* background-size: cover; */
+  margin-top: 15px;
   height: 35px;
   width: 50px;
-  margin-left: 15px;
+  margin-left: 10px;
 }
 .logo-text {
   font-family: Forum;
@@ -69,21 +74,79 @@
 }
 
 .nav-footer a {
-  text-decoration: none;
   font-family: Roboto;
   font-weight: 100;
   font-size: 22px;
   line-height: 50px;
   letter-spacing: 2px;
   color: #ffffff;
-  margin-right: 76px;
+  margin-right: 75px;
 }
 
 .nav-footer a:last-child {
-  margin-right: 0;
+  margin-right: -5px;
 }
 
 .welcome {
   height: 750px;
   background-color: var(--main-bg-color);
+}
+.welcome-wrap {
+  padding-left: 55px;
+}
+.welcome-bg {
+  height: inherit;
+  background: url(../assets/img/background_louvre.jpg) no-repeat;
+  background-position: calc(100% - 1px) calc(100% - 1px);
+}
+
+.section-title {
+  margin: 0;
+  font-family: Forum;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 80px;
+  line-height: 90px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.welcome-title {
+  padding-top: 115px;
+  color: #fff;
+}
+
+.welcome-subtitle {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-bottom: 74px;
+}
+.button-for-discover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 360px;
+  height: 74px;
+  background: #710707;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+.virtual-tour {
+  background-color: var(--bg-light);
+  height: 100%;
+}
+.virtual-tour-title {
+  color: #9d8665;
 }
