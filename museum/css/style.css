@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: Roboto;
-  src: url(../assets/fonts/Roboto-Thin.ttf);
+  src: local("../assets/fonts/Roboto-Thin.ttf");
   font-weight: 100;
 }
 @font-face {
@@ -150,8 +150,10 @@ a {
 }
 .virtual-tour-title {
   color: #9d8665;
-  position: relative;
   padding-top: 75px;
+}
+.bottom-line {
+  position: relative;
 }
 
 .bottom-line::after {
@@ -218,4 +220,32 @@ a {
 }
 .card:nth-child(1) {
   margin-bottom: 57px;
+}
+.picture-explore {
+  background-color: var(--main-bg-color);
+}
+.explore-title {
+  color: #fff;
+  margin-bottom: 102px;
+}
+.subtitle-explore {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 38px;
+  color: #ffffff;
+  margin-bottom: 25px;
+  max-width: 657px;
+}
+.pic-pictire-explore {
+  width: 720px;
+  height: 700px;
+  margin-left: 63px;
+  margin-top: 13px;
+}
+.wrap-pic-exlore {
+  display: flex;
+  padding: 72px 0;
+  padding-left: 15px;
 }
