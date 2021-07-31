@@ -129,7 +129,47 @@
           </div>
         </div>
       </section>
-      <section></section>
+      <section class="buy-tickets">
+        <div class="wrap">
+          <h2 class="section-title bottom-line tickets-title">Buy tickets</h2>
+          <div class="tickets-content">
+            <img src="./assets/img/buy_tickets.png" alt="Buy tickets" class="pic-tickets" />
+            <div class="radio-container">
+              <h3 class="tickets-subtitle">Ticket Type</h3>
+              <label class="radio-btn">
+                <input type="radio" checked="checked" name="radio" />
+                <span class="checkmark">Permanent exhibition</span>
+              </label>
+              <label class="radio-btn">
+                <input type="radio" name="radio" />
+                <span class="checkmark">Temporary exhibition</span>
+              </label>
+              <label class="radio-btn">
+                <input type="radio" name="radio" />
+                <span class="checkmark">Combined Admission</span>
+              </label>
+            </div>
+            <div class="amount">
+              <h3 class="tickets-subtitle amount-title">Amount</h3>
+              <h6 class="amont-subtitle">Basic 18+</h6>
+              <div class="button-comtainer">
+                <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+                <input type="number" min="0" max="20" value="1" readonly class="amount-btn" />
+                <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+              </div>
+
+              <h6 class="amont-subtitle">Senior 65+</h6>
+              <div class="button-comtainer">
+                <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+                <input type="number" min="0" max="20" value="1" readonly class="amount-btn" />
+                <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+              </div>
+              <h4 class="tickets-subtitle tickets-total">Total €220</h4>
+              <button class="buy">Buy Now</button>
+            </div>
+          </div>
+        </div>
+      </section>
       <section></section>
     </main>
     <footer></footer>
