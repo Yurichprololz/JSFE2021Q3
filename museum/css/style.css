@@ -26,6 +26,9 @@ a {
   text-decoration: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 :root {
   --main-bg-color: #030303;
   --bg-light: #e5e5e5;
@@ -51,6 +54,7 @@ a {
   display: flex;
   align-items: center;
 }
+
 .logo-img {
   background: url(../assets/svg/logo.svg) center no-repeat;
   height: 35px;
@@ -86,12 +90,13 @@ a {
   color: #ffffff;
   margin-right: 79px;
 }
+.nav-header li:hover,
+.nav-header li:focus-within {
+  opacity: 0.6;
+}
 .nav-header li {
   vertical-align: inherit;
 }
-/* .nav-header a:last-child {
-  margin-right: -5px;
-} */
 
 .welcome {
   height: 750px;
@@ -101,9 +106,11 @@ a {
   padding-left: 55px;
 }
 .welcome-bg {
+  max-width: 1920px;
+  margin: 0 auto;
   height: inherit;
   background: url(../assets/img/background_louvre.jpg) no-repeat;
-  background-position: calc(100% - 1px) calc(100% - 1px);
+  background-position: calc(100% + 20px) calc(100%);
 }
 
 .section-title {
@@ -148,7 +155,11 @@ a {
   letter-spacing: 2px;
   color: #ffffff;
 }
-
+.button-for-discover:hover {
+  background: #812323;
+  color: #070505;
+  transition: ease-in-out 0.4s;
+}
 .virtual-tour {
   background-color: var(--bg-light);
   height: 100%;
@@ -193,6 +204,7 @@ a {
   letter-spacing: 5px;
   text-transform: uppercase;
   color: #000000;
+  cursor: pointer;
 }
 .title-card::after {
   content: "";
@@ -203,6 +215,11 @@ a {
   height: 2px;
   width: 300px;
   background-color: #710707;
+}
+.card:hover .title-card::after {
+  width: 100%;
+  cursor: pointer;
+  transition: ease-in 0.5s;
 }
 .subtitle-card {
   font-family: Roboto;
@@ -220,6 +237,9 @@ a {
   margin-top: 0;
   font-size: 18px;
   line-height: 21px;
+}
+.card {
+  cursor: pointer;
 }
 .card:nth-child(3n + 2) {
   margin: 0 60px;
@@ -249,6 +269,9 @@ a {
   height: 700px;
   margin-left: 63px;
   margin-top: 13px;
+}
+.yellow-veil {
+  color: rgb(134, 134, 9);
 }
 .wrap-pic-exlore {
   display: flex;
@@ -287,6 +310,10 @@ a {
 .player-btn {
   position: absolute;
   border: none;
+}
+.player-btn:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
 .play-btn {
   top: 300px;
@@ -399,6 +426,11 @@ a {
   font-size: 22px;
   line-height: 26px;
 }
+.checkmark:hover {
+  opacity: 0.7;
+  cursor: pointer;
+  text-decoration: underline green;
+}
 .radio-btn {
   margin-bottom: 50px;
 }
@@ -416,7 +448,9 @@ a {
   line-height: 37px;
   text-align: center;
 }
-
+.button-comtainer button:hover {
+  cursor: pointer;
+}
 .amount-title {
   margin-bottom: 14px;
   text-align: end;
@@ -473,6 +507,12 @@ a {
   align-items: center;
   text-align: center;
   letter-spacing: 2px;
+}
+.buy:hover {
+  background-color: grey;
+  transform: scale(1.1);
+  transition: ease-in-out 0.2s;
+  cursor: pointer;
 }
 .contacts {
   background-color: var(--bg-light);
@@ -565,6 +605,14 @@ ul {
 .link-footer {
   color: #fff;
 }
+.link-footer:hover {
+  color: grey;
+}
 .media-ico {
   height: 46px;
+}
+.media-ico:hover {
+  filter: invert(63%) sepia(99%) saturate(454%) hue-rotate(3deg) brightness(113%) contrast(102%);
+  transform: scale(1.2);
+  transition: ease-in-out 0.5s;
 }
