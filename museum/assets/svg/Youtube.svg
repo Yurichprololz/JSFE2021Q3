@@ -1,7 +1,4 @@
 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="48" height="48" fill="#E5E5E5"/>
-<rect width="1920" height="6245" transform="translate(-1344 -6108)" fill="white"/>
-<path d="M-1344 -163H576V137H-1344V-163Z" fill="#030303"/>
 <g filter="url(#filter0_d)">
 <rect x="0.5" y="0.5" width="47" height="47" rx="23.5" stroke="#666666"/>
 </g>
