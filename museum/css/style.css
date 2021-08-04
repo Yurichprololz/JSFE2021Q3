@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: Roboto;
-  src: local("../assets/fonts/Roboto-Thin.ttf");
+  src: url("../assets/fonts/Roboto-Thin.ttf");
   font-weight: 100;
 }
 @font-face {
@@ -21,7 +21,11 @@
   src: url("../assets/fonts/Forum-Regular.ttf");
   font-weight: 400;
 }
-
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-Bold.ttf");
+  font-weight: 700;
+}
 a {
   text-decoration: none;
 }
@@ -38,6 +42,7 @@ html {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
+  padding-left: 56px;
 }
 .header {
   background-color: var(--main-bg-color);
@@ -59,11 +64,8 @@ html {
   background: url(../assets/svg/logo.svg) center no-repeat;
   height: 35px;
   width: 50px;
-  margin-left: 10px;
 }
-.logo-header {
-  margin-bottom: 15px;
-}
+
 .logo-text {
   font-family: Forum;
   font-style: normal;
@@ -90,9 +92,9 @@ html {
   color: #ffffff;
   margin-right: 79px;
 }
-.nav-header li:hover,
-.nav-header li:focus-within {
-  opacity: 0.6;
+.nav-header li a:hover,
+.nav-header li a:focus-within {
+  color: #9d8665;
 }
 .nav-header li {
   vertical-align: inherit;
@@ -156,8 +158,8 @@ html {
   color: #ffffff;
 }
 .button-for-discover:hover {
-  background: #812323;
-  color: #070505;
+  background: #9d8665;
+
   transition: ease-in-out 0.4s;
 }
 .virtual-tour {
@@ -215,6 +217,7 @@ html {
   height: 2px;
   width: 300px;
   background-color: #710707;
+  transition: ease-in 0.5s;
 }
 .card:hover .title-card::after {
   width: 100%;
@@ -271,7 +274,7 @@ html {
   margin-top: 13px;
 }
 .yellow-veil {
-  color: rgb(134, 134, 9);
+  color: #9d8665;
 }
 .wrap-pic-exlore {
   display: flex;
@@ -312,7 +315,6 @@ html {
   border: none;
 }
 .player-btn:hover {
-  opacity: 0.5;
   cursor: pointer;
 }
 .play-btn {
@@ -321,6 +323,12 @@ html {
   background-image: url(../assets/img/play_btn.svg);
   width: 220px;
   height: 220px;
+  transition: transform 0.5s;
+  background-color: transparent;
+}
+.play-btn:hover {
+  filter: invert(65%) sepia(0%) saturate(0%) hue-rotate(252deg) brightness(94%) contrast(90%);
+  transition: 0.3s;
 }
 .panel-btn {
   position: relative;
@@ -389,6 +397,7 @@ html {
 .buy-tickets {
   background-color: var(--main-bg-color);
 }
+
 .tickets-content {
   display: flex;
   margin-top: 103px;
@@ -396,7 +405,7 @@ html {
 .radio-container {
   display: flex;
   flex-direction: column;
-  margin-right: 237px;
+  margin-right: 236px;
 }
 .tickets-title {
   color: #fff;
@@ -407,34 +416,75 @@ html {
   padding-bottom: 78px;
 }
 .pic-tickets {
-  margin-right: 63px;
+  margin-right: 55px;
 }
-.tickets-subtitle {
-  margin-top: 0;
-  margin-bottom: 50px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 33px;
-}
-.checkmark {
-  margin-left: 21px;
+.radio-btn {
+  display: block;
+  position: relative;
+  padding-left: 47px;
+  margin-bottom: 49px;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
   font-family: Roboto;
   font-style: normal;
   font-weight: 300;
   font-size: 22px;
   line-height: 26px;
 }
-.checkmark:hover {
-  opacity: 0.7;
-  cursor: pointer;
-  text-decoration: underline green;
-}
-.radio-btn {
-  margin-bottom: 50px;
+.tickets-subtitle {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 33px;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 55px;
 }
 
+.radio-btn input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-light);
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+.radio-btn:hover input ~ .checkmark {
+  background-color: rgb(5, 5, 5);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  color: #000000;
+}
+
+.radio-btn input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.radio-btn .checkmark:after {
+  top: 4px;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--bg-light);
+}
 .button-comtainer button {
   border: none;
   flex-basis: 30%;
@@ -461,14 +511,14 @@ html {
   margin-left: 19px;
   font-family: Roboto;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 100;
   font-size: 22px;
   line-height: 26px;
 }
 .amount-btn {
   margin-bottom: 35px;
   border: none;
-  height: 100%;
+  height: 95%;
   flex-basis: 40%;
   text-align: center;
   background-color: var(--main-bg-color);
@@ -509,7 +559,7 @@ html {
   letter-spacing: 2px;
 }
 .buy:hover {
-  background-color: grey;
+  background-color: #9d8665;
   transform: scale(1.1);
   transition: ease-in-out 0.2s;
   cursor: pointer;
@@ -530,7 +580,6 @@ html {
 .contacts-subtitle {
   margin-top: 10px;
   margin-bottom: 37px;
-  margin-left: 8px;
   text-align: left;
   font-family: Roboto;
   font-style: normal;
@@ -552,7 +601,6 @@ html {
 }
 .contacts-list li {
   margin-bottom: 20px;
-  margin-left: 8px;
 }
 .footer {
   background-color: var(--main-bg-color);
@@ -561,7 +609,7 @@ html {
 .nav-footer {
   font-family: Roboto;
   font-style: normal;
-  font-weight: 200;
+  font-weight: 100;
   font-size: 22px;
   line-height: 50px;
   letter-spacing: 2px;
@@ -599,20 +647,29 @@ ul {
   justify-content: space-between;
   align-items: flex-end;
   margin-left: 250px;
-  width: 339px;
-  height: 200px;
+  width: 343px;
+  height: 198px;
 }
 .link-footer {
   color: #fff;
 }
 .link-footer:hover {
-  color: grey;
+  color: #9d8665;
+}
+.link-media-ico {
+  height: 46px;
+  width: 46px;
+  border: solid 3px #fff;
+  border-radius: 50%;
+  position: relative;
 }
 .media-ico {
-  height: 46px;
+  position: absolute;
+  top: calc(50% - 12px);
+  left: calc(50% - 12px);
 }
-.media-ico:hover {
-  filter: invert(63%) sepia(99%) saturate(454%) hue-rotate(3deg) brightness(113%) contrast(102%);
+.link-media-ico:hover {
+  filter: invert(56%) sepia(9%) saturate(1248%) hue-rotate(356deg) brightness(95%) contrast(87%);
   transform: scale(1.2);
   transition: ease-in-out 0.5s;
 }
