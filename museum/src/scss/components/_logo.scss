@@ -1,0 +1,31 @@
+/** @format */
+
+.logo {
+  display: flex;
+  align-items: center;
+  &-img {
+    background: url(../assets/svg/logo.svg);
+    height: 35px;
+    width: 50px;
+  }
+  &-text {
+    font-family: Forum;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 50px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: $var3;
+    margin-left: 21px;
+  }
+  &-footer-text {
+    padding-bottom: 39px;
+  }
+  &-footer-img {
+    margin-bottom: 39px;
+  }
+  &-footer {
+    margin-right: 145px;
+  }
+}
