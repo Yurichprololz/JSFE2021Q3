@@ -1,0 +1,30 @@
+/** @format */
+
+.collection {
+  overflow-y: hidden;
+  height: 1925px;
+  &-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 114px;
+    row-gap: 8px;
+    column-gap: 24px;
+  }
+  &-pic {
+    &-sm {
+      object-fit: cover;
+      grid-row: span 4;
+    }
+    &-lg {
+      object-fit: cover;
+
+      grid-row: span 5;
+    }
+  }
+}
+.empty {
+  grid-area: 1 /1/1/ 1;
+}
+.empty2 {
+  grid-area: 1 /3/3 /3;
+}
