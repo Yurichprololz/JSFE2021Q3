@@ -4,7 +4,6 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
-  padding-left: 56px;
   &-pic-exlore {
     display: flex;
     padding: 72px 0;
@@ -13,7 +12,7 @@
 }
 .header {
   background-color: $main-bg-color;
-  height: 200px;
+  height: 150px;
   &-wrap {
     display: flex;
     justify-content: space-between;
@@ -24,7 +23,7 @@
 
 .nav-header {
   display: flex;
-  max-width: 720px;
+  max-width: 770px;
   line-height: 0;
   li a {
     font-family: Roboto, sans-serif;
@@ -33,11 +32,15 @@
     line-height: 50px;
     letter-spacing: 2px;
     color: $var3;
-    margin-right: 79px;
+    margin-right: 55px;
+
     &:hover,
     &:focus-within {
       color: $var4;
     }
+  }
+  & li:last-child a {
+    margin-right: 0;
   }
   li {
     vertical-align: inherit;
