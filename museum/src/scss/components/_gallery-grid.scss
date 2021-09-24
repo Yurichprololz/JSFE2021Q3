@@ -12,13 +12,13 @@
   }
   &-pic {
     &-sm {
-      object-fit: cover;
       grid-row: span 4;
     }
     &-lg {
-      object-fit: cover;
-
       grid-row: span 5;
+    }
+    &-tiny {
+      grid-row: span 3;
     }
   }
 }
