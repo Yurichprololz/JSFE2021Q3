@@ -12,8 +12,8 @@ function getImg() {
         })
 }
 const addImg = function () {
-    pictureInnerContainer.innerHTML = `<span class="empty"></span>
-    <span class="empty2"></span>`
+    pictureInnerContainer.innerHTML = `<span class="empty">&nbsp; </span>
+    <span class="empty2"> &nbsp;</span>`
     for (let i = 0; i < arrPic.length; i++) {
         const img = document.createElement('img');
         img.classList.add(arrPic[i][1])
