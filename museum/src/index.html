@@ -335,14 +335,54 @@
                 <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
               </div>
               <h4 class="tickets-subtitle tickets-total">Total €220</h4>
-              <button class="buy">Buy Now</button>
+              <a href="#popup"> <button class="buy"> Buy Now</button></a>
             </div>
           </div>
         </div>
-        <div class="popup">
+        <div class="popup" id="popup">
+          <a href="#anchor" class="popup__area"></a>
           <div class="popup__body">
             <div class="popup__content">
+              <div class="popup__close"><a href="#anchor"> <img src="../assets/svg/Close.svg" alt="close"></a></div>
               <div class="popup__field field">
+                <div class="field__logo"></div>
+                <h4 class="field__title">Booking tickets</h4>
+                <h6 class="field__subtitle field__subtitle_line">Tour to Louvre</h6>
+                <form action="#" class="field__form">
+                 <input class="field__form-sm field__form-sm_left" type="date" placeholder="Date">
+                  <input class="field__form-sm " type="time" placeholder="Time">
+                  <input class="field__form-lg field__form-lg_name " type="text" placeholder="Name">
+                  <input class="field__form-lg field__form-lg_email" type="email" placeholder="E-mail">
+                  <input class="field__form-lg field__form-lg_phone" type="tel" placeholder="Phone">
+                  <div class="custom-arr">
+                  <select class="field__form-lg " name="ticketType" id="1" placeholder = 'Ticket type'>
+                    <option class="img"> Ticket Type</option>
+                    <option value="Basic">Basic(+18)</option>
+                    <option value="Senior">Senior(+65)</option>
+                  </select></div>
+                  <div class="field__entry entry ">
+                    <div class="entry__wrap">
+                      <h5 class=" entry__title entry__line"> Entry ticket</h5>
+                      <div class="entry__amount">
+                        <div class="entry__basic">
+                        <p class="entry__subtitle">Basic 18+ (20 €)</p>
+                        <div class="entry__btn">
+                          <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+                          <input type="number" min="0" max="20" value="1" readonly class="entry__btn-input" />
+                          <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                        </div></div>
+                        <div class="entry__senior">
+                        <p class="entry__subtitle">Senior 65+ (10 €)</p>
+                        <div class="entry__btn">
+                          <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+                          <input type="number" min="0" max="20" value="1" readonly class="entry__btn-input" />
+                          <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
               <div class="popup__payment payment">
                 <div class="payment__header">
@@ -421,6 +461,7 @@
           </div>
         </div>
       </section>
+      <div class="anchor" id="anchor"></div>
     </main>
     <footer class="footer">
       <div class="wrap footer-wrap">
@@ -469,5 +510,6 @@
         </nav>
       </div>
     </footer>
+    
   </body>
 </html>
