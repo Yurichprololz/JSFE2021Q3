@@ -2,6 +2,8 @@ import "./scss/main.scss"
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 import './script/gallery'
+
+initComparisons()
 // Инициализация свайпера
 const swiper = new Swiper('.swiper', {
     pagination: {
@@ -102,7 +104,7 @@ function initComparisons() {
             slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
         }
     }
-} initComparisons()
+}
 
 
 console.log(`
