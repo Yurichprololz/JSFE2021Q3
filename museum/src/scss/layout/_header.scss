@@ -6,8 +6,7 @@
   padding: 0 40px;
   &-pic-exlore {
     display: flex;
-    padding: 72px 0;
-    padding-left: 15px;
+    padding: 75px;
   }
 }
 .header {
@@ -36,7 +35,10 @@
 
     &:hover,
     &:focus-within {
-      color: $var4;
+      color: #9d8665;
+    }
+    &:active {
+      color: #7e6c51;
     }
   }
   & li:last-child a {

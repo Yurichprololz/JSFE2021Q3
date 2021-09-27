@@ -13,8 +13,8 @@
   font-weight: 300;
   font-size: 22px;
   line-height: 38px;
-  color: $var3;
-  margin-bottom: 25px;
+  color: #ffffff;
+  margin-bottom: 28px;
   max-width: 657px;
 }
 .pic-pictire-explore {
@@ -25,4 +25,50 @@
 }
 .yellow-veil {
   color: $var4;
+}
+
+.img-comp-container {
+  position: relative;
+  // height: 200px; /*should be the same height as the images*/
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+.img-comp-img img {
+  display: block;
+  // vertical-align: middle;
+}
+
+.img-comp-slider {
+  position: absolute;
+  cursor: ew-resize;
+  width: 30px;
+  height: 30px;
+  background-color: #00000000;
+  border: 5px solid white;
+  border-radius: 50%;
+  z-index: 2;
+  &::after {
+    content: "";
+    width: 5px;
+    height: 331px;
+    background-color: white;
+    position: absolute;
+    top: 34px;
+    left: 11px;
+  }
+  &::before {
+    content: "";
+    width: 5px;
+    height: 331px;
+    background-color: white;
+    position: absolute;
+    top: -336px;
+    left: 11px;
+  }
 }

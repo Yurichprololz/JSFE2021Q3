@@ -4,6 +4,16 @@
   &-pic {
     float: right;
   }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -1px;
+    width: 350px;
+    z-index: 2;
+    height: 100%;
+    background: linear-gradient(90deg, #000, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 0));
+  }
 }
 
 .slider {
@@ -11,7 +21,8 @@
     position: relative;
     bottom: -10px;
     left: -10px;
-    width: 200px;
+    width: 205px;
+    margin-left: 10px;
   }
   &-pagination {
     display: flex;
@@ -33,17 +44,20 @@
           &::after {
             font-size: 30px;
           }
+          &:hover {
+            filter: invert(62%) sepia(15%) saturate(740%) hue-rotate(356deg) brightness(85%) contrast(91%);
+          }
         }
         &-prev {
           &::after {
             content: "←";
-            margin-left: 70px;
+            margin-left: 77px;
           }
         }
         &-next {
           &::after {
             content: "→";
-            margin-right: 170px;
+            margin-right: 163px;
           }
         }
       }
@@ -63,6 +77,9 @@
           opacity: 1;
           &-active {
             background-color: #d2b183;
+          }
+          &:hover {
+            background-color: #9d8665;
           }
         }
       }
@@ -88,6 +105,6 @@
     width: 200px;
   }
   &-current {
-    margin-left: 10px;
+    margin-left: 30px;
   }
 }

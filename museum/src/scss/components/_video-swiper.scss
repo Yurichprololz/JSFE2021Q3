@@ -2,8 +2,59 @@
 
 .swiper-video {
   overflow: hidden;
+  margin-top: 19px;
   &-pagination {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    // margin-bottom: 115px;
+    & .swiper-pagination {
+      &-bullet {
+        height: 12px;
+        width: 12px;
+        margin: 0 8px;
+        background-color: #999999;
+        opacity: 1;
+        &-active {
+          background-color: #333333;
+        }
+        &:hover {
+          background-color: #710707;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.swiper-pagination {
+  &-wrap {
+    position: relative;
+    width: 170px;
+    margin: 0 auto;
+    margin-top: 37px;
+    margin-bottom: 75px;
+    & .swiper-button-prev {
+      position: absolute;
+      top: -3px;
+      left: -22px;
+      &:hover {
+        filter: invert(150%) sepia(57%) saturate(5573%) hue-rotate(325deg) brightness(84%) contrast(225%);
+      }
+      &::after {
+        content: url("../assets/img/left.png");
+      }
+    }
+
+    & .swiper-button-next {
+      position: absolute;
+      right: -24px;
+      top: -3px;
+      &:hover {
+        filter: invert(150%) sepia(57%) saturate(5573%) hue-rotate(325deg) brightness(84%) contrast(225%);
+      }
+
+      &::after {
+        content: url("../assets/img/rigth.png");
+      }
+    }
   }
 }

@@ -7,9 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>museum</title>
-    <!-- <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/style.css" /> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css"> -->
 
     <link rel="shortcut icon" href="./assets/favicon.ico" />
   </head>
@@ -51,27 +48,27 @@
                 <!-- Slides -->
                 <div class="swiper-slide">
                   <div class="swiper-pic">
-                    <img src="./assets/img/welcome-slider/1.jpg" alt="" srcset="" />
+                    <img src="./assets/img/welcome-slider/1.jpg" alt="slider 1" />
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="swiper-pic">
-                    <img src="./assets/img/welcome-slider/2.jpg" alt="" srcset="" />
+                    <img src="./assets/img/welcome-slider/2.jpg" alt="slider 2" />
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="swiper-pic">
-                    <img src="./assets/img/welcome-slider/3.jpg" alt="" srcset="" />
+                    <img src="./assets/img/welcome-slider/3.jpg" alt="slider 2" />
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="swiper-pic">
-                    <img src="./assets/img/welcome-slider/4.jpg" alt="" srcset="" />
+                    <img src="./assets/img/welcome-slider/4.jpg" alt="slider 2" />
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="swiper-pic">
-                    <img src="./assets/img/welcome-slider/5.jpg" alt="" srcset="" />
+                    <img src="./assets/img/welcome-slider/5.jpg" alt="slider 2" />
                   </div>
                 </div>
               </div>
@@ -164,19 +161,33 @@
               it looked different.
             </p>
           </div>
-          <img src="./assets/img/bcg_picture.jpg" alt="Picture explore" class="pic-pictire-explore" />
+          <div class="pic-pictire-explore">
+            <div class="img-comp-container">
+              <div class="img-comp-img">
+                <img src="./assets/img/bcg_picture.jpg" alt="Picture explore" />
+              </div>
+              <div class="img-comp-img img-comp-overlay">
+                <img src="./assets/img/bcg_picture_after.jpg" alt="Picture explore" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section class="video-journey" id="video-journey">
         <div class="wrap">
+          <div class="container-video-description">
+            <h2 class="section-title video-title">Video journey</h2>
+            <p class="video-description">
+              Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or
+              Hammurabi's Code
+            </p>
+          </div>
           <div class="container-video-content">
             <img src="./assets/img/Frame.jpg" alt="Video journey" />
             <div class="for-space">
               <div class="panel-btn">
-                <button class="player-btn back-btn"></button>
                 <button class="player-btn sm-play-btn"></button>
-                <button class="player-btn next-btn"></button>
-                <input type="range" value="47" min="0" max="100" step="1" class="progress" />
+                <input type="range" value="50" min="0" max="100" step="1" class="progress" />
                 <input type="range" value="40" min="0" max="100" step="1" class="progress-vol" />
                 <button class="player-btn volume-btn"></button>
                 <button class="player-btn sq-btn"></button>
@@ -190,12 +201,12 @@
                 <div class="swiper-slide">
                   <div class="swiper-pic">
                     <iframe
-                    loading="lazy"
-                    width="452"
-                    height="254"
+                      style="border: 0"
+                      loading="lazy"
+                      width="452"
+                      height="254"
                       src="https://www.youtube.com/embed/zp1BXPX8jcU"
                       title="YouTube video player"
-                      frameborder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     ></iframe>
@@ -204,12 +215,12 @@
                 <div class="swiper-slide">
                   <div class="swiper-pic">
                     <iframe
-                    loading="lazy"
-                    width="452"
-                    height="254"
+                      style="border: 0"
+                      loading="lazy"
+                      width="452"
+                      height="254"
                       src="https://www.youtube.com/embed/Vi5D6FKhRmo"
                       title="YouTube video player"
-                      frameborder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     ></iframe>
@@ -218,12 +229,12 @@
                 <div class="swiper-slide">
                   <div class="swiper-pic">
                     <iframe
-                    loading="lazy"
-                    width="452"
-                    height="254"
+                      loading="lazy"
+                      width="452"
+                      height="254"
                       src="https://www.youtube.com/embed/NOhDysLnTvY"
                       title="YouTube video player"
-                      frameborder="0"
+                      style="border: 0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     ></iframe>
@@ -232,12 +243,12 @@
                 <div class="swiper-slide">
                   <div class="swiper-pic">
                     <iframe
-                    loading="lazy"
-                    width="452"
-                    height="254"
+                      loading="lazy"
+                      width="452"
+                      height="254"
                       src="https://www.youtube.com/embed/aWmJ5DgyWPI"
                       title="YouTube video player"
-                      frameborder="0"
+                      style="border: 0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     ></iframe>
@@ -246,29 +257,25 @@
                 <div class="swiper-slide">
                   <div class="swiper-pic">
                     <iframe
-                    loading="lazy"
-                    width="452"
-                    height="254"
+                      loading="lazy"
+                      width="452"
+                      height="254"
                       src="https://www.youtube.com/embed/2OR0OCr6uRE"
                       title="YouTube video player"
-                      frameborder="0"
+                      style="border: 0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     ></iframe>
                   </div>
                 </div>
               </div>
-                  <div class="swiper-video-pagination"></div>
+
+              <div class="swiper-pagination-wrap">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-video-pagination"></div>
+                <div class="swiper-button-next"></div>
               </div>
             </div>
-          </div>
-
-          <div class="container-video-description">
-            <h2 class="section-title video-title">Video journey</h2>
-            <p class="video-description">
-              Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or
-              Hammurabi's Code
-            </p>
           </div>
         </div>
       </section>
@@ -335,7 +342,7 @@
                 <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
               </div>
               <h4 class="tickets-subtitle tickets-total">Total €220</h4>
-              <a href="#popup"> <button class="buy"> Buy Now</button></a>
+              <button class="buy" onclick="document.location='#popup'">Buy Now</button>
             </div>
           </div>
         </div>
@@ -343,42 +350,46 @@
           <a href="#anchor" class="popup__area"></a>
           <div class="popup__body">
             <div class="popup__content">
-              <div class="popup__close"><a href="#anchor"> <img src="../assets/svg/Close.svg" alt="close"></a></div>
+              <div class="popup__close">
+                <a href="#anchor"> <img src="../assets/svg/Close.svg" alt="close" /></a>
+              </div>
               <div class="popup__field field">
                 <div class="field__logo"></div>
                 <h4 class="field__title">Booking tickets</h4>
                 <h6 class="field__subtitle field__subtitle_line">Tour to Louvre</h6>
                 <form action="#" class="field__form">
-                 <input class="field__form-sm field__form-sm_left" type="date" placeholder="Date">
-                  <input class="field__form-sm " type="time" placeholder="Time">
-                  <input class="field__form-lg field__form-lg_name " type="text" placeholder="Name">
-                  <input class="field__form-lg field__form-lg_email" type="email" placeholder="E-mail">
-                  <input class="field__form-lg field__form-lg_phone" type="tel" placeholder="Phone">
+                  <input class="field__form-sm field__form-sm_left" type="date" />
+                  <input class="field__form-sm" type="time" />
+                  <input class="field__form-lg field__form-lg_name" type="text" placeholder="Name" />
+                  <input class="field__form-lg field__form-lg_email" type="email" placeholder="E-mail" />
+                  <input class="field__form-lg field__form-lg_phone" type="tel" placeholder="Phone" />
                   <div class="custom-arr">
-                  <select class="field__form-lg " name="ticketType" id="1" placeholder = 'Ticket type'>
-                    <option class="img"> Ticket Type</option>
-                    <option value="Basic">Basic(+18)</option>
-                    <option value="Senior">Senior(+65)</option>
-                  </select></div>
-                  <div class="field__entry entry ">
+                    <select class="field__form-lg" name="ticketType" id="1">
+                      <option class="img">Ticket Type</option>
+                      <option value="Basic">Basic(+18)</option>
+                      <option value="Senior">Senior(+65)</option>
+                    </select>
+                  </div>
+                  <div class="field__entry entry">
                     <div class="entry__wrap">
-                      <h5 class=" entry__title entry__line"> Entry ticket</h5>
+                      <h5 class="entry__title entry__line">Entry ticket</h5>
                       <div class="entry__amount">
                         <div class="entry__basic">
-                        <p class="entry__subtitle">Basic 18+ (20 €)</p>
-                        <div class="entry__btn">
-                          <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                          <input type="number" min="0" max="20" value="1" readonly class="entry__btn-input" />
-                          <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
-                        </div></div>
-                        <div class="entry__senior">
-                        <p class="entry__subtitle">Senior 65+ (10 €)</p>
-                        <div class="entry__btn">
-                          <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                          <input type="number" min="0" max="20" value="1" readonly class="entry__btn-input" />
-                          <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                          <p class="entry__subtitle">Basic 18+ (20 €)</p>
+                          <div class="entry__btn">
+                            <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+                            <input type="number" min="0" max="20" value="1" readonly class="entry__btn-input" />
+                            <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                          </div>
                         </div>
-                      </div>
+                        <div class="entry__senior">
+                          <p class="entry__subtitle">Senior 65+ (10 €)</p>
+                          <div class="entry__btn">
+                            <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+                            <input type="number" min="0" max="20" value="1" readonly class="entry__btn-input" />
+                            <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -387,59 +398,79 @@
               <div class="popup__payment payment">
                 <div class="payment__header">
                   <h4 class="payment__header-title">Overview</h4>
-                  <p class="payment__header-subtitle">Tour to Louvre</p> 
+                  <p class="payment__header-subtitle">Tour to Louvre</p>
                   <div class="payment__bcg-img"></div>
                   <ul class="payment__header-list">
-                    <li class="payment__header-description-row"> <div class="payment__img payment__img_1"></div>Friday, August 19</li>
-                    <li class="payment__header-description-row"> <div class="payment__img payment__img_2"></div>16 : 30</li>
-                    <li class="payment__header-description-row"> <div class="payment__img payment__img_3"></div>Temporary exhibition</li>
+                    <li class="payment__header-description-row">
+                      <div class="payment__img payment__img_1"></div>
+                      Friday, August 19
+                    </li>
+                    <li class="payment__header-description-row">
+                      <div class="payment__img payment__img_2"></div>
+                      16 : 30
+                    </li>
+                    <li class="payment__header-description-row">
+                      <div class="payment__img payment__img_3"></div>
+                      Temporary exhibition
+                    </li>
                   </ul>
                 </div>
                 <div class="payment__cost cost">
                   <ul class="cost__list">
-                    <li class="cost__row"><div class="cost__img">2</div><span>Basic (20 €)</span><span>40 €</span></li>
-                    <li class="cost__row" style="margin-top: 5px;"><div class="cost__img">2</div><span>Senior (10 €)</span><span>20 €</span></li>
+                    <li class="cost__row">
+                      <div class="cost__img">2</div>
+                      <span>Basic (20 €)</span><span>40 €</span>
+                    </li>
+                    <li class="cost__row" style="margin-top: 5px">
+                      <div class="cost__img">2</div>
+                      <span>Senior (10 €)</span><span>20 €</span>
+                    </li>
                     <li class="cost__total top-line"><span>Total:</span><span>60 €</span></li>
                   </ul>
-
                 </div>
                 <div class="payment__paycard paycard">
                   <div class="paycard__front">
                     <div class="paycard__front-wrap form">
-                    <form action="#">
-                      <div class="form__card-number">
-                        <p style="margin-top: 0;" class="form__text">Card number</p>
-                        <input type="tel">
-                      </div>
-                      <div class="form__date">
-                        <p class="form__text">Expiration date</p>
-                          <input type="number" value="03"> <!-- 
-                         --><input type="number" value="2024">
-                      </div>
-                      <div class="form__name">
-                        <p class="form__text">Cardholder name</p>
-                          <input type="text">
+                      <form action="#">
+                        <div class="form__card-number">
+                          <p style="margin-top: 0" class="form__text">Card number</p>
+                          <input type="tel" />
                         </div>
-                     </form> <div class="form__cards-logo ">
-                      <div class="form__cards-logo_visa"></div>
-                      <div class="form__cards-logo_mastercard"></div>
-                     </div> </div>
-                    
+                        <div class="form__date">
+                          <p class="form__text">Expiration date</p>
+                          <input type="number" value="03" />
+                          <!-- 
+                         --><input type="number" value="2024" />
+                        </div>
+                        <div class="form__name">
+                          <p class="form__text">Cardholder name</p>
+                          <input type="text" />
+                        </div>
+                      </form>
+                      <div class="form__cards-logo">
+                        <div class="form__cards-logo_visa"></div>
+                        <div class="form__cards-logo_mastercard"></div>
+                      </div>
+                    </div>
                   </div>
                   <div class="paycard__back">
                     <div class="paycard__back-line"></div>
                     <div class="paycard__back-code">
-                      <p class="form__text" style="margin-left: 10px;">CVC/CVV</p>
-                      <input type="tel">
-                      <p class="form__subtext">The last <br> 
-                        3 or 4 digits
-                        on back<br>
-                        of the card</p>
+                      <p class="form__text" style="margin-left: 10px">CVC/CVV</p>
+                      <input type="tel" />
+                      <p class="form__subtext">
+                        The last <br />
+                        3 or 4 digits on back<br />
+                        of the card
+                      </p>
                     </div>
                   </div>
                 </div>
-                <a href="#" class="payment__btn"> Book</a>
-              </div></div></div></div>
+                <a href="#anchor" class="payment__btn"> Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       <div class="parallax"></div>
       <section class="contacts" id="contacts">
@@ -453,8 +484,8 @@
               </h3>
               <ul class="contacts-list">
                 <li>address: 75001 Paris, France</li>
-                <li>phone: +33(0) 1 40 20 50 50</li>
-                <li>mail: info@louvre.fr</li>
+                <li>phone: <a href="tel:+33(0)140205050"> +33(0) 1 40 20 50 50</a></li>
+                <li>mail: <a href="mailto:info@louvre.fr"> info@louvre.fr</a></li>
               </ul>
             </div>
             <img src="./assets/img/contacts_map.png" alt="map" class="map" />
@@ -465,16 +496,16 @@
     </main>
     <footer class="footer">
       <div class="wrap footer-wrap">
-        <div class="logo logo-footer">
+        <a href="#welcome" class="logo logo-footer">
           <div class="logo-img logo-footer-img"></div>
           <div><h4 class="logo-text logo-footer-text">LOUVRE</h4></div>
-        </div>
+        </a>
         <nav class="nav-footer">
           <ul class="nav-list">
-            <li><a class="link-footer" href="#welcome">Welcome</a></li>
             <li><a class="link-footer" href="#virtual-tour">Visiting</a></li>
             <li><a class="link-footer" href="#pictire-exlore">Explore</a></li>
             <li><a class="link-footer" href="#video-journey">Video</a></li>
+            <li><a class="link-footer" href="#gallery">Gallery</a></li>
             <li><a class="link-footer" href="#buy-tickets">Tickets</a></li>
             <li><a class="link-footer" href="#contacts">Contacts</a></li>
           </ul>
@@ -482,34 +513,48 @@
         <nav class="media">
           <ul class="media-list">
             <li class="link-media-ico">
-              <a href="https://www.youtube.com/user/louvre/">
+              <a href="https://www.youtube.com/user/louvre/" target="_blank">
                 <img src="./assets/svg/Youtube.svg" alt="Youtube" class="media-ico"
               /></a>
             </li>
             <li class="link-media-ico">
-              <a href="https://www.instagram.com/museelouvre/"
+              <a href="https://www.instagram.com/museelouvre/" target="_blank"
                 ><img src="./assets/svg/instagram.svg" alt="instagram" class="media-ico"
               /></a>
             </li>
             <li class="link-media-ico">
-              <a href="https://www.facebook.com/museedulouvre"
+              <a href="https://www.facebook.com/museedulouvre" target="_blank"
                 ><img src="./assets/svg/facebook.svg" alt="facebook" class="media-ico"
               /></a>
             </li>
             <li class="link-media-ico">
-              <a href="http://twitter.com/museelouvre"
+              <a href="http://twitter.com/museelouvre" target="_blank"
                 ><img src="./assets/svg/twitter.svg" alt="twitter" class="media-ico"
               /></a>
             </li>
             <li class="link-media-ico">
-              <a href="https://www.pinterest.fr/museedulouvre/"
+              <a href="https://www.pinterest.fr/museedulouvre/" target="_blank"
                 ><img src="./assets/svg/pinterest.svg" alt="pinterest" class="media-ico"
               /></a>
             </li>
           </ul>
         </nav>
       </div>
+      <div class="footer-line">
+        <div class="wrap">
+          <div class="yourself">
+            <ul class="yourself__list">
+              <li class="yourself__elem yourself__elem_1">&copy; 2021</li>
+              <li class="yourself__elem yourself__elem_2">
+                <a href="https://rs.school/">The Rolling Scopes School</a>
+              </li>
+              <li class="yourself__elem yourself__elem_3">
+                <a href="https://github.com/Yurichprololz">Yurichprololz</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </footer>
-    
   </body>
 </html>

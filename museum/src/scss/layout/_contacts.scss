@@ -5,7 +5,7 @@
   &-title {
     color: $var4;
     margin: 0;
-    margin-bottom: 103px;
+    margin-bottom: 101px;
     padding-top: 75px;
   }
   &-content {
@@ -14,8 +14,8 @@
     padding-bottom: 75px;
   }
   &-subtitle {
-    margin-top: 10px;
-    margin-bottom: 37px;
+    margin-top: 0;
+    margin-bottom: 52px;
     text-align: left;
     font-family: Roboto;
     font-style: normal;
@@ -23,7 +23,6 @@
     font-size: 28px;
     line-height: 33px;
     color: $var7;
-    letter-spacing: 1.2px;
   }
   &-list {
     padding-left: 0;
@@ -35,7 +34,16 @@
     color: $var7;
     list-style-type: none;
     li {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      & a {
+        color: black;
+        &:hover {
+          color: #9d8665;
+        }
+        &:active {
+          color: #7e6c51;
+        }
+      }
     }
   }
 }

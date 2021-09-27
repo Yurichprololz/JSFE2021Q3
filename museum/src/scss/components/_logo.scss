@@ -5,7 +5,7 @@
   align-items: center;
   &-img {
     background: url(../assets/svg/logo.svg);
-    height: 35px;
+    height: 34px;
     width: 50px;
   }
   &-text {
@@ -20,12 +20,19 @@
     margin-left: 21px;
   }
   &-footer-text {
-    padding-bottom: 39px;
+    margin-bottom: 83px;
+    margin-left: 26px;
   }
   &-footer-img {
-    margin-bottom: 39px;
+    margin-bottom: 50px;
   }
   &-footer {
     margin-right: 145px;
+    &:hover .logo-text {
+      color: #9d8665;
+    }
+    &:active .logo-text {
+      color: #7e6c51;
+    }
   }
 }
