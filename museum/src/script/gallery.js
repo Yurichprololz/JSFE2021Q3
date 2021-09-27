@@ -1,7 +1,6 @@
 const pictureInnerContainer = document.querySelector('.collection-inner');
 let arrPic = []
 function getImg() {
-    console.log(pictureInnerContainer.querySelectorAll('img'));
 
     pictureInnerContainer.querySelectorAll('img')
         .forEach((pic, i, a) => {
