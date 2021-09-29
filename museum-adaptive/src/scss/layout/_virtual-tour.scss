@@ -4,9 +4,15 @@
   background-color: $bg-ligth;
   height: 100%;
   padding-bottom: 60px;
+  @include laptop {
+    padding-bottom: 0;
+  }
   &-title {
     color: $var4;
     padding-top: 75px;
+    @include laptop {
+      padding-top: 51px;
+    }
   }
 }
 .bottom-line {
@@ -19,16 +25,32 @@
     right: 0;
     height: 3px;
     background-color: $var6;
+    @include laptop {
+      bottom: -17px;
+    }
   }
 }
 .container-cards {
   display: flex;
   flex-wrap: wrap;
   margin-top: 103px;
+  @include laptop {
+    margin-top: 77px;
+    margin-left: 54px;
+    margin-right: 54px;
+  }
 }
 .pic-card {
   width: 440px;
   height: 285px;
+  @include laptop {
+    width: 330px;
+    height: 215px;
+  }
+  @include tablet {
+    width: 280px;
+    height: 180px;
+  }
 }
 .title-card {
   position: relative;
@@ -43,6 +65,26 @@
   text-transform: uppercase;
   color: $var7;
   cursor: pointer;
+  @include laptop {
+    font-size: 28px;
+    line-height: 31px;
+    letter-spacing: 0.03em;
+  }
+  @include tablet {
+    font-size: 22px;
+    line-height: 24px;
+    letter-spacing: 3px;
+  }
+  @include mobile {
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 5px;
+  }
+  &-spaces {
+    @include laptop {
+      letter-spacing: 3px;
+    }
+  }
   &::after {
     content: "";
     position: absolute;
@@ -53,6 +95,9 @@
     width: 300px;
     background-color: $var6;
     transition: ease-in 0.5s;
+    @include laptop {
+      width: 150px;
+    }
   }
 }
 .card:hover .title-card::after {
@@ -70,18 +115,45 @@
   margin-bottom: 10px;
   font-size: 22px;
   line-height: 26px;
+  @include laptop {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  @include tablet {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  @include mobile {
+    font-size: 16px;
+    line-height: 19px;
+  }
 }
 .sm-font {
   margin-top: 0;
   font-size: 18px;
   line-height: 21px;
+  @include laptop {
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 0;
+  }
 }
 .card {
   cursor: pointer;
+  @include laptop {
+    margin: 0 auto;
+    margin-bottom: 62px;
+  }
   &:nth-child(3n + 2) {
     margin: 0 60px;
+    @include laptop {
+      margin: 0 auto;
+    }
   }
   &:nth-child(1) {
     margin-bottom: 57px;
+    @include laptop {
+      margin-bottom: 62px;
+    }
   }
 }

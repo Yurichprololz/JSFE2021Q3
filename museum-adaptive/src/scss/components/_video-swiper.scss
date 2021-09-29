@@ -3,10 +3,13 @@
 .swiper-video {
   overflow: hidden;
   margin-top: 19px;
+  @include laptop {
+    margin-top: 35px;
+  }
   &-pagination {
     display: flex;
     justify-content: space-evenly;
-    // margin-bottom: 115px;
+
     & .swiper-pagination {
       &-bullet {
         height: 12px;
@@ -32,6 +35,9 @@
     margin: 0 auto;
     margin-top: 37px;
     margin-bottom: 75px;
+    @include laptop {
+      margin-bottom: 59px;
+    }
     & .swiper-button-prev {
       position: absolute;
       top: -3px;

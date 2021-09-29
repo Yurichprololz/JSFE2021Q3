@@ -1,8 +1,17 @@
 /** @format */
 
 .swiper {
+  @include laptop {
+    height: 585px;
+  }
   &-pic {
     float: right;
+    & img {
+      @include laptop {
+        width: 700px;
+        height: 525px;
+      }
+    }
   }
   &::before {
     content: "";
@@ -13,6 +22,9 @@
     z-index: 2;
     height: 100%;
     background: linear-gradient(90deg, #000, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 0));
+    @include laptop {
+      width: 150px;
+    }
   }
 }
 
@@ -23,6 +35,9 @@
     left: -10px;
     width: 205px;
     margin-left: 10px;
+    @include laptop {
+      width: 184px;
+    }
   }
   &-pagination {
     display: flex;
@@ -52,12 +67,18 @@
           &::after {
             content: "←";
             margin-left: 77px;
+            @include laptop {
+              margin-left: 105px;
+            }
           }
         }
         &-next {
           &::after {
             content: "→";
             margin-right: 163px;
+            @include laptop {
+              margin-right: 140px;
+            }
           }
         }
       }
@@ -69,12 +90,19 @@
         align-items: center;
         justify-content: space-around;
         margin-right: 0px;
+        @include laptop {
+          margin-left: 28px;
+        }
         &-bullet {
           height: 16px;
           width: 16px;
           border-radius: 0;
           background-color: white;
           opacity: 1;
+          @include laptop {
+            height: 12px;
+            width: 12px;
+          }
           &-active {
             background-color: #d2b183;
           }
@@ -99,10 +127,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 25px;
     color: white;
     height: 100%;
     width: 200px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 40px;
+    @include laptop {
+      font-size: 20px;
+      justify-content: flex-end;
+      box-sizing: border-box;
+      padding-right: 5px;
+    }
   }
   &-current {
     margin-left: 30px;

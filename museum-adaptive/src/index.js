@@ -47,7 +47,23 @@ const swiperVideo = new Swiper('.swiper-video', {
 
     slidesPerView: 3,
     loop: true,
-    spaceBetween: 42,
+    // spaceBetween: 41,
+    breakpoints: {
+        320: {
+            spaceBetween: 0,
+        },
+        420: {
+            spaceBetween: 0,
+        },
+        769: {
+            spaceBetween: 40,
+        },
+        1025: {
+
+            spaceBetween: 42,
+        },
+    },
+
     mousewheel: {
         sentivity: 1,
     },

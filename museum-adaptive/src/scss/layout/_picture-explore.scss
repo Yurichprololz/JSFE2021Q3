@@ -6,6 +6,10 @@
 .explore-title {
   color: $var5;
   margin-bottom: 102px;
+  @include laptop {
+    margin-bottom: 74px;
+    margin-top: 52px;
+  }
 }
 .subtitle-explore {
   font-family: Roboto, sans-serif;
@@ -16,12 +20,26 @@
   color: #ffffff;
   margin-bottom: 28px;
   max-width: 657px;
+  @include laptop {
+    max-width: 100%;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-size: 20px;
+  }
+  &_hide {
+    display: none;
+  }
 }
 .pic-pictire-explore {
   width: 720px;
   height: 700px;
   margin-left: 63px;
   margin-top: 13px;
+  @include laptop {
+    margin: 0 auto;
+    margin-top: 13px;
+    padding-bottom: 60px;
+  }
 }
 .yellow-veil {
   color: $var4;
@@ -73,4 +91,7 @@
     top: -336px;
     left: 11px;
   }
+}
+.description-explore {
+  margin-bottom: 45px;
 }

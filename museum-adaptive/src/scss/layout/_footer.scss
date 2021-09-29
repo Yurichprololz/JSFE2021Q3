@@ -3,6 +3,9 @@
 .footer {
   background-color: $main-bg-color;
   height: 392px;
+  @include laptop {
+    height: 368px;
+  }
   &-wrap {
     display: flex;
   }
@@ -15,6 +18,11 @@
   line-height: 50px;
   letter-spacing: 2px;
   color: $var3;
+  margin-top: 55px;
+
+  @include laptop {
+    margin-right: 94px;
+  }
 }
 .nav-list {
   display: flex;
@@ -23,10 +31,13 @@
   justify-content: space-between;
   height: 150px;
   width: 510px;
+  @include laptop {
+    margin-top: 0px;
+    width: 310px;
+    align-content: space-between;
+  }
 }
-.nav-footer {
-  margin-top: 55px;
-}
+
 ul {
   padding-left: 0;
   list-style-type: none;
@@ -38,6 +49,11 @@ ul {
   margin-left: 247px;
   width: 338px;
   height: 196px;
+  @include laptop {
+    width: 340px;
+    height: 177px;
+    margin-left: 0;
+  }
 }
 .link-footer {
   color: $var5;
@@ -51,6 +67,9 @@ ul {
   border: solid 3px $var5;
   border-radius: 50%;
   position: relative;
+  @include laptop {
+    border: solid 1px $var5;
+  }
   &:hover {
     filter: invert(56%) sepia(9%) saturate(1248%) hue-rotate(356deg) brightness(95%) contrast(87%);
     transform: scale(1.2);
@@ -99,4 +118,7 @@ ul {
 .footer-line {
   border-top: 3px solid #666;
   margin-top: 12px;
+  @include laptop {
+    margin-top: 15px;
+  }
 }

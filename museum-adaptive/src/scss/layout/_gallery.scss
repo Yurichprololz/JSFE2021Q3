@@ -6,5 +6,8 @@
     color: white;
     height: 160px;
     padding-top: 75px;
+    @include laptop {
+      padding-top: 53px;
+    }
   }
 }

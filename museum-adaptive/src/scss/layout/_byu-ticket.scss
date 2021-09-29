@@ -6,22 +6,40 @@
 .tickets-content {
   display: flex;
   margin-top: 103px;
+  @include laptop {
+    margin-top: 77px;
+  }
 }
 .radio-container {
   display: flex;
   flex-direction: column;
   margin-right: 236px;
+  @include laptop {
+    display: none;
+  }
 }
 .tickets-title {
   color: $var4;
   padding-top: 75px;
+  @include laptop {
+    padding-top: 51px;
+  }
 }
 .tickets-content {
   color: $var7;
   padding-bottom: 78px;
+  @include laptop {
+    padding-bottom: 61px;
+  }
 }
 .pic-tickets {
   margin-right: 55px;
+  @include laptop {
+    object-fit: cover;
+    width: 700px;
+    height: 440px;
+    margin-right: 81px;
+  }
 }
 .radio-btn {
   position: relative;
@@ -66,6 +84,9 @@
   color: $var7;
   margin-top: 0;
   margin-bottom: 56px;
+  @include laptop {
+    margin-bottom: 67px;
+  }
 }
 .checkmark {
   position: absolute;
@@ -112,17 +133,24 @@
 .amount-title {
   margin-bottom: 27px;
   text-align: end;
+  @include laptop {
+    margin-bottom: 30px;
+    text-align: start;
+  }
 }
 .amont-subtitle {
   margin-top: 0;
   margin-bottom: 15px;
-  margin-left: 19px;
-  padding-left: 8px;
+  // margin-left: 19px;
+  // padding-left: 8px;
   font-family: Roboto;
   font-style: normal;
   font-weight: 100;
   font-size: 22px;
   line-height: 26px;
+  @include laptop {
+  }
+  margin-bottom: 9px;
 }
 .amount-btn {
   margin-bottom: 35px;
@@ -144,16 +172,25 @@
   display: flex;
   height: 50px;
   width: 150px;
-
   box-sizing: border-box;
   margin-bottom: 5px;
   margin-left: 25px;
   border: $var7 3px solid;
+  @include laptop {
+    width: 175px;
+    margin-bottom: 28px;
+    margin-left: 0;
+    margin-top: 9px;
+  }
 }
 .tickets-total {
   letter-spacing: 2px;
   margin-top: 57px;
   text-align: end;
+  @include laptop {
+    margin-top: 28px;
+    text-align: start;
+  }
 }
 .buy {
   width: 175px;

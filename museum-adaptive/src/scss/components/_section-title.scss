@@ -9,4 +9,16 @@
   line-height: 90px;
   letter-spacing: 5px;
   text-transform: uppercase;
+  @include laptop {
+    font-size: 50px;
+    line-height: 90px;
+  }
+  @include tablet {
+    font-size: 40px;
+    line-height: 60px;
+  }
+  @include mobile {
+    font-size: 28px;
+    line-height: 40px;
+  }
 }

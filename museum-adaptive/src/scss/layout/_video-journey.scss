@@ -6,13 +6,19 @@
 .container-video-description {
   display: flex;
   padding-top: 81px;
-  // padding-bottom: 65px;
+  @include laptop {
+    padding-top: 53px;
+  }
 }
 .video-title {
   color: $var4;
   margin-right: 115px;
   letter-spacing: 4.3px;
   margin-left: 9px;
+  @include laptop {
+    letter-spacing: 5px;
+    margin-left: 0;
+  }
 }
 .video-description {
   font-family: Roboto, sans-serif;
@@ -22,15 +28,51 @@
   line-height: 38px;
   max-width: 720px;
   margin-top: 4px;
+  @include laptop {
+    display: none;
+  }
+}
+.video-inframe {
+  width: 452px;
+  height: 254px;
+  @include laptop {
+    width: 300px;
+    height: 170px;
+  }
+  @include tablet {
+    width: 354px;
+    height: 199px;
+  }
+  @include mobile {
+    width: 180px;
+    height: 101px;
+  }
 }
 .container-video-content {
   position: relative;
   padding-top: 58px;
   width: 1440px;
+
+  @include laptop {
+    width: 984px;
+    padding-top: 32px;
+  }
   & img {
     height: 665px;
     width: 1440px;
     object-fit: cover;
+    @include laptop {
+      width: 984px;
+      height: 444px;
+    }
+    @include tablet {
+      width: 728px;
+      height: 329px;
+    }
+    @include mobile {
+      width: 380px;
+      height: 172px;
+    }
   }
 }
 .player-btn {
@@ -51,11 +93,40 @@
   width: 220px;
   height: 220px;
   transition: transform 0.5s;
+  @include laptop {
+    top: 178px;
+    left: 417px;
+    background-size: contain;
+    width: 152px;
+    height: 152px;
+  }
+  @include tablet {
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+  }
+  @include mobile {
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+  }
 }
 .panel-btn {
   position: relative;
   height: 85px;
   background-color: black;
+  @include laptop {
+    height: 60px;
+    width: 984px;
+  }
+  @include tablet {
+    width: 728px;
+    height: 53px;
+  }
+  @include mobile {
+    width: 380px;
+    height: 50px;
+  }
 }
 .back-btn {
   position: absolute;
@@ -75,6 +146,10 @@
   height: 30px;
   outline: none;
   padding: 0;
+  @include laptop {
+    top: 15px;
+    left: 40px;
+  }
 }
 .next-btn {
   position: absolute;
@@ -92,6 +167,13 @@
   width: 38px;
   height: 30px;
   padding: 0;
+  @include laptop {
+    top: 19px;
+    left: 688px;
+    width: 25px;
+    height: 20px;
+    background-size: contain;
+  }
 }
 .sq-btn {
   position: absolute;
@@ -100,6 +182,21 @@
   left: 1376px;
   width: 35px;
   height: 35px;
+  @include laptop {
+    top: 16px;
+    left: 917px;
+    width: 26px;
+    height: 26px;
+    background-size: contain;
+  }
+  @include laptop {
+    width: 27px;
+    height: 27px;
+  }
+  @include mobile {
+    width: 18px;
+    height: 18px;
+  }
 }
 .progress {
   position: absolute;
@@ -112,6 +209,13 @@
   appearance: none;
   outline: none;
   overflow: hidden;
+  @include laptop {
+    top: 25px;
+    left: 93px;
+    width: 564px;
+    height: 8px;
+    border-radius: 0px;
+  }
   &::-webkit-slider-runnable-track {
     background-color: #c4c4c4;
   }
@@ -123,6 +227,10 @@
     border-radius: 50%;
     -webkit-appearance: none;
     box-shadow: -915px 0 0 905px #710707;
+    @include laptop {
+      width: 8px;
+      height: 8px;
+    }
   }
 
   &-vol {
@@ -136,6 +244,13 @@
     appearance: none;
     outline: none;
     overflow: hidden;
+    @include laptop {
+      top: 25px;
+      left: 745px;
+      width: 143px;
+      height: 8px;
+      border-radius: 0px;
+    }
     &::-webkit-slider-runnable-track {
       background-color: #c4c4c4;
     }
@@ -147,31 +262,17 @@
       border-radius: 50%;
       -webkit-appearance: none;
       box-shadow: -200px 0 0 190px #710707;
+      @include laptop {
+        width: 8px;
+        height: 8px;
+      }
     }
   }
 }
 .for-space {
   position: relative;
   top: -15px;
+  @include laptop {
+    top: -5px;
+  }
 }
-// input[type="range"] {
-//   -webkit-appearance: none;
-//   -moz-appearance: none;
-//   appearance: none;
-//   outline: none;
-//   overflow: hidden;
-// }
-
-// input[type="range"]::-webkit-slider-runnable-track {
-//   background-color: #c4c4c4;
-// }
-
-// input[type="range"]::-webkit-slider-thumb {
-//   background: #fff;
-//   cursor: pointer;
-//   width: 15px;
-//   height: 15px;
-//   border-radius: 50px;
-//   -webkit-appearance: none;
-//   box-shadow: -915px 0 0 905px #710707;
-// }

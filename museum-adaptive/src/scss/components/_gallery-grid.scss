@@ -3,6 +3,9 @@
 .collection {
   overflow-y: hidden;
   height: 1963px;
+  @include laptop {
+    height: 1246px;
+  }
   &-inner {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -10,16 +13,63 @@
     row-gap: 4px;
     column-gap: 28px;
     overflow-x: hidden;
+    @include laptop {
+      grid-auto-rows: 38px;
+      row-gap: 2px;
+      column-gap: 36px;
+    }
   }
   &-pic {
-    &-sm {
-      grid-row: span 8;
-    }
     &-lg {
       grid-row: span 10;
+      width: 456px;
+      height: 570px;
+      @include laptop {
+        width: 304px;
+        height: 380px;
+      }
+      @include tablet {
+        width: 352px;
+        height: 440px;
+      }
+      @include mobile {
+        width: 178px;
+        height: 223px;
+      }
+    }
+    &-sm {
+      grid-row: span 8;
+      width: 456px;
+      height: 456px;
+      @include laptop {
+        width: 304px;
+        height: 304px;
+      }
+      @include tablet {
+        width: 352px;
+        height: 351px;
+      }
+      @include mobile {
+        width: 178px;
+        height: 178px;
+      }
     }
     &-tiny {
       grid-row: span 6;
+      width: 456px;
+      height: 348px;
+      @include laptop {
+        width: 304px;
+        height: 228px;
+      }
+      @include tablet {
+        width: 352px;
+        height: 264px;
+      }
+      @include mobile {
+        width: 178px;
+        height: 133px;
+      }
     }
   }
 }
