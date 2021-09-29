@@ -1,0 +1,38 @@
+/** @format */
+
+.logo {
+  display: flex;
+  align-items: center;
+  &-img {
+    background: url(../assets/svg/logo.svg);
+    height: 34px;
+    width: 50px;
+  }
+  &-text {
+    font-family: Forum;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 50px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: $var3;
+    margin-left: 21px;
+  }
+  &-footer-text {
+    margin-bottom: 83px;
+    margin-left: 26px;
+  }
+  &-footer-img {
+    margin-bottom: 50px;
+  }
+  &-footer {
+    margin-right: 145px;
+    &:hover .logo-text {
+      color: #9d8665;
+    }
+    &:active .logo-text {
+      color: #7e6c51;
+    }
+  }
+}

@@ -1,0 +1,110 @@
+/** @format */
+
+.swiper {
+  &-pic {
+    float: right;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -1px;
+    width: 350px;
+    z-index: 2;
+    height: 100%;
+    background: linear-gradient(90deg, #000, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 0));
+  }
+}
+
+.slider {
+  &-conteiner-pagination {
+    position: relative;
+    bottom: -10px;
+    left: -10px;
+    width: 205px;
+    margin-left: 10px;
+  }
+  &-pagination {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    z-index: 2;
+    height: 120px;
+    width: 600px;
+    background-color: black;
+    .swiper {
+      &-button {
+        &-prev,
+        &-next {
+          position: static;
+          margin-top: 0;
+          color: white;
+          &::after {
+            font-size: 30px;
+          }
+          &:hover {
+            filter: invert(62%) sepia(15%) saturate(740%) hue-rotate(356deg) brightness(85%) contrast(91%);
+          }
+        }
+        &-prev {
+          &::after {
+            content: "←";
+            margin-left: 77px;
+          }
+        }
+        &-next {
+          &::after {
+            content: "→";
+            margin-right: 163px;
+          }
+        }
+      }
+      &-pagination {
+        position: relative;
+        height: 100%;
+        width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-right: 0px;
+        &-bullet {
+          height: 16px;
+          width: 16px;
+          border-radius: 0;
+          background-color: white;
+          opacity: 1;
+          &-active {
+            background-color: #d2b183;
+          }
+          &:hover {
+            background-color: #9d8665;
+          }
+        }
+      }
+    }
+  }
+}
+
+.arrows {
+  display: flex;
+  width: 200px;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.castom-slider {
+  &-fraction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: white;
+    height: 100%;
+    width: 200px;
+  }
+  &-current {
+    margin-left: 30px;
+  }
+}

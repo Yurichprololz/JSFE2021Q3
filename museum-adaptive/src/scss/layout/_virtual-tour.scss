@@ -1,0 +1,87 @@
+/** @format */
+
+.virtual-tour {
+  background-color: $bg-ligth;
+  height: 100%;
+  padding-bottom: 60px;
+  &-title {
+    color: $var4;
+    padding-top: 75px;
+  }
+}
+.bottom-line {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $var6;
+  }
+}
+.container-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 103px;
+}
+.pic-card {
+  width: 440px;
+  height: 285px;
+}
+.title-card {
+  position: relative;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  font-family: Forum;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 35px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: $var7;
+  cursor: pointer;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    width: 300px;
+    background-color: $var6;
+    transition: ease-in 0.5s;
+  }
+}
+.card:hover .title-card::after {
+  width: 100%;
+  cursor: pointer;
+  transition: ease-in 0.5s;
+}
+.subtitle-card {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  color: $var7;
+}
+.bg-font {
+  margin-bottom: 10px;
+  font-size: 22px;
+  line-height: 26px;
+}
+.sm-font {
+  margin-top: 0;
+  font-size: 18px;
+  line-height: 21px;
+}
+.card {
+  cursor: pointer;
+  &:nth-child(3n + 2) {
+    margin: 0 60px;
+  }
+  &:nth-child(1) {
+    margin-bottom: 57px;
+  }
+}

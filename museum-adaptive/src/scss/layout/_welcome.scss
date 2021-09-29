@@ -1,0 +1,62 @@
+/** @format */
+
+.welcome {
+  height: 810px;
+  background-color: $main-bg-color;
+  &-wrap {
+    display: flex;
+    padding-left: 55px;
+    height: inherit;
+  }
+  &-bg {
+    position: relative;
+    max-width: 1920px;
+    margin: 0 auto;
+    height: inherit;
+    // background: url("../assets/img/background_louvre.jpg") no-repeat;
+    // background-position: calc(100% + 20px) calc(100%);
+  }
+  &-title {
+    position: relative;
+    width: 600px;
+    color: $var5;
+    padding-top: 150px;
+    z-index: 6;
+  }
+  &-subtitle {
+    font-family: Roboto, sans-serif;
+    position: relative;
+    width: 600px;
+    z-index: 6;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 33px;
+    letter-spacing: 2px;
+    color: $var3;
+    margin-bottom: 74px;
+  }
+  &-content {
+    width: 445px;
+  }
+}
+.button-for-discover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 360px;
+  height: 74px;
+  background: $var6;
+  border-radius: 10px;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 2px;
+  color: $var3;
+  &:hover {
+    background: $var4;
+    transition: ease-in-out 0.4s;
+  }
+}

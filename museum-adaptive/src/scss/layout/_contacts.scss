@@ -1,0 +1,49 @@
+/** @format */
+
+.contacts {
+  background-color: $bg-ligth;
+  &-title {
+    color: $var4;
+    margin: 0;
+    margin-bottom: 101px;
+    padding-top: 75px;
+  }
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 75px;
+  }
+  &-subtitle {
+    margin-top: 0;
+    margin-bottom: 52px;
+    text-align: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 33px;
+    color: $var7;
+  }
+  &-list {
+    padding-left: 0;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 26px;
+    color: $var7;
+    list-style-type: none;
+    li {
+      margin-bottom: 25px;
+      & a {
+        color: black;
+        &:hover {
+          color: #9d8665;
+        }
+        &:active {
+          color: #7e6c51;
+        }
+      }
+    }
+  }
+}

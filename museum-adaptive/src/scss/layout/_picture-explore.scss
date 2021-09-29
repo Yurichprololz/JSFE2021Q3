@@ -1,0 +1,76 @@
+/** @format */
+
+.picture-explore {
+  background-color: $main-bg-color;
+}
+.explore-title {
+  color: $var5;
+  margin-bottom: 102px;
+}
+.subtitle-explore {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 38px;
+  color: #ffffff;
+  margin-bottom: 28px;
+  max-width: 657px;
+}
+.pic-pictire-explore {
+  width: 720px;
+  height: 700px;
+  margin-left: 63px;
+  margin-top: 13px;
+}
+.yellow-veil {
+  color: $var4;
+}
+
+.img-comp-container {
+  position: relative;
+  // height: 200px; /*should be the same height as the images*/
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+.img-comp-img img {
+  display: block;
+  // vertical-align: middle;
+}
+
+.img-comp-slider {
+  position: absolute;
+  cursor: ew-resize;
+  width: 30px;
+  height: 30px;
+  top: 330px;
+  left: 339.5px;
+  background-color: #00000000;
+  border: 5px solid white;
+  border-radius: 50%;
+  z-index: 2;
+  &::after {
+    content: "";
+    width: 5px;
+    height: 331px;
+    background-color: white;
+    position: absolute;
+    top: 34px;
+    left: 11px;
+  }
+  &::before {
+    content: "";
+    width: 5px;
+    height: 331px;
+    background-color: white;
+    position: absolute;
+    top: -336px;
+    left: 11px;
+  }
+}
