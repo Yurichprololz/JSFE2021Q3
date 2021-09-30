@@ -6,6 +6,9 @@
   @include laptop {
     margin-top: 35px;
   }
+  @include tablet {
+    margin-top: 15px;
+  }
   &-pagination {
     display: flex;
     justify-content: space-evenly;
@@ -17,6 +20,10 @@
         margin: 0 8px;
         background-color: #999999;
         opacity: 1;
+        @include tablet {
+          height: 10px;
+          width: 10px;
+        }
         &-active {
           background-color: #333333;
         }
@@ -37,6 +44,10 @@
     margin-bottom: 75px;
     @include laptop {
       margin-bottom: 59px;
+    }
+    @include tablet {
+      width: 160px;
+      margin-top: 17px;
     }
     & .swiper-button-prev {
       position: absolute;

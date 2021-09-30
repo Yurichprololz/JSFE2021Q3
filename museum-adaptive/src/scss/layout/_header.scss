@@ -40,6 +40,9 @@
   display: flex;
   max-width: 770px;
   line-height: 0;
+  @include laptop {
+    display: none;
+  }
   li a {
     font-family: Roboto, sans-serif;
     font-weight: 100;

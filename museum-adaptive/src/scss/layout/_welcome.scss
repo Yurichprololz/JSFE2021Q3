@@ -6,9 +6,16 @@
   @include laptop {
     height: 585px;
   }
+  @include tablet {
+    width: 768px;
+    height: 861px;
+  }
   &-wrap {
     display: flex;
     height: inherit;
+    @include tablet {
+      flex-direction: column;
+    }
   }
   &-bg {
     position: relative;
@@ -24,6 +31,11 @@
     z-index: 6;
     @include laptop {
       padding-top: 50px;
+    }
+    @include tablet {
+      padding-top: 0;
+      text-align: center;
+      width: 100%;
     }
   }
   &-subtitle {
@@ -47,6 +59,9 @@
       font-size: 20px;
       line-height: 23px;
       margin-bottom: 50px;
+      text-align: center;
+      width: 100%;
+      margin-top: 23px;
     }
     @include mobile {
       font-size: 16px;
@@ -58,6 +73,9 @@
     width: 445px;
     @include laptop {
       width: 284px;
+    }
+    @include tablet {
+      width: 100%;
     }
   }
 }
@@ -83,6 +101,9 @@
     line-height: 23px;
     position: relative;
     z-index: 2;
+  }
+  @include tablet {
+    display: none;
   }
   &:hover {
     background: $var4;

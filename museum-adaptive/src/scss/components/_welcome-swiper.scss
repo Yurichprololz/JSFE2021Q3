@@ -2,14 +2,24 @@
 
 .swiper {
   @include laptop {
-    height: 585px;
+    height: 625px;
+  }
+  @include tablet {
+    width: 100%;
   }
   &-pic {
     float: right;
+    @include tablet {
+      float: left;
+    }
     & img {
       @include laptop {
         width: 700px;
         height: 525px;
+      }
+      @include tablet {
+        width: 728px;
+        height: 546px;
       }
     }
   }
@@ -25,6 +35,9 @@
     @include laptop {
       width: 150px;
     }
+    @include tablet {
+      display: none;
+    }
   }
 }
 
@@ -38,6 +51,10 @@
     @include laptop {
       width: 184px;
     }
+    @include tablet {
+      width: 315px;
+      height: 40px;
+    }
   }
   &-pagination {
     display: flex;
@@ -49,6 +66,13 @@
     height: 120px;
     width: 600px;
     background-color: black;
+    @include tablet {
+      position: relative;
+      margin: 0 auto;
+      bottom: 50px;
+      height: 40px;
+      width: 400px;
+    }
     .swiper {
       &-button {
         &-prev,
@@ -70,6 +94,9 @@
             @include laptop {
               margin-left: 105px;
             }
+            @include tablet {
+              margin-left: 80px;
+            }
           }
         }
         &-next {
@@ -78,6 +105,9 @@
             margin-right: 163px;
             @include laptop {
               margin-right: 140px;
+            }
+            @include tablet {
+              margin-right: 0;
             }
           }
         }
@@ -92,6 +122,9 @@
         margin-right: 0px;
         @include laptop {
           margin-left: 28px;
+        }
+        @include tablet {
+          margin-left: 15px;
         }
         &-bullet {
           height: 16px;
@@ -141,8 +174,16 @@
       box-sizing: border-box;
       padding-right: 5px;
     }
+    @include tablet {
+      padding-right: 0;
+      width: 150px;
+      justify-content: flex-start;
+    }
   }
   &-current {
     margin-left: 30px;
+    @include tablet {
+      margin-left: 0;
+    }
   }
 }

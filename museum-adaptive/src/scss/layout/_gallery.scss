@@ -9,5 +9,9 @@
     @include laptop {
       padding-top: 53px;
     }
+    @include tablet {
+      padding-top: 41px;
+      height: 100px;
+    }
   }
 }

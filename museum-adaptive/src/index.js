@@ -45,21 +45,23 @@ const swiperVideo = new Swiper('.swiper-video', {
         prevEl: '.swiper-button-prev',
     },
 
-    slidesPerView: 3,
+    // slidesPerView: 3,
     loop: true,
     // spaceBetween: 41,
     breakpoints: {
         320: {
             spaceBetween: 0,
         },
-        420: {
-            spaceBetween: 0,
+        421: {
+            spaceBetween: 20,
+            slidesPerView: 2,
         },
         769: {
+            slidesPerView: 3,
             spaceBetween: 40,
         },
         1025: {
-
+            slidesPerView: 3,
             spaceBetween: 42,
         },
     },

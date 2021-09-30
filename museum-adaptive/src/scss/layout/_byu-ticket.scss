@@ -9,6 +9,9 @@
   @include laptop {
     margin-top: 77px;
   }
+  @include tablet {
+    margin-top: 63px;
+  }
 }
 .radio-container {
   display: flex;
@@ -24,12 +27,18 @@
   @include laptop {
     padding-top: 51px;
   }
+  @include tablet {
+    padding-top: 41px;
+  }
 }
 .tickets-content {
   color: $var7;
   padding-bottom: 78px;
   @include laptop {
     padding-bottom: 61px;
+  }
+  @include tablet {
+    padding-bottom: 40px;
   }
 }
 .pic-tickets {
@@ -39,6 +48,11 @@
     width: 700px;
     height: 440px;
     margin-right: 81px;
+  }
+  @include tablet {
+    width: 444px;
+    height: 340px;
+    margin-right: 60px;
   }
 }
 .radio-btn {
@@ -86,6 +100,9 @@
   margin-bottom: 56px;
   @include laptop {
     margin-bottom: 67px;
+  }
+  @include tablet {
+    margin-bottom: 40px;
   }
 }
 .checkmark {
@@ -137,6 +154,9 @@
     margin-bottom: 30px;
     text-align: start;
   }
+  @include tablet {
+    margin-bottom: 38px;
+  }
 }
 .amont-subtitle {
   margin-top: 0;
@@ -182,6 +202,9 @@
     margin-left: 0;
     margin-top: 9px;
   }
+  @include tablet {
+    margin-top: 5px;
+  }
 }
 .tickets-total {
   letter-spacing: 2px;
@@ -190,6 +213,9 @@
   @include laptop {
     margin-top: 28px;
     text-align: start;
+  }
+  @include tablet {
+    margin-top: 38px;
   }
 }
 .buy {

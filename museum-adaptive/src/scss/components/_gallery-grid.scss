@@ -6,6 +6,9 @@
   @include laptop {
     height: 1246px;
   }
+  @include tablet {
+    height: 1079px;
+  }
   &-inner {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -17,6 +20,12 @@
       grid-auto-rows: 38px;
       row-gap: 2px;
       column-gap: 36px;
+    }
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 46px;
+      row-gap: 0px;
+      column-gap: 24px;
     }
   }
   &-pic {
@@ -78,4 +87,7 @@
 }
 .empty2 {
   grid-area: 1 /3/2 /3;
+  @include tablet {
+    display: none;
+  }
 }

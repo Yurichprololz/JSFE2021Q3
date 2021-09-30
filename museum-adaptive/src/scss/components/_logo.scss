@@ -3,6 +3,9 @@
 .logo {
   display: flex;
   align-items: center;
+  @include tablet {
+    margin-top: 11px;
+  }
   &-img {
     background: url(../assets/svg/logo.svg);
     height: 34px;
@@ -46,6 +49,11 @@
     margin-right: 145px;
     @include laptop {
       margin-right: 41px;
+    }
+    @include tablet {
+      margin-right: 97px;
+      margin-bottom: 17px;
+      margin-top: 0;
     }
     &:hover .logo-text {
       color: #9d8665;

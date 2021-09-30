@@ -11,6 +11,10 @@
       margin-bottom: 74px;
       padding-top: 51px;
     }
+    @include tablet {
+      margin-bottom: 62px;
+      padding-top: 42px;
+    }
   }
   &-content {
     display: flex;
@@ -18,6 +22,9 @@
     padding-bottom: 75px;
     @include laptop {
       padding-bottom: 64px;
+    }
+    @include tablet {
+      flex-direction: column;
     }
   }
   &-subtitle {
@@ -38,6 +45,7 @@
     @include tablet {
       font-size: 20px;
       line-height: 23px;
+      margin-bottom: 40px;
     }
     @include mobile {
       font-size: 16px;
@@ -60,6 +68,7 @@
     @include tablet {
       font-size: 18px;
       line-height: 21px;
+      margin-bottom: 40px;
     }
     @include mobile {
       font-size: 16px;
@@ -69,6 +78,9 @@
       margin-bottom: 25px;
       @include laptop {
         margin-bottom: 36px;
+      }
+      @include tablet {
+        margin-bottom: 15px;
       }
       & a {
         color: black;
@@ -89,5 +101,9 @@
     height: 454px;
     object-position: top right;
     object-fit: none;
+  }
+  @include tablet {
+    width: 727px;
+    height: 478px;
   }
 }

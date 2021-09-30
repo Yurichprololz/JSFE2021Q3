@@ -7,11 +7,17 @@
   @include laptop {
     padding-bottom: 0;
   }
+  @include tablet {
+    padding-bottom: 42px;
+  }
   &-title {
     color: $var4;
     padding-top: 75px;
     @include laptop {
       padding-top: 51px;
+    }
+    @include tablet {
+      padding-top: 40px;
     }
   }
 }
@@ -28,6 +34,9 @@
     @include laptop {
       bottom: -17px;
     }
+    @include tablet {
+      bottom: -23px;
+    }
   }
 }
 .container-cards {
@@ -38,6 +47,11 @@
     margin-top: 77px;
     margin-left: 54px;
     margin-right: 54px;
+  }
+  @include tablet {
+    margin-top: 63px;
+    margin-left: 26px;
+    margin-right: 26px;
   }
 }
 .pic-card {
@@ -144,6 +158,9 @@
     margin: 0 auto;
     margin-bottom: 62px;
   }
+  @include tablet {
+    margin-bottom: 38px;
+  }
   &:nth-child(3n + 2) {
     margin: 0 60px;
     @include laptop {
@@ -154,6 +171,9 @@
     margin-bottom: 57px;
     @include laptop {
       margin-bottom: 62px;
+    }
+    @include tablet {
+      margin-bottom: 38px;
     }
   }
 }
