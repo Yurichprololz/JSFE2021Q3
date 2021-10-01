@@ -7,8 +7,10 @@
     height: 585px;
   }
   @include tablet {
-    width: 768px;
     height: 861px;
+  }
+  @include mobile {
+    height: 544px;
   }
   &-wrap {
     display: flex;
@@ -36,6 +38,9 @@
       padding-top: 0;
       text-align: center;
       width: 100%;
+    }
+    @include mobile {
+      padding-top: 5px;
     }
   }
   &-subtitle {

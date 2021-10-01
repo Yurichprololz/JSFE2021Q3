@@ -3,12 +3,15 @@
 .virtual-tour {
   background-color: $bg-ligth;
   height: 100%;
-  padding-bottom: 60px;
+  padding-bottom: 54px;
   @include laptop {
     padding-bottom: 0;
   }
   @include tablet {
     padding-bottom: 42px;
+  }
+  @include mobile {
+    padding-bottom: 2px;
   }
   &-title {
     color: $var4;
@@ -98,6 +101,9 @@
     @include laptop {
       letter-spacing: 3px;
     }
+    @include mobile {
+      letter-spacing: 5px;
+    }
   }
   &::after {
     content: "";
@@ -165,6 +171,9 @@
     margin: 0 60px;
     @include laptop {
       margin: 0 auto;
+    }
+    @include mobile {
+      margin-bottom: 39px;
     }
   }
   &:nth-child(1) {

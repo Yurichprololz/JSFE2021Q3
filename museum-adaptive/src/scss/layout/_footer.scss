@@ -9,6 +9,9 @@
   @include tablet {
     height: 411px;
   }
+  @include mobile {
+    height: 400px;
+  }
   &-wrap {
     display: flex;
     @include tablet {
@@ -32,12 +35,18 @@
   @include tablet {
     margin-top: 60px;
     margin-right: 0;
-
     font-size: 18px;
     line-height: 21px;
     height: 70px;
   }
+  @include mobile {
+    font-size: 16px;
+    line-height: 19px;
+    margin-top: 40px;
+    height: 106px;
+  }
 }
+
 .nav-list {
   display: flex;
   flex-direction: column;
@@ -54,6 +63,11 @@
     width: 343px;
     height: 120px;
   }
+  @include mobile {
+    height: 80px;
+    width: 380px;
+  }
+
   & li {
     @include tablet {
       margin-bottom: 10px;
@@ -64,6 +78,9 @@
 ul {
   padding-left: 0;
   list-style-type: none;
+}
+.media {
+  margin: 0 auto;
 }
 .media-list {
   display: flex;
@@ -80,6 +97,11 @@ ul {
   @include tablet {
     height: 36px;
     margin-left: 298px;
+  }
+  @include mobile {
+    height: 52px;
+    margin: 0;
+    width: 260px;
   }
 }
 .link-footer {
@@ -131,6 +153,10 @@ ul {
     line-height: 22px;
     letter-spacing: 2px;
     color: #ffffff;
+    @include mobile {
+      font-size: 16px;
+      line-height: 22px;
+    }
     & a {
       color: #ffffff;
       &:hover {
@@ -143,6 +169,9 @@ ul {
     &_2 {
       letter-spacing: 2px;
       margin-left: 69px;
+      @include mobile {
+        display: none;
+      }
     }
   }
 }
@@ -154,5 +183,8 @@ ul {
   }
   @include tablet {
     margin-top: 23px;
+  }
+  @include mobile {
+    margin-top: 40px;
   }
 }

@@ -50,7 +50,8 @@ const swiperVideo = new Swiper('.swiper-video', {
     // spaceBetween: 41,
     breakpoints: {
         320: {
-            spaceBetween: 0,
+            spaceBetween: 20,
+            slidesPerView: 2,
         },
         421: {
             spaceBetween: 20,
@@ -74,10 +75,9 @@ const swiperVideo = new Swiper('.swiper-video', {
 ///
 function initComparisons() {
     var x, i;
-    x = document.getElementsByClassName("img-comp-overlay");
-    for (i = 0; i < x.length; i++) {
-        compareImages(x[i]);
-    }
+    x = document.querySelector(".img-comp-overlay");
+    compareImages(x);
+
     function compareImages(img) {
         var slider, img, clicked = 0, w, h;
         w = img.offsetWidth;

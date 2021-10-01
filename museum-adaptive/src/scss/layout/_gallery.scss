@@ -13,5 +13,8 @@
       padding-top: 41px;
       height: 100px;
     }
+    @include mobile {
+      height: 80px;
+    }
   }
 }

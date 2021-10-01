@@ -31,7 +31,9 @@
     font-size: 20px;
   }
   &_hide {
-    display: none;
+    @include laptop {
+      display: none;
+    }
   }
   @include tablet {
     display: none;
@@ -54,6 +56,10 @@
     margin-bottom: 0;
     padding-bottom: 40px;
   }
+  @include mobile {
+    width: 380px;
+    height: 368px;
+  }
 }
 .yellow-veil {
   color: $var4;
@@ -61,7 +67,16 @@
 
 .img-comp-container {
   position: relative;
-  // height: 200px; /*should be the same height as the images*/
+  width: 720px;
+  height: 700px;
+  @include tablet {
+    width: 728px;
+    height: 705px;
+  }
+  @include mobile {
+    width: 380px;
+    height: 368px;
+  }
 }
 
 .img-comp-img {
@@ -70,10 +85,16 @@
   height: auto;
   overflow: hidden;
 }
-
+.img-comp-overlay {
+  width: auto;
+  height: auto;
+}
 .img-comp-img img {
   display: block;
-  // vertical-align: middle;
+  @include mobile {
+    width: 380px;
+    height: 368px;
+  }
 }
 
 .img-comp-slider {
@@ -81,12 +102,17 @@
   cursor: ew-resize;
   width: 30px;
   height: 30px;
-  top: 330px;
-  left: 339.5px;
+  top: 0;
+  left: 0;
   background-color: #00000000;
   border: 5px solid white;
   border-radius: 50%;
   z-index: 2;
+  @include mobile {
+    width: 15px;
+    height: 15px;
+    border: 2px solid white;
+  }
   &::after {
     content: "";
     width: 5px;
@@ -95,6 +121,12 @@
     position: absolute;
     top: 34px;
     left: 11px;
+    @include mobile {
+      width: 2px;
+      height: 179px;
+      top: 17px;
+      left: 6px;
+    }
   }
   &::before {
     content: "";
@@ -104,6 +136,12 @@
     position: absolute;
     top: -336px;
     left: 11px;
+    @include mobile {
+      width: 2px;
+      height: 172px;
+      top: -174px;
+      left: 6px;
+    }
   }
 }
 .description-explore {

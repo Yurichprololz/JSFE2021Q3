@@ -9,6 +9,9 @@
   @include tablet {
     height: 1079px;
   }
+  @include mobile {
+    height: 636px;
+  }
   &-inner {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -27,6 +30,9 @@
       row-gap: 0px;
       column-gap: 24px;
     }
+    @include mobile {
+      row-gap: 2px;
+    }
   }
   &-pic {
     &-lg {
@@ -42,6 +48,8 @@
         height: 440px;
       }
       @include mobile {
+        grid-row: span 5;
+
         width: 178px;
         height: 223px;
       }
@@ -59,6 +67,8 @@
         height: 351px;
       }
       @include mobile {
+        grid-row: span 4;
+
         width: 178px;
         height: 178px;
       }
@@ -76,6 +86,7 @@
         height: 264px;
       }
       @include mobile {
+        grid-row: span 3;
         width: 178px;
         height: 133px;
       }

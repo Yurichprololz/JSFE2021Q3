@@ -5,6 +5,9 @@
   @include tablet {
     padding-bottom: 21px;
   }
+  @include mobile {
+    padding-bottom: 20px;
+  }
 }
 .container-video-description {
   display: flex;
@@ -56,16 +59,19 @@
 }
 .container-video-content {
   position: relative;
-  padding-top: 58px;
-  width: 1440px;
+  padding-top: 59px;
+  max-width: 1440px;
 
   @include laptop {
-    width: 984px;
+    // width: 984px;
     padding-top: 32px;
   }
   @include tablet {
-    width: 728px;
+    // width: 728px;
     padding-top: 20px;
+  }
+  @include mobile {
+    padding-top: 16px;
   }
   & img {
     height: 665px;
@@ -96,23 +102,39 @@
     cursor: pointer;
   }
 }
+.video-pl {
+  position: relative;
+
+  height: 665px;
+  width: 1440px;
+  @include laptop {
+    width: 984px;
+    height: 444px;
+  }
+  @include tablet {
+    width: 728px;
+    height: 329px;
+  }
+  @include mobile {
+    width: 380px;
+    height: 172px;
+  }
+}
 .play-btn {
-  top: 272px;
-  left: 612px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-image: url(../assets/img/play_btn.svg);
   width: 220px;
   height: 220px;
+  background-size: contain;
+
   transition: transform 0.5s;
   @include laptop {
-    top: 178px;
-    left: 417px;
-    background-size: contain;
     width: 152px;
     height: 152px;
   }
   @include tablet {
-    top: 145px;
-    left: 325px;
     background-size: contain;
     width: 80px;
     height: 80px;
@@ -153,18 +175,21 @@
   position: absolute;
   background-image: url(../assets/svg/sm_play_btn.svg);
   background-position: center;
-  top: 20px;
-  left: 30px;
+  top: 50%;
+  left: 3%;
+  transform: translate(-50%, -50%);
   width: 23px;
   height: 30px;
   outline: none;
   padding: 0;
   @include laptop {
-    top: 10px;
-    left: 40px;
+    left: 5%;
   }
-  @include tablet {
-    left: 30px;
+  @include mobile {
+    left: 7%;
+    width: 14px;
+    height: 18px;
+    background-size: cover;
   }
 }
 .next-btn {
@@ -178,69 +203,76 @@
 .volume-btn {
   position: absolute;
   background-image: url(../assets/svg/volume.svg);
-  top: 22px;
-  left: 1081px;
+  top: 50%;
+  left: 77%;
+  transform: translate(-50%, -50%);
   width: 38px;
   height: 30px;
   padding: 0;
   @include laptop {
-    top: 19px;
-    left: 688px;
+    left: 71%;
     width: 25px;
     height: 20px;
     background-size: contain;
   }
   @include tablet {
-    top: 15px;
-    left: 88px;
+    left: 14%;
     width: 27px;
     height: 22px;
+  }
+  @include mobile {
+    background-size: cover;
+    left: 19%;
+    width: 18px;
+    height: 14px;
   }
 }
 .sq-btn {
   position: absolute;
   background-image: url(../assets/svg/sq.svg);
-  top: 20px;
-  left: 1376px;
+  top: 50%;
+  left: 97%;
+  transform: translate(-50%, -50%);
   width: 35px;
   height: 35px;
   @include laptop {
-    top: 16px;
-    left: 917px;
+    left: 95%;
+
     width: 26px;
     height: 26px;
     background-size: contain;
   }
-  @include laptop {
-    top: 13px;
-    left: 672px;
+  @include tablet {
+    left: 94%;
     width: 27px;
     height: 27px;
   }
   @include mobile {
+    left: 92%;
     width: 18px;
     height: 18px;
   }
 }
 .progress {
   position: absolute;
-  top: 29px;
-  left: 104px;
-  width: 930px;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 65%;
   height: 15px;
-  border-radius: 10px;
   -webkit-appearance: none;
   appearance: none;
   outline: none;
   overflow: hidden;
   @include laptop {
-    top: 25px;
-    left: 93px;
-    width: 564px;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    width: 57%;
     height: 8px;
     border-radius: 0px;
   }
   @include tablet {
+    transform: translate(0, 0);
     top: -4px;
     left: 0;
     width: 100%;
@@ -264,26 +296,28 @@
 
   &-vol {
     position: absolute;
-    top: 29px;
-    left: 1172px;
+    top: 50%;
+    left: 87%;
+    transform: translate(-50%, -50%);
     width: 155px;
     height: 15px;
-    border-radius: 10px;
+    // border-radius: 10px;
     -webkit-appearance: none;
     appearance: none;
     outline: none;
     overflow: hidden;
     @include laptop {
-      top: 25px;
-      left: 745px;
+      left: 83%;
       width: 143px;
       height: 8px;
-      border-radius: 0px;
     }
     @include tablet {
-      top: 23px;
-      left: 148px;
-      width: 489px;
+      left: 54%;
+      width: 53%;
+    }
+    @include mobile {
+      left: 56%;
+      width: 53%;
     }
     &::-webkit-slider-runnable-track {
       background-color: #c4c4c4;
@@ -307,6 +341,6 @@
   position: relative;
   top: -15px;
   @include laptop {
-    top: -5px;
+    top: 0;
   }
 }

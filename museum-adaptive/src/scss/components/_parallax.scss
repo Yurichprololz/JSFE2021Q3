@@ -9,7 +9,10 @@
   @include tablet {
     height: 300px;
     background-position: bottom -128px right 51%;
-    background-attachment: unset;
     background-size: 170%;
+  }
+  @include mobile {
+    background-position: bottom 30% left 51%;
+    background-size: 350%;
   }
 }

@@ -6,6 +6,9 @@
   @include tablet {
     margin-top: 11px;
   }
+  @include mobile {
+    margin-top: 1px;
+  }
   &-img {
     background: url(../assets/svg/logo.svg);
     height: 34px;
@@ -13,6 +16,7 @@
     @include mobile {
       height: 16px;
       width: 29px;
+      background-size: cover;
     }
   }
   &-text {
@@ -38,11 +42,19 @@
       margin-bottom: 112px;
       margin-left: 24px;
     }
+    @include mobile {
+      margin-bottom: 0px;
+      margin-left: 20px;
+      margin-top: 0;
+    }
   }
   &-footer-img {
     margin-bottom: 50px;
     @include laptop {
       margin-bottom: 76px;
+    }
+    @include mobile {
+      margin-bottom: 0px;
     }
   }
   &-footer {
@@ -54,6 +66,11 @@
       margin-right: 97px;
       margin-bottom: 17px;
       margin-top: 0;
+    }
+    @include mobile {
+      margin-right: 97px;
+      margin-bottom: 0px;
+      margin-top: 40px;
     }
     &:hover .logo-text {
       color: #9d8665;
