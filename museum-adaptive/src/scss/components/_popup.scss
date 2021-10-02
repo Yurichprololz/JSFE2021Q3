@@ -9,11 +9,12 @@
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 22;
   transition: all 0.8s;
-  // transform: translateX(-100%);
-
   opacity: 0;
   visibility: hidden;
-  &:target {
+  @include tablet {
+    overflow: scroll;
+  }
+  &_active {
     transition: all 0.8s;
     left: 0;
     transform: translateX(0%);
@@ -40,12 +41,29 @@
   &__content {
     position: relative;
     display: flex;
+
     justify-content: center;
     align-items: center;
     background-color: white;
     height: 845px;
     width: 1440px;
     transition: all 0.8s;
+    @include laptop {
+      width: 1024px;
+      height: 768px;
+    }
+    @include tablet {
+      margin-top: calc(1500px - 100vh);
+      flex-direction: column;
+      width: 590px;
+      height: 1479px;
+    }
+    @include mobile {
+      margin-top: calc(1754px - 100vh);
+      width: 420px;
+      height: 1754px;
+      justify-content: stretch;
+    }
   }
   &__close {
     position: absolute;
@@ -57,6 +75,20 @@
   height: 663px;
   width: 400px;
   margin-right: 40px;
+  @include laptop {
+    padding-top: 40px;
+  }
+  @include tablet {
+    height: 663px;
+    width: 530px;
+    margin-right: 0;
+  }
+  @include mobile {
+    width: 360px;
+    height: 700px;
+    padding-top: 0;
+    margin-top: 77px;
+  }
 
   &__logo {
     height: 44px;
@@ -75,6 +107,14 @@
     margin-bottom: 15px;
     margin-top: 0;
     color: #9d8665;
+    @include laptop {
+      margin-bottom: 20px;
+    }
+    @include mobile {
+      font-size: 32px;
+      line-height: 35px;
+      margin-bottom: 17px;
+    }
   }
   &__subtitle {
     font-family: Roboto;
@@ -84,6 +124,9 @@
     line-height: 21px;
     color: #710707;
     margin-bottom: 70px;
+    @include tablet {
+      margin-bottom: 50px;
+    }
 
     &_line {
       position: relative;
@@ -143,6 +186,12 @@
     }
     &-sm {
       width: 190px;
+      @include tablet {
+        width: 250px;
+      }
+      @include mobile {
+        width: 100%;
+      }
       &::placeholder {
         font-family: Roboto, sans-serif;
         font-style: normal;
@@ -160,6 +209,9 @@
       }
       &_left {
         margin-right: 10px;
+        @include tablet {
+          margin-right: 22px;
+        }
       }
     }
   }
@@ -169,9 +221,23 @@
   height: 663px;
   width: 530px;
   border: 1px solid #030303;
+  @include laptop {
+    margin-top: 40px;
+  }
+  @include tablet {
+    margin-top: 36px;
+  }
+  @include mobile {
+    margin-top: 38px;
+    width: 360px;
+    height: 880px;
+  }
   &__header {
     position: relative;
     margin: 25px 30px 22px 30px;
+    @include tablet {
+      margin: 25px 15px 22px 15px;
+    }
     &-title {
       font-family: Roboto;
       font-style: normal;
@@ -211,6 +277,9 @@
     margin-right: 15px;
     height: 15px;
     width: 15px;
+    @include tablet {
+      margin-right: 10px;
+    }
     &_1 {
       background-image: url(../assets/img/popup/popup__twenty.png);
     }
@@ -231,12 +300,19 @@
     right: 0;
     width: 150px;
     height: 120px;
+    @include mobile {
+      width: 120px;
+      height: 95px;
+    }
   }
 }
 
 .top-line {
   position: relative;
   margin-top: 25px;
+  @include tablet {
+    margin-top: 21px;
+  }
   &::after {
     content: "";
     position: absolute;
@@ -245,12 +321,19 @@
     right: 0;
     height: 2px;
     background-color: #710707;
+    @include tablet {
+      top: -13px;
+    }
   }
 }
 .cost {
   margin-right: 30px;
   margin-left: 30px;
   margin-bottom: 10px;
+  @include tablet {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
   &__img {
     position: absolute;
     background-color: #030303;
@@ -295,8 +378,13 @@
 .paycard {
   position: relative;
   height: 241px;
-  width: 470px;
+  max-width: 470px;
   margin: 0 30px 26px 30px;
+  @include tablet {
+    position: relative;
+    margin: 15px 15px 20px 15px;
+    max-width: 555px;
+  }
   &__front {
     position: absolute;
     top: 0;
@@ -305,10 +393,18 @@
     width: 360px;
     z-index: 24;
     background-color: #bcbcbc;
+    @include mobile {
+      position: static;
+      width: 330px;
+      height: 204px;
+    }
     &-wrap {
       height: 100%;
       width: 320px;
       margin: 15px 20px 15px 20px;
+      @include mobile {
+        padding-top: 15px;
+      }
     }
   }
   &__back {
@@ -319,6 +415,13 @@
     width: 360px;
     z-index: 23;
     background-color: #939393;
+    @include mobile {
+      position: static;
+      padding-top: 1px;
+      margin-top: 27px;
+      width: 330px;
+      height: 207px;
+    }
     &-line {
       height: 45px;
       width: 100%;
@@ -358,6 +461,13 @@
   // letter-spacing: 2px;
   color: #ffffff;
   opacity: 0.9;
+  @include tablet {
+    @include tablet {
+      bottom: 24px;
+      right: 15px;
+      margin-right: 0;
+    }
+  }
 }
 
 .form {
@@ -371,6 +481,11 @@
     color: #161615;
     margin-top: 10px;
     margin-bottom: 5px;
+    @include mobile {
+      font-size: 12px;
+      line-height: 13px;
+      letter-spacing: -0.5px;
+    }
   }
   &__subtext {
     font-family: Roboto;
@@ -382,6 +497,10 @@
     margin-top: 7px;
 
     color: #161615;
+    @include mobile {
+      font-size: 9px;
+      line-height: 11px;
+    }
   }
   &__card-number input {
     height: 35px;
@@ -403,6 +522,9 @@
   &__name input {
     height: 35px;
     width: 320px;
+    @include mobile {
+      width: 290px;
+    }
   }
   &__cards-logo {
     position: absolute;
@@ -410,6 +532,9 @@
     right: 0;
     height: 62px;
     width: 55px;
+    @include mobile {
+      top: 35px;
+    }
     &_visa {
       height: 16px;
       width: 55px;
@@ -429,10 +554,19 @@
   &__wrap {
     width: 370px;
     margin: 0 auto;
+    @include tablet {
+      width: 95%;
+      border: 1px solid black;
+      padding: 10px 12px;
+    }
+    @include mobile {
+      width: 93%;
+    }
   }
   &__line {
     position: relative;
     margin-top: 25px;
+
     &::after {
       content: "";
       position: absolute;
@@ -441,6 +575,11 @@
       height: 2px;
       width: 100%;
       background-color: #710707;
+      @include mobile {
+        bottom: -6px;
+        left: 3px;
+        width: 99%;
+      }
     }
   }
   &__basic,
@@ -461,6 +600,12 @@
     color: #9d8665;
     margin-top: 10px;
     margin-bottom: 27px;
+    @include tablet {
+      margin-top: 0;
+    }
+    @include mobile {
+      margin-bottom: 22px;
+    }
   }
   &__btn {
     display: flex;
@@ -483,7 +628,7 @@
       border: none;
       height: 25px;
       width: 35px;
-      text-align: right;
+      text-align: center;
       background-color: #ffffff;
       color: #030303;
       font-family: Roboto;
@@ -501,6 +646,9 @@
     line-height: 21px;
 
     color: #030303;
+    @include mobile {
+      line-height: 25px;
+    }
   }
 }
 input {

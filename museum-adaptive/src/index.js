@@ -152,3 +152,19 @@ document.querySelectorAll('.menu_link').forEach((l) => {
     l.addEventListener('click', menu)
 })
 
+
+let btn = document.querySelector('.buy')
+btn.addEventListener('click', () => {
+    popup.classList.toggle('popup_active')
+
+})
+document.querySelector('.popup__close').addEventListener('click', (e) => {
+    popup.classList.toggle('popup_active')
+    e.preventDefault()
+
+})
+document.querySelector('.popup__area').addEventListener('click', (e) => {
+    popup.classList.toggle('popup_active')
+    e.preventDefault()
+
+})
