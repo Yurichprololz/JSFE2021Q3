@@ -135,3 +135,20 @@ console.log(`
 1) вёрстка формы соответствует макету (До конца не стилизовал инпуты в форме)
 
 `);
+
+
+
+/////
+const menu = e => {
+    // if (!e.target.closest('.adaptive') || !e.target.closest('.menu_link')) return
+    // document.querySelector('.nav-menu').classList.toggle('nav-menu_active')
+    document.querySelector('.menu_popup').classList.toggle('menu_popup_active')
+    // document.querySelector('.menu_popup_content').classList.toggle('menu_popup_content_active')
+    document.querySelector('.adaptive').classList.toggle('adaptive_close')
+    document.querySelector('.welcome-content').classList.toggle('welcome-content_close')
+}
+document.querySelector('.adaptive').addEventListener('click', menu)
+document.querySelectorAll('.menu_link').forEach((l) => {
+    l.addEventListener('click', menu)
+})
+

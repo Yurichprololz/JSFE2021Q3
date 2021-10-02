@@ -82,6 +82,9 @@
     @include tablet {
       width: 100%;
     }
+    &_close {
+      opacity: 0;
+    }
   }
 }
 .button-for-discover {
