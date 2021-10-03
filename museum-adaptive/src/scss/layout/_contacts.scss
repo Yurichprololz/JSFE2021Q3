@@ -99,19 +99,23 @@
 }
 
 .map {
+  width: calc(694px + (960 - 694) * (100vw - 1024px) / (1920 - 1024));
+  height: calc(454px + (620 - 454) * (100vw - 1024px) / (1920 - 1024));
   @include laptop {
-    width: 694px;
-    height: 454px;
+    width: calc(485px + (694 - 485) * (100vw - 768px) / (1024 - 768));
+    height: calc(317px + (454 - 317) * (100vw - 768px) / (1024 - 768));
     object-position: top right;
     object-fit: none;
   }
   @include tablet {
-    width: 727px;
-    height: 478px;
-  }
-  @include mobile {
     object-position: center;
     width: 100%;
-    height: 248px;
+    height: calc(248px + (476 - 248) * (100vw - 420px) / (768 - 420));
+  }
+  @include mobile {
+    width: 100%;
+    height: calc(173px + (248 - 173) * (100vw - 320px) / (420 - 320));
+
+    // height: 248px;
   }
 }

@@ -64,14 +64,21 @@
     right: 0;
     z-index: 2;
     height: 120px;
-    width: 600px;
+    width: calc(500px + (600 - 500) * (100vw - 1024px) / (1920 - 1024));
     background-color: black;
+    @include laptop {
+      width: calc(500px + (600 - 500) * (100vw - 768px) / (1024 - 768));
+      bottom: calc(120px + (0 - 120) * (100vw - 768px) / (1024 - 768));
+    }
     @include tablet {
       position: relative;
       margin: 0 auto;
-      bottom: 50px;
+      bottom: calc(300px + (50 - 300) * (100vw - 420px) / (768 - 420));
       height: 40px;
-      width: 400px;
+      width: calc(300px + (400 - 300) * (100vw - 320px) / (768 - 320));
+    }
+    @include mobile {
+      bottom: calc(140px + (50 - 140) * (100vw - 320px) / (420 - 320));
     }
     .swiper {
       &-button {
@@ -116,7 +123,7 @@
               margin-right: 0;
             }
             @include mobile {
-              margin-right: 175px;
+              margin-right: 87px;
             }
           }
         }

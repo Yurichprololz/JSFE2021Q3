@@ -30,10 +30,10 @@
   margin-top: 55px;
 
   @include laptop {
-    margin-right: 94px;
+    margin-right: calc(20px + (94 - 20) * (100vw - 768px) / (1024 - 768));
   }
   @include tablet {
-    margin-top: 60px;
+    margin-top: calc(50px + (60 - 50) * (100vw - 420px) / (768 - 420));
     margin-right: 0;
     font-size: 18px;
     line-height: 21px;
@@ -53,19 +53,19 @@
   flex-wrap: wrap;
   justify-content: space-between;
   height: 150px;
-  width: 510px;
+  width: calc(400px + (510 - 400) * (100vw - 1024px) / (1920 - 1024));
   @include laptop {
     margin-top: 0px;
-    width: 310px;
+    width: calc(190px + (310 - 190) * (100vw - 768px) / (1024 - 768));
     align-content: space-between;
   }
   @include tablet {
-    width: 343px;
+    width: calc(50px + (60 - 50) * (100vw - 420px) / (768 - 420)) 343px;
     height: 120px;
   }
   @include mobile {
     height: 80px;
-    width: 380px;
+    width: calc(280px + (380 - 280) * (100vw - 320px) / (420 - 320));
   }
 
   & li {
@@ -86,11 +86,11 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-left: 247px;
+  margin-left: calc(10px + (247 - 10) * (100vw - 1024px) / (1920 - 1024));
   width: 338px;
   height: 196px;
   @include laptop {
-    width: 340px;
+    width: calc(300px + (340 - 300) * (100vw - 768px) / (1024 - 768));
     height: 177px;
     margin-left: 0;
   }

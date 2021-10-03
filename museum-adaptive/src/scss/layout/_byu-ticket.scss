@@ -19,7 +19,7 @@
 .radio-container {
   display: flex;
   flex-direction: column;
-  margin-right: 236px;
+  margin-right: calc(10px + (236 - 10) * (100vw - 1024px) / (1920 - 1024));
   @include laptop {
     display: none;
   }
@@ -45,17 +45,23 @@
   }
 }
 .pic-tickets {
-  margin-right: 55px;
+  margin-right: calc(10px + (55 - 10) * (100vw - 1024px) / (1920 - 1024));
+  width: calc(520px + (720 - 520) * (100vw - 1024px) / (1920 - 1024));
   @include laptop {
     object-fit: cover;
-    width: 700px;
-    height: 440px;
+    width: calc(444px + (700 - 444) * (100vw - 768px) / (1024 - 768));
+    height: calc(340px + (440 - 340) * (100vw - 768px) / (1024 - 768));
     margin-right: 81px;
   }
   @include tablet {
-    width: 444px;
-    height: 340px;
-    margin-right: 60px;
+    // width: 444px;
+    // height: 340px;
+    // margin-right: 60px;
+    width: calc(216px + (444 - 216) * (100vw - 420px) / (768 - 420));
+    height: calc(128px + (340 - 128) * (100vw - 420px) / (768 - 420));
+    margin-right: calc(10px + (60 - 10) * (100vw - 420px) / (768 - 420));
+    // width: 216px;
+    // height: 128px;
   }
   @include mobile {
     width: 100%;
@@ -178,8 +184,6 @@
 .amont-subtitle {
   margin-top: 0;
   margin-bottom: 15px;
-  // margin-left: 19px;
-  // padding-left: 8px;
   font-family: Roboto;
   font-style: normal;
   font-weight: 100;

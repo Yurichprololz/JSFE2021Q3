@@ -58,15 +58,19 @@
   }
 }
 .pic-card {
-  width: 440px;
-  height: 285px;
+  width: calc(330px + (440 - 330) * (100vw - 1024px) / (1920 - 1024));
+  height: calc(215px + (285 - 215) * (100vw - 1024px) / (1920 - 1024));
   @include laptop {
-    width: 330px;
-    height: 215px;
+    width: calc(280px + (330 - 280) * (100vw - 768px) / (1024 - 768));
+    height: calc(180px + (215 - 180) * (100vw - 768px) / (1024 - 768));
   }
   @include tablet {
     width: 280px;
     height: 180px;
+  }
+  @include mobile {
+    width: calc(200px + (280 - 200) * (100vw - 320px) / (420 - 320));
+    height: calc(126px + (180 - 126) * (100vw - 320px) / (420 - 320));
   }
 }
 .title-card {

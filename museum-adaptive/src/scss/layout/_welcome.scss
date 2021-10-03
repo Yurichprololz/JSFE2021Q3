@@ -1,7 +1,7 @@
 /** @format */
 
 .welcome {
-  height: 810px;
+  height: calc(585px + (810 - 585) * (100vw - 1024px) / (1920 - 1024));
   background-color: $main-bg-color;
   @include laptop {
     height: 585px;

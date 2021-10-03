@@ -40,8 +40,8 @@
   }
 }
 .pic-pictire-explore {
-  width: 720px;
-  height: 700px;
+  width: calc(504px + (720 - 504) * (100vw - 1024px) / (1920 - 1024));
+  height: calc(490px + (700 - 490) * (100vw - 1024px) / (1920 - 1024));
   margin-left: 63px;
   margin-top: 13px;
   @include laptop {
@@ -50,15 +50,15 @@
     padding-bottom: 60px;
   }
   @include tablet {
-    width: 728px;
-    height: 705px;
+    width: calc(380px + (728 - 380) * (100vw - 420px) / (768 - 420));
+    height: calc(368px + (705 - 368) * (100vw - 420px) / (768 - 420));
     margin-top: 0;
     margin-bottom: 0;
     padding-bottom: 40px;
   }
   @include mobile {
-    width: 380px;
-    height: 368px;
+    width: calc(280px + (380 - 280) * (100vw - 320px) / (420 - 320));
+    height: calc(268px + (368 - 268) * (100vw - 320px) / (420 - 320));
   }
 }
 .yellow-veil {
@@ -67,15 +67,20 @@
 
 .img-comp-container {
   position: relative;
-  width: 720px;
-  height: 700px;
+  width: calc(504px + (720 - 504) * (100vw - 1024px) / (1920 - 1024));
+  height: calc(490px + (700 - 490) * (100vw - 1024px) / (1920 - 1024));
+
   @include tablet {
-    width: 728px;
-    height: 705px;
+    // width: 728px;
+    // height: 705px;
+    width: calc(380px + (728 - 380) * (100vw - 420px) / (768 - 420));
+    height: calc(368px + (705 - 368) * (100vw - 420px) / (768 - 420));
   }
   @include mobile {
-    width: 380px;
-    height: 368px;
+    // width: 380px;
+    // height: 368px;
+    width: calc(280px + (380 - 280) * (100vw - 320px) / (420 - 320));
+    height: calc(268px + (368 - 268) * (100vw - 320px) / (420 - 320));
   }
 }
 
@@ -91,9 +96,11 @@
 }
 .img-comp-img img {
   display: block;
+  width: calc(504px + (720 - 504) * (100vw - 1024px) / (1920 - 1024));
+  height: calc(490px + (700 - 490) * (100vw - 1024px) / (1920 - 1024));
   @include mobile {
-    width: 380px;
-    height: 368px;
+    width: calc(280px + (380 - 280) * (100vw - 320px) / (420 - 320));
+    height: calc(268px + (368 - 268) * (100vw - 320px) / (420 - 320));
   }
 }
 
@@ -116,7 +123,7 @@
   &::after {
     content: "";
     width: 5px;
-    height: 331px;
+    height: calc(227px + (331 - 227) * (100vw - 1024px) / (1920 - 1024));
     background-color: white;
     position: absolute;
     top: 34px;
@@ -131,10 +138,10 @@
   &::before {
     content: "";
     width: 5px;
-    height: 331px;
+    height: calc(230px + (331 - 230) * (100vw - 1024px) / (1920 - 1024));
     background-color: white;
     position: absolute;
-    top: -336px;
+    top: calc(-230px + (-331 + 230) * (100vw - 1024px) / (1920 - 1024));
     left: 11px;
     @include mobile {
       width: 2px;

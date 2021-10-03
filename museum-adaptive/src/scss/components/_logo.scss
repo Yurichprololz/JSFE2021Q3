@@ -44,7 +44,7 @@
     }
     @include mobile {
       margin-bottom: 0px;
-      margin-left: 20px;
+      margin-left: calc(10px + (20 - 10) * (100vw - 420px) / (768 - 420));
       margin-top: 0;
     }
   }
@@ -58,12 +58,12 @@
     }
   }
   &-footer {
-    margin-right: 145px;
+    margin-right: calc(20px + (145 - 20) * (100vw - 1024px) / (1920 - 1024));
     @include laptop {
-      margin-right: 41px;
+      margin-right: calc(10px + (41 - 10) * (100vw - 768px) / (1024 - 768));
     }
     @include tablet {
-      margin-right: 97px;
+      margin-right: calc(15px + (97 - 15) * (100vw - 420px) / (768 - 420));
       margin-bottom: 17px;
       margin-top: 0;
     }

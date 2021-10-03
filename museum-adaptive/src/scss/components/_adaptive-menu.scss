@@ -211,8 +211,8 @@
   padding-bottom: 35px;
   @include mobile {
     justify-content: space-evenly;
-    width: 273px;
-    height: 73px;
+    width: calc(210px + (273 - 210) * (100vw - 320px) / (420 - 320));
+    height: calc(60px + (73 - 60) * (100vw - 320px) / (420 - 320));
     padding-bottom: 14px;
   }
 }

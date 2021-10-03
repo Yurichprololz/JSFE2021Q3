@@ -32,6 +32,8 @@
     }
     @include mobile {
       row-gap: 2px;
+      grid-auto-rows: calc(32px + (46 - 32) * (100vw - 320px) / (420 - 320));
+      column-gap: calc(4px + (24 - 4) * (100vw - 320px) / (420 - 320));
     }
   }
   &-pic {
@@ -49,9 +51,8 @@
       }
       @include mobile {
         grid-row: span 5;
-
-        width: 178px;
-        height: 223px;
+        width: calc(125px + (178 - 125) * (100vw - 320px) / (420 - 320));
+        height: calc(156px + (223 - 156) * (100vw - 320px) / (420 - 320));
       }
     }
     &-sm {
@@ -68,9 +69,8 @@
       }
       @include mobile {
         grid-row: span 4;
-
-        width: 178px;
-        height: 178px;
+        width: calc(125px + (178 - 125) * (100vw - 320px) / (420 - 320));
+        height: calc(125px + (178 - 125) * (100vw - 320px) / (420 - 320));
       }
     }
     &-tiny {
@@ -87,8 +87,8 @@
       }
       @include mobile {
         grid-row: span 3;
-        width: 178px;
-        height: 133px;
+        width: calc(125px + (178 - 125) * (100vw - 320px) / (420 - 320));
+        height: calc(93px + (133 - 93) * (100vw - 320px) / (420 - 320));
       }
     }
   }
