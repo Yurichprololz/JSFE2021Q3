@@ -44,7 +44,7 @@
     }
     @include mobile {
       margin-bottom: 0px;
-      margin-left: calc(10px + (20 - 10) * (100vw - 420px) / (768 - 420));
+      margin-left: calc(10px + (20 - 10) * (100vw - 320px) / (420 - 320));
       margin-top: 0;
     }
   }

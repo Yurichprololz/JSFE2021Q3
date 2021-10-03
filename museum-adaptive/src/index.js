@@ -45,9 +45,7 @@ const swiperVideo = new Swiper('.swiper-video', {
         prevEl: '.swiper-button-prev',
     },
 
-    // slidesPerView: 3,
     loop: true,
-    // spaceBetween: 41,
     breakpoints: {
         320: {
             spaceBetween: 20,
@@ -126,13 +124,15 @@ function initComparisons() {
 
 
 console.log(`
-оценка - 153 балла 
+самооценка - 152 балла (?8) 
 :
-Не выполненные/не засчитанные пункты:
-1) кнопке "Book" в форме покупки билетов добавлен ripple-эффект. Демо: https://50projects50days.com/projects/button-ripple-effect/ 
+Не проверил результат проверки скорости сайта для мобильных устройств на момент деплоя.
+Остальное запилил.
+Хочу напомнить, что проверять разрешение нужно в mobile режиме, т.к. разрешения до 1024 для скрин-экранов(а на декстопе присуствует полоса прокрутки(16-18 пикселей в зависимости от браузера), что может решать для оценки по ПиксельПефекту)
+Так же может сразу не перестроится, поэтому можно обнавить или переключить пару раз между мобильным и декстопным модом.
 
-Частично выполненные пункты:
-1) вёрстка формы соответствует макету (До конца не стилизовал инпуты в форме)
+Удачи в следующих заданиях!
+
 
 `);
 
@@ -167,4 +167,11 @@ document.querySelector('.popup__area').addEventListener('click', (e) => {
     popup.classList.toggle('popup_active')
     e.preventDefault()
 
+})
+document.addEventListener('click', e => {
+    if (e.target.closest('.menu_popup') || e.target.closest('.adaptive_close')) return
+    document.querySelector('.menu_popup_active').classList.remove('menu_popup_active')
+    document.querySelector('.adaptive_close').classList.remove('adaptive_close')
+    document.querySelector('.welcome-content_close').classList.remove('welcome-content_close')
+    console.log(1);
 })

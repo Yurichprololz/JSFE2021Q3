@@ -80,11 +80,11 @@
     li {
       margin-bottom: 25px;
       @include laptop {
-        margin-bottom: 36px;
-      }
-      @include tablet {
         margin-bottom: 15px;
       }
+      // @include tablet {
+      //   margin-bottom: 15px;
+      // }
       & a {
         color: black;
         &:hover {
@@ -115,7 +115,5 @@
   @include mobile {
     width: 100%;
     height: calc(173px + (248 - 173) * (100vw - 320px) / (420 - 320));
-
-    // height: 248px;
   }
 }

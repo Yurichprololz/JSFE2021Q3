@@ -60,7 +60,7 @@
     align-content: space-between;
   }
   @include tablet {
-    width: calc(50px + (60 - 50) * (100vw - 420px) / (768 - 420)) 343px;
+    width: calc(165px + (343 - 165) * (100vw - 420px) / (768 - 420));
     height: 120px;
   }
   @include mobile {
@@ -95,8 +95,9 @@ ul {
     margin-left: 0;
   }
   @include tablet {
+    width: 340px;
     height: 36px;
-    margin-left: 298px;
+    margin-left: calc(0px + (208) * (100vw - 420px) / (768 - 420));
   }
   @include mobile {
     height: 52px;

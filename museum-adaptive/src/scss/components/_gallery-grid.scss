@@ -15,18 +15,18 @@
   &-inner {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 57px;
+    grid-auto-rows: calc(38px + (57 - 38) * (100vw - 1024px) / (1920 - 1024));
     row-gap: 4px;
-    column-gap: 28px;
+    column-gap: calc(16px + (28 - 16) * (100vw - 1024px) / (1920 - 1024));
     overflow-x: hidden;
     @include laptop {
-      grid-auto-rows: 38px;
+      grid-auto-rows: calc(27px + (38 - 27) * (100vw - 768px) / (1024 - 768));
       row-gap: 2px;
-      column-gap: 36px;
+      column-gap: calc(25px + (36 - 25) * (100vw - 768px) / (1024 - 768));
     }
     @include tablet {
       grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: 46px;
+      grid-auto-rows: calc(23px + (46 - 23) * (100vw - 420px) / (768 - 420));
       row-gap: 0px;
       column-gap: 24px;
     }
@@ -39,15 +39,15 @@
   &-pic {
     &-lg {
       grid-row: span 10;
-      width: 456px;
-      height: 570px;
+      width: calc(304px + (456 - 304) * (100vw - 1024px) / (1920 - 1024));
+      height: calc(380px + (570 - 380) * (100vw - 1024px) / (1920 - 1024));
       @include laptop {
-        width: 304px;
-        height: 380px;
+        width: calc(212px + (304 - 212) * (100vw - 768px) / (1024 - 768));
+        height: calc(266px + (380 - 266) * (100vw - 768px) / (1024 - 768));
       }
       @include tablet {
-        width: 352px;
-        height: 440px;
+        width: calc(178px + (352 - 178) * (100vw - 420px) / (768 - 420));
+        height: calc(223px + (440 - 223) * (100vw - 420px) / (768 - 420));
       }
       @include mobile {
         grid-row: span 5;
@@ -57,15 +57,15 @@
     }
     &-sm {
       grid-row: span 8;
-      width: 456px;
-      height: 456px;
+      width: calc(304px + (456 - 304) * (100vw - 1024px) / (1920 - 1024));
+      height: calc(304px + (456 - 304) * (100vw - 1024px) / (1920 - 1024));
       @include laptop {
-        width: 304px;
-        height: 304px;
+        width: calc(212px + (304 - 212) * (100vw - 768px) / (1024 - 768));
+        height: calc(212px + (304 - 212) * (100vw - 768px) / (1024 - 768));
       }
       @include tablet {
-        width: 352px;
-        height: 351px;
+        width: calc(178px + (352 - 178) * (100vw - 420px) / (768 - 420));
+        height: calc(178px + (352 - 178) * (100vw - 420px) / (768 - 420));
       }
       @include mobile {
         grid-row: span 4;
@@ -75,15 +75,15 @@
     }
     &-tiny {
       grid-row: span 6;
-      width: 456px;
-      height: 348px;
+      width: calc(304px + (456 - 304) * (100vw - 1024px) / (1920 - 1024));
+      height: calc(228px + (348 - 228) * (100vw - 1024px) / (1920 - 1024));
       @include laptop {
-        width: 304px;
-        height: 228px;
+        width: calc(212px + (304 - 212) * (100vw - 768px) / (1024 - 768));
+        height: calc(201px + (228 - 201) * (100vw - 768px) / (1024 - 768));
       }
       @include tablet {
-        width: 352px;
-        height: 264px;
+        width: calc(178px + (352 - 178) * (100vw - 420px) / (768 - 420));
+        height: calc(133px + (264 - 133) * (100vw - 420px) / (768 - 420));
       }
       @include mobile {
         grid-row: span 3;
