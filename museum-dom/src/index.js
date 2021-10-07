@@ -2,6 +2,7 @@ import "./scss/main.scss"
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 import './script/gallery'
+import './script/video-player'
 
 initComparisons()
 // Инициализация свайпера

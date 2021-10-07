@@ -11,11 +11,11 @@ function getImg() {
         })
 }
 const addImg = function () {
-    pictureInnerContainer.innerHTML = `<span class="empty">&nbsp; </span>
-    <span class="empty2"> &nbsp;</span>`
+    pictureInnerContainer.innerHTML = `<span class="empty">&nbsp;</span>
+    <span class="empty2">&nbsp;</span>`
     for (let i = 0; i < arrPic.length; i++) {
         const img = document.createElement('img');
-        img.classList.add(arrPic[i][1])
+        img.classList.add(arrPic[i][1], 'collection-pic')
         img.src = `${arrPic[i][0]}`;
         img.alt = `galery${i}`;
         pictureInnerContainer.append(img);
@@ -29,3 +29,9 @@ function shuffle(array) {
 getImg()
 shuffle(arrPic)
 addImg()
+
+// function upPicture() {
+
+// }
+
+// window.addEventListener('scroll', upPicture)

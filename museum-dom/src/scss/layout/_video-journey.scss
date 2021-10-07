@@ -42,8 +42,6 @@
   }
 }
 .video-inframe {
-  // width: 452px;
-  // height: 254px;
   width: calc(300px + (452 - 300) * (100vw - 1024px) / (1920 - 1024));
   height: calc(170px + (254 - 170) * (100vw - 1024px) / (1920 - 1024));
   @include laptop {
@@ -51,14 +49,10 @@
     height: calc(140px + (170 - 140) * (100vw - 768px) / (1024 - 768));
   }
   @include tablet {
-    // width: 354px;
-    // height: 199px;
     width: calc(180px + (354 - 180) * (100vw - 420px) / (768 - 420));
     height: calc(101px + (199 - 101) * (100vw - 420px) / (768 - 420));
   }
   @include mobile {
-    // width: 180px;
-    // height: 101px;
     width: calc(140px + (180 - 140) * (100vw - 320px) / (420 - 320));
     height: calc(78px + (100 - 78) * (100vw - 320px) / (420 - 320));
   }
@@ -69,38 +63,30 @@
   max-width: 1440px;
 
   @include laptop {
-    // width: 984px;
     padding-top: 32px;
   }
   @include tablet {
-    // width: 728px;
     padding-top: 20px;
   }
   @include mobile {
     padding-top: 16px;
   }
-  & img {
-    // width: calc(954px + (1440 - 954) * (100vw - 1024px) / (1920 - 1024));
+  & video {
     width: 100%;
-    height: calc(444px + (665 - 444) * (100vw - 1024px) / (1920 - 1024));
+    // height: calc(444px + (665 - 444) * (100vw - 1024px) / (1920 - 1024));
+    height: 90%;
     object-fit: cover;
     @include laptop {
       width: 100%;
-
-      // width: calc(728px + (984 - 728) * (100vw - 768px) / (1024 - 768));
-      height: calc(329px + (444 - 329) * (100vw - 768px) / (1024 - 768));
+      // height: calc(329px + (444 - 329) * (100vw - 768px) / (1024 - 768));
     }
     @include tablet {
-      // width: calc(380px + (728 - 380) * (100vw - 420px) / (768 - 420));
       width: 100%;
-
-      height: calc(172px + (329 - 172) * (100vw - 420px) / (768 - 420));
+      // height: calc(172px + (329 - 172) * (100vw - 420px) / (768 - 420));
     }
     @include mobile {
-      // width: calc(280px + (380 - 280) * (100vw - 320px) / (420 - 320));
       width: 100%;
-
-      height: calc(100px + (172 - 100) * (100vw - 320px) / (420 - 320));
+      // height: calc(100px + (172 - 100) * (100vw - 320px) / (420 - 320));
     }
   }
 }
@@ -123,7 +109,7 @@
   // width: calc(954px + (1440 - 954) * (100vw - 1024px) / (1920 - 1024));
   width: 100%;
 
-  height: calc(444px + (665 - 444) * (100vw - 1024px) / (1920 - 1024));
+  height: calc(444px + (734 - 444) * (100vw - 1024px) / (1920 - 1024));
   @include laptop {
     // width: 984px;
     // height: 444px;
@@ -143,15 +129,19 @@
   }
 }
 .play-btn {
+  display: block;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -70%);
   background-image: url(../assets/img/play_btn.svg);
   width: 220px;
   height: 220px;
   background-size: contain;
-
   transition: transform 0.5s;
+
+  &_hide {
+    display: none;
+  }
   @include laptop {
     width: 152px;
     height: 152px;
@@ -202,6 +192,9 @@
   height: 30px;
   outline: none;
   padding: 0;
+  &_paused {
+    background-image: url(../assets/img/pause.png);
+  }
   @include laptop {
     left: 5%;
   }
@@ -229,6 +222,10 @@
   width: 38px;
   height: 30px;
   padding: 0;
+  background-size: cover;
+  &_mute {
+    background-image: url(../assets/img/mute.png);
+  }
   @include laptop {
     left: 71%;
     width: 25px;
@@ -360,7 +357,23 @@
 .for-space {
   position: relative;
   top: -15px;
-  @include laptop {
-    top: 0;
+  // @include laptop {
+  //   top: 0;
+  // }
+}
+.playBackRate {
+  display: none;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 0px;
+  color: #710707;
+  user-select: none;
+  &_show {
+    display: block;
   }
 }

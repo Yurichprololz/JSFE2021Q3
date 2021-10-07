@@ -37,6 +37,8 @@
     }
   }
   &-pic {
+    // transform: translateY(10%);
+    // transition: all 0.5s;
     &-lg {
       grid-row: span 10;
       width: calc(304px + (456 - 304) * (100vw - 1024px) / (1920 - 1024));
