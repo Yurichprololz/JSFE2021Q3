@@ -18,7 +18,7 @@
     grid-auto-rows: calc(38px + (57 - 38) * (100vw - 1024px) / (1920 - 1024));
     row-gap: 4px;
     column-gap: calc(16px + (28 - 16) * (100vw - 1024px) / (1920 - 1024));
-    overflow-x: hidden;
+    overflow: hidden;
     @include laptop {
       grid-auto-rows: calc(27px + (38 - 27) * (100vw - 768px) / (1024 - 768));
       row-gap: 2px;
@@ -36,9 +36,16 @@
       column-gap: calc(4px + (24 - 4) * (100vw - 320px) / (420 - 320));
     }
   }
+  ._active {
+    transform: translate(0, 0) scale(1);
+  }
   &-pic {
-    // transform: translateY(10%);
-    // transition: all 0.5s;
+    &-lg,
+    &-sm,
+    &-tiny {
+      transform: translate(0, 20%) scale(0.9);
+      transition: all 0.8s ease 0.2s;
+    }
     &-lg {
       grid-row: span 10;
       width: calc(304px + (456 - 304) * (100vw - 1024px) / (1920 - 1024));

@@ -66,39 +66,6 @@
 .yellow-veil {
   color: $var4;
 }
-
-.img-comp-container {
-  position: relative;
-  width: calc(504px + (720 - 504) * (100vw - 1024px) / (1920 - 1024));
-  height: calc(490px + (700 - 490) * (100vw - 1024px) / (1920 - 1024));
-  @include laptop {
-    width: calc(504px + (720 - 504) * (100vw - 768px) / (1024 - 768));
-    height: calc(490px + (700 - 490) * (100vw - 768px) / (1024 - 768));
-  }
-  @include tablet {
-    // width: 728px;
-    // height: 705px;
-    width: calc(380px + (728 - 380) * (100vw - 420px) / (768 - 420));
-    height: calc(368px + (705 - 368) * (100vw - 420px) / (768 - 420));
-  }
-  @include mobile {
-    // width: 380px;
-    // height: 368px;
-    width: calc(280px + (380 - 280) * (100vw - 320px) / (420 - 320));
-    height: calc(268px + (368 - 268) * (100vw - 320px) / (420 - 320));
-  }
-}
-
-.img-comp-img {
-  position: absolute;
-  width: auto;
-  height: auto;
-  overflow: hidden;
-}
-.img-comp-overlay {
-  width: auto;
-  height: auto;
-}
 .img-comp-img img {
   display: block;
   width: calc(504px + (720 - 504) * (100vw - 1024px) / (1920 - 1024));
@@ -116,14 +83,46 @@
     height: calc(268px + (368 - 268) * (100vw - 320px) / (420 - 320));
   }
 }
+.img-comp-container {
+  position: relative;
+  // width: calc(504px + (720 - 504) * (100vw - 1024px) / (1920 - 1024));
+  height: calc(490px + (700 - 490) * (100vw - 1024px) / (1920 - 1024));
+  @include laptop {
+    // width: calc(504px + (720 - 504) * (100vw - 768px) / (1024 - 768));
+    height: calc(490px + (700 - 490) * (100vw - 768px) / (1024 - 768));
+  }
+  @include tablet {
+    // width: 728px;
+    // height: 705px;
+    // width: calc(380px + (728 - 380) * (100vw - 420px) / (768 - 420));
+    height: calc(368px + (705 - 368) * (100vw - 420px) / (768 - 420));
+  }
+  @include mobile {
+    // width: 380px;
+    // height: 368px;
+    // width: calc(280px + (380 - 280) * (100vw - 320px) / (420 - 320));
+    height: calc(268px + (368 - 268) * (100vw - 320px) / (420 - 320));
+  }
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+// .img-comp-overlay {
+//   // width: 100%;
+//   height: auto;
+// }
 
 .img-comp-slider {
   position: absolute;
   cursor: ew-resize;
   width: 30px;
   height: 30px;
-  top: 0;
-  left: 0;
+  // top: 0;
+  // left: 0;
   background-color: #00000000;
   border: 5px solid white;
   border-radius: 50%;
