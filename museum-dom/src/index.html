@@ -243,7 +243,7 @@
                 <div class="panel-btn">
                   <button class="player-btn sm-play-btn"></button>
                   <input type="range" value="0" min="0" max="100" step="0.1" class="progress" />
-                  <input type="range" value="50" min="0" max="1" step="0.01" class="progress-vol" />
+                  <input type="range" value="40" min="0" max="1" step="0.01" class="progress-vol" />
                   <button class="player-btn volume-btn"></button>
                   <button class="player-btn sq-btn"></button>
                 </div>
@@ -253,7 +253,7 @@
               <!-- Additional required wrapper -->
               <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-url="./assets/video/video0.mp4" data-poster="./video/poster0.jpg">
                   <div class="swiper-pic">
                     <iframe
                       style="border: 0"
@@ -266,7 +266,7 @@
                     ></iframe>
                   </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-url="./assets/video/video1.mp4" data-poster="./video/poster1.jpg">
                   <div class="swiper-pic">
                     <iframe
                       style="border: 0"
@@ -279,7 +279,7 @@
                     ></iframe>
                   </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-url="./assets/video/video2.mp4" data-poster="./video/poster2.jpg">
                   <div class="swiper-pic">
                     <iframe
                       loading="lazy"
@@ -292,7 +292,7 @@
                     ></iframe>
                   </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-url="./assets/video/video3.mp4" data-poster="./video/poster3.jpg">
                   <div class="swiper-pic">
                     <iframe
                       loading="lazy"
@@ -305,7 +305,7 @@
                     ></iframe>
                   </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-url="./assets/video/video4.mp4" data-poster="./video/poster4.jpg">
                   <div class="swiper-pic">
                     <iframe
                       loading="lazy"
@@ -360,17 +360,17 @@
             <img src="./assets/img/buy_tickets.jpg" alt="Buy tickets" class="pic-tickets" />
             <div class="radio-container">
               <h3 class="tickets-subtitle">Ticket Type</h3>
-              <label class="radio-btn"
+              <label class="radio-btn" data-rate="1"
                 >Permanent exhibition
                 <input type="radio" checked="checked" name="radio" />
                 <span class="checkmark"></span>
               </label>
-              <label class="radio-btn"
+              <label class="radio-btn" data-rate="1.25"
                 >Temporary exhibition
                 <input type="radio" name="radio" />
                 <span class="checkmark"></span>
               </label>
-              <label class="radio-btn"
+              <label class="radio-btn" data-rate="2"
                 >Combined Admission
                 <input type="radio" name="radio" />
                 <span class="checkmark"></span>
@@ -380,18 +380,18 @@
               <h3 class="tickets-subtitle amount-title">Amount</h3>
               <h6 class="amont-subtitle">Basic 18+</h6>
               <div class="button-comtainer">
-                <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                <input type="number" min="0" max="20" value="1" readonly class="amount-btn" />
-                <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                <button type="button" class="calc minus" onclick="this.nextElementSibling.stepDown()">-</button>
+                <input type="number" min="0" max="20" value="0" readonly class="amount-btn" />
+                <button type="button" class="calc plus" onclick="this.previousElementSibling.stepUp()">+</button>
               </div>
 
               <h6 class="amont-subtitle">Senior 65+</h6>
               <div class="button-comtainer">
-                <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                <input type="number" min="0" max="20" value="1" readonly class="amount-btn" />
-                <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                <button type="button" class="calc minus" onclick="this.nextElementSibling.stepDown()">-</button>
+                <input type="number" min="0" max="20" value="0" readonly class="amount-btn" />
+                <button type="button" class="calc plus" onclick="this.previousElementSibling.stepUp()">+</button>
               </div>
-              <h4 class="tickets-subtitle tickets-total">Total € 220</h4>
+              <h4 class="tickets-subtitle tickets-total">Total € 0</h4>
               <button class="buy">Buy Now</button>
             </div>
           </div>
@@ -403,21 +403,54 @@
               <div class="popup__close">
                 <a href="#anchor"> <img src="./assets/svg/close.svg" alt="close" /></a>
               </div>
-              <div class="popup__field field">
-                <div class="field__logo"></div>
-                <h4 class="field__title">Booking tickets</h4>
-                <h6 class="field__subtitle field__subtitle_line">Tour to Louvre</h6>
-                <form action="#" class="field__form">
+              <form action="#" class="field__form">
+                <div class="popup__field field">
+                  <div class="field__logo"></div>
+                  <h4 class="field__title">Booking tickets</h4>
+                  <h6 class="field__subtitle field__subtitle_line">Tour to Louvre</h6>
+
                   <input class="field__form-sm field__form-sm_left" type="date" />
-                  <input class="field__form-sm" type="time" />
+                  <input
+                    class="field__form-sm field__form_time"
+                    list="t"
+                    min="09:00"
+                    max="18:00"
+                    step="1800"
+                    type="time"
+                  />
+                  <datalist id="t">
+                    <option value="09:00"></option>
+                    <option value="09:30"></option>
+                    <option value="10:00"></option>
+                    <option value="10:30"></option>
+                    <option value="11:00"></option>
+                    <option value="11:30"></option>
+                    <option value="12:00"></option>
+                    <option value="12:30"></option>
+                    <option value="13:00"></option>
+                    <option value="13:30"></option>
+                    <option value="14:00"></option>
+                    <option value="14:30"></option>
+                    <option value="15:00"></option>
+                    <option value="15:30"></option>
+                    <option value="16:00"></option>
+                    <option value="16:30"></option>
+                    <option value="17:00"></option>
+                    <option value="17:30"></option>
+                    <option value="18:00"></option>
+                  </datalist>
+
                   <input class="field__form-lg field__form-lg_name" type="text" placeholder="Name" />
+                  <span class="tips_name">&nbsp;</span>
                   <input class="field__form-lg field__form-lg_email" type="email" placeholder="E-mail" />
+                  <span class="tips_email">&nbsp;</span>
                   <input class="field__form-lg field__form-lg_phone" type="tel" placeholder="Phone" />
+                  <span class="tips_phone">&nbsp;</span>
                   <div class="custom-arr">
                     <select class="field__form-lg" name="ticketType" id="1">
-                      <option class="img">Ticket Type</option>
-                      <option value="Basic">Basic(+18)</option>
-                      <option value="Senior">Senior(+65)</option>
+                      <option class="img radio_buttons">Permanent exhibition</option>
+                      <option value="Basic radio_buttons">Temporary exhibition</option>
+                      <option value="Senior radio_buttons">Combined Admission</option>
                     </select>
                   </div>
                   <div class="field__entry entry">
@@ -428,7 +461,15 @@
                           <p class="entry__subtitle">Basic 18+ (20 €)</p>
                           <div class="entry__btn">
                             <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                            <input type="number" min="0" max="20" value="1" readonly class="entry__btn-input" />
+                            <input
+                              type="number"
+                              id="first_btn"
+                              min="0"
+                              max="20"
+                              value="1"
+                              readonly
+                              class="entry__btn-input"
+                            />
                             <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
                           </div>
                         </div>
@@ -436,52 +477,61 @@
                           <p class="entry__subtitle">Senior 65+ (10 €)</p>
                           <div class="entry__btn">
                             <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                            <input type="number" min="0" max="20" value="1" readonly class="entry__btn-input" />
+                            <input
+                              type="number"
+                              id="second_btn"
+                              min="0"
+                              max="20"
+                              value="1"
+                              readonly
+                              class="entry__btn-input"
+                            />
                             <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </form>
-              </div>
-              <div class="popup__payment payment">
-                <div class="payment__header">
-                  <h4 class="payment__header-title">Overview</h4>
-                  <p class="payment__header-subtitle">Tour to Louvre</p>
-                  <div class="payment__bcg-img"></div>
-                  <ul class="payment__header-list">
-                    <li class="payment__header-description-row">
-                      <div class="payment__img payment__img_1"></div>
-                      Friday, August 19
-                    </li>
-                    <li class="payment__header-description-row">
-                      <div class="payment__img payment__img_2"></div>
-                      16 : 30
-                    </li>
-                    <li class="payment__header-description-row">
-                      <div class="payment__img payment__img_3"></div>
-                      Temporary exhibition
-                    </li>
-                  </ul>
                 </div>
-                <div class="payment__cost cost">
-                  <ul class="cost__list">
-                    <li class="cost__row">
-                      <div class="cost__img">2</div>
-                      <span>Basic (20 €)</span><span>40 €</span>
-                    </li>
-                    <li class="cost__row" style="margin-top: 5px">
-                      <div class="cost__img">2</div>
-                      <span>Senior (10 €)</span><span>20 €</span>
-                    </li>
-                    <li class="cost__total top-line"><span>Total:</span><span>60 €</span></li>
-                  </ul>
-                </div>
-                <div class="payment__paycard paycard">
-                  <div class="paycard__front">
-                    <div class="paycard__front-wrap form">
-                      <form action="#">
+
+                <div class="popup__payment payment">
+                  <div class="payment__header">
+                    <h4 class="payment__header-title">Overview</h4>
+                    <p class="payment__header-subtitle">Tour to Louvre</p>
+                    <div class="payment__bcg-img"></div>
+                    <ul class="payment__header-list">
+                      <li class="payment__header-description-row">
+                        <div class="payment__img payment__img_1"></div>
+                        <span id="da">Friday, August 19</span>
+                      </li>
+                      <li class="payment__header-description-row">
+                        <div class="payment__img payment__img_2"></div>
+                        <span id="time">16 : 30</span>
+                      </li>
+                      <li class="payment__header-description-row">
+                        <div class="payment__img payment__img_3"></div>
+                        Temporary exhibition
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="payment__cost cost">
+                    <ul class="cost__list">
+                      <li class="cost__row">
+                        <div class="cost__img">2</div>
+                        <span>Basic (20 €)</span><span>40 €</span>
+                      </li>
+                      <li class="cost__row" style="margin-top: 5px">
+                        <div class="cost__img">2</div>
+                        <span>Senior (10 €)</span><span>20 €</span>
+                      </li>
+                      <li class="cost__total top-line">
+                        <span>Total:</span><span class="tickets_total_form">60 €</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="payment__paycard paycard">
+                    <div class="paycard__front">
+                      <div class="paycard__front-wrap form">
                         <div class="form__card-number">
                           <p style="margin-top: 0" class="form__text">Card number</p>
                           <input type="tel" />
@@ -496,28 +546,30 @@
                           <p class="form__text">Cardholder name</p>
                           <input type="text" />
                         </div>
-                      </form>
-                      <div class="form__cards-logo">
-                        <div class="form__cards-logo_visa"></div>
-                        <div class="form__cards-logo_mastercard"></div>
+
+                        <div class="form__cards-logo">
+                          <div class="form__cards-logo_visa"></div>
+                          <div class="form__cards-logo_mastercard"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="paycard__back">
+                      <div class="paycard__back-line"></div>
+                      <div class="paycard__back-code">
+                        <p class="form__text" style="margin-left: 10px">CVC/CVV</p>
+                        <input type="tel" />
+                        <p class="form__subtext">
+                          The last <br />
+                          3 or 4 digits on back<br />
+                          of the card
+                        </p>
                       </div>
                     </div>
                   </div>
-                  <div class="paycard__back">
-                    <div class="paycard__back-line"></div>
-                    <div class="paycard__back-code">
-                      <p class="form__text" style="margin-left: 10px">CVC/CVV</p>
-                      <input type="tel" />
-                      <p class="form__subtext">
-                        The last <br />
-                        3 or 4 digits on back<br />
-                        of the card
-                      </p>
-                    </div>
-                  </div>
+                  <button type="submit" class="payment__btn">Book</button>
+                  <!-- <a href="#anchor" > </a> -->
                 </div>
-                <a href="#anchor" class="payment__btn"> Book</a>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -539,7 +591,6 @@
               </ul>
             </div>
             <div id="map" class="map"></div>
-            <!-- <img src="./assets/img/contacts_map.png" alt="map" class="map" /> -->
           </div>
         </div>
       </section>
