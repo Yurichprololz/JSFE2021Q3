@@ -27,6 +27,13 @@ function toggleStyle() {
     playBig.classList.toggle('play-btn_hide')
     playSm.classList.toggle('sm-play-btn_paused')
 }
+function removeStyle() {
+    // progress.value = '0'
+    if (playBig.classList.contains('play-btn_hide')) {
+        playBig.classList.remove('play-btn_hide')
+        playSm.classList.remove('sm-play-btn_paused')
+    }
+}
 function fullScreenF() {
     document.fullscreenElement ? document.exitFullscreen() : conteiner.requestFullscreen()
 }
@@ -36,6 +43,9 @@ function changeTime() {
 }
 function timeUp() {
     progress.value = (video.currentTime / video.duration) * 100
+    if (!video.currentTime) {
+        progress.value = '0'
+    }
     if (progress.value == 100) {
         toggleStyle()
         progress.value = 0
@@ -80,7 +90,6 @@ function showBackRate() {
 }
 
 function hotKey(event) {
-    console.log(event.code);
     if (event.shiftKey) {
         if (event.code === 'Period') {
             increaseBackRate()
@@ -105,6 +114,7 @@ function hotKey(event) {
 
 
 }
+
 /// Event Listener
 
 playBig.addEventListener('click', togglePlay)
@@ -116,3 +126,7 @@ progress.addEventListener('change', changeTime)
 progressVolume.addEventListener('change', changeVol)
 volBtn.addEventListener('click', toggleVolume)
 document.addEventListener('keydown', hotKey)
+
+
+
+export { removeStyle };

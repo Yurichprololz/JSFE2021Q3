@@ -144,6 +144,9 @@
     }
   }
   &__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &-lg,
     &-sm {
       height: 45px;
@@ -687,6 +690,30 @@ input {
 }
 .anchor {
   position: fixed;
-  top: 0;
-  left: 0;
+  right: 4%;
+  bottom: -14%;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255, 250, 240, 0.3);
+  border-radius: 30%;
+  background-image: url(../assets/img/up_button.png);
+  background-size: cover;
+  transition: all 0.8s;
+}
+.anchor_active {
+  bottom: 4%;
+  z-index: 22;
+  cursor: pointer;
+}
+.red_border {
+  border: 2px solid red;
+}
+.field {
+  &__form-lg {
+    &_name,
+    &_email,
+    &_phone {
+      margin-bottom: 0;
+    }
+  }
 }

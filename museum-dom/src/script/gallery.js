@@ -30,6 +30,7 @@ getImg()
 shuffle(arrPic)
 addImg()
 
+
 function upPicture() {
     let pictures = pictureInnerContainer.querySelectorAll('img')
     pictures.forEach((pic) => {
