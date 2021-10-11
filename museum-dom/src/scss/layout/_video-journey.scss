@@ -9,6 +9,9 @@
     padding-bottom: 20px;
   }
 }
+.video-journey_active {
+  background-color: red;
+}
 .container-video-description {
   display: flex;
   padding-top: 81px;
@@ -281,6 +284,7 @@
   appearance: none;
   outline: none;
   overflow: hidden;
+  border-radius: 10px;
   @include laptop {
     left: 38%;
     transform: translate(-50%, -50%);
@@ -318,7 +322,7 @@
     transform: translate(-50%, -50%);
     width: 155px;
     height: 15px;
-    // border-radius: 10px;
+    border-radius: 10px;
     -webkit-appearance: none;
     appearance: none;
     outline: none;

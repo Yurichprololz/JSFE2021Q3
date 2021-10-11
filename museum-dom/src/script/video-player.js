@@ -114,7 +114,7 @@ function hotKey(event) {
 
 
 }
-
+const BLOCK = document.getElementById('video-journey')
 /// Event Listener
 
 playBig.addEventListener('click', togglePlay)
@@ -126,7 +126,16 @@ progress.addEventListener('change', changeTime)
 progressVolume.addEventListener('change', changeVol)
 volBtn.addEventListener('click', toggleVolume)
 document.addEventListener('keydown', hotKey)
-
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > BLOCK.getBoundingClientRect().top + window.scrollY - BLOCK.offsetHeight / 4) {
+        document.addEventListener('keydown', hotKey)
+    } else {
+        document.removeEventListener('keydown', hotKey)
+    }
+    if (window.pageYOffset > BLOCK.getBoundingClientRect().top + window.scrollY + BLOCK.offsetHeight / 2) {
+        document.removeEventListener('keydown', hotKey)
+    }
+})
 
 
 export { removeStyle };
