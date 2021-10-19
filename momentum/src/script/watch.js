@@ -9,7 +9,8 @@ const DATE_ELEMENT = WATCH.querySelector('.watch__date')
 const GREETING_ELEMENT = WATCH.querySelector('.watch__greeting_text')
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',]
-const greetingList = ['Good night', 'Good morning', 'Good afternoon', 'Good evening',]
+const greetingList = ['night', 'morning', 'afternoon', 'evening',]
+
 function getTime() {
     let DATE = new Date()
     const hours = DATE.getHours() < 10 ? '0' + DATE.getHours() : DATE.getHours()
@@ -20,6 +21,7 @@ function getTime() {
     SECONDS.textContent = seconds
     getDate(DATE)
     greeting(hours)
+
 }
 function getDate(DATE) {
     let day = DATE.getDay()
@@ -30,10 +32,13 @@ function getDate(DATE) {
     DATE_ELEMENT.textContent = date
 }
 function greeting(hours) {
-    GREETING_ELEMENT.textContent = greetingList[Math.floor(hours / 6)] + ','
-
+    let current = greetingList[Math.floor(hours / 6)]
+    GREETING_ELEMENT.textContent = `Good ${current},`
 }
-export default function refreshTime() {
+
+
+
+function refreshTime() {
     setInterval(() => getTime(), 1000)
 }
 
@@ -48,3 +53,4 @@ function getLocalStorage() {
     }
 }
 window.addEventListener('load', getLocalStorage)
+export { greetingList, refreshTime }

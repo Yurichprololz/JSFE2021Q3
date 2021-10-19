@@ -1,0 +1,23 @@
+/** @format */
+
+.arrow {
+  &_left,
+  &_rigth {
+    height: 60px;
+    width: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &_left {
+    background-image: url(../assets/svg/slider-prev.svg);
+    left: 5%;
+    transform: translate(-50%, -50%);
+  }
+
+  &_rigth {
+    background-image: url(../assets/svg/slider-next.svg);
+    right: 5%;
+    transform: translate(50%, -50%);
+  }
+}
