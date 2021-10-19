@@ -1,4 +1,5 @@
 const WATCH = document.querySelector('.watch')
+const INPUT_NAME = document.getElementById('input_name')
 const HOURS = WATCH.querySelector('.watch__hours')
 const MINUTES = WATCH.querySelector('.watch__minuts')
 const SECONDS = WATCH.querySelector('.watch__seconds')
@@ -29,10 +30,21 @@ function getDate(DATE) {
     DATE_ELEMENT.textContent = date
 }
 function greeting(hours) {
-    GREETING_ELEMENT.textContent = greetingList[Math.floor(hours / 6)]
+    GREETING_ELEMENT.textContent = greetingList[Math.floor(hours / 6)] + ','
 
 }
-const refreshTime = () => {
+export default function refreshTime() {
     setInterval(() => getTime(), 1000)
 }
-refreshTime()
+
+function setLocalStorage() {
+    localStorage.setItem('name', INPUT_NAME.value);
+}
+window.addEventListener('beforeunload', setLocalStorage)
+
+function getLocalStorage() {
+    if (localStorage.getItem('name')) {
+        INPUT_NAME.value = localStorage.getItem('name');
+    }
+}
+window.addEventListener('load', getLocalStorage)

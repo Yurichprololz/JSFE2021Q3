@@ -1,2 +1,3 @@
 import './scss/main.scss'
-import './script/watch'
+import refreshTime from './script/watch'
+refreshTime()
