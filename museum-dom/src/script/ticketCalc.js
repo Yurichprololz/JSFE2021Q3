@@ -112,7 +112,7 @@ function validMail(e) {
     } else {
         if (EMAIL_FORM.classList.contains('red_border')) {
             EMAIL_FORM.classList.remove('red_border')
-            EMAIL_FORM.querySelector('.tips_email').innerHTML = '&nbsp;'
+            FORM.querySelector('.tips_email').innerHTML = '&nbsp;'
 
         }
     }
@@ -124,7 +124,7 @@ function validPhone(e) {
     } else {
         if (TEL_FORM.classList.contains('red_border')) {
             TEL_FORM.classList.remove('red_border')
-            TEL_FORM.querySelector('.tips_phone').innerHTML = '&nbsp;'
+            FORM.querySelector('.tips_phone').innerHTML = '&nbsp;'
 
         }
     }
