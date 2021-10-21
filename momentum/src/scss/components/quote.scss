@@ -1,0 +1,24 @@
+/** @format */
+.quote {
+  color: white;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  &__btn {
+    height: 32px;
+    width: 32px;
+    background-image: url(../assets/svg/reload.svg);
+    background-size: cover;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+.footer {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}

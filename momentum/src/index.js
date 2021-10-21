@@ -4,3 +4,4 @@ refreshTime()
 import './script/slider'
 import './script/audioPlayer'
 import './script/weather'
+import './script/quote'

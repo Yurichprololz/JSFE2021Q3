@@ -10,6 +10,25 @@
     <title>Momentum</title>
   </head>
   <body>
+    <div class="top">
+      <div class="audio">
+        <div class="audio__pagination">
+          <div class="audio__prev"></div>
+          <div class="audio__play audio__play_bg"></div>
+          <div class="audio__next"></div>
+        </div>
+        <div class="audio__list"></div>
+      </div>
+      <div class="weather">
+        <input type="text" class="сity" value="Минск" />
+        <i class="weather-icon owf"></i>
+        <div class="temperature"></div>
+        <div class="weather-description"></div>
+        <div class="humidity"></div>
+        <div class="wind_speed"></div>
+      </div>
+    </div>
+
     <div class="watch">
       <div class="watch__time">
         <span class="watch__hours">00</span>:<span class="watch__minuts">00</span>:<span class="watch__seconds"
@@ -26,23 +45,14 @@
     </div>
     <div class="arrow_left"></div>
     <div class="arrow_rigth"></div>
-    <div class="audio">
-      <div class="audio__pagination">
-        <div class="audio__prev"></div>
-        <div class="audio__play audio__play_bg"></div>
-        <div class="audio__next"></div>
-      </div>
-      <div class="audio__list"></div>
-    </div>
-    <div class="weather">
-      <input type="text" class="сity" value="Минск" />
-      <i class="weather-icon owf"></i>
-      <div class="temperature"></div>
-      <div class="weather-description"></div>
-      <div class="humidity"></div>
-      <div class="wind_speed"></div>
-    </div>
 
     <audio src="./assets/sounds/Aqua Caelestis.mp3"></audio>
+    <footer class="footer">
+      <div class="quote">
+        <div class="quote__btn"></div>
+        <div class="quote__text"></div>
+        <div class="quote__author"></div>
+      </div>
+    </footer>
   </body>
 </html>
