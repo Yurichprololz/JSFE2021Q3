@@ -36,11 +36,3 @@ CITY_INPUT.addEventListener('change', getWeather)
 window.addEventListener('beforeunload', setLocalStorage)
 window.addEventListener('load', getLocalStorage)
 
-const JSON = {
-    "coord": { "lon": 27.5667, "lat": 53.9 },
-    "weather": [{ "id": 500, "main": "Rain", "description": "небольшой дождь", "icon": "10n" }],
-    "base": "stations",
-    "main": { "temp": 13.86, "feels_like": 13, "temp_min": 13.74, "temp_max": 13.86, "pressure": 995, "humidity": 65, "sea_level": 995, "grnd_level": 969 },
-    "visibility": 10000,
-    "wind": { "speed": 9.43, "deg": 222, "gust": 17.69 }, "rain": { "1h": 0.11 }, "clouds": { "all": 100 }, "dt": 1634830660, "sys": { "type": 1, "id": 8939, "country": "BY", "sunrise": 1634791714, "sunset": 1634828389 }, "timezone": 10800, "id": 625144, "name": "Минск", "cod": 200
-}

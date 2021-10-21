@@ -5,3 +5,8 @@ body {
   height: 100vh;
   transition: all 1s;
 }
+.top {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
