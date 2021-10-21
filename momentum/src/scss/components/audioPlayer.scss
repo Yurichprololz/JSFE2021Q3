@@ -4,9 +4,9 @@
   &__pagination {
     display: flex;
     align-items: center;
-    // margin-left: 20px;
+    flex-wrap: wrap;
     width: 180px;
-    height: 100px;
+    height: 150px;
     justify-content: space-between;
   }
   &__prev,
@@ -42,10 +42,32 @@
       background-image: url(../assets/svg/pause.svg);
     }
   }
-
+  &__vol {
+    height: 24px;
+    width: 30px;
+    background-image: url(../assets/svg/volume.svg);
+    background-size: cover;
+    &_mute {
+      background-image: url(../assets/img/mute.png);
+    }
+  }
   &__conteiner {
     display: flex;
     color: white;
     margin-bottom: 5px;
   }
+}
+// .progress {
+//   width: 100%;
+// }
+.progress__conteiner,
+.volume__conteiner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.time {
+  font-size: 10px;
+  line-height: 20px;
+  color: white;
 }
