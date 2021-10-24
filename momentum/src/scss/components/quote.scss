@@ -4,6 +4,8 @@
   font-family: "Arial", sans-serif;
   font-size: 20px;
   text-align: center;
+  transition: opacity 0.8s;
+
   &__btn {
     height: 32px;
     width: 32px;
@@ -15,10 +17,4 @@
       cursor: pointer;
     }
   }
-}
-.footer {
-  height: 30vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
 }

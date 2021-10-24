@@ -7,6 +7,10 @@ const PLAY_LIST = document.querySelector('.audio__list')
 const progress = document.querySelector('.progress')
 const progressVolume = document.querySelector('.progress-vol')
 const volBtn = document.querySelector('.audio__vol')
+const CURRENT_TIME = document.querySelector('.progress__current')
+const DURATION_TIME = document.querySelector('.progress__duration')
+const TITLE = document.querySelector('.audio__title')
+let arr
 let isPlay = false
 let count = 0
 
@@ -16,11 +20,13 @@ function playA() {
         AUDIO.pause()
         isPlay = false
         PLAY_BTN.classList.remove('audio__play_pause')
+        arr[count].classList.remove('audio__play_pause')
     } else {
         updateSmallBTN()
         AUDIO.play()
         isPlay = true
         PLAY_BTN.classList.add('audio__play_pause')
+        arr[count].classList.add('audio__play_pause')
     }
 }
 
@@ -37,19 +43,24 @@ function prevSound() {
 
 function changeSound() {
     updateSmallBTN()
+    TITLE.textContent = playList[count].title
     AUDIO.src = playList[count].src
     AUDIO.currentTime = 0
-    AUDIO.play()
-    isPlay = true
+    isPlay = false
+    playA()
 
 }
 
 function playSM(e) {
     const target = e.target.closest('.audio__play_sm')
-    debugger
     if (count === target.dataset.index) {
         updateSmallBTN()
         playA()
+        if (target.classList.contains('audio__play_pause')) {
+            target.classList.remove('audio__play_pause')
+        } else {
+            target.classList.add('audio__play_pause')
+        }
         if (isPlay) {
             target.classList.add('audio__play_pause')
             PLAY_BTN.classList.add('audio__play_pause')
@@ -75,11 +86,14 @@ function playSM(e) {
 }
 
 function updateSmallBTN() {
-    let arr = document.querySelectorAll('.audio__play_sm')
     arr.forEach((el) => {
         el.classList = 'audio__play audio__play_sm'
     })
-    arr[count].classList.add('audio__play_pause')
+    // if (arr[count].classList.contains('audio__play_pause')) {
+    //     arr[count].classList.remove('audio__play_pause')
+    // } else {
+    //     arr[count].classList.add('audio__play_pause')
+    // }
 }
 
 function createList() {
@@ -94,13 +108,25 @@ function createList() {
         conteiner.prepend(icon)
         PLAY_LIST.append(conteiner)
     })
+    arr = document.querySelectorAll('.audio__play_sm')
+
 }
 
 function changeTime() {
     AUDIO.currentTime = (progress.value * AUDIO.duration) / 100
 }
+function getTime(time) {
+    time = Math.floor(time)
+    let minutes = Math.floor(time / 60)
+    minutes = minutes < 10 ? '0' + minutes : minutes
+    let seconds = Math.floor(time % 60)
+    seconds = seconds < 10 ? '0' + seconds : seconds
+    return `${minutes}:${seconds}`
+}
 function timeUp() {
     progress.value = (AUDIO.currentTime / AUDIO.duration) * 100
+    CURRENT_TIME.textContent = getTime(AUDIO.currentTime)
+    DURATION_TIME.textContent = getTime(AUDIO.duration)
     if (!AUDIO.currentTime) {
         progress.value = '0'
     }

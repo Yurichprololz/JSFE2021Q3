@@ -1,0 +1,42 @@
+/** @format */
+
+.blocks {
+  &__setting {
+    width: 30px;
+  }
+}
+.block {
+  display: flex;
+  justify-content: space-between;
+}
+.hide {
+  opacity: 0;
+}
+.setting {
+  position: absolute;
+  bottom: 50px;
+  left: 30px;
+  width: 150px;
+  height: 200px;
+  background-color: rgba(184, 41, 41, 0.205);
+  overflow: auto;
+  transition: all 0.5s;
+  transform: scale(0, 0.2) translate(200%, 200%);
+  &.show {
+    left: 30px;
+    transform: scale(1, 1) translate(0, 0);
+  }
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: #eba4a431;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #1fa6cf;
+    border-radius: 9em;
+    box-shadow: inset 1px 1px 5px #f3faf7;
+  }
+  &__collection {
+    display: flex;
+    flex-direction: column;
+  }
+}

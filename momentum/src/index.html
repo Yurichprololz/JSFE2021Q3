@@ -16,6 +16,7 @@
           <div class="audio__prev"></div>
           <div class="audio__play audio__play_bg"></div>
           <div class="audio__next"></div>
+          <div class="audio__title"></div>
           <div class="progress__conteiner">
             <div class="time">
               <span class="progress__current">00:00</span>/<span class="progress__duration">00:00</span>
@@ -63,6 +64,48 @@
         <div class="quote__text"></div>
         <div class="quote__author"></div>
       </div>
+      <div class="setting-icon"></div>
     </footer>
+    <div class="setting">
+      <div class="setting__block blocks">
+        <h5>Block</h5>
+        <div class="blocks__watch block">
+          Watch
+          <input type="range" min="1" max="2" value="2" name="watch" id="" data-block="watch" class="blocks__setting" />
+        </div>
+        <div class="blocks__audio block">
+          Audio
+          <input type="range" min="1" max="2" value="2" name="audio" id="" data-block="audio" class="blocks__setting" />
+        </div>
+        <div class="blocks__weather block">
+          Weather
+          <input
+            type="range"
+            min="1"
+            max="2"
+            value="2"
+            name="weather"
+            id=""
+            data-block="weather"
+            class="blocks__setting"
+          />
+        </div>
+        <div class="blocks__quote block">
+          Quote
+          <input type="range" min="1" max="2" value="2" name="quote" id="" data-block="quote" class="blocks__setting" />
+        </div>
+        <h5>Image's collection</h5>
+        <ul class="setting__collection">
+          <li><input type="radio" name="1 " id="Github" checked /> <label for="Github">Github</label></li>
+          <li><input type="radio" name="1 " id="Unsplash" /> <label for="Unsplash">Unsplash</label></li>
+          <li><input type="radio" name="1 " id="Flickr" /> <label for="Flickr">Flickr</label></li>
+        </ul>
+        <h5>Application language</h5>
+        <ul class="setting__collection">
+          <li><input type="radio" name="2 " id="English" checked /> <label for="English">English</label></li>
+          <li><input type="radio" name="2 " id="Russian" /> <label for="Russian">Russian</label></li>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>

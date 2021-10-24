@@ -10,7 +10,12 @@ const GREETING_ELEMENT = WATCH.querySelector('.watch__greeting_text')
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',]
 const greetingList = ['night', 'morning', 'afternoon', 'evening',]
-
+const greetingListRU = ['Доброй ночи', 'Доброго утра', 'Доброго дня', 'Доброго вечера',]
+let translation = 'en'
+const greetingTranslation = {
+    en: greetingList,
+    ru: greetingListRU,
+}
 function getTime() {
     let DATE = new Date()
     const hours = DATE.getHours() < 10 ? '0' + DATE.getHours() : DATE.getHours()
@@ -32,8 +37,13 @@ function getDate(DATE) {
     DATE_ELEMENT.textContent = date
 }
 function greeting(hours) {
-    let current = greetingList[Math.floor(hours / 6)]
-    GREETING_ELEMENT.textContent = `Good ${current},`
+    let current = greetingTranslation[translation][Math.floor(hours / 6)]
+    if (translation === 'en') {
+        GREETING_ELEMENT.textContent = `Good ${current},`
+    } else {
+        GREETING_ELEMENT.textContent = `${current},`
+
+    }
 }
 
 

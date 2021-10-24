@@ -1,6 +1,9 @@
 /** @format */
 
 .audio {
+  transition: opacity 0.8s;
+  visibility: 1;
+
   &__pagination {
     display: flex;
     align-items: center;
@@ -8,6 +11,9 @@
     width: 180px;
     height: 150px;
     justify-content: space-between;
+  }
+  &__title {
+    color: white;
   }
   &__prev,
   &__next {

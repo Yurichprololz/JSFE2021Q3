@@ -27,6 +27,8 @@
   row-gap: 5px;
   width: 180px;
   height: 150px;
+  transition: opacity 0.8s;
+
   &-icon {
     font-size: 44px;
   }
