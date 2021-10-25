@@ -18,7 +18,6 @@ function setBg() {
         BODY.style.backgroundImage = `url(${img.src})`
     };
 }
-setBg()
 
 function getTimeOfDay() {
     let d = new Date
@@ -63,4 +62,4 @@ function prevSlide() {
 ARROW_NEXT.addEventListener('click', nextSlide)
 ARROW_PREV.addEventListener('click', prevSlide)
 
-export { setBg }
+export { setBg, NSlide }

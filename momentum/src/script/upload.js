@@ -1,4 +1,4 @@
-import { setBg } from '../script/slider'
+import { setBg, NSlide } from '../script/slider'
 import { greetingList } from './watch'
 
 const COLLECTION = document.querySelectorAll('input[name="collection"]')
@@ -43,7 +43,8 @@ function changeTheme() {
     }
 }
 
-function setServise(e) {
+function setServise() {
+
     if (COLLECTION[0].checked === true) {
         setBg()
     } else if (COLLECTION[1].checked === true) {
@@ -53,7 +54,34 @@ function setServise(e) {
     }
 }
 
+function setLocalStorage() {
+    if (TAGS.value) {
+        localStorage.setItem('tags', TAGS.value);
+    }
+    if (COLLECTION[0].checked === true) {
+        localStorage.setItem('sourse', 'gh');
+    } else if (COLLECTION[1].checked === true) {
+        localStorage.setItem('sourse', 'ul');
+    } else {
+        localStorage.setItem('sourse', 'fr');
+    }
 
+}
+window.addEventListener('beforeunload', setLocalStorage)
+
+function getLocalStorage() {
+    if (localStorage.getItem('tags')) {
+        TAGS.value = localStorage.getItem('tags')
+    }
+    if (localStorage.getItem('sourse') === 'ul') {
+        COLLECTION[1].checked = true
+    } else if (localStorage.getItem('sourse') === 'fr') {
+        COLLECTION[2].checked = true
+    }
+    setServise()
+
+}
+window.addEventListener('load', getLocalStorage)
 
 
 COLLECTION.forEach((el) => {
