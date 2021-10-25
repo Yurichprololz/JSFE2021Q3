@@ -48,7 +48,7 @@ function getLocalStorage() {
 }
 window.addEventListener('load', getLocalStorage)
 
-INPUTS.forEach(() => {
-    addEventListener('change', blockSetting)
+INPUTS.forEach((el) => {
+    el.addEventListener('change', blockSetting)
 })
 ICON.addEventListener('click', showSetting)

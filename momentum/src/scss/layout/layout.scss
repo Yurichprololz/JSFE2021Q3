@@ -4,6 +4,7 @@ body {
   position: relative;
   height: 100vh;
   transition: all 1s;
+  background-size: cover;
 }
 .top {
   margin: 0 20px;
@@ -30,7 +31,6 @@ label:hover {
   cursor: pointer;
 }
 h5 {
-  // font-size: 20px;
   text-align: center;
   font-weight: 700;
   color: rgb(0, 17, 255);
