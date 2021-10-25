@@ -5,6 +5,7 @@ const COLLECTION = document.querySelectorAll('input[name="collection"]')
 const BODY = document.querySelector('body')
 const TAGS = document.querySelector('.tags')
 let theme
+let countFlickr = 0
 
 async function getLinkToImage() {
     theme = changeTheme()
@@ -17,7 +18,17 @@ async function getLinkToImage() {
         BODY.style.backgroundImage = `url(${img.src})`
     };
 }
-
+async function getLinkToFlickr() {
+    theme = changeTheme()
+    const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=64bf5641a6412722f9b2f398b9f8bafa&tags=${theme}&extras=url_l&format=json&nojsoncallback=1`
+    const res = await fetch(url);
+    const data = await res.json();
+    const img = new Image();
+    img.src = data.photos.photo[countFlickr++].url_l
+    img.onload = () => {
+        BODY.style.backgroundImage = `url(${img.src})`
+    };
+}
 
 function getTimeOfDay() {
     let d = new Date
@@ -33,13 +44,12 @@ function changeTheme() {
 }
 
 function setServise(e) {
-    const target = e.target.closest('input')
-    if (target.value === '1') {
+    if (COLLECTION[0].checked === true) {
         setBg()
-    } else if (target.value === '2') {
+    } else if (COLLECTION[1].checked === true) {
         getLinkToImage()
-    } else if (target.value === '3') {
-        console.log(3);
+    } else if (COLLECTION[2].checked === true) {
+        getLinkToFlickr()
     }
 }
 
@@ -51,6 +61,6 @@ COLLECTION.forEach((el) => {
 
 })
 
-TAGS.addEventListener('blur', getLinkToImage)
+TAGS.addEventListener('blur', setServise)
 
-export { getLinkToImage, COLLECTION }
+export { getLinkToFlickr, getLinkToImage, COLLECTION }

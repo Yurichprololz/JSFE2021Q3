@@ -2,7 +2,7 @@ const BODY = document.querySelector('body')
 const ARROW_PREV = document.querySelector('.arrow_left')
 const ARROW_NEXT = document.querySelector('.arrow_rigth')
 import { greetingList } from './watch'
-import { getLinkToImage, COLLECTION } from './upload'
+import { getLinkToFlickr, getLinkToImage, COLLECTION } from './upload'
 let NSlide
 function getRandomNum() {
     let rand = Math.floor(Math.random() * (20 - 1) + 1)
@@ -27,6 +27,8 @@ function getTimeOfDay() {
 function nextSlide() {
     if (COLLECTION[1].checked === true) {
         getLinkToImage()
+    } else if (COLLECTION[2].checked === true) {
+        getLinkToFlickr()
     } else {
         NSlide++
         if (NSlide < 10) {
@@ -42,7 +44,10 @@ function nextSlide() {
 function prevSlide() {
     if (COLLECTION[1].checked === true) {
         getLinkToImage()
-    } else {
+    } else if (COLLECTION[2].checked === true) {
+        getLinkToFlickr()
+    }
+    else {
         NSlide--
         if (NSlide < 10) {
             NSlide = '0' + NSlide
