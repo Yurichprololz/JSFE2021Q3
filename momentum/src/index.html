@@ -59,17 +59,18 @@
     <div class="arrow_rigth"></div>
     <div class="setting">
       <div class="setting__block blocks">
-        <h5>Block</h5>
+        <h5 class="blocks_title">Block's visibility</h5>
         <div class="blocks__watch block">
-          Watch
+          <span class="blocks__watch_text">Watch</span>
+
           <input type="range" min="1" max="2" value="2" name="watch" id="" data-block="watch" class="blocks__setting" />
         </div>
         <div class="blocks__audio block">
-          Audio
+          <span class="blocks__audio_text">Audio</span>
           <input type="range" min="1" max="2" value="2" name="audio" id="" data-block="audio" class="blocks__setting" />
         </div>
         <div class="blocks__weather block">
-          Weather
+          <span class="blocks__weather_text">Weather</span>
           <input
             type="range"
             min="1"
@@ -82,10 +83,11 @@
           />
         </div>
         <div class="blocks__quote block">
-          Quote
+          <span class="blocks__quote_text">Quote</span>
+
           <input type="range" min="1" max="2" value="2" name="quote" id="" data-block="quote" class="blocks__setting" />
         </div>
-        <h5>Image's collection</h5>
+        <h5 class="blocks_collection">Image's collection</h5>
         <ul class="setting__collection">
           <li>
             <input type="radio" name="collection" id="Github" value="1" checked /> <label for="Github">Github</label>
@@ -96,10 +98,12 @@
           <li><input type="radio" name="collection" id="Flickr" value="3" /> <label for="Flickr">Flickr</label></li>
           <li><input type="text" placeholder="Tags" style="width: 80%" class="tags" /></li>
         </ul>
-        <h5>Application language</h5>
+        <h5 class="lang_title">Application language</h5>
         <ul class="setting__collection">
-          <li><input type="radio" name="lang" id="English" checked /> <label for="English">English</label></li>
-          <li><input type="radio" name="lang" id="Russian" /> <label for="Russian">Russian</label></li>
+          <li>
+            <input type="radio" name="lang" id="English" checked /> <label class="lang_EN" for="English">English</label>
+          </li>
+          <li><input type="radio" name="lang" id="Russian" /> <label class="lang_RU" for="Russian">Russian</label></li>
         </ul>
       </div>
     </div>
