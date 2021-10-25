@@ -1,7 +1,6 @@
 import { setBg } from '../script/slider'
 import { greetingList } from './watch'
 
-// const unsplash = document.getElementById('Unsplash')
 const COLLECTION = document.querySelectorAll('input[name="collection"]')
 const BODY = document.querySelector('body')
 const TAGS = document.querySelector('.tags')

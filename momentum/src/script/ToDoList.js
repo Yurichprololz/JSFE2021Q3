@@ -32,8 +32,32 @@ function removeElement(e) {
     elem.remove()
 
 }
+function setLocalStorage() {
+    localStorage.setItem('list', AREA.innerHTML);
+}
+window.addEventListener('beforeunload', setLocalStorage)
 
+function getLocalStorage() {
+    if (localStorage.getItem('list')) {
+        AREA.innerHTML = localStorage.getItem('list');
+        document.querySelectorAll('.delete').forEach((el) => {
+            el.addEventListener('click', removeElement)
+        })
+    }
+}
+
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.todo_icon')) return
+    if (e.target.closest('.delete')) return
+    if (ToDoList.classList.contains('active')) {
+        if (!e.target.closest('.todo')) {
+            ToDoList.classList.remove('active')
+        }
+    }
+})
+window.addEventListener('load', getLocalStorage)
 CREATE_BTN.addEventListener('click', createList)
 OPEN_BTN.addEventListener('click', () => {
     ToDoList.classList.toggle('active')
 })
+
