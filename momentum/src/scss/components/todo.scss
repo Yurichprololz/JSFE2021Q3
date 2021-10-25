@@ -1,0 +1,64 @@
+/** @format */
+
+.todo {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  height: 200px;
+  width: 250px;
+  background-color: rgba(220, 20, 60, 0.137);
+  transform: scale(0);
+  transition: 0.8s;
+  &.active {
+    transform: scale(1);
+  }
+  &_icon {
+    & button {
+      font-size: 20px;
+      color: rgb(219, 219, 219);
+      background-color: rgba(95, 158, 160, 0.767);
+      border: none;
+      cursor: pointer;
+    }
+  }
+  &__area {
+    height: 80%;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.267);
+    margin: 0 auto;
+    margin-top: 5%;
+  }
+
+  &__interface {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5%;
+    justify-content: space-between;
+  }
+
+  &__text {
+    width: 40%;
+  }
+
+  &__create {
+  }
+}
+.invalid {
+  border: 2px solid red;
+}
+.delete {
+  height: 20px;
+  width: 20px;
+  background-image: url(../assets/img/delete.png);
+  background-color: transparent;
+  background-size: cover;
+  cursor: pointer;
+}
+.conteiner {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+  border-top: 1px solid black;
+}

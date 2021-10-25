@@ -16,7 +16,7 @@ body {
   width: 20px;
   background-image: url(../assets/img/setting.png);
   background-size: cover;
-  margin: 0 0 20px 20px;
+  // margin: 0 0 20px 20px;
   filter: invert(98%) sepia(98%) saturate(0%) hue-rotate(338deg) brightness(104%) contrast(104%);
   cursor: pointer;
 }
@@ -25,6 +25,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  &_wrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    padding-bottom: 20px;
+  }
 }
 
 label:hover {
