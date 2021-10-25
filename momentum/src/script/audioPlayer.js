@@ -27,6 +27,11 @@ function playA() {
         isPlay = true
         PLAY_BTN.classList.add('audio__play_pause')
         arr[count].classList.add('audio__play_pause')
+        arr.forEach((el) => {
+            el.parentNode.lastChild.classList = ''
+        })
+        arr[count].parentNode.lastChild.classList.add('highlight')
+
     }
 }
 
@@ -89,25 +94,24 @@ function updateSmallBTN() {
     arr.forEach((el) => {
         el.classList = 'audio__play audio__play_sm'
     })
-    // if (arr[count].classList.contains('audio__play_pause')) {
-    //     arr[count].classList.remove('audio__play_pause')
-    // } else {
-    //     arr[count].classList.add('audio__play_pause')
-    // }
 }
 
 function createList() {
     playList.forEach((elem, i, arr) => {
         const conteiner = document.createElement('div')
         const icon = document.createElement('div')
+        const text = document.createElement('div')
         icon.dataset.index = i
         icon.classList.add('audio__play', 'audio__play_sm')
         icon.addEventListener('click', playSM)
-        conteiner.textContent = elem.title
+        text.textContent = elem.title
         conteiner.classList.add('audio__conteiner')
+        conteiner.prepend(text)
         conteiner.prepend(icon)
         PLAY_LIST.append(conteiner)
     })
+    TITLE.textContent = playList[count].title
+
     arr = document.querySelectorAll('.audio__play_sm')
 
 }
