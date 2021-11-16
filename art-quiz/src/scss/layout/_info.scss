@@ -1,0 +1,60 @@
+/** @format */
+
+.nextRound {
+  border: 2px solid;
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 10px;
+  transition: all 0.8s;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+    background-color: yellow;
+  }
+}
+
+.popup {
+  &__info {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    height: 50vh;
+    width: 50vw;
+    transition: all 0.8s;
+    opacity: 0;
+    &_active {
+      top: 50%;
+      left: 50%;
+      opacity: 1;
+      transform: translate(-50%, -70%);
+    }
+  }
+}
+
+.info {
+  height: 50vh;
+  width: 33vw;
+  &__close {
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid;
+    background-color: rgb(135 174 222 / 89%);
+    border-radius: 25px;
+    padding: 10px 0;
+  }
+  &__author {
+  }
+  &__name {
+  }
+  &__year {
+  }
+  &__pic {
+    max-width: 50%;
+  }
+}
