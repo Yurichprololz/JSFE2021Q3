@@ -1,0 +1,51 @@
+/** @format */
+.menu {
+  display: flex;
+  height: 60%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Rampart One", sans-serif;
+  text-align: center;
+  &__start {
+  }
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__modes {
+    display: flex;
+    margin-bottom: 30px;
+  }
+  &__mode {
+    margin-left: 20px;
+  }
+  &__setting {
+  }
+  &__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // height: 50px;
+    width: 200px;
+    border: 1px solid rgb(2, 20, 2);
+    border-radius: 20px;
+    background-color: rgba(11, 100, 173, 0.295);
+    cursor: pointer;
+    overflow: hidden;
+    p {
+      margin: 10px 0;
+    }
+  }
+  &__buttonIco {
+    height: 200px;
+    width: 100%;
+    background-size: cover;
+    &_artists {
+      background-image: url(../assets/images/jpg/Miguel_Ángel.jpg);
+    }
+    &_picture {
+      background-image: url(../assets/images/jpg/molochnica.jpg);
+    }
+  }
+}

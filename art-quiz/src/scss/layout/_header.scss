@@ -1,0 +1,12 @@
+/** @format */
+
+.header {
+  position: relative;
+  &__title {
+    font-family: "Rampart One", sans-serif;
+    text-align: center;
+    font-size: 40px;
+    color: rgb(59, 43, 43);
+    padding: 10px 0;
+  }
+}
