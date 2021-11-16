@@ -48,3 +48,35 @@
     }
   }
 }
+
+.gamePic {
+  &__question {
+    font-family: "Rampart One", sans-serif;
+    font-size: 30px;
+    text-align: center;
+    background-color: rgba(139, 69, 19, 0.329);
+  }
+
+  &__answers {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+    margin: 0 auto;
+  }
+
+  &__answer {
+    margin: 10px;
+
+    &_1 {
+    }
+
+    &_2 {
+    }
+
+    &_3 {
+    }
+
+    &_4 {
+    }
+  }
+}

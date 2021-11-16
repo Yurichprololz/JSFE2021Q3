@@ -9,18 +9,15 @@ import './assets/scripts/_setting'
 
 
 
-const BUTTON_SETTING = document.querySelector('.menu__setting')
-const BUTON_CLOSE = document.querySelector('.popup__close')
+
 
 const fullscreen = document.querySelector('.fullscreen__icon')
 document.querySelector('.return__arrow').addEventListener('click', renderMenu)
 fullscreen.addEventListener('click', () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen())
 
-
+const BUTTON_SETTING = document.querySelector('.menu__setting')
+const BUTON_CLOSE = document.querySelector('.popup__close')
 window.addEventListener('beforeunload', setLocalStorage)
-
-
 window.addEventListener('load', getLocalStorage)
-
 BUTTON_SETTING.addEventListener('click', showSetting)
 BUTON_CLOSE.addEventListener('click', hideSetting)

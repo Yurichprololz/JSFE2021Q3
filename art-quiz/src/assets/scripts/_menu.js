@@ -1,4 +1,5 @@
-import { AuthorGame, nextRound } from './_author_game'
+import { nextRound as startAuthorGame } from './_author_game'
+import { nextRound as startPictureGame } from './_picture_game'
 
 const WRAP = document.querySelector('.main')
 const renderMenu = () => {
@@ -20,7 +21,8 @@ const renderMenu = () => {
     <div class="menu__setting menu__button">
       <p>Setting</p>
     </div>`
-    document.querySelector('.menu__buttonIco_artists').addEventListener('click', nextRound)
+    document.querySelector('.menu__buttonIco_artists').addEventListener('click', startAuthorGame)
+    document.querySelector('.menu__buttonIco_picture').addEventListener('click', startPictureGame)
 
 }
 export { renderMenu }
