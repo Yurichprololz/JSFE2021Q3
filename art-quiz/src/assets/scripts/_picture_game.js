@@ -4,17 +4,17 @@ import { getAudio } from './_setting'
 
 
 class PictureGame {
-    constructor(picture) {
-        this.trueOpt = null
-        this.picture = imagesInfo[picture]
-        this.arrPictureNum = null
-        this.OPTIONS = null
-        this.isFinited = false
-        this.isTrue = false
-    }
+  constructor(picture) {
+    this.trueOpt = null
+    this.picture = imagesInfo[picture]
+    this.arrPictureNum = null
+    this.OPTIONS = null
+    this.isFinited = false
+    this.isTrue = false
+  }
 
-    render() {
-        document.querySelector('.main').innerHTML = `
+  render() {
+    document.querySelector('.main').innerHTML = `
         <div class="wrap game gamePic">
         <div class="gamePic__question">
           Какую картину написал ${this.picture.author} ? 
@@ -37,49 +37,49 @@ class PictureGame {
           </div>
         </div>
       </div> `
-    }
+  }
 
-    beforeRender() {
-        // this.picture = this.getRandomPicture()
-        this.trueOpt = this.picture.imageNum
-        this.arrPictureNum = this.createPictureNun(this.picture)
-    }
-    afterRender() {
-        this.OPTIONS = document.querySelectorAll('.gamePic__answer img')
-        this.createOptions(this.arrPictureNum, this.OPTIONS)
-        this.OPTIONS.forEach(el => {
-            el.addEventListener('click', (e) => {
-                this.checkOption(e, this.trueOpt)
-            })
-        })
-    }
-    getRandomPicture() {
-        return imagesInfo[Math.floor(Math.random() * imagesInfo.length - Math.floor(imagesInfo.length / 2) + Math.floor(imagesInfo.length / 2))]
-    }
-    createPictureNun(picture) {
-        let arr = []
-        let arrPainter = new Set()
-        arr.push(picture.imageNum)
-        arrPainter.add(picture.author)
-        while (arr.length < 4) {
-            const img = this.getRandomPicture()
-            if (!arrPainter.has(img)) {
-                arrPainter.add(img.author)
-                arr.push(img.imageNum)
-            }
+  beforeRender() {
+    // this.picture = this.getRandomPicture()
+    this.trueOpt = this.picture.imageNum
+    this.arrPictureNum = this.createPictureNun(this.picture)
+  }
+  afterRender() {
+    this.OPTIONS = document.querySelectorAll('.gamePic__answer img')
+    this.createOptions(this.arrPictureNum, this.OPTIONS)
+    this.OPTIONS.forEach(el => {
+      el.addEventListener('click', (e) => {
+        this.checkOption(e, this.trueOpt)
+      })
+    })
+  }
+  getRandomPicture() {
+    return imagesInfo[Math.floor(Math.random() * imagesInfo.length - Math.floor(imagesInfo.length / 2) + Math.floor(imagesInfo.length / 2))]
+  }
+  createPictureNun(picture) {
+    let arr = []
+    let arrPainter = new Set()
+    arr.push(picture.imageNum)
+    arrPainter.add(picture.author)
+    while (arr.length < 4) {
+      const img = this.getRandomPicture()
+      if (!arrPainter.has(img)) {
+        arrPainter.add(img.author)
+        arr.push(img.imageNum)
+      }
 
-        }
-        return arr.sort()
     }
-    createOptions(arr, opt) {
-        arr.forEach((imageNum, i) => {
-            opt[i].opt = imageNum
-            opt[i].src = `./img/${imageNum}.jpg`
-        })
-    }
-    showInfo() {
-        const content = document.querySelector('.popup__info')
-        content.innerHTML = `
+    return arr.sort()
+  }
+  createOptions(arr, opt) {
+    arr.forEach((imageNum, i) => {
+      opt[i].opt = imageNum
+      opt[i].src = `./img/${imageNum}.jpg`
+    })
+  }
+  showInfo() {
+    const content = document.querySelector('.popup__info')
+    content.innerHTML = `
         <div class="info__content">
         <img class="info__pic" src="./img/${this.picture.imageNum}.jpg" alt="">
         <div class="info__author">${this.picture.author}</div>
@@ -87,45 +87,45 @@ class PictureGame {
         <div class="info__year">${this.picture.year}</div>
         <button class="nextRound"> next round</button></div>
         `
-        content.classList.add('popup__info_active')
-        document.querySelector('.nextRound').addEventListener('click', () => {
-            content.classList.remove('popup__info_active')
-            nextRound()
-        })
-    }
-    checkOption(event) {
-        const target = event.target.closest('img')
-        this.isFinited = true
-        const game = JSON.parse(localStorage.getItem(`game`))
+    content.classList.add('popup__info_active')
+    document.querySelector('.nextRound').addEventListener('click', () => {
+      content.classList.remove('popup__info_active')
+      nextRound()
+    })
+  }
+  checkOption(event) {
+    const target = event.target.closest('img')
+    this.isFinited = true
+    const game = JSON.parse(localStorage.getItem(`game`))
 
 
-        if (this.trueOpt == target.opt) {
-            this.isTrue = true
-            getAudio(0)
-            target.classList.add('game__answer_trueble')
-        } else {
-            getAudio(1)
-            target.classList.add('game__answer_falsable')
-        }
-        for (let index = 0; index < game.length; index++) {
-            if (game[index].picture.name === this.picture.name) {
-                game[index] = this
-                break
-            }
-        }
-        localStorage.setItem(`game`, JSON.stringify(game))
-        this.showInfo()
+    if (this.trueOpt == target.opt) {
+      this.isTrue = true
+      getAudio(0)
+      target.classList.add('game__answer_trueble')
+    } else {
+      getAudio(1)
+      target.classList.add('game__answer_falsable')
+    }
+    for (let index = 0; index < game.length; index++) {
+      if (game[index].picture.name === this.picture.name) {
+        game[index] = this
+        break
+      }
+    }
+    localStorage.setItem(`game`, JSON.stringify(game))
+    this.showInfo()
 
-    }
-    startGame() {
-        this.beforeRender()
-        this.render()
-        this.afterRender()
-    }
+  }
+  startGame() {
+    this.beforeRender()
+    this.render()
+    this.afterRender()
+  }
 
 }
 const renderCategories = () => {
-    document.querySelector('.main').innerHTML = `
+  document.querySelector('.main').innerHTML = `
         <h4 class="categories__title">Choose category</h4>
       <div class="categories">
         <div class="categories__cat" data-cat="0">
@@ -188,48 +188,48 @@ const renderCategories = () => {
         </div>
       </div>`
 
-    document.querySelectorAll('.categories__cat').forEach(el => {
-        el.addEventListener('click', nextRound)
-    })
+  document.querySelectorAll('.categories__cat').forEach(el => {
+    el.addEventListener('click', nextRound)
+  })
 }
 const showScore = score => {
-    document.querySelector('.main').innerHTML = `
-    <div class="info__content">
-    <div class="info__name">Congratulations, your score is ${score}</div>
-    <div class="info__buttons">
+  document.querySelector('.main').innerHTML = `
+    <div class="infoRound__content">
+    <div class="infoRound__name">Congratulations, your score is ${score}</div>
+    <div class="infoRound__buttons">
     <button class="nextRound backToMenu"> Back to menu</button>
     <button class="nextRound backToCategories"> Back to categories</button>
     </div></div>
     `
-    document.querySelector('.backToMenu').addEventListener('click', renderMenu)
-    document.querySelector('.backToCategories').addEventListener('click', renderCategories)
+  document.querySelector('.backToMenu').addEventListener('click', renderMenu)
+  document.querySelector('.backToCategories').addEventListener('click', renderCategories)
 }
 const nextRound = e => {
-    if (!localStorage.hasOwnProperty('game')) {
-        let iter = e.target.closest('.categories__cat').dataset.cat;
-        const game = []
-        while (game.length < 10) {
-            const round = new PictureGame(iter++)
-            round.beforeRender()
-            game.push(round)
-        }
-        localStorage.setItem(`game`, JSON.stringify(game))
+  if (!localStorage.hasOwnProperty('game')) {
+    let iter = e.target.closest('.categories__cat').dataset.cat;
+    const game = []
+    while (game.length < 10) {
+      const round = new PictureGame(iter++)
+      round.beforeRender()
+      game.push(round)
     }
-    const game = JSON.parse(localStorage.getItem(`game`))
+    localStorage.setItem(`game`, JSON.stringify(game))
+  }
+  const game = JSON.parse(localStorage.getItem(`game`))
 
-    if (game.every(round => round.isFinited)) {
-        showScore(game.filter(el => el.isTrue).length)
-        getAudio(2)
-        localStorage.removeItem('game')
+  if (game.every(round => round.isFinited)) {
+    showScore(game.filter(el => el.isTrue).length)
+    getAudio(2)
+    localStorage.removeItem('game')
+  }
+  for (let round of game) {
+    if (!round.isFinited) {
+      round.__proto__ = new PictureGame().__proto__
+      round.render()
+      round.afterRender()
+      break
     }
-    for (let round of game) {
-        if (!round.isFinited) {
-            round.__proto__ = new PictureGame().__proto__
-            round.render()
-            round.afterRender()
-            break
-        }
-    }
+  }
 }
 
-export { PictureGame, renderCategories }
+export { PictureGame, renderCategories, showScore }
