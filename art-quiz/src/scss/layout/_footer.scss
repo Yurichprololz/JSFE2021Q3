@@ -6,7 +6,7 @@
   &__list {
     display: flex;
     height: 50px;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 0;
   }
@@ -27,6 +27,9 @@
       }
       &:active {
         color: #7e6c51;
+      }
+      img {
+        height: 20px;
       }
     }
     &_2 {
