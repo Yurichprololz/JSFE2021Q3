@@ -1,0 +1,50 @@
+/** @format */
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 75vh;
+  &__title {
+    font-family: "Rampart One", sans-serif;
+    font-size: 30px;
+    text-align: center;
+  }
+  &__cat {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    height: 25%;
+    width: 10%;
+    margin: 10px;
+    border: 2px solid;
+    border-start-start-radius: 30px;
+    border-end-start-radius: 30px;
+    overflow: hidden;
+    background-color: #61898952;
+    align-items: center;
+    transition: transform 0.4s;
+    &:hover {
+      transform: translateX(-20%) scale(1.1, 1);
+      cursor: pointer;
+    }
+    & img {
+      height: auto;
+      filter: grayscale(100%);
+    }
+  }
+}
+
+.subtitle {
+  position: absolute;
+  font-size: 30px;
+  border: 1px solid;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  background-color: #deb8874a;
+  right: 5%;
+  z-index: 1;
+}

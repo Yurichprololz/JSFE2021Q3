@@ -1,10 +1,12 @@
 import imagesInfo from '../../images';
 import { renderMenu } from './_menu'
+import { getAudio } from './_setting'
+
 
 class PictureGame {
-    constructor() {
+    constructor(picture) {
         this.trueOpt = null
-        this.picture = null
+        this.picture = imagesInfo[picture]
         this.arrPictureNum = null
         this.OPTIONS = null
         this.isFinited = false
@@ -38,7 +40,7 @@ class PictureGame {
     }
 
     beforeRender() {
-        this.picture = this.getRandomPicture()
+        // this.picture = this.getRandomPicture()
         this.trueOpt = this.picture.imageNum
         this.arrPictureNum = this.createPictureNun(this.picture)
     }
@@ -52,15 +54,22 @@ class PictureGame {
         })
     }
     getRandomPicture() {
-        return imagesInfo[Math.floor(Math.random() * imagesInfo.length)]
+        return imagesInfo[Math.floor(Math.random() * imagesInfo.length - Math.floor(imagesInfo.length / 2) + Math.floor(imagesInfo.length / 2))]
     }
     createPictureNun(picture) {
-        let arr = new Set()
-        arr.add(picture.imageNum)
-        while (arr.size < 4) {
-            arr.add(this.getRandomPicture().imageNum)
+        let arr = []
+        let arrPainter = new Set()
+        arr.push(picture.imageNum)
+        arrPainter.add(picture.author)
+        while (arr.length < 4) {
+            const img = this.getRandomPicture()
+            if (!arrPainter.has(img)) {
+                arrPainter.add(img.author)
+                arr.push(img.imageNum)
+            }
+
         }
-        return Array.from(arr).sort()
+        return arr.sort()
     }
     createOptions(arr, opt) {
         arr.forEach((imageNum, i) => {
@@ -113,6 +122,74 @@ class PictureGame {
     }
 
 }
+const renderCategories = () => {
+    document.querySelector('.main').innerHTML = `
+        <h4 class="categories__title">Choose category</h4>
+      <div class="categories">
+        <div class="categories__cat" data-cat="0">
+          <div class="subtitle">1</div>
+          <img src="./img/120.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="10">
+          <div class="subtitle">2</div>
+
+          <img src="./img/130.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="20">
+          <div class="subtitle">3</div>
+
+          <img src="./img/140.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="30">
+          <div class="subtitle">4</div>
+
+          <img src="./img/150.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="40">
+          <div class="subtitle">5</div>
+
+          <img src="./img/160.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="50">
+          <div class="subtitle">6</div>
+
+          <img src="./img/170.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="60">
+          <div class="subtitle">7</div>
+
+          <img src="./img/180.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="70">
+          <div class="subtitle">8</div>
+
+          <img src="./img/190.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="80">
+          <div class="subtitle">9</div>
+
+          <img src="./img/200.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="90">
+          <div class="subtitle">10</div>
+
+          <img src="./img/210.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="100">
+          <div class="subtitle">11</div>
+
+          <img src="./img/220.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="110">
+          <div class="subtitle">12</div>
+          <img src="./img/230.jpg" alt="" />
+        </div>
+      </div>`
+
+    document.querySelectorAll('.categories__cat').forEach(el => {
+        el.addEventListener('click', nextRound)
+    })
+}
 const showScore = score => {
     document.querySelector('.main').innerHTML = `
     <div class="info__content">
@@ -121,11 +198,12 @@ const showScore = score => {
     `
     document.querySelector('.nextRound').addEventListener('click', renderMenu)
 }
-const nextRound = () => {
+const nextRound = e => {
     if (!localStorage.hasOwnProperty('game')) {
+        let iter = e.target.closest('div').dataset.cat;
         const game = []
         while (game.length < 10) {
-            const round = new PictureGame()
+            const round = new PictureGame(iter++)
             round.beforeRender()
             game.push(round)
         }
@@ -147,4 +225,4 @@ const nextRound = () => {
     }
 }
 
-export { PictureGame, nextRound }
+export { PictureGame, renderCategories }

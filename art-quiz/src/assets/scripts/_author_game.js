@@ -1,5 +1,6 @@
 import imagesInfo from '../../images';
 import { renderMenu } from './_menu'
+import { getAudio } from './_setting'
 class Game {
     constructor() {
         this.games = []
@@ -7,9 +8,10 @@ class Game {
 }
 
 class AuthorGame {
-    constructor() {
+    constructor(picture) {
         this.trueOpt = null
-        this.picture = null
+        this.picture = imagesInfo[picture]
+        // console.log(this.picture);
         this.arrAuthor = null
         this.OPTIONS = null
         this.isFinited = false
@@ -33,7 +35,8 @@ class AuthorGame {
     }
 
     beforeRender() {
-        this.picture = this.getRandomPicture()
+        // this.picture = this.getRandomPicture()
+        console.log('pic', this);
         this.trueOpt = this.picture.author
         this.arrAuthor = this.createAuthor(this.picture)
     }
@@ -106,6 +109,75 @@ class AuthorGame {
         this.afterRender()
     }
 
+
+}
+const renderCategories = () => {
+    document.querySelector('.main').innerHTML = `
+        <h4 class="categories__title">Choose category</h4>
+      <div class="categories">
+        <div class="categories__cat" data-cat="0">
+          <div class="subtitle">1</div>
+          <img src="./img/0.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="10">
+          <div class="subtitle">2</div>
+
+          <img src="./img/10.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="20">
+          <div class="subtitle">3</div>
+
+          <img src="./img/20.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="30">
+          <div class="subtitle">4</div>
+
+          <img src="./img/30.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="40">
+          <div class="subtitle">5</div>
+
+          <img src="./img/40.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="50">
+          <div class="subtitle">6</div>
+
+          <img src="./img/50.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="60">
+          <div class="subtitle">7</div>
+
+          <img src="./img/60.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="70">
+          <div class="subtitle">8</div>
+
+          <img src="./img/70.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="80">
+          <div class="subtitle">9</div>
+
+          <img src="./img/80.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="90">
+          <div class="subtitle">10</div>
+
+          <img src="./img/90.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="100">
+          <div class="subtitle">11</div>
+
+          <img src="./img/100.jpg" alt="" />
+        </div>
+        <div class="categories__cat" data-cat="110">
+          <div class="subtitle">12</div>
+          <img src="./img/110.jpg" alt="" />
+        </div>
+      </div>`
+
+    document.querySelectorAll('.categories__cat').forEach(el => {
+        el.addEventListener('click', nextRound)
+    })
 }
 const showScore = score => {
     document.querySelector('.main').innerHTML = `
@@ -115,11 +187,12 @@ const showScore = score => {
     `
     document.querySelector('.nextRound').addEventListener('click', renderMenu)
 }
-const nextRound = () => {
+const nextRound = (e) => {
     if (!localStorage.hasOwnProperty('game')) {
+        let iter = e.target.closest('div').dataset.cat;
         const game = []
         while (game.length < 10) {
-            const round = new AuthorGame()
+            const round = new AuthorGame(iter++)
             round.beforeRender()
             game.push(round)
         }
@@ -130,7 +203,6 @@ const nextRound = () => {
     if (game.every(round => round.isFinited)) {
         showScore(game.filter(el => el.isTrue).length)
         localStorage.removeItem('game')
-        // renderMenu()
     }
     for (let round of game) {
         if (!round.isFinited) {
@@ -142,4 +214,4 @@ const nextRound = () => {
     }
 }
 
-export { AuthorGame, nextRound }
+export { AuthorGame, renderCategories }

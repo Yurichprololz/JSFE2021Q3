@@ -1,6 +1,6 @@
 import './scss/main.scss';
-import template from './assets/scripts/_template'
-import imagesInfo from './images';
+// import template from './assets/scripts/_template'
+// import imagesInfo from './images';
 import { renderMenu } from './assets/scripts/_menu';
 import { showSetting, hideSetting, setLocalStorage, getLocalStorage } from './assets/scripts/_setting';
 const templateRequest = 'https://raw.githubusercontent.com/irinainina/image-data/master/img/1.jpg'
