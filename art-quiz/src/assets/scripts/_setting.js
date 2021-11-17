@@ -33,10 +33,14 @@ function setLocalStorage() {
 
     })
 }
+
+function getAudio(i) {
+    let audio = audios[i]
+    audio.currentTime = 0
+    audio.play()
+}
 function getLocalStorage() {
-    if (localStorage.getItem('game')) {
-        localStorage.removeItem('game')
-    }
+
     RANGES.forEach((range, i) => {
         if (localStorage.getItem('range' + i)) {
             range.value = localStorage.getItem('range' + i);
@@ -44,4 +48,4 @@ function getLocalStorage() {
         }
     })
 }
-export { showSetting, hideSetting, setLocalStorage, getLocalStorage }
+export { showSetting, hideSetting, setLocalStorage, getLocalStorage, getAudio }
