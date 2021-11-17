@@ -190,7 +190,7 @@ const showScore = score => {
 }
 const nextRound = (e) => {
     if (!localStorage.hasOwnProperty('game')) {
-        let iter = e.target.closest('div').dataset.cat;
+        let iter = e.target.closest('.categories__cat').dataset.cat;
         const game = []
         while (game.length < 10) {
             const round = new AuthorGame(iter++)

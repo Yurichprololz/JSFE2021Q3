@@ -101,8 +101,10 @@ class PictureGame {
 
         if (this.trueOpt == target.opt) {
             this.isTrue = true
+            getAudio(0)
             target.classList.add('game__answer_trueble')
         } else {
+            getAudio(1)
             target.classList.add('game__answer_falsable')
         }
         for (let index = 0; index < game.length; index++) {
@@ -194,13 +196,17 @@ const showScore = score => {
     document.querySelector('.main').innerHTML = `
     <div class="info__content">
     <div class="info__name">Congratulations, your score is ${score}</div>
-    <button class="nextRound"> Back to menu</button></div>
+    <div class="info__buttons">
+    <button class="nextRound backToMenu"> Back to menu</button>
+    <button class="nextRound backToCategories"> Back to categories</button>
+    </div></div>
     `
-    document.querySelector('.nextRound').addEventListener('click', renderMenu)
+    document.querySelector('.backToMenu').addEventListener('click', renderMenu)
+    document.querySelector('.backToCategories').addEventListener('click', renderCategories)
 }
 const nextRound = e => {
     if (!localStorage.hasOwnProperty('game')) {
-        let iter = e.target.closest('div').dataset.cat;
+        let iter = e.target.closest('.categories__cat').dataset.cat;
         const game = []
         while (game.length < 10) {
             const round = new PictureGame(iter++)
@@ -213,6 +219,7 @@ const nextRound = e => {
 
     if (game.every(round => round.isFinited)) {
         showScore(game.filter(el => el.isTrue).length)
+        getAudio(2)
         localStorage.removeItem('game')
     }
     for (let round of game) {
