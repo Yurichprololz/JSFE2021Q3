@@ -11,7 +11,6 @@ class AuthorGame {
     constructor(picture) {
         this.trueOpt = null
         this.picture = imagesInfo[picture]
-        // console.log(this.picture);
         this.arrAuthor = null
         this.OPTIONS = null
         this.isFinited = false
@@ -89,8 +88,10 @@ class AuthorGame {
 
         if (this.trueOpt == target.textContent) {
             this.isTrue = true
+            getAudio(0)
             target.classList.add('game__answer_trueble')
         } else {
+            getAudio(1)
             target.classList.add('game__answer_falsable')
         }
         for (let index = 0; index < game.length; index++) {
@@ -202,6 +203,7 @@ const nextRound = (e) => {
 
     if (game.every(round => round.isFinited)) {
         showScore(game.filter(el => el.isTrue).length)
+        getAudio(2)
         localStorage.removeItem('game')
     }
     for (let round of game) {

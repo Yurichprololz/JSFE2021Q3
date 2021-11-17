@@ -3,6 +3,7 @@ const POPUP = document.querySelector('.popup')
 const CHECKBOXS = POPUP.querySelectorAll('input[type="checkbox"]')
 const RANGES = POPUP.querySelectorAll('.setting__range')
 const update = new Event('input')
+const AUDIOS = document.querySelectorAll('audio')
 
 
 const showSetting = () => {
@@ -35,7 +36,7 @@ function setLocalStorage() {
 }
 
 function getAudio(i) {
-    let audio = audios[i]
+    let audio = AUDIOS[i]
     audio.currentTime = 0
     audio.play()
 }
