@@ -1,5 +1,7 @@
 import { renderCategories as startAuthorGame } from './_author_game'
 import { renderCategories as startPictureGame } from './_picture_game'
+import { showSetting, hideSetting } from '../scripts/_setting';
+
 // import imagesInfo from '../../images';
 
 const WRAP = document.querySelector('.main')
@@ -27,6 +29,10 @@ const renderMenu = () => {
     </div>`
   document.querySelector('.menu__buttonIco_artists').addEventListener('click', startAuthorGame)
   document.querySelector('.menu__buttonIco_picture').addEventListener('click', startPictureGame)
+  const BUTTON_SETTING = document.querySelector('.menu__setting')
+  const BUTON_CLOSE = document.querySelector('.popup__close')
+  BUTTON_SETTING.addEventListener('click', showSetting)
+  BUTON_CLOSE.addEventListener('click', hideSetting)
 
 }
 export { renderMenu }
