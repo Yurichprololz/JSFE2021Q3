@@ -20,5 +20,8 @@ body {
 }
 
 .main_translate {
-  transform: translateY(-200%);
+  transform: translateX(-100%);
+}
+.main_translateToY {
+  transform: translateY(-150%);
 }

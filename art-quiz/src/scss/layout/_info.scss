@@ -71,6 +71,7 @@
   width: 33vw;
   &__buttons {
     display: flex;
+    justify-content: space-evenly;
     width: 80%;
   }
   &__content {
@@ -86,16 +87,13 @@
     border-radius: 25px;
     padding: 10px 0;
   }
-  &__author {
-  }
-  &__title {
+  &__name {
     font-weight: 700;
     font-size: 30px;
     margin-bottom: 20px;
-  }
-  &__year {
-  }
-  &__pic {
-    max-width: 50%;
+    text-align: center;
+    & p {
+      font-size: 40px;
+    }
   }
 }
