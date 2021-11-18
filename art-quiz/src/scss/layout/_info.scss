@@ -36,13 +36,18 @@
 .info {
   height: 50vh;
   width: 33vw;
-  &__close {
+  &__buttons {
+    display: flex;
+    // width: 80%;
   }
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    // width: 45%;
+    // max-height: 80%;
+    margin: 0 auto;
     border: 2px solid;
     background-color: rgb(135 174 222 / 89%);
     border-radius: 25px;
@@ -50,7 +55,43 @@
   }
   &__author {
   }
-  &__name {
+  &__title {
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  &__year {
+  }
+  &__pic {
+    max-width: 50%;
+  }
+}
+.infoRound {
+  height: 50vh;
+  width: 33vw;
+  &__buttons {
+    display: flex;
+    width: 80%;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%;
+    max-height: 80%;
+    margin: 0 auto;
+    border: 2px solid;
+    background-color: rgb(135 174 222 / 89%);
+    border-radius: 25px;
+    padding: 10px 0;
+  }
+  &__author {
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 20px;
   }
   &__year {
   }
