@@ -11,7 +11,7 @@
   &__picBlock {
     max-width: 35%;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   &__answers {
     display: flex;
@@ -51,7 +51,6 @@
 
 .gamePic {
   &__question {
-    // font-family: "Rampart One", sans-serif;
     font-weight: 700;
     color: blanchedalmond;
     font-size: 30px;
@@ -68,7 +67,16 @@
 
   &__answer {
     margin: 10px;
+    cursor: pointer;
 
+    &_trueble,
+    &_trueble:hover {
+      outline: 2px solid green;
+    }
+    &_falsable,
+    &_falsable:hover {
+      outline: 2px solid red;
+    }
     &_1 {
     }
 

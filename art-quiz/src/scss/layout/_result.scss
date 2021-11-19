@@ -1,0 +1,25 @@
+/** @format */
+
+.result {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  &__title {
+  }
+
+  &__picture {
+    height: 40%;
+    width: 15%;
+    margin: 1% 2%;
+    filter: grayscale(100%);
+    outline: 3px solid gray;
+    &_trueble {
+      filter: grayscale(0);
+      outline: 3px solid green;
+    }
+    &:hover,
+    &_trueble {
+      cursor: pointer;
+    }
+  }
+}

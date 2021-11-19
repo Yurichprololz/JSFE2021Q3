@@ -14,7 +14,23 @@
       <div class="fullscreen__icon navigation"></div>
       <div class="return__arrow navigation"></div>
     </div>
-    <div class="main"></div>
+    <div class="main">
+      <!-- <div class="result">
+        <h2 class="result__title"></h2>
+        <div class="result__picture">
+          <img src="./img/0.jpg" alt="" />
+        </div>
+        <div class="result__picture"><img src="./img/0.jpg" alt="" /></div>
+        <div class="result__picture"><img src="./img/0.jpg" alt="" /></div>
+        <div class="result__picture"><img src="./img/0.jpg" alt="" /></div>
+        <div class="result__picture"><img src="./img/0.jpg" alt="" /></div>
+        <div class="result__picture"><img src="./img/0.jpg" alt="" /></div>
+        <div class="result__picture"><img src="./img/0.jpg" alt="" /></div>
+        <div class="result__picture"><img src="./img/0.jpg" alt="" /></div>
+        <div class="result__picture"><img src="./img/0.jpg" alt="" /></div>
+        <div class="result__picture"><img src="./img/0.jpg" alt="" /></div>
+      </div> -->
+    </div>
     <div class="footer">
       <div class="yourself">
         <ul class="yourself__list">
@@ -39,8 +55,8 @@
         <div class="setting__time time setting__block">
           <p class="time__title">Time for round</p>
           <div class="setting__wrap">
-            <input type="checkbox" name="" id="" checked />
-            <input class="setting__range" type="range" min="5" max="30" step="5" name="" id="time_for_round" />
+            <input type="checkbox" name="" id="time_for_round-check" checked />
+            <input class="setting__range" type="range" min="0" max="30" step="5" name="" id="time_for_round" />
             <span id="time_for_round_output"></span>
           </div>
         </div>
@@ -50,16 +66,16 @@
           <div class="volume__background setting__block">
             <p class="">Background music</p>
             <div class="setting__wrap">
-              <input type="checkbox" name="" id="" checked />
-              <input class="setting__range" type="range" min="5" max="30" step="5" name="" id="background_music" />
+              <input type="checkbox" name="" id="background_music-check" checked />
+              <input class="setting__range" type="range" min="0" max="100" step="1" name="" id="background_music" />
               <span id="background_music_output"></span>
             </div>
           </div>
           <div class="volume__system setting__block">
             <p class="">System sounds</p>
             <div class="setting__wrap">
-              <input type="checkbox" name="" id="" checked />
-              <input class="setting__range" type="range" min="5" max="30" step="5" name="" id="system_sounds" />
+              <input type="checkbox" name="" id="system_sounds-check" checked />
+              <input class="setting__range" type="range" min="0" max="100" step="1" name="" id="system_sounds" />
               <span id="system_sounds_output"></span>
             </div>
           </div>

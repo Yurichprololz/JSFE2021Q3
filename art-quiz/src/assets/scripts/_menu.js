@@ -4,11 +4,25 @@ import { showSetting, hideSetting } from '../scripts/_setting';
 
 // import imagesInfo from '../../images';
 
-const WRAP = document.querySelector('.main')
-const renderMenu = () => {
+const refreshLocal = () => {
   if (localStorage.getItem('game')) {
     localStorage.removeItem('game')
   }
+  if (localStorage.hasOwnProperty('authorGameLocal')) {
+    const local = JSON.parse(localStorage.getItem('authorGameLocal'))
+    for (let i = 0; i < local.length; i++) {
+      if (local[i] === true) {
+        local[i] = false
+        localStorage.setItem('authorGameLocal', JSON.stringify(local))
+        break
+      }
+    }
+  }
+}
+
+const WRAP = document.querySelector('.main')
+const renderMenu = () => {
+  refreshLocal()
   WRAP.innerHTML = `<div class="wrap menu">
     <div class="menu__start">
       <h3 class="menu__title">Mode quiz</h3>

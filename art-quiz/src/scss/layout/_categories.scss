@@ -5,10 +5,23 @@
   flex-wrap: wrap;
   flex-direction: column;
   align-items: flex-end;
-  height: 75vh;
+  height: 70vh;
   &__title {
     font-family: "Rampart One", sans-serif;
     font-size: 30px;
+    text-align: center;
+  }
+  &__info {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    font-size: 14px;
+    font-weight: 200;
+    transform: translateY(100%);
+    background-color: rgba(240, 248, 255, 0.164);
+    transition: all 0.3s;
     text-align: center;
   }
   &__cat {
@@ -25,13 +38,23 @@
     background-color: #61898952;
     align-items: center;
     transition: transform 0.4s;
+    filter: grayscale(100%);
+    &_finished {
+      filter: grayscale(0);
+    }
     &:hover {
       transform: translateX(-20%) scale(1.1, 1);
       cursor: pointer;
+      & .categories__info {
+        transform: translateY(50%);
+        &:hover {
+          background-color: rgba(143, 42, 84, 0.315);
+          transform: translateY(0);
+        }
+      }
     }
     & img {
       height: auto;
-      filter: grayscale(100%);
     }
   }
 }
