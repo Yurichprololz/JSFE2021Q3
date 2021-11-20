@@ -65,7 +65,7 @@ class PictureGame {
     })
   }
   getRandomPicture() {
-    return imagesInfo[Math.floor(Math.random() * imagesInfo.length - Math.floor(imagesInfo.length / 2) + Math.floor(imagesInfo.length / 2))]
+    return imagesInfo[Math.floor(Math.random() * (imagesInfo.length - Math.floor(imagesInfo.length / 2)) + Math.floor(imagesInfo.length / 2))]
   }
   createPictureNun(picture) {
     let arr = []
@@ -74,11 +74,10 @@ class PictureGame {
     arrPainter.add(picture.author)
     while (arr.length < 4) {
       const img = this.getRandomPicture()
-      if (!arrPainter.has(img)) {
+      if (!arrPainter.has(img.author)) {
         arrPainter.add(img.author)
         arr.push(img.imageNum)
       }
-
     }
     return arr.sort()
   }
