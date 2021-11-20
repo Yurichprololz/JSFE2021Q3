@@ -18,6 +18,16 @@ const refreshLocal = () => {
       }
     }
   }
+  if (localStorage.hasOwnProperty('pictureGameLocal')) {
+    const local = JSON.parse(localStorage.getItem('pictureGameLocal'))
+    for (let i = 0; i < local.length; i++) {
+      if (local[i] === true) {
+        local[i] = false
+        localStorage.setItem('pictureGameLocal', JSON.stringify(local))
+        break
+      }
+    }
+  }
 }
 
 const WRAP = document.querySelector('.main')
