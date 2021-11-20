@@ -14,6 +14,7 @@ const hideSetting = () => {
     POPUP.classList.remove('popup__setting_active')
 }
 CHECKBOXS.forEach(el => {
+    debugger
     el.addEventListener('change', (e) => {
         const range = document.getElementById(`${e.target.id.split('-')[0]}`)
         if (e.target.checked === false) {
@@ -21,7 +22,6 @@ CHECKBOXS.forEach(el => {
         } else {
             range.value = localStorage.getItem(`${range.id}`)
         }
-        range.dispatchEvent(update)
     })
 })
 RANGES.forEach(input => {
@@ -31,6 +31,8 @@ RANGES.forEach(input => {
         localStorage.setItem(`${range.id}`, range.value);
 
     })
+    input.dispatchEvent(update)
+
 })
 const cheinRangeWithCheck = INPUT => {
     const check = document.getElementById(`${INPUT.id}-check`)
@@ -82,6 +84,6 @@ function getLocalStorage() {
     })
 }
 
-// document.getElementById('time_for_round').addEventListener('input', showDigital)
+document.getElementById('time_for_round').addEventListener('input', showDigital)
 
 export { showSetting, hideSetting, setLocalStorage, getLocalStorage, getAudio }
