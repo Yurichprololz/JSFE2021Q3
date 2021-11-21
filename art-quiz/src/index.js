@@ -14,6 +14,9 @@ document.querySelector('.return__arrow').addEventListener('click', () => {
     if (main.querySelector('.menu__start')) {
         return
     }
+    if (document.querySelector('.header__time').classList.contains('header__time_active')) {
+        document.querySelector('.header__time').classList = 'header__time'
+    }
     main.classList.add('main_translateToY')
     setTimeout(() => {
         main.classList.remove('main_translateToY')

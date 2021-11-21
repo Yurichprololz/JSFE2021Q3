@@ -12,6 +12,7 @@ class PictureGame {
     this.picture = imagesInfo[picture]
     this.arrPictureNum = null
     this.OPTIONS = null
+    this.time = null
     this.isFinited = false
     this.isTrue = false
   }
@@ -50,10 +51,18 @@ class PictureGame {
     })
 
   }
-
+  setupTime() {
+    const check = document.getElementById('time_for_round-check')
+    if (check.checked === true) {
+      this.time = document.getElementById('time_for_round').value
+    } else {
+      this.time = false
+    }
+  }
   beforeRender() {
     this.trueOpt = this.picture.imageNum
     this.arrPictureNum = this.createPictureNun(this.picture)
+    this.setupTime()
   }
   afterRender() {
     this.OPTIONS = document.querySelectorAll('.gamePic__answer img')
@@ -103,20 +112,21 @@ class PictureGame {
       nextRound()
     })
   }
-  checkOption(event) {
-    const target = event.target.closest('img')
-    this.isFinited = true
-    const game = JSON.parse(localStorage.getItem(`game`))
-
-
-    if (this.trueOpt == target.opt) {
-      this.isTrue = true
-      getAudio(0)
+  win(target) {
+    if (target) {
       target.classList.add('gamePic__answer_trueble')
-    } else {
-      getAudio(1)
+    }
+    this.isTrue = true
+    getAudio(0)
+  }
+  lose(target) {
+    if (target) {
       target.classList.add('gamePic__answer_falsable')
     }
+    getAudio(1)
+  }
+  unloadGame() {
+    const game = JSON.parse(localStorage.getItem(`game`))
     for (let index = 0; index < game.length; index++) {
       if (game[index].picture.name === this.picture.name) {
         game[index] = this
@@ -124,11 +134,48 @@ class PictureGame {
       }
     }
     localStorage.setItem(`game`, JSON.stringify(game))
-    this.showInfo()
-
   }
+  checkOption(event) {
+    if (document.querySelector('.header__time').classList.contains('header__time_active')) {
+      document.querySelector('.header__time').classList = 'header__time'
+    }
+    const target = event.target.closest('img')
+    this.isFinited = true
+    if (this.trueOpt == target.opt) {
+      this.win(target)
+    } else {
+      this.lose(target)
+    }
+    this.unloadGame()
+    this.showInfo()
+  }
+  refreshTime() {
+    document.querySelector('.header__text').textContent = this.time--
+  }
+  wacherTime() {
+    if (this.time) {
+      document.querySelector('.header__text').textContent = this.time--
+      document.querySelector('.header__time').classList.add('header__time_active')
+      this.wacher = setInterval(() => {
+        this.refreshTime()
+        if (this.time == 4) {
+          document.querySelector('.header__time').classList.add('header__time_little')
+        }
+        if (this.time < 0) {
+          document.querySelector('.header__time').classList = 'header__time'
+          clearInterval(this.wacher)
+          this.isFinited = true
+          this.lose()
+          this.unloadGame()
+          this.showInfo()
+        } else if (!(document.querySelector('.header__time').classList.contains('header__time_active'))) {
+          clearInterval(this.wacher)
+        }
 
+      }, 1000);
 
+    }
+  }
 }
 const renderCategories = () => {
   const main = document.querySelector('.main')
@@ -138,61 +185,51 @@ const renderCategories = () => {
     main.innerHTML = `
           <h4 class="categories__title">Choose category</h4>
         <div class="categories">
-          <div class="categories__cat" data-cat="0">
+          <div class="categories__cat" data-cat="120">
             <div class="subtitle">1</div>
             <img src="./img/120.jpg" alt="" />
           </div>
-          <div class="categories__cat" data-cat="10">
+          <div class="categories__cat" data-cat="130">
             <div class="subtitle">2</div>
-  
             <img src="./img/130.jpg" alt="" />
           </div>
-          <div class="categories__cat" data-cat="20">
+          <div class="categories__cat" data-cat="140">
             <div class="subtitle">3</div>
-  
             <img src="./img/140.jpg" alt="" />
           </div>
-          <div class="categories__cat" data-cat="30">
+          <div class="categories__cat" data-cat="150">
             <div class="subtitle">4</div>
-  
             <img src="./img/150.jpg" alt="" />
           </div>
-          <div class="categories__cat" data-cat="40">
+          <div class="categories__cat" data-cat="160">
             <div class="subtitle">5</div>
-  
             <img src="./img/160.jpg" alt="" />
           </div>
-          <div class="categories__cat" data-cat="50">
+          <div class="categories__cat" data-cat="170">
             <div class="subtitle">6</div>
-  
             <img src="./img/170.jpg" alt="" />
           </div>
-          <div class="categories__cat" data-cat="60">
+          <div class="categories__cat" data-cat="180">
             <div class="subtitle">7</div>
-  
             <img src="./img/180.jpg" alt="" />
           </div>
-          <div class="categories__cat" data-cat="70">
+          <div class="categories__cat" data-cat="190">
             <div class="subtitle">8</div>
-  
             <img src="./img/190.jpg" alt="" />
           </div>
-          <div class="categories__cat" data-cat="80">
+          <div class="categories__cat" data-cat="200">
             <div class="subtitle">9</div>
-  
             <img src="./img/200.jpg" alt="" />
           </div>
-          <div class="categories__cat" data-cat="90">
+          <div class="categories__cat" data-cat="210">
             <div class="subtitle">10</div>
-  
             <img src="./img/210.jpg" alt="" />
           </div>
-          <div class="categories__cat" data-cat="100">
+          <div class="categories__cat" data-cat="220">
             <div class="subtitle">11</div>
-  
             <img src="./img/220.jpg" alt="" />
           </div>
-          <div class="categories__cat" data-cat="110">
+          <div class="categories__cat" data-cat="230">
             <div class="subtitle">12</div>
             <img src="./img/230.jpg" alt="" />
           </div>
@@ -210,7 +247,7 @@ const renderCategories = () => {
         if (gameLocal[i] !== false) {
           el.classList.add('categories__cat_finished')
           const info = template('div', 'categories__info')
-          info.innerHTML = `Score ${gameLocal[i].filter(el => el === true).length} <br> Click for details`
+          info.innerHTML = `Score: ${gameLocal[i].filter(el => el === true).length} <br> Click for details`
           info.addEventListener('click', renderResult)
           el.append(info)
         }
@@ -281,6 +318,7 @@ const nextRound = e => {
       round.__proto__ = new PictureGame().__proto__
       round.render()
         .then(() => round.afterRender())
+        .then(() => round.wacherTime())
       break
     }
   }

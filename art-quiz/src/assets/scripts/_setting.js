@@ -5,7 +5,15 @@ const RANGES = POPUP.querySelectorAll('.setting__range')
 const update = new Event('input')
 const AUDIOS = document.querySelectorAll('audio')
 
+const cheinRangeWithCheck = INPUT => {
+    const check = document.getElementById(`${INPUT.id}-check`)
+    if (INPUT.value > 0) {
+        check.checked = true
+    } else {
+        check.checked = false
+    }
 
+}
 const showSetting = () => {
     POPUP.classList.add('popup__setting_active')
 }
@@ -14,7 +22,6 @@ const hideSetting = () => {
     POPUP.classList.remove('popup__setting_active')
 }
 CHECKBOXS.forEach(el => {
-    debugger
     el.addEventListener('change', (e) => {
         const range = document.getElementById(`${e.target.id.split('-')[0]}`)
         if (e.target.checked === false) {
@@ -22,6 +29,8 @@ CHECKBOXS.forEach(el => {
         } else {
             range.value = localStorage.getItem(`${range.id}`)
         }
+        range.dispatchEvent(update)
+
     })
 })
 RANGES.forEach(input => {
@@ -34,21 +43,15 @@ RANGES.forEach(input => {
     input.dispatchEvent(update)
 
 })
-const cheinRangeWithCheck = INPUT => {
-    const check = document.getElementById(`${INPUT.id}-check`)
-    if (INPUT.value > 0) {
-        check.checked = true
-    } else {
-        check.checked = false
-    }
 
-}
 
 function showDigital(event) {
     const INPUT = event.target
     const OUTPUT = document.getElementById(`${INPUT.id}_output`)
-
-    if (INPUT.id == 'time_for_round') {
+    if (INPUT.value == 0) {
+        OUTPUT.textContent = 'off'
+    }
+    else if (INPUT.id == 'time_for_round') {
         OUTPUT.innerHTML = INPUT.value < 10 ? '0' + INPUT.value + ' sec' : INPUT.value + ' sec'
     } else {
         OUTPUT.innerHTML = INPUT.value < 10 ? '0' + INPUT.value + ' per' : INPUT.value + ' per'

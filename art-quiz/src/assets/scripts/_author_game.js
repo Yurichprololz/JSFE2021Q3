@@ -10,6 +10,7 @@ class AuthorGame {
     this.picture = imagesInfo[picture]
     this.arrAuthor = null
     this.OPTIONS = null
+    this.time = null
     this.isFinited = false
     this.isTrue = false
   }
@@ -42,10 +43,19 @@ class AuthorGame {
 
 
   }
-
+  setupTime() {
+    const check = document.getElementById('time_for_round-check')
+    if (check.checked === true) {
+      this.time = document.getElementById('time_for_round').value
+    } else {
+      this.time = false
+    }
+  }
   beforeRender() {
     this.trueOpt = this.picture.author
     this.arrAuthor = this.createAuthor(this.picture)
+    this.setupTime()
+
   }
   afterRender() {
     this.OPTIONS = document.querySelectorAll('.game__answer')
@@ -88,20 +98,21 @@ class AuthorGame {
       nextRound()
     })
   }
-  checkOption(event) {
-    const target = event.target.closest('.game__answer')
-    this.isFinited = true
-    const game = JSON.parse(localStorage.getItem(`game`))
-
-
-    if (this.trueOpt == target.textContent) {
-      this.isTrue = true
-      getAudio(0)
+  win(target) {
+    if (target) {
       target.classList.add('game__answer_trueble')
-    } else {
-      getAudio(1)
+    }
+    this.isTrue = true
+    getAudio(0)
+  }
+  lose(target) {
+    if (target) {
       target.classList.add('game__answer_falsable')
     }
+    getAudio(1)
+  }
+  unloadGame() {
+    const game = JSON.parse(localStorage.getItem(`game`))
     for (let index = 0; index < game.length; index++) {
       if (game[index].picture.name === this.picture.name) {
         game[index] = this
@@ -109,8 +120,48 @@ class AuthorGame {
       }
     }
     localStorage.setItem(`game`, JSON.stringify(game))
-    this.showInfo()
+  }
+  checkOption(event) {
+    if (document.querySelector('.header__time').classList.contains('header__time_active')) {
+      document.querySelector('.header__time').classList = 'header__time'
+    }
 
+    const target = event.target.closest('.game__answer')
+    this.isFinited = true
+    if (this.trueOpt == target.textContent) {
+      this.win(target)
+    } else {
+      this.lose(target)
+    }
+    this.unloadGame()
+    this.showInfo()
+  }
+  refreshTime() {
+    document.querySelector('.header__text').textContent = this.time--
+  }
+  wacherTime() {
+    if (this.time) {
+      document.querySelector('.header__text').textContent = this.time--
+      document.querySelector('.header__time').classList.add('header__time_active')
+      this.wacher = setInterval(() => {
+        this.refreshTime()
+        if (this.time == 4) {
+          document.querySelector('.header__time').classList.add('header__time_little')
+        }
+        if (this.time < 0) {
+          document.querySelector('.header__time').classList = 'header__time'
+          clearInterval(this.wacher)
+          this.isFinited = true
+          this.lose()
+          this.unloadGame()
+          this.showInfo()
+        } else if (!(document.querySelector('.header__time').classList.contains('header__time_active'))) {
+          clearInterval(this.wacher)
+        }
+
+      }, 1000);
+
+    }
   }
 
 }
@@ -118,6 +169,7 @@ const showScore = score => {
   const main = document.querySelector('.main')
   main.classList.add('main_translate')
   setTimeout(() => {
+
     main.classList.remove('main_translate')
     main.innerHTML = `
     <div class="infoRound__content">
@@ -208,7 +260,7 @@ const renderCategories = () => {
         if (authorGameLocal[i] !== false) {
           el.classList.add('categories__cat_finished')
           const info = template('div', 'categories__info')
-          info.innerHTML = `Score ${authorGameLocal[i].filter(el => el === true).length} <br> Click for details`
+          info.innerHTML = `Score: ${authorGameLocal[i].filter(el => el === true).length} <br> Click for details`
           info.addEventListener('click', renderResult)
           el.append(info)
         }
@@ -223,7 +275,6 @@ const afterRenderResult = (category) => {
   const pictures = document.querySelectorAll('.result__picture')
   const local = JSON.parse(localStorage.getItem('authorGameLocal'))[(+category + 10) / 10 - 1]
   pictures.forEach((el, i) => {
-    console.log(local[i]);
     if (local[i] === true) {
       el.classList.add('result__picture_trueble')
     }
@@ -309,6 +360,7 @@ const nextRound = async (e) => {
       round.__proto__ = new AuthorGame().__proto__
       round.render()
         .then(() => round.afterRender())
+        .then(() => round.wacherTime())
       break
     }
   }
