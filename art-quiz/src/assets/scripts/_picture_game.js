@@ -5,7 +5,6 @@ import template from './_template'
 
 
 
-
 class PictureGame {
   constructor(picture) {
     this.trueOpt = null
@@ -112,7 +111,7 @@ class PictureGame {
         <div class="info__author">${this.picture.author}</div>
         <div class="info__name">${this.picture.name}</div>
         <div class="info__year">${this.picture.year}</div>
-        <button class="nextRound"> next round</button></div>
+        <button class="nextRound">Продолжить</button></div>
         `
     content.classList.add('popup__info_active')
     document.querySelector('.nextRound').addEventListener('click', () => {
@@ -297,17 +296,17 @@ const showScore = score => {
   }, 500)
 
 }
-const nextRound = e => {
-  if (!localStorage.hasOwnProperty('game')) {
+const nextRound = (e) => {
+  if (!localStorage.getItem('game')) {
     let iter = e.target.closest('.categories__cat').dataset.cat;
-    let local = JSON.parse(localStorage.getItem('pictureGameLocal'))
-    const currentGame = iter == 120 ? 0 : (+iter - Math.floor(imagesInfo.length / 2)) / 10
+    const local = JSON.parse(localStorage.getItem('pictureGameLocal'))
+    const currentGame = iter === 120 ? 0 : (+iter - Math.floor(imagesInfo.length / 2)) / 10
     local[currentGame] = true
-    console.log(local);
     localStorage.setItem('pictureGameLocal', JSON.stringify(local))
     const game = []
     while (game.length < 10) {
-      const round = new PictureGame(iter++)
+      const round = new PictureGame(iter)
+      iter = +iter + 1
       round.beforeRender()
       game.push(round)
     }
@@ -320,7 +319,7 @@ const nextRound = e => {
     showScore(game.filter(el => el.isTrue).length)
     getAudio(2)
     const local = JSON.parse(localStorage.getItem('pictureGameLocal'))
-    for (let i = 0; i < local.length; i++) {
+    for (let i = 0; i < local.length; i += 1) {
       if (local[i] === true) {
         local[i] = result
         localStorage.setItem('pictureGameLocal', JSON.stringify(local))
@@ -329,7 +328,7 @@ const nextRound = e => {
     }
     localStorage.removeItem('game')
   }
-  for (let round of game) {
+  for (const round of game) {
     if (!round.isFinited) {
       round.__proto__ = new PictureGame().__proto__
       round.render()

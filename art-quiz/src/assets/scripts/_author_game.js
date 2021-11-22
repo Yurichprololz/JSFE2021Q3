@@ -3,7 +3,6 @@ import { renderMenu } from './_menu'
 import { getAudio } from './_setting'
 import template from './_template'
 
-
 class AuthorGame {
   constructor(picture) {
     this.trueOpt = null
@@ -75,7 +74,7 @@ class AuthorGame {
   }
 
   createAuthor(picture) {
-    let arr = new Set()
+    const arr = new Set()
     arr.add(picture.author)
     while (arr.size < 4) {
       arr.add(this.getRandomPicture().author)
@@ -84,8 +83,9 @@ class AuthorGame {
   }
 
   createOptions(arr, opt) {
+    const option = opt
     arr.forEach((author, i) => {
-      opt[i].textContent = author
+      option[i].textContent = author
     })
   }
 
@@ -97,7 +97,7 @@ class AuthorGame {
         <div class="info__author">${this.picture.author}</div>
         <div class="info__name">${this.picture.name}</div>
         <div class="info__year">${this.picture.year}</div>
-        <button class="nextRound"> next round</button></div>
+        <button class="nextRound">Продолжить</button></div>
         `
     content.classList.add('popup__info_active')
     document.querySelector('.nextRound').addEventListener('click', () => {
@@ -123,7 +123,7 @@ class AuthorGame {
 
   unloadGame() {
     const game = JSON.parse(localStorage.getItem(`game`))
-    for (let index = 0; index < game.length; index++) {
+    for (let index = 0; index < game.length; index += 1) {
       if (game[index].picture.name === this.picture.name) {
         game[index] = this
         break
@@ -337,16 +337,17 @@ const renderResult = e => {
   }, 500)
   e.stopPropagation()
 }
-const nextRound = async (e) => {
+function nextRound(e) {
   if (!localStorage.getItem('game')) {
     let iter = e.target.closest('.categories__cat').dataset.cat;
-    let local = JSON.parse(localStorage.getItem('authorGameLocal'))
-    const currentGame = iter == 0 ? 0 : +iter / 10
+    const local = JSON.parse(localStorage.getItem('authorGameLocal'))
+    const currentGame = iter === 0 ? 0 : +iter / 10
     local[currentGame] = true
     localStorage.setItem('authorGameLocal', JSON.stringify(local))
     const game = []
     while (game.length < 10) {
-      const round = new AuthorGame(iter++)
+      const round = new AuthorGame(iter)
+      iter = +iter + 1
       round.beforeRender()
       game.push(round)
     }
@@ -359,7 +360,6 @@ const nextRound = async (e) => {
     showScore(result.filter(el => el === true).length)
     getAudio(2)
     const local = JSON.parse(localStorage.getItem('authorGameLocal'))
-    // const game1 = JSON.parse(localStorage.getItem('game'))
     for (let i = 0; i < local.length; i++) {
       if (local[i] === true) {
         local[i] = result
@@ -369,13 +369,12 @@ const nextRound = async (e) => {
     }
     localStorage.removeItem('game')
   }
-  for (const round of game) {
-    if (!round.isFinited) {
-      // round.__proto__ = new AuthorGame().__proto__
-      Object.setPrototypeOf(round, new AuthorGame())
-      round.render()
-        .then(() => round.afterRender())
-        .then(() => round.wacherTime())
+  for (let i = 0; i < game.length; i += 1) {
+    if (!game[i].isFinited) {
+      Object.setPrototypeOf(game[i], new AuthorGame())
+      game[i].render()
+        .then(() => game[i].afterRender())
+        .then(() => game[i].wacherTime())
       break
     }
   }
