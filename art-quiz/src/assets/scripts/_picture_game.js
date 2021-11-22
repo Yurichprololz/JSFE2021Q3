@@ -1,4 +1,4 @@
-import imagesInfo from '../../images';
+import { imagesInfo } from './_request_JSON';
 import { renderMenu } from './_menu'
 import { getAudio } from './_setting'
 import template from './_template'
@@ -51,6 +51,7 @@ class PictureGame {
     })
 
   }
+
   setupTime() {
     const check = document.getElementById('time_for_round-check')
     if (check.checked === true) {
@@ -59,11 +60,13 @@ class PictureGame {
       this.time = false
     }
   }
+
   beforeRender() {
     this.trueOpt = this.picture.imageNum
     this.arrPictureNum = this.createPictureNun(this.picture)
     this.setupTime()
   }
+
   afterRender() {
     this.OPTIONS = document.querySelectorAll('.gamePic__answer img')
     this.createOptions(this.arrPictureNum, this.OPTIONS)
@@ -73,12 +76,14 @@ class PictureGame {
       })
     })
   }
+
   getRandomPicture() {
     return imagesInfo[Math.floor(Math.random() * (imagesInfo.length - Math.floor(imagesInfo.length / 2)) + Math.floor(imagesInfo.length / 2))]
   }
+
   createPictureNun(picture) {
-    let arr = []
-    let arrPainter = new Set()
+    const arr = []
+    const arrPainter = new Set()
     arr.push(picture.imageNum)
     arrPainter.add(picture.author)
     while (arr.length < 4) {
@@ -90,12 +95,15 @@ class PictureGame {
     }
     return arr.sort()
   }
+
   createOptions(arr, opt) {
+    const option = opt
     arr.forEach((imageNum, i) => {
-      opt[i].opt = imageNum
-      opt[i].src = `./img/${imageNum}.jpg`
+      option[i].opt = imageNum
+      option[i].src = `./img/${imageNum}.jpg`
     })
   }
+
   showInfo() {
     const content = document.querySelector('.popup__info')
     content.innerHTML = `
@@ -112,6 +120,7 @@ class PictureGame {
       nextRound()
     })
   }
+
   win(target) {
     if (target) {
       target.classList.add('gamePic__answer_trueble')
@@ -119,12 +128,14 @@ class PictureGame {
     this.isTrue = true
     getAudio(0)
   }
+
   lose(target) {
     if (target) {
       target.classList.add('gamePic__answer_falsable')
     }
     getAudio(1)
   }
+
   unloadGame() {
     const game = JSON.parse(localStorage.getItem(`game`))
     for (let index = 0; index < game.length; index++) {
@@ -135,6 +146,7 @@ class PictureGame {
     }
     localStorage.setItem(`game`, JSON.stringify(game))
   }
+
   checkOption(event) {
     if (document.querySelector('.header__time').classList.contains('header__time_active')) {
       document.querySelector('.header__time').classList = 'header__time'
@@ -149,9 +161,11 @@ class PictureGame {
     this.unloadGame()
     this.showInfo()
   }
+
   refreshTime() {
     document.querySelector('.header__text').textContent = this.time--
   }
+
   wacherTime() {
     if (this.time) {
       document.querySelector('.header__text').textContent = this.time--
@@ -287,7 +301,9 @@ const nextRound = e => {
   if (!localStorage.hasOwnProperty('game')) {
     let iter = e.target.closest('.categories__cat').dataset.cat;
     let local = JSON.parse(localStorage.getItem('pictureGameLocal'))
-    local[(+iter + 10) / 10 - 1] = true
+    const currentGame = iter == 120 ? 0 : (+iter - Math.floor(imagesInfo.length / 2)) / 10
+    local[currentGame] = true
+    console.log(local);
     localStorage.setItem('pictureGameLocal', JSON.stringify(local))
     const game = []
     while (game.length < 10) {
@@ -377,4 +393,4 @@ const renderResult = e => {
   }, 500)
   e.stopPropagation()
 }
-export { PictureGame, renderCategories/* , showScore */ }
+export { PictureGame, renderCategories }

@@ -1,4 +1,4 @@
-import imagesInfo from '../../images';
+import { imagesInfo } from './_request_JSON';
 import { renderMenu } from './_menu'
 import { getAudio } from './_setting'
 import template from './_template'
@@ -43,6 +43,7 @@ class AuthorGame {
 
 
   }
+
   setupTime() {
     const check = document.getElementById('time_for_round-check')
     if (check.checked === true) {
@@ -51,12 +52,14 @@ class AuthorGame {
       this.time = false
     }
   }
+
   beforeRender() {
     this.trueOpt = this.picture.author
     this.arrAuthor = this.createAuthor(this.picture)
     this.setupTime()
 
   }
+
   afterRender() {
     this.OPTIONS = document.querySelectorAll('.game__answer')
     this.createOptions(this.arrAuthor, this.OPTIONS)
@@ -66,9 +69,11 @@ class AuthorGame {
       })
     })
   }
+
   getRandomPicture() {
     return imagesInfo[Math.floor(Math.random() * imagesInfo.length)]
   }
+
   createAuthor(picture) {
     let arr = new Set()
     arr.add(picture.author)
@@ -77,11 +82,13 @@ class AuthorGame {
     }
     return Array.from(arr).sort()
   }
+
   createOptions(arr, opt) {
     arr.forEach((author, i) => {
       opt[i].textContent = author
     })
   }
+
   showInfo() {
     const content = document.querySelector('.popup__info')
     content.innerHTML = `
@@ -98,6 +105,7 @@ class AuthorGame {
       nextRound()
     })
   }
+
   win(target) {
     if (target) {
       target.classList.add('game__answer_trueble')
@@ -105,12 +113,14 @@ class AuthorGame {
     this.isTrue = true
     getAudio(0)
   }
+
   lose(target) {
     if (target) {
       target.classList.add('game__answer_falsable')
     }
     getAudio(1)
   }
+
   unloadGame() {
     const game = JSON.parse(localStorage.getItem(`game`))
     for (let index = 0; index < game.length; index++) {
@@ -121,6 +131,7 @@ class AuthorGame {
     }
     localStorage.setItem(`game`, JSON.stringify(game))
   }
+
   checkOption(event) {
     if (document.querySelector('.header__time').classList.contains('header__time_active')) {
       document.querySelector('.header__time').classList = 'header__time'
@@ -136,9 +147,11 @@ class AuthorGame {
     this.unloadGame()
     this.showInfo()
   }
+
   refreshTime() {
     document.querySelector('.header__text').textContent = this.time--
   }
+
   wacherTime() {
     if (this.time) {
       document.querySelector('.header__text').textContent = this.time--
@@ -325,10 +338,11 @@ const renderResult = e => {
   e.stopPropagation()
 }
 const nextRound = async (e) => {
-  if (!localStorage.hasOwnProperty('game')) {
+  if (!localStorage.getItem('game')) {
     let iter = e.target.closest('.categories__cat').dataset.cat;
     let local = JSON.parse(localStorage.getItem('authorGameLocal'))
-    local[(+iter + 10) / 10 - 1] = true
+    const currentGame = iter == 0 ? 0 : +iter / 10
+    local[currentGame] = true
     localStorage.setItem('authorGameLocal', JSON.stringify(local))
     const game = []
     while (game.length < 10) {
@@ -355,9 +369,10 @@ const nextRound = async (e) => {
     }
     localStorage.removeItem('game')
   }
-  for (let round of game) {
+  for (const round of game) {
     if (!round.isFinited) {
-      round.__proto__ = new AuthorGame().__proto__
+      // round.__proto__ = new AuthorGame().__proto__
+      Object.setPrototypeOf(round, new AuthorGame())
       round.render()
         .then(() => round.afterRender())
         .then(() => round.wacherTime())
