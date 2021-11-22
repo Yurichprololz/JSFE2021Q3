@@ -6,6 +6,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon.ico"
+      type="image/x-icon"
+    />
     <title>Art Quiz</title>
   </head>
   <body>
@@ -15,19 +20,23 @@
       <div class="return__arrow navigation"></div>
       <div class="header__time"><div class="header__text"></div></div>
     </div>
-    <div class="main">
-    </div>
+    <div class="main"></div>
     <div class="footer">
       <div class="yourself">
         <ul class="yourself__list">
           <li class="yourself__elem yourself__elem_1">&copy; 2021</li>
           <li class="yourself__elem yourself__elem_2">
             <a href="https://rs.school/" target="_blank">
-              <img src="./assets/images/svg/rs_school_logo.svg" alt="The Rolling Scopes School" />
+              <img
+                src="./assets/images/svg/rs_school_logo.svg"
+                alt="The Rolling Scopes School"
+              />
             </a>
           </li>
           <li class="yourself__elem yourself__elem_3">
-            <a href="https://github.com/Yurichprololz" target="_blank">Yurichprololz</a>
+            <a href="https://github.com/Yurichprololz" target="_blank"
+              >Yurichprololz</a
+            >
           </li>
         </ul>
       </div>
@@ -41,25 +50,33 @@
           <h3 class="setting__title">Volume</h3>
           <div class="setting__icon setting__icon_volume"></div>
           <input type="checkbox" name="" id="system_sounds-check" checked />
-          <input class="setting__range" type="range" min="0" max="100" step="1" name="" id="system_sounds" />
+          <input
+            class="setting__range"
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            name=""
+            id="system_sounds"
+          />
           <span id="system_sounds_output"></span>
         </div>
         <div class="setting__time">
           <h3 class="setting__title">Time</h3>
           <div class="setting__icon setting__icon_time"></div>
-            <input type="checkbox" name="" id="time_for_round-check" />
-            <input
-              class="setting__range"
-              type="range"
-              value="0"
-              min="0"
-              max="30"
-              step="5"
-              name=""
-              id="time_for_round"
-            />
-            <span id="time_for_round_output"></span>
-          </div>
+          <input type="checkbox" name="" id="time_for_round-check" />
+          <input
+            class="setting__range"
+            type="range"
+            value="0"
+            min="0"
+            max="30"
+            step="5"
+            name=""
+            id="time_for_round"
+          />
+          <span id="time_for_round_output"></span>
+        </div>
       </div>
     </div>
     <div class="popup__info info"></div>
