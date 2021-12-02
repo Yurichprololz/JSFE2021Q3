@@ -1,11 +1,20 @@
 import './sources.css';
-
+// interface IsourcesData{
+//     category: string
+// country: string
+// description: string
+// id: string
+// language: string
+// name: string
+// url: string
+// }
 class Sources {
-    draw(data) {
+    draw(data) { // :IsourcesData[]
+        
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp');
 
-        data.forEach((item) => {
+        data.forEach((item) => { // IsourcesData
             const sourceClone = sourceItemTemp.content.cloneNode(true);
 
             sourceClone.querySelector('.source__item-name').textContent = item.name;

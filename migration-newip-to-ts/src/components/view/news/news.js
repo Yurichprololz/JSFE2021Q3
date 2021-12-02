@@ -1,15 +1,25 @@
 import './news.css';
-
+// interface Idata{
+//     author: string
+// content: string
+// description: string
+// publishedAt: string
+// source: {
+//     id: string,
+//     name: string
+// }
+// title: string
+// url: string
+// urlToImage: string
+// }
 class News {
     draw(data) {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
-        const fragment = document.createDocumentFragment();
-        const newsItemTemp = document.querySelector('#newsItemTemp');
-
-        news.forEach((item, idx) => {
-            const newsClone = newsItemTemp.content.cloneNode(true);
-
+        const fragment = document.createDocumentFragment(); //HTMLElement 
+        const newsItemTemp = document.querySelector('#newsItemTemp'); //HTMLElement 
+        news.forEach((item, idx) => { // number, Idata
+            const newsClone = newsItemTemp.content.cloneNode(true);//HTMLElement 
             if (idx % 2) newsClone.querySelector('.news__item').classList.add('alt');
 
             newsClone.querySelector('.news__meta-photo').style.backgroundImage = `url(${
