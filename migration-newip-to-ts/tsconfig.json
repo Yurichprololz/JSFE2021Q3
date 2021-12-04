@@ -8,6 +8,7 @@
     "downlevelIteration": true,
     "strict": true,
     "noImplicitAny": true,
+    "strictNullChecks":false,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "resolveJsonModule": true,
