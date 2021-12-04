@@ -1,7 +1,38 @@
 import AppLoader from './appLoader';
-
+interface Irequest2{
+    sources: IsourcesData[] 
+    status: string
+}
+interface IsourcesData{
+    category: string
+    country: string
+    description: string
+    id: string
+    language: string
+    name: string
+    url: string
+}
+interface Irequest{
+    articles: Idata[] 
+    status: string
+    totalResults: number
+}
+interface Idata{
+    author: string | null
+    content: string
+    description: string
+    publishedAt: string
+    sources: Isources
+    title: string
+    url: string
+    urlToImage: string
+}
+interface Isources{
+    id: string
+    name: string
+}
 class AppController extends AppLoader {
-    getSources(callback) { //function :void
+    getSources(callback: ((data: Irequest2) => void) ):void { //function :void
         super.getResp(
             {
                 endpoint: 'sources',
@@ -10,14 +41,14 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e, callback) {
-        let target = e.target; // HTMLDivElement
-        const newsContainer = e.currentTarget;// HTMLDivElement
+    getNews(e:Event, callback: ((data:Irequest2) => void)):void {
+        let target  = e.target; // HTMLDivElement
+        const newsContainer = e.currentTarget as HTMLDivElement
         while (target !== newsContainer) {
-            if (target.classList.contains('source__item')) {
-                const sourceId = target.getAttribute('data-source-id'); //string
-                if (newsContainer.getAttribute('data-source') !== sourceId) {
-                    newsContainer.setAttribute('data-source', sourceId);
+            if ((target as HTMLDivElement).classList.contains('source__item')) {
+                const sourceId = (target as HTMLDivElement).getAttribute('data-source-id'); //string
+                if ((target as HTMLDivElement).getAttribute('data-source') !== sourceId && typeof sourceId != 'object') {
+                    (target as HTMLDivElement).setAttribute('data-source', sourceId);
                     super.getResp(
                         {
                             endpoint: 'everything',
@@ -26,11 +57,12 @@ class AppController extends AppLoader {
                             },
                         },
                         callback
+                        // callback: ((data: Irequest) => void) | undefined
                     );
                 }
                 return;
             }
-            target = target.parentNode; // HTMLDivElement
+            target = (target as HTMLDivElement).parentNode; // HTMLDivElement
         }
     }
 }
