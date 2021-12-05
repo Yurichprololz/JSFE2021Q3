@@ -1,37 +1,11 @@
 import './news.css';
-interface Idata{
-  author: string | null
-  content: string
-  description: string
-  publishedAt: string
-  source?: Isources
-  title: string
-  url: string
-  urlToImage: string
-}
-interface Isources{
-  id: string
-  name: string
-}
-interface IsourcesData{
-  category: string
-  country: string
-  description: string
-  id: string
-  language: string
-  name: string
-  url: string
-}
-interface Irequest{
-  articles: Idata[] 
-  status: string
-  totalResults: number
-}
+import {InewsData} from '../../../interfaces'
+
 interface INews{
-  draw(x:Idata[]):void
+  draw(x:InewsData[]):void
 }
 class News implements INews{
-  draw(data:Idata[]) {
+  draw(data:InewsData[]) {
     const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
     const fragment = document.createDocumentFragment();  

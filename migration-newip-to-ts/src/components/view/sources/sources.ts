@@ -1,13 +1,5 @@
 import './sources.css';
-interface IsourcesData{
-    category: string
-country: string
-description: string
-id: string
-language: string
-name: string
-url: string
-}
+import {IsourcesData} from '../../../interfaces'
 
 interface ISources{
     draw(data:IsourcesData[]) :void

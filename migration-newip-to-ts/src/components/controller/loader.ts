@@ -1,45 +1,12 @@
+import {Isources} from '../../interfaces'
 interface Ioptions{
   apiKey?: string
   sources?: string
 }
-interface Irequest{
-  articles: Idata[]
-  status: string
-  totalResults: number
-}
-interface Idata{
-  author: string | null
-  content: string
-  description: string
-  publishedAt: string
-  sources: Isources
-  title: string
-  url: string
-  urlToImage: string
-}
-interface Isources{
-  id: string
-  name: string
-}
+
 interface resp{
   endpoint:string
   options?: object
-}
-interface Irequest2{
-  sources: IsourcesData[]
-  status: string
-}
-interface IsourcesData{
-  category: string
-  country: string
-  description: string
-  id: string
-  language: string
-  name: string
-  url: string
-}
-type Isomerequst={
-  data: Irequest|Irequest2
 }
 interface ILoader{
   readonly baseLink:string
@@ -47,7 +14,7 @@ interface ILoader{
   getResp({ endpoint, options }:resp, callback : Function):void
   errorHandler(res:Response): Response
   makeUrl(options:Ioptions, endpoint:string):string
-  load(method:string, endpoint:string, callback: { (data:Irequest2): void}, options:Ioptions) :void
+  load(method:string, endpoint:string, callback: { (data:Isources): void}, options:Ioptions) :void
 }
 class Loader implements ILoader {
   readonly baseLink:string
@@ -60,7 +27,7 @@ class Loader implements ILoader {
 
   getResp(
     { endpoint, options = {} }:resp,
-    callback = (data: Irequest2) => {
+    callback = (data: Isources) => {
       console.error('No callback for GET response');
     }
   ) {
@@ -89,7 +56,7 @@ class Loader implements ILoader {
     return url.slice(0, -1);
   }
 
-  load(method:string, endpoint:string, callback: { (data:Irequest2): void}, options = {}) { // string, string, function, Ioptions
+  load(method:string, endpoint:string, callback: { (data:Isources): void}, options = {}) { // string, string, function, Ioptions
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())

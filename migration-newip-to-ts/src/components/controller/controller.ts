@@ -1,52 +1,21 @@
 import AppLoader from './appLoader';
-interface Irequest2{
-    sources: IsourcesData[] 
-    status: string
-}
-interface IsourcesData{
-    category: string
-    country: string
-    description: string
-    id: string
-    language: string
-    name: string
-    url: string
-}
-interface Irequest{
-    articles: Idata[] 
-    status: string
-    totalResults: number
-}
-interface Idata{
-    author: string | null
-    content: string
-    description: string
-    publishedAt: string
-    sources: Isources
-    title: string
-    url: string
-    urlToImage: string
-}
-interface Isources{
-    id: string
-    name: string
-}
+import {Isources} from '../../interfaces'
 
 interface IAppController{
-  getSources(callback: ((data: Irequest2) => void) ):void 
-  getNews(e:Event, callback: ((data:Irequest2) => void)):void 
+  getSources(callback: ((data: Isources) => void) ):void 
+  getNews(e:Event, callback: ((data:Isources) => void)):void 
 }
 class AppController  extends AppLoader implements IAppController{
-  getSources(callback: ((data: Irequest2) => void) ) { //function :void
+  getSources(callback: ((data: Isources) => void) ) { 
     super.getResp({endpoint: 'sources',},callback);
   }
 
-  getNews(e:Event, callback: ((data:Irequest2) => void)) {
-    let target  = e.target; // HTMLDivElement
+  getNews(e:Event, callback: ((data:Isources) => void)) {
+    let target  = e.target; 
     const newsContainer = e.currentTarget as HTMLDivElement
     while (target !== newsContainer) {
       if ((target as HTMLDivElement).classList.contains('source__item')) {
-        const sourceId = (target as HTMLDivElement).getAttribute('data-source-id'); //string
+        const sourceId = (target as HTMLDivElement).getAttribute('data-source-id'); 
           if ((target as HTMLDivElement).getAttribute('data-source') !== sourceId && typeof sourceId != 'object') {
             (target as HTMLDivElement).setAttribute('data-source', sourceId);
             super.getResp(
@@ -57,12 +26,11 @@ class AppController  extends AppLoader implements IAppController{
                 },
               },
                 callback
-                // callback: ((data: Irequest) => void) | undefined
             );
           }
         return;
       }
-      target = (target as HTMLDivElement).parentNode; // HTMLDivElement
+      target = (target as HTMLDivElement).parentNode; 
     }
   }
 }
