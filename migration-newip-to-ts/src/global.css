@@ -3,7 +3,9 @@ body {
     background: #17181c;
     font-family: sans-serif;
 }
-
+li{
+    list-style-type: none;
+}
 header {
     padding: 10px 30px;
 }
@@ -16,6 +18,7 @@ header h1 {
 footer {
     height: 100px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -32,4 +35,39 @@ footer .copyright a:hover {
 }
 footer .copyright:before {
     content: '©';
+}
+.yourself {
+    position: relative;
+    width: 80%;
+}
+.yourself__list {
+    display: flex;
+    height: 126px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+
+}
+.yourself__elem {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    color: #ffffff;}
+.yourself__elem a {
+    color: #ffffff;
+text-decoration: none;
+}
+
+    
+.yourself__elem_2 {
+letter-spacing: 2px;
+}
+
+.logo{
+    width: 70px;
+    height: 40px;
+    object-fit: contain;
 }
