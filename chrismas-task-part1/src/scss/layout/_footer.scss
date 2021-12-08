@@ -1,34 +1,43 @@
-.yourself {
-    position: relative;
+.non-main-content {
+  height: $nonMainHeight;
+  padding: 0 40px;
+  background-color: $backgraundColor;
+}
 
-    &__list {
-      display: flex;
-      height: 126px;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0;
-    }
-  
-    &__elem {
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: 200;
-      font-size: 22px;
-      line-height: 22px;
-      letter-spacing: 2px;
+.yourself {
+  position: relative;
+
+  &__list {
+    display: flex;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+  }
+
+  &__elem {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    color: #ffffff;
+
+    & a {
       color: #ffffff;
 
-      & a {
-        color: #ffffff;
-
-        &:hover {
-          color: #9d8665;
-        }
-
-        &:active {
-          color: #7e6c51;
-        }
+      &:hover {
+        color: #9d8665;
       }
 
+      &:active {
+        color: #7e6c51;
+      }
     }
+  }
+}
+.rs-logo {
+  height: 50px;
+  object-fit: contain;
 }

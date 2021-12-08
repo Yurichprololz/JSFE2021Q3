@@ -1,0 +1,26 @@
+.intro {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__title {
+    @include headText(32px);
+    background: radial-gradient(
+      118.88% 606.86% at 0% 0%,
+      rgba(36, 197, 219, 0.15) 0%,
+      rgba(36, 197, 219, 0) 100%
+    );
+    text-align: center;
+    backdrop-filter: blur(31px);
+    width: 30%;
+    padding: 40px;
+    border-radius: 20px;
+  }
+
+  &__button {
+    @include mainText(28px);
+    width: 5em;
+    height: 2em;
+  }
+}

@@ -1,4 +1,13 @@
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+
 @import "./base/normalize";
 @import "./base/base";
-@import "./layout/footer";
 @import "./base/typography";
+
+@import "./components/intro";
+@import "./components/button";
+
+@import "./layout/footer";
+@import "./layout/header";
+@import "./layout/main";

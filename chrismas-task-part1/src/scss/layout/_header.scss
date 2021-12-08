@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  &__navigation {
+    width: 300px;
+    max-height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__controls {
+  }
+}
+
+.navigation {
+  &__logo {
+    width: 30px;
+    height: 45px;
+    background-image: url(../assets/images/svg/tree.svg);
+    background-size: contain;
+    cursor: pointer;
+  }
+
+  &__toys {
+    @include headText(26px);
+  }
+
+  &__fir-tree {
+    @include headText(26px);
+  }
+}
+.controls {
+  &__input {
+  }
+
+  &__toys-count {
+  }
+}
+.search {
+}

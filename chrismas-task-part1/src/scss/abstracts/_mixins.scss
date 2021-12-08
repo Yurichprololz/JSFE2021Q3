@@ -1,0 +1,11 @@
+@mixin mainText($size: "16px") {
+  font-family: "Steppe", serif;
+  font-size: $size;
+  color: $mainColor;
+}
+@mixin headText($size: "16px") {
+  font-family: "Neucha", serif;
+  font-size: $size;
+  color: $mainColor;
+  text-transform: uppercase;
+}

@@ -1,0 +1,14 @@
+.button {
+  border: $borderColor solid 3px;
+  border-radius: 30px;
+  &_start {
+    background: radial-gradient(
+      118.88% 606.86% at 0% 0%,
+      rgba(36, 197, 219, 0.15) 0%,
+      rgba(36, 197, 219, 0) 100%
+    );
+    backdrop-filter: blur(31px);
+  }
+  &_main {
+  }
+}
