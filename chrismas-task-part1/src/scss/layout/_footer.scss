@@ -1,0 +1,34 @@
+.yourself {
+    position: relative;
+
+    &__list {
+      display: flex;
+      height: 126px;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+    }
+  
+    &__elem {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 200;
+      font-size: 22px;
+      line-height: 22px;
+      letter-spacing: 2px;
+      color: #ffffff;
+
+      & a {
+        color: #ffffff;
+
+        &:hover {
+          color: #9d8665;
+        }
+
+        &:active {
+          color: #7e6c51;
+        }
+      }
+
+    }
+}
