@@ -1,0 +1,95 @@
+.filter {
+  height: 100%;
+  width: 25%;
+  background-color: $backgraundColor;
+  padding-left: 40px;
+  &__sort {
+    display: flex;
+  }
+
+  &__title {
+    @include headText(20px);
+    margin: 0;
+  }
+  &__subtitle {
+    @include mainText(18px);
+    margin: 0;
+  }
+  &__sort-by {
+  }
+
+  &__sort-option {
+    // @include mainText();
+  }
+
+  &__category {
+  }
+
+  &__category-input {
+  }
+  &__category-label {
+    @include mainText();
+  }
+  &__form {
+  }
+
+  &__form-card {
+  }
+
+  &__form-card-img {
+  }
+
+  &__form-card-text {
+  }
+
+  &__range {
+  }
+
+  &__range-input {
+  }
+
+  &__color {
+  }
+
+  &__color-btn {
+    height: 25px;
+    width: 25px;
+    border: 0;
+    padding: 0;
+    &_1 {
+      background-color: white;
+    }
+
+    &_2 {
+      background-color: yellow;
+    }
+
+    &_3 {
+      background-color: red;
+    }
+
+    &_4 {
+      background-color: #2299eb;
+    }
+
+    &_5 {
+      background-color: green;
+    }
+  }
+
+  &__size {
+  }
+
+  &__checkbox {
+  }
+
+  &__size-label {
+    @include mainText();
+  }
+
+  &__reset {
+  }
+
+  &__button {
+  }
+}
