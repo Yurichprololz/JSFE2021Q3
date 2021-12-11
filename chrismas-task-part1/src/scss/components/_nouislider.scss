@@ -1,0 +1,59 @@
+.noUi-horizontal {
+  height: 4px;
+  width: 80%;
+}
+.noUi-connect {
+  background: #24c5db;
+}
+.noUi-handle:after,
+.noUi-handle:before {
+  display: none;
+}
+.noUi-horizontal .noUi-handle {
+  width: 16px;
+  height: 16px;
+  right: 0;
+  top: 0;
+  transform: translate(50%, -50%);
+}
+.noUi-handle {
+  border: 1px solid #24c5db;
+  border-radius: 50%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    radial-gradient(
+      57.23% 248.2% at 107.17% 104.02%,
+      rgba(34, 153, 235, 0.92) 0%,
+      rgba(34, 153, 235, 0.07) 100%
+    ),
+    radial-gradient(
+      104.22% 230.94% at -4.22% 0%,
+      #24c5db 3.62%,
+      rgba(36, 197, 219, 0.26) 55.1%
+    );
+  cursor: default;
+  box-shadow: inset 0 0 1px #fff, inset 0 1px 7px #ebebeb, 0 3px 6px -3px #bbb;
+}
+
+.nouiinput {
+  margin-bottom: 10px;
+  &__conteiner-number {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__slider {
+  }
+
+  &__number {
+    @include mainText(18px);
+    width: 50px;
+    height: 18px;
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 0;
+    &_right {
+      text-align: end;
+    }
+  }
+}

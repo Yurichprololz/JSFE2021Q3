@@ -29,39 +29,120 @@
           <div class="filter__sort">
             <h5 class="filter__title">sort by</h5>
             <select class="filter__sort-by">
-              <option class="filter__sort-option" value="">name of increase </option>
-              <option class="filter__sort-option" value="">name of decrease </option>
-              <option class="filter__sort-option" value="">the amount of increase</option>
-              <option class="filter__sort-option" value="">the amount of decrease</option>
+              <option class="filter__sort-option" value="">
+                name of increase
+              </option>
+              <option class="filter__sort-option" value="">
+                name of decrease
+              </option>
+              <option class="filter__sort-option" value="">
+                the amount of increase
+              </option>
+              <option class="filter__sort-option" value="">
+                the amount of decrease
+              </option>
             </select>
           </div>
           <div class="filter__category">
             <h5 class="filter__title">Categoties</h5>
-            <input class="filter__category-input" type="checkbox" name="" id="category" checked>
+            <input
+              class="filter__category-input"
+              type="checkbox"
+              name=""
+              id="category"
+              checked
+            />
             <label class="filter__category-label" for="category">All</label>
           </div>
+          <h5 class="filter__subtitle">form</h5>
           <div class="filter__form">
-            <h5 class="filter__subtitle">form</form></h5>
             <div class="filter__form-card">
-            <img class="filter__form-card-img" src="./assets/images/svg/cone.svg" alt=""> 
-              <span class="filter__form-card-text">cone</span>
-          </div>
+              <img
+                class="filter__form-card-img"
+                src="./assets/images/svg/forms/pine.svg"
+                alt=""
+              />
+              <span class="filter__form-card-text">pine</span>
+            </div>
             <div class="filter__form-card">
-              <img class="filter__form-card-img" src="./assets/images/svg/snowflake.svg" alt=""> 
+              <img
+                class="filter__form-card-img"
+                src="./assets/images/svg/forms/snowflake.svg"
+                alt=""
+              />
               <span class="filter__form-card-text">snowflake</span>
             </div>
-            <div class="filter__form-card"></div>
-            <div class="filter__form-card"></div>
-            <div class="filter__form-card"></div>
-            <div class="filter__form-card"></div>
+            <div class="filter__form-card">
+              <img
+                class="filter__form-card-img"
+                src="./assets/images/svg/forms/bird_toy.svg"
+                alt=""
+              />
+              <span class="filter__form-card-text">toy</span>
+            </div>
+            <div class="filter__form-card">
+              <img
+                class="filter__form-card-img"
+                src="./assets/images/svg/forms/ball.svg"
+                alt=""
+              />
+              <span class="filter__form-card-text">ball</span>
+            </div>
+            <div class="filter__form-card">
+              <img
+                class="filter__form-card-img"
+                src="./assets/images/svg/forms/bell.svg"
+                alt=""
+              />
+              <span class="filter__form-card-text">bell</span>
+            </div>
+            <div class="filter__form-card">
+              <img
+                class="filter__form-card-img"
+                src="./assets/images/svg/forms/star.svg"
+                alt=""
+              />
+              <span class="filter__form-card-text">star</span>
+            </div>
           </div>
           <div class="filter__range">
             <h5 class="filter__subtitle">Number of copies</h5>
-          <input class="filter__range-input" type="range" name="" id="">
+            <div class="filter__range-input nouiinput" id="range-copy"></div>
+            <div class="nouiinput__conteiner-number">
+              <input
+                type="number"
+                class="nouiinput__number nouiinput__copies_input"
+                name=""
+                id=""
+                placeholder="1"
+              />
+              <input
+                type="number"
+                class="nouiinput__number nouiinput__number_right nouiinput__copies_input"
+                name=""
+                id=""
+                placeholder="12"
+              />
           </div>
           <div class="filter__range">
             <h5 class="filter__subtitle">Year of purchase</h5>
-            <input class="filter__range-input" type="range" name="" id="">
+            <div class="filter__range-input nouiinput" id="range-years"></div>
+            <div class="nouiinput__conteiner-number">
+              <input
+                type="number"
+                class="nouiinput__number nouiinput__years_input"
+                name=""
+                id=""
+                placeholder="1940"
+              />
+              <input
+                type="number"
+                class="nouiinput__number nouiinput__number_right nouiinput__years_input"
+                name=""
+                id=""
+                placeholder="2021"
+              />
+            </div>
           </div>
           <h5 class="filter__subtitle">Color</h5>
           <div class="filter__color">
@@ -73,25 +154,46 @@
           </div>
           <h5 class="filter__subtitle">Size</h5>
           <div class="filter__size">
-            <input class="filter__checkbox" type="checkbox" name="" id="big-size">
-          <label class="filter__size-label" for="big-size">big</label>
-          <input class="filter__checkbox" type="checkbox" name="" id="avarage-size">
-          <label class="filter__size-label" for="avarage-size">avarage</label>
-          <input class="filter__checkbox" type="checkbox" name="" id="small-size">
-          <label class="filter__size-label" for="small-size">small</label>
+            <input
+              class="filter__checkbox"
+              type="checkbox"
+              name=""
+              id="big-size"
+            />
+            <label class="filter__size-label" for="big-size">big</label>
+            <input
+              class="filter__checkbox"
+              type="checkbox"
+              name=""
+              id="avarage-size"
+            />
+            <label class="filter__size-label" for="avarage-size">avarage</label>
+            <input
+              class="filter__checkbox"
+              type="checkbox"
+              name=""
+              id="small-size"
+            />
+            <label class="filter__size-label" for="small-size">small</label>
           </div>
-          <input class="filter__checkbox" type="checkbox" name="" id="favorite">
+          <input
+            class="filter__checkbox"
+            type="checkbox"
+            name=""
+            id="favorite"
+          />
           <label class="filter__size-label" for="favorite">favorite</label>
           <div class="filter__reset">
-            <button class="button filter__button">reset filters</button>
-            <button class="button filter__button">reset setting</button>
+            <button class="button button_main filter__button">
+              reset filters
+            </button>
+            <button class="button button_main filter__button">
+              reset setting
+            </button>
           </div>
         </div>
-      <div class="toys-conteiner">
-
+        <div class="toys-conteiner"></div>
       </div>
-      </div>
-      
     </main>
     <footer class="footer non-main-content">
       <div class="yourself">
