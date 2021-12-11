@@ -1,11 +1,13 @@
 @mixin mainText($size: "16px") {
   font-family: "Steppe", serif;
   font-size: $size;
+  font-weight: 400;
   color: $mainColor;
 }
 @mixin headText($size: "16px") {
   font-family: "Neucha", serif;
   font-size: $size;
   color: $mainColor;
+  font-weight: 400;
   text-transform: uppercase;
 }
