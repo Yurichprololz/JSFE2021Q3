@@ -12,6 +12,9 @@ interface Icard {
 }
 interface ICard {
   render: () => void;
+  isFited: () => boolean;
+  isFitedCopies: () => boolean;
+  isFitedYears: () => boolean;
 }
 
 class Card implements ICard {
@@ -35,6 +38,7 @@ class Card implements ICard {
   }
   render() {
     const conteiner = document.getElementById("toys-conteiner");
+
     if (conteiner) {
       const div = createEl("div", "card");
       div.innerHTML = `<h6 class="card__name card__title">${this.name}</h6>
@@ -46,17 +50,44 @@ class Card implements ICard {
             <p class="card__form card__text">Форма игрушки: ${this.shape}</p>
             <p class="card__color card__text">Цвет игрушки: ${this.color}</p>
             <p class="card__size card__text">Размер игрушки: ${this.size}</p>
-            <p class="card__favorite card__text">Любимая: ${
-              this.favorite ? "да" : "нет"
-            }</p>
+            <p class="card__favorite card__text">Любимая: ${this.favorite ? "да" : "нет"}</p>
       `;
       conteiner.append(div);
     }
   }
+  isFited() {
+    if (this.isFitedCopies() && this.isFitedYears()) {
+      return true;
+    }
+    return false;
+  }
+  isFitedCopies() {
+    const inputs = document.querySelectorAll(".nouiinput__copies_input") as unknown as HTMLInputElement[];
+    if (Number(this.count) < Number(inputs[0].value) || Number(this.count) > Number(inputs[1].value)) {
+      return false;
+    }
+    return true;
+  }
+  isFitedYears() {
+    const inputs = document.querySelectorAll(".nouiinput__years_input") as unknown as HTMLInputElement[];
+    if (Number(this.year) < Number(inputs[0].value) || Number(this.year) > Number(inputs[1].value)) {
+      return false;
+    }
+    return true;
+  }
 }
-const arr: Icard[] = [];
-data.forEach((el) => {
-  const card = new Card(el);
-  card.render();
-  arr.push(card);
-});
+
+const updateCards = () => {
+  const conteiner = document.getElementById("toys-conteiner");
+  if (conteiner) {
+    conteiner.innerHTML = ``;
+  }
+  data.forEach((el) => {
+    const card = new Card(el);
+    if (card.isFited()) {
+      card.render();
+    }
+  });
+};
+
+export { updateCards };
