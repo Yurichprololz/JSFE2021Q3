@@ -1,0 +1,57 @@
+.toys-conteiner {
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+}
+.card {
+  width: 18%;
+  height: auto;
+  background: $backgraundColorCard;
+  border-radius: 20px;
+  padding-left: 10px;
+  margin: 10px;
+  padding-bottom: 20px;
+  &__name {
+    height: 20%;
+    margin: 0;
+    margin-top: 5px;
+  }
+
+  &__title {
+    @include headText(18px);
+  }
+
+  &__img {
+    width: 40%;
+    height: auto;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    & img {
+      width: 100%;
+    }
+  }
+
+  &__count {
+  }
+
+  &__text {
+    @include mainText(12px);
+    margin-top: 0;
+  }
+
+  &__year {
+  }
+
+  &__form {
+  }
+
+  &__color {
+  }
+
+  &__size {
+  }
+
+  &__favorite {
+  }
+}

@@ -6,5 +6,6 @@
   background-size: cover;
   &_toys {
     height: calc(100vh - 2 * $nonMainHeight);
+    background: $backgraundColor;
   }
 }
