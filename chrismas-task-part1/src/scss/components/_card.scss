@@ -54,4 +54,12 @@
 
   &__favorite {
   }
+  &__no-resault {
+    border: #278d9f solid 3px;
+    border-radius: 30px;
+    height: fit-content;
+    padding: 10px;
+    transform: translateY(200%);
+    margin: 0 auto;
+  }
 }

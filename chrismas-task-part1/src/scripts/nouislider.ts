@@ -19,8 +19,8 @@ const setNumbfromCopy = (values: (string | number)[], handle: number, unencoded:
   updateCards();
 };
 const setNumbfromYears = (values: (string | number)[], handle: number, unencoded: number[]) => {
-  updateCards();
   inputsYears[handle].value = String(Math.round(unencoded[handle]));
+  updateCards();
 };
 
 /// init slider and add event

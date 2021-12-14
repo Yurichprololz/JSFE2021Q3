@@ -45,11 +45,7 @@
     position: relative;
   }
   @include mainText();
-  background: radial-gradient(
-    118.88% 606.86% at 0% 0%,
-    rgba(36, 197, 219, 0.15) 0%,
-    rgba(36, 197, 219, 0) 100%
-  );
+  background: radial-gradient(118.88% 606.86% at 0% 0%, rgba(36, 197, 219, 0.15) 0%, rgba(36, 197, 219, 0) 100%);
   backdrop-filter: blur(31px);
   border-radius: 30px;
   outline: none;
@@ -64,17 +60,17 @@
     outline: none;
     border: none;
     cursor: pointer;
-    &:before {
-      content: "";
-      background-image: url(../assets/images/svg/search.svg);
-      height: 16px;
-      width: 16px;
-      position: absolute;
-      top: 4px;
-      right: 10px;
-      font-size: 22px;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
+  }
+  &:before {
+    content: "";
+    background-image: url(../assets/images/svg/search.svg);
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    font-size: 22px;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 }

@@ -15,6 +15,7 @@ interface ICard {
   isFited: () => boolean;
   isFitedCopies: () => boolean;
   isFitedYears: () => boolean;
+  isFound: () => boolean;
 }
 
 class Card implements ICard {
@@ -56,7 +57,7 @@ class Card implements ICard {
     }
   }
   isFited() {
-    if (this.isFitedCopies() && this.isFitedYears()) {
+    if (this.isFitedCopies() && this.isFitedYears() && this.isFound()) {
       return true;
     }
     return false;
@@ -70,24 +71,49 @@ class Card implements ICard {
   }
   isFitedYears() {
     const inputs = document.querySelectorAll(".nouiinput__years_input") as unknown as HTMLInputElement[];
+    console.log(this.year, inputs[0].value, inputs[1].value);
+
     if (Number(this.year) < Number(inputs[0].value) || Number(this.year) > Number(inputs[1].value)) {
       return false;
     }
     return true;
   }
+  isFound() {
+    const input = document.getElementById("search") as HTMLInputElement;
+    const regexp = new RegExp(input.value, "i");
+
+    if (!input.value || regexp.test(this.name)) {
+      return true;
+    }
+    return false;
+  }
 }
+const noResult = () => {
+  const conteiner = document.getElementById("toys-conteiner");
+  if (conteiner) {
+    conteiner.innerHTML = `
+    <div class="card__no-resault">
+            <p class="card__title">Извините, совпадений не обнаружено</p>
+          </div>`;
+  }
+};
 
 const updateCards = () => {
   const conteiner = document.getElementById("toys-conteiner");
+  let isEmpty = true;
   if (conteiner) {
     conteiner.innerHTML = ``;
   }
   data.forEach((el) => {
     const card = new Card(el);
     if (card.isFited()) {
+      isEmpty = false;
       card.render();
     }
   });
+  if (isEmpty) {
+    noResult();
+  }
 };
 
 export { updateCards };

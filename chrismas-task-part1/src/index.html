@@ -4,11 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="./assets/images/favicon.ico"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon" />
     <title>Chrismas tast</title>
   </head>
   <body>
@@ -19,16 +15,17 @@
         <a href="#" class="navigation__fir-tree">X-max tree</a>
       </nav>
       <div class="header__controls controls">
-        <form class="search__conteiner">
-          <input
-            class="controls__input search"
-            type="search"
-            name=""
-            id=""
-            placeholder="Search..."
-          />
-          <button type="submit" class="search__button"></button>
-        </form>
+        <!-- <form class="search__conteiner"> -->
+        <input
+          class="controls__input search"
+          type="search"
+          name=""
+          id="search"
+          placeholder="Search..."
+          autocomplete="off"
+        />
+        <!-- <button type="submit" class="search__button"></button> -->
+        <!-- </form> -->
         <div class="controls__toys-count"></div>
       </div>
     </header>
@@ -38,79 +35,41 @@
           <div class="filter__sort">
             <h5 class="filter__title">sort by</h5>
             <select class="filter__sort-by button">
-              <option class="filter__sort-option" value="">
-                name of increase
-              </option>
-              <option class="filter__sort-option" value="">
-                name of decrease
-              </option>
-              <option class="filter__sort-option" value="">
-                the amount of increase
-              </option>
-              <option class="filter__sort-option" value="">
-                the amount of decrease
-              </option>
+              <option class="filter__sort-option" value="">name of increase</option>
+              <option class="filter__sort-option" value="">name of decrease</option>
+              <option class="filter__sort-option" value="">the amount of increase</option>
+              <option class="filter__sort-option" value="">the amount of decrease</option>
             </select>
           </div>
           <div class="filter__category">
             <h5 class="filter__title">Categoties</h5>
-            <input
-              class="filter__category-input"
-              type="checkbox"
-              name=""
-              id="category"
-              checked
-            />
+            <input class="filter__category-input" type="checkbox" name="" id="category" checked />
             <label class="filter__category-label" for="category">All</label>
           </div>
           <h5 class="filter__subtitle">form</h5>
           <div class="filter__form">
             <div class="filter__form-card">
-              <img
-                class="filter__form-card-img"
-                src="./assets/images/svg/forms/pine.svg"
-                alt=""
-              />
+              <img class="filter__form-card-img" src="./assets/images/svg/forms/pine.svg" alt="" />
               <span class="filter__form-card-text">pine</span>
             </div>
             <div class="filter__form-card">
-              <img
-                class="filter__form-card-img"
-                src="./assets/images/svg/forms/snowflake.svg"
-                alt=""
-              />
+              <img class="filter__form-card-img" src="./assets/images/svg/forms/snowflake.svg" alt="" />
               <span class="filter__form-card-text">snowflake</span>
             </div>
             <div class="filter__form-card">
-              <img
-                class="filter__form-card-img"
-                src="./assets/images/svg/forms/bird_toy.svg"
-                alt=""
-              />
+              <img class="filter__form-card-img" src="./assets/images/svg/forms/bird_toy.svg" alt="" />
               <span class="filter__form-card-text">toy</span>
             </div>
             <div class="filter__form-card">
-              <img
-                class="filter__form-card-img"
-                src="./assets/images/svg/forms/ball.svg"
-                alt=""
-              />
+              <img class="filter__form-card-img" src="./assets/images/svg/forms/ball.svg" alt="" />
               <span class="filter__form-card-text">ball</span>
             </div>
             <div class="filter__form-card">
-              <img
-                class="filter__form-card-img"
-                src="./assets/images/svg/forms/bell.svg"
-                alt=""
-              />
+              <img class="filter__form-card-img" src="./assets/images/svg/forms/bell.svg" alt="" />
               <span class="filter__form-card-text">bell</span>
             </div>
             <div class="filter__form-card">
-              <img
-                class="filter__form-card-img"
-                src="./assets/images/svg/forms/star.svg"
-                alt=""
-              />
+              <img class="filter__form-card-img" src="./assets/images/svg/forms/star.svg" alt="" />
               <span class="filter__form-card-text">star</span>
             </div>
           </div>
@@ -118,20 +77,10 @@
             <h5 class="filter__subtitle">Number of copies</h5>
             <div class="filter__range-input nouiinput" id="range-copy"></div>
             <div class="nouiinput__conteiner-number">
+              <input type="number" class="nouiinput__number nouiinput__copies_input" name="" id="" placeholder="1" />
               <input
                 type="number"
-                class="nouiinput__number nouiinput__copies_input"
-                name=""
-                id=""
-                placeholder="1"
-              />
-              <input
-                type="number"
-                class="
-                  nouiinput__number
-                  nouiinput__number_right
-                  nouiinput__copies_input
-                "
+                class="nouiinput__number nouiinput__number_right nouiinput__copies_input"
                 name=""
                 id=""
                 placeholder="12"
@@ -150,11 +99,7 @@
                 />
                 <input
                   type="number"
-                  class="
-                    nouiinput__number
-                    nouiinput__number_right
-                    nouiinput__years_input
-                  "
+                  class="nouiinput__number nouiinput__number_right nouiinput__years_input"
                   name=""
                   id=""
                   placeholder="2021"
@@ -171,49 +116,26 @@
             </div>
             <h5 class="filter__subtitle">Size</h5>
             <div class="filter__size">
-              <input
-                class="filter__checkbox"
-                type="checkbox"
-                name=""
-                id="big-size"
-              />
+              <input class="filter__checkbox" type="checkbox" name="" id="big-size" />
               <label class="filter__size-label" for="big-size">big</label>
-              <input
-                class="filter__checkbox"
-                type="checkbox"
-                name=""
-                id="avarage-size"
-              />
-              <label class="filter__size-label" for="avarage-size"
-                >avarage</label
-              >
-              <input
-                class="filter__checkbox"
-                type="checkbox"
-                name=""
-                id="small-size"
-              />
+              <input class="filter__checkbox" type="checkbox" name="" id="avarage-size" />
+              <label class="filter__size-label" for="avarage-size">avarage</label>
+              <input class="filter__checkbox" type="checkbox" name="" id="small-size" />
               <label class="filter__size-label" for="small-size">small</label>
             </div>
-            <input
-              class="filter__checkbox"
-              type="checkbox"
-              name=""
-              id="favorite"
-            />
+            <input class="filter__checkbox" type="checkbox" name="" id="favorite" />
             <label class="filter__size-label" for="favorite">favorite</label>
             <div class="filter__reset">
-              <button class="button button_main filter__button">
-                reset filters
-              </button>
-              <button class="button button_main filter__button">
-                reset setting
-              </button>
+              <button class="button button_main filter__button">reset filters</button>
+              <button class="button button_main filter__button">reset setting</button>
             </div>
           </div>
           <div class="toys-conteiner"></div>
         </div>
         <div class="toys-conteiner" id="toys-conteiner">
+          <!-- <div class="card__no-resault">
+            <p class="card__title">Извините, совпадений не обнаружено</p>
+          </div> -->
           <!-- <div class="card">
             <h6 class="card__name card__title">Lalal</h6>
             <div class="card__img">
@@ -233,17 +155,12 @@
       <div class="yourself">
         <ul class="yourself__list">
           <li class="yourself__elem yourself__elem_3">
-            <a href="https://github.com/Yurichprololz" target="_blank"
-              >Yurichprololz</a
-            >
+            <a href="https://github.com/Yurichprololz" target="_blank">Yurichprololz</a>
           </li>
           <li class="yourself__elem yourself__elem_1">&copy; 2021</li>
           <li class="yourself__elem yourself__elem_2">
             <a href="https://rs.school/" target="_blank">
-              <img
-                class="rs-logo"
-                src="./assets/images/svg/rss.svg"
-                alt="The Rolling Scopes School"
+              <img class="rs-logo" src="./assets/images/svg/rss.svg" alt="The Rolling Scopes School"
             /></a>
           </li>
         </ul>
