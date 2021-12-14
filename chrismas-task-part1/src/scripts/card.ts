@@ -19,6 +19,7 @@ interface ICard {
   isFitedColor: () => boolean;
   isFitedForm: () => boolean;
   isFitedSize: () => boolean;
+  toogleFavorite: (div: HTMLElement) => void;
 }
 
 class Card implements ICard {
@@ -30,6 +31,7 @@ class Card implements ICard {
   size: string;
   shape: string;
   favorite: boolean;
+  static collection = data.map((el) => new Card(el));
   constructor(card: Icard) {
     (this.num = card.num),
       (this.name = card.name),
@@ -56,8 +58,19 @@ class Card implements ICard {
             <p class="card__size card__text">Размер игрушки: ${this.size}</p>
             <p class="card__favorite card__text">Любимая: ${this.favorite ? "да" : "нет"}</p>
       `;
+      if (this.favorite) {
+        div.classList.add("card_favorite");
+      }
+      div.addEventListener("click", () => {
+        this.toogleFavorite(div);
+      });
       conteiner.append(div);
     }
+  }
+  toogleFavorite(div: HTMLElement) {
+    this.favorite = !this.favorite;
+    div.classList.toggle("card_favorite");
+    updateCards();
   }
   isFited() {
     if (
@@ -166,11 +179,10 @@ const updateCards = () => {
   if (conteiner) {
     conteiner.innerHTML = ``;
   }
-  data.forEach((el) => {
-    const card = new Card(el);
-    if (card.isFited()) {
+  Card.collection.forEach((el) => {
+    if (el.isFited()) {
       isEmpty = false;
-      card.render();
+      el.render();
     }
   });
   if (isEmpty) {

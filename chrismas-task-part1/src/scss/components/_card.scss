@@ -62,4 +62,7 @@
     transform: translateY(200%);
     margin: 0 auto;
   }
+  &_favorite {
+    background-color: red;
+  }
 }
