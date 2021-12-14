@@ -17,6 +17,7 @@ interface ICard {
   isFitedYears: () => boolean;
   isFound: () => boolean;
   isFitedColor: () => boolean;
+  isFitedForm: () => boolean;
 }
 
 class Card implements ICard {
@@ -58,7 +59,7 @@ class Card implements ICard {
     }
   }
   isFited() {
-    if (this.isFitedCopies() && this.isFitedYears() && this.isFound() && this.isFitedColor()) {
+    if (this.isFitedCopies() && this.isFitedYears() && this.isFound() && this.isFitedColor() && this.isFitedForm()) {
       return true;
     }
     return false;
@@ -72,8 +73,6 @@ class Card implements ICard {
   }
   isFitedYears() {
     const inputs = document.querySelectorAll(".nouiinput__years_input") as unknown as HTMLInputElement[];
-    console.log(this.year, inputs[0].value, inputs[1].value);
-
     if (Number(this.year) < Number(inputs[0].value) || Number(this.year) > Number(inputs[1].value)) {
       return false;
     }
@@ -102,6 +101,24 @@ class Card implements ICard {
     const regexp = new RegExp(input.value, "i");
 
     if (!input.value || regexp.test(this.name)) {
+      return true;
+    }
+    return false;
+  }
+  isFitedForm() {
+    const filters = document.querySelectorAll(".filter__form-card") as unknown as HTMLElement[];
+    const forms: string[] = [];
+    filters.forEach((el) => {
+      if (el.classList.contains("active_form")) {
+        if (el.dataset.form) {
+          forms.push(el.dataset.form);
+        }
+      }
+    });
+    if (!forms[0]) {
+      return true;
+    }
+    if (forms.includes(this.shape)) {
       return true;
     }
     return false;

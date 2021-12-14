@@ -53,6 +53,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
   }
 
   &__form-card-img {
@@ -135,5 +136,11 @@
   }
   &:nth-child(1)::after {
     border-color: black;
+  }
+}
+
+.active_form {
+  & img {
+    filter: invert(21%) sepia(80%) saturate(3833%) hue-rotate(349deg) brightness(127%) contrast(97%);
   }
 }
