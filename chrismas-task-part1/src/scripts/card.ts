@@ -18,6 +18,7 @@ interface ICard {
   isFound: () => boolean;
   isFitedColor: () => boolean;
   isFitedForm: () => boolean;
+  isFitedSize: () => boolean;
 }
 
 class Card implements ICard {
@@ -59,7 +60,14 @@ class Card implements ICard {
     }
   }
   isFited() {
-    if (this.isFitedCopies() && this.isFitedYears() && this.isFound() && this.isFitedColor() && this.isFitedForm()) {
+    if (
+      this.isFitedCopies() &&
+      this.isFitedYears() &&
+      this.isFound() &&
+      this.isFitedColor() &&
+      this.isFitedForm() &&
+      this.isFitedSize()
+    ) {
       return true;
     }
     return false;
@@ -119,6 +127,24 @@ class Card implements ICard {
       return true;
     }
     if (forms.includes(this.shape)) {
+      return true;
+    }
+    return false;
+  }
+  isFitedSize() {
+    const filters = document.querySelectorAll(".filter__checkbox") as unknown as HTMLInputElement[];
+    const sizes: string[] = [];
+    filters.forEach((el) => {
+      if (el.checked) {
+        if (el.dataset.size) {
+          sizes.push(el.dataset.size);
+        }
+      }
+    });
+    if (!sizes[0]) {
+      return true;
+    }
+    if (sizes.includes(this.size)) {
       return true;
     }
     return false;
