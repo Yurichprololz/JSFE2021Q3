@@ -7,7 +7,7 @@ import { listenerForSizeFilters } from "./scripts/size-filter";
 import "./scripts/nouislider";
 import "./scripts/card";
 import "./scripts/search";
-
+import "./scripts/sort";
 listenerForColorFilters();
 listenerForFormFilters();
 listenerForSizeFilters();

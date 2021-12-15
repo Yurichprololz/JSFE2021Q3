@@ -163,6 +163,37 @@ class Card implements ICard {
     return false;
   }
 }
+const sortByNameOfDecrease = (): void => {
+  Card.collection.sort((a, b) => (a.name < b.name ? 1 : -1));
+};
+const sortByNameOfIncrease = (): void => {
+  Card.collection.sort((a, b) => (a.name > b.name ? 1 : -1));
+};
+const sortByCopuesOfDecrease = (): void => {
+  Card.collection.sort((a, b) => (Number(a.count) < Number(b.count) ? 1 : -1));
+};
+const sortByCopuesOfIncrease = (): void => {
+  Card.collection.sort((a, b) => (Number(a.count) > Number(b.count) ? 1 : -1));
+};
+
+const sort = (e: Event) => {
+  const target = e.target as HTMLSelectElement;
+  switch (target.value) {
+    case "name-of-increase":
+      sortByNameOfIncrease();
+      break;
+    case "name-of-decrease":
+      sortByNameOfDecrease();
+      break;
+    case "amount-of-increase":
+      sortByCopuesOfIncrease();
+      break;
+    case "amount-of-decrease":
+      sortByCopuesOfDecrease();
+      break;
+  }
+  updateCards();
+};
 const noResult = () => {
   const conteiner = document.getElementById("toys-conteiner");
   if (conteiner) {
@@ -190,4 +221,4 @@ const updateCards = () => {
   }
 };
 
-export { updateCards };
+export { updateCards, sort };
