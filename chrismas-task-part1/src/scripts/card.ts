@@ -19,7 +19,8 @@ interface ICard {
   isFitedColor: () => boolean;
   isFitedForm: () => boolean;
   isFitedSize: () => boolean;
-  toogleFavorite: (div: HTMLElement) => void;
+  toogleFavorite: () => void;
+  getFavoriteCount: () => number;
 }
 
 class Card implements ICard {
@@ -62,15 +63,30 @@ class Card implements ICard {
         div.classList.add("card_favorite");
       }
       div.addEventListener("click", () => {
-        this.toogleFavorite(div);
+        this.toogleFavorite();
       });
       conteiner.append(div);
     }
   }
-  toogleFavorite(div: HTMLElement) {
+  showCountFavorite() {
+    const counter = document.getElementById("toys-count") as Element;
+    if (counter) {
+      counter.textContent = String(this.getFavoriteCount());
+    }
+  }
+  getFavoriteCount() {
+    return Card.collection.filter((el) => el.favorite).length;
+  }
+
+  toogleFavorite() {
     this.favorite = !this.favorite;
-    div.classList.toggle("card_favorite");
-    updateCards();
+    if (this.getFavoriteCount() <= 20) {
+      updateCards();
+    } else {
+      this.favorite = !this.favorite;
+      alert("больше 20");
+    }
+    this.showCountFavorite();
   }
   isFited() {
     if (
@@ -163,15 +179,19 @@ class Card implements ICard {
     return false;
   }
 }
+
 const sortByNameOfDecrease = (): void => {
   Card.collection.sort((a, b) => (a.name < b.name ? 1 : -1));
 };
+
 const sortByNameOfIncrease = (): void => {
   Card.collection.sort((a, b) => (a.name > b.name ? 1 : -1));
 };
+
 const sortByCopuesOfDecrease = (): void => {
   Card.collection.sort((a, b) => (Number(a.count) < Number(b.count) ? 1 : -1));
 };
+
 const sortByCopuesOfIncrease = (): void => {
   Card.collection.sort((a, b) => (Number(a.count) > Number(b.count) ? 1 : -1));
 };
@@ -194,6 +214,7 @@ const sort = (e: Event) => {
   }
   updateCards();
 };
+
 const noResult = () => {
   const conteiner = document.getElementById("toys-conteiner");
   if (conteiner) {
@@ -205,6 +226,11 @@ const noResult = () => {
 };
 
 const updateCards = () => {
+  const favorite = document.getElementById("favorite") as HTMLInputElement;
+  if (favorite.checked) {
+    favorite.removeAttribute("checked");
+    favorite.click();
+  }
   const conteiner = document.getElementById("toys-conteiner");
   let isEmpty = true;
   if (conteiner) {
@@ -220,5 +246,20 @@ const updateCards = () => {
     noResult();
   }
 };
-
-export { updateCards, sort };
+const showFavorite = () => {
+  const conteiner = document.getElementById("toys-conteiner");
+  let isEmpty = true;
+  if (conteiner) {
+    conteiner.innerHTML = ``;
+  }
+  Card.collection.forEach((el) => {
+    if (el.favorite) {
+      isEmpty = false;
+      el.render();
+    }
+  });
+  if (isEmpty) {
+    noResult();
+  }
+};
+export { updateCards, sort, showFavorite };
