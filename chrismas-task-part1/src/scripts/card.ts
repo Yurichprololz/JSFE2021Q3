@@ -79,12 +79,13 @@ class Card implements ICard {
   }
 
   toogleFavorite() {
+    const favorite = document.getElementById("favorite") as HTMLInputElement;
     this.favorite = !this.favorite;
     if (this.getFavoriteCount() <= 20) {
-      updateCards();
+      favorite.checked ? showFavorite() : updateCards();
     } else {
       this.favorite = !this.favorite;
-      alert("больше 20");
+      alert("Извините, все слоты заполнены");
     }
     this.showCountFavorite();
   }
@@ -224,13 +225,7 @@ const noResult = () => {
           </div>`;
   }
 };
-
-const updateCards = () => {
-  const favorite = document.getElementById("favorite") as HTMLInputElement;
-  if (favorite.checked) {
-    favorite.removeAttribute("checked");
-    favorite.click();
-  }
+const renderCards = () => {
   const conteiner = document.getElementById("toys-conteiner");
   let isEmpty = true;
   if (conteiner) {
@@ -245,6 +240,15 @@ const updateCards = () => {
   if (isEmpty) {
     noResult();
   }
+};
+const updateCards = () => {
+  const favorite = document.getElementById("favorite") as HTMLInputElement;
+  if (favorite.checked) {
+    favorite.removeAttribute("checked");
+    favorite.click();
+  }
+  renderCards();
+  Card.collection[0].showCountFavorite();
 };
 const showFavorite = () => {
   const conteiner = document.getElementById("toys-conteiner");
@@ -262,4 +266,5 @@ const showFavorite = () => {
     noResult();
   }
 };
-export { updateCards, sort, showFavorite };
+
+export { updateCards, sort, showFavorite, sortByNameOfIncrease };
