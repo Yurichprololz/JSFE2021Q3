@@ -12,6 +12,10 @@
   padding-left: 10px;
   margin: 10px;
   padding-bottom: 20px;
+  transition: transform ease 0.3s 0.1s;
+  &_scale {
+    transform: scale(0) rotate(360deg);
+  }
   &__name {
     height: 20%;
     margin: 0;

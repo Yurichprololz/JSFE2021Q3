@@ -1,9 +1,13 @@
-import { updateCards } from "./card";
+import { updateCards, showFavorite } from "./card";
 
 const listenerForSizeFilters = () => {
   const filters = document.querySelectorAll(".filter__checkbox") as unknown as HTMLElement[];
   filters.forEach((el) => {
-    el.addEventListener("click", updateCards);
+    if (el.id != "favorite") {
+      el.addEventListener("click", updateCards);
+    } else {
+      el.addEventListener("click", showFavorite);
+    }
   });
 };
 export { listenerForSizeFilters };

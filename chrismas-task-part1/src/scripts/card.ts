@@ -82,7 +82,7 @@ class Card implements ICard {
     const favorite = document.getElementById("favorite") as HTMLInputElement;
     this.favorite = !this.favorite;
     if (this.getFavoriteCount() <= 20) {
-      favorite.checked ? showFavorite() : updateCards();
+      favorite.checked ? showFavorite() : renderCards();
     } else {
       this.favorite = !this.favorite;
       alert("Извините, все слоты заполнены");
@@ -225,6 +225,7 @@ const noResult = () => {
           </div>`;
   }
 };
+
 const renderCards = () => {
   const conteiner = document.getElementById("toys-conteiner");
   let isEmpty = true;
@@ -241,7 +242,8 @@ const renderCards = () => {
     noResult();
   }
 };
-const updateCards = () => {
+
+const updateCardsWithoutAnimation = () => {
   const favorite = document.getElementById("favorite") as HTMLInputElement;
   if (favorite.checked) {
     favorite.removeAttribute("checked");
@@ -250,7 +252,36 @@ const updateCards = () => {
   renderCards();
   Card.collection[0].showCountFavorite();
 };
-const showFavorite = () => {
+
+const updateCards = () => {
+  const anim = new Promise<void>((res) => {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      card.classList.add("card_scale");
+    });
+    setTimeout(() => res(), 300);
+  });
+  anim
+    .then(() => {
+      updateCardsWithoutAnimation();
+      const cards = document.querySelectorAll(".card");
+      cards.forEach((card) => {
+        card.classList.add("card_scale");
+      });
+    })
+    .then(() => {
+      setTimeout(() => {
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          if (card.classList.contains("card_scale")) {
+            card.classList.remove("card_scale");
+          }
+        });
+      }, 100);
+    });
+};
+
+const showFavoritewithoutAnimation = () => {
   const conteiner = document.getElementById("toys-conteiner");
   let isEmpty = true;
   if (conteiner) {
@@ -265,6 +296,33 @@ const showFavorite = () => {
   if (isEmpty) {
     noResult();
   }
+};
+const showFavorite = () => {
+  const anim = new Promise<void>((res) => {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      card.classList.add("card_scale");
+    });
+    setTimeout(() => res(), 300);
+  });
+  anim
+    .then(() => {
+      showFavoritewithoutAnimation();
+      const cards = document.querySelectorAll(".card");
+      cards.forEach((card) => {
+        card.classList.add("card_scale");
+      });
+    })
+    .then(() => {
+      setTimeout(() => {
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          if (card.classList.contains("card_scale")) {
+            card.classList.remove("card_scale");
+          }
+        });
+      }, 100);
+    });
 };
 
 export { updateCards, sort, showFavorite, sortByNameOfIncrease };

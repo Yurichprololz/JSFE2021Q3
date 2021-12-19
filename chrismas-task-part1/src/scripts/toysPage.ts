@@ -117,19 +117,25 @@ const renderToysPage = () => {
 };
 
 const afterRenderToysPage = () => {
+  // Listerner on filters
   listenerForColorFilters();
   listenerForFormFilters();
   listenerForSizeFilters();
-  showFavorite();
-  initNoUiSlider();
-  updateCards();
+  // showFavorite();
+  initNoUiSlider(); // initiation double range inputs
+  // updateCards();
   initSearch();
   initSort();
+
+  //Listerner for reset filters button
   document.getElementById("reset-filters")?.addEventListener("click", resetFilters);
 
+  // Dispatch event for sorting during rendering
   const event = new Event("change");
   const sort = document.getElementById("sort") as HTMLSelectElement;
   sort.dispatchEvent(event);
+
+  // Focus on search after rendering - one of the requirements
   const search = document.getElementById("search") as HTMLInputElement;
   search.focus();
 };
