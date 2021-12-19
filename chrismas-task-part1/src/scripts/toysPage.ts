@@ -5,6 +5,7 @@ import initNoUiSlider from "./nouislider";
 import initSearch from "./search";
 import { updateCards, showFavorite } from "./card";
 import { initSort } from "./sort";
+import { resetFilters } from "./reset-filters";
 
 const renderToysPage = () => {
   const header = document.getElementById("header") as HTMLElement;
@@ -15,7 +16,7 @@ const renderToysPage = () => {
     <div class="toys-page">
         <div class="filter">
           <div class="filter__sort">
-            <h5 class="filter__title">Сортировать</h5>
+            <h5 class="filter__title">Сортировать по</h5>
             <select class="filter__sort-by button" id="sort">
               <option class="filter__sort-option" value="name-of-increase">алфавиту "А-Я"</option>
               <option class="filter__sort-option" value="name-of-decrease">алфавиту "Я-А"</option>
@@ -24,11 +25,9 @@ const renderToysPage = () => {
             </select>
           </div>
           <div class="filter__category">
-            <h5 class="filter__title">Categoties</h5>
-            <input class="filter__category-input" type="checkbox" name="" id="category" checked />
-            <label class="filter__category-label" for="category">All</label>
+            <h5 class="filter__title">Категории</h5>
           </div>
-          <h5 class="filter__subtitle">form</h5>
+          <h5 class="filter__subtitle">Форма</h5>
           <div class="filter__form">
             <div class="filter__form-card" data-form="шишка">
               <img class="filter__form-card-img" src="./assets/images/svg/forms/pine.svg" alt="" />
@@ -52,7 +51,7 @@ const renderToysPage = () => {
             </div>
           </div>
           <div class="filter__range">
-            <h5 class="filter__subtitle">Number of copies</h5>
+            <h5 class="filter__subtitle">Количество экземпляров</h5>
             <div class="filter__range-input nouiinput" id="range-copy"></div>
             <div class="nouiinput__conteiner-number">
               <input type="number" class="nouiinput__number nouiinput__copies_input" name="" id="" placeholder="1" />
@@ -65,7 +64,7 @@ const renderToysPage = () => {
               />
             </div>
             <div class="filter__range">
-              <h5 class="filter__subtitle">Year of purchase</h5>
+              <h5 class="filter__subtitle">Год приобретения</h5>
               <div class="filter__range-input nouiinput" id="range-years"></div>
               <div class="nouiinput__conteiner-number">
                 <input
@@ -86,7 +85,7 @@ const renderToysPage = () => {
             </div>
           </div>
 
-          <h5 class="filter__subtitle">Color</h5>
+          <h5 class="filter__subtitle">Цвет</h5>
           <div class="filter__color">
             <button data-color="белый" class="filter__color-btn filter__color-btn_1"></button>
             <button data-color="желтый" class="filter__color-btn filter__color-btn_2"></button>
@@ -94,20 +93,20 @@ const renderToysPage = () => {
             <button data-color="синий" class="filter__color-btn filter__color-btn_4"></button>
             <button data-color="зелёный" class="filter__color-btn filter__color-btn_5"></button>
           </div>
-          <h5 class="filter__subtitle">Size</h5>
+          <h5 class="filter__subtitle">Размер</h5>
           <div class="filter__size">
             <input class="filter__checkbox" data-size="большой" type="checkbox" name="" id="big-size" />
-            <label class="filter__size-label" for="big-size">big</label>
+            <label class="filter__size-label" for="big-size">Большой</label>
             <input class="filter__checkbox" data-size="средний" type="checkbox" name="" id="avarage-size" />
-            <label class="filter__size-label" for="avarage-size">avarage</label>
+            <label class="filter__size-label" for="avarage-size">Средний</label>
             <input class="filter__checkbox" data-size="малый" type="checkbox" name="" id="small-size" />
-            <label class="filter__size-label" for="small-size">small</label>
+            <label class="filter__size-label" for="small-size">Малый</label>
           </div>
           <input class="filter__checkbox" type="checkbox" name="" id="favorite" />
-          <label class="filter__size-label" for="favorite">favorite</label>
+          <label class="filter__size-label" for="favorite">Любимые</label>
           <div class="filter__reset">
-            <button class="button button_main filter__button">reset filters</button>
-            <button class="button button_main filter__button">reset setting</button>
+            <button class="button button_main filter__button" id="reset-filters">Сбросить фильтры</button>
+            <button class="button button_main filter__button">Сбросить настройки</button>
           </div>
         </div>
         <div class="toys-conteiner" id="toys-conteiner">
@@ -126,6 +125,7 @@ const afterRenderToysPage = () => {
   updateCards();
   initSearch();
   initSort();
+  document.getElementById("reset-filters")?.addEventListener("click", resetFilters);
 
   const event = new Event("change");
   const sort = document.getElementById("sort") as HTMLSelectElement;
