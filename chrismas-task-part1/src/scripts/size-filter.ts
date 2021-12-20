@@ -1,6 +1,6 @@
 import { updateCards, showFavorite } from "./card";
 
-const listenerForSizeFilters = () => {
+const listenerForSizeFilters = (): void => {
   const filters = document.querySelectorAll(".filter__checkbox") as unknown as HTMLElement[];
   filters.forEach((el) => {
     if (el.id != "favorite") {

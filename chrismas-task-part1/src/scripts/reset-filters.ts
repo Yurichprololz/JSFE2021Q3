@@ -1,12 +1,12 @@
 import { updateCards } from "./card";
 import { target } from "nouislider";
 
-const resetSearch = () => {
+const resetSearch = (): void => {
   const search = document.getElementById("search") as HTMLInputElement;
   search.value = "";
 };
 
-const resetFormFilters = () => {
+const resetFormFilters = (): void => {
   const filters = document.querySelectorAll(".filter__form-card") as unknown as HTMLDivElement[];
   filters.forEach((filter) => {
     if (filter.classList.contains("active_form")) {
@@ -15,7 +15,7 @@ const resetFormFilters = () => {
   });
 };
 
-const resetColorFilters = () => {
+const resetColorFilters = (): void => {
   const filters = document.querySelectorAll(".filter__color-btn") as unknown as HTMLDivElement[];
   filters.forEach((filter) => {
     if (filter.classList.contains("active")) {
@@ -24,7 +24,7 @@ const resetColorFilters = () => {
   });
 };
 
-const resetSizeFilters = () => {
+const resetSizeFilters = (): void => {
   const filters = document.querySelectorAll(".filter__checkbox") as unknown as HTMLInputElement[];
   filters.forEach((filter) => {
     if (filter.checked) {
@@ -33,7 +33,7 @@ const resetSizeFilters = () => {
   });
 };
 
-const resetNoUiSlider = () => {
+const resetNoUiSlider = (): void => {
   const sliders = document.querySelectorAll(".filter__range-input") as unknown as target[];
   const rangeOption = [
     [1, 12],
@@ -44,7 +44,7 @@ const resetNoUiSlider = () => {
     slider.noUiSlider?.set(rangeOption[index]);
   });
 };
-const resetFilters = () => {
+const resetFilters = (): void => {
   resetSearch();
   resetFormFilters();
   resetColorFilters();

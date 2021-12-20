@@ -1,6 +1,6 @@
 import { setSetting } from "./set-setting";
 
-const resetSetting = () => {
+const resetSetting = (): void => {
   document.getElementById("reset-setting")?.addEventListener("click", () => {
     const favorite: boolean[] = [];
     favorite.length = 60;

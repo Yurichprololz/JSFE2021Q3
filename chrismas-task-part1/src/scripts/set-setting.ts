@@ -1,6 +1,6 @@
 import { setFavorite } from "./card";
 
-const setColor = () => {
+const setColor = (): void => {
   const set = localStorage.getItem("color");
   let setting: boolean[];
   if (set) {
@@ -16,7 +16,7 @@ const setColor = () => {
   });
 };
 
-const setForm = () => {
+const setForm = (): void => {
   const set = localStorage.getItem("form");
   let setting: boolean[];
   if (set) {
@@ -32,7 +32,7 @@ const setForm = () => {
   });
 };
 
-const setCopies = () => {
+const setCopies = (): void => {
   const set = localStorage.getItem("copies");
   let setting: string[];
   if (set) {
@@ -50,7 +50,7 @@ const setCopies = () => {
   });
 };
 
-const setYears = () => {
+const setYears = (): void => {
   const set = localStorage.getItem("years");
   let setting: string[];
   if (set) {
@@ -68,7 +68,7 @@ const setYears = () => {
   });
 };
 
-const setSort = () => {
+const setSort = (): void => {
   const sort = document.getElementById("sort") as HTMLSelectElement;
   const setting: string | null = localStorage.getItem("sort");
   if (!setting) return;
@@ -78,7 +78,7 @@ const setSort = () => {
   sort.dispatchEvent(event);
 };
 
-const setSize = () => {
+const setSize = (): void => {
   const set = localStorage.getItem("size");
   let setting: boolean[];
   if (set) {

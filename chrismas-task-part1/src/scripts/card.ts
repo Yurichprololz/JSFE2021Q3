@@ -10,17 +10,18 @@ interface Icard {
   size: string;
   favorite: boolean;
 }
-interface ICard {
+interface ICard extends Icard {
   render: () => void;
+  showCountFavorite: () => void;
+  getFavoriteCount: () => number;
+  toogleFavorite: () => void;
   isFited: () => boolean;
   isFitedCopies: () => boolean;
   isFitedYears: () => boolean;
-  isFound: () => boolean;
   isFitedColor: () => boolean;
+  isFound: () => boolean;
   isFitedForm: () => boolean;
   isFitedSize: () => boolean;
-  toogleFavorite: () => void;
-  getFavoriteCount: () => number;
 }
 
 class Card implements ICard {
@@ -43,8 +44,8 @@ class Card implements ICard {
       (this.size = card.size),
       (this.favorite = card.favorite);
   }
-  render() {
-    const conteiner = document.getElementById("toys-conteiner");
+  render(): void {
+    const conteiner = document.getElementById("toys-conteiner") as HTMLDivElement;
 
     if (conteiner) {
       const div = createEl("div", "card");
@@ -68,17 +69,17 @@ class Card implements ICard {
       conteiner.append(div);
     }
   }
-  showCountFavorite() {
+  showCountFavorite(): void {
     const counter = document.getElementById("toys-count") as Element;
     if (counter) {
       counter.textContent = String(this.getFavoriteCount());
     }
   }
-  getFavoriteCount() {
+  getFavoriteCount(): number {
     return Card.collection.filter((el) => el.favorite).length;
   }
 
-  toogleFavorite() {
+  toogleFavorite(): void {
     const favorite = document.getElementById("favorite") as HTMLInputElement;
     this.favorite = !this.favorite;
     if (this.getFavoriteCount() <= 20) {
@@ -89,7 +90,7 @@ class Card implements ICard {
     }
     this.showCountFavorite();
   }
-  isFited() {
+  isFited(): boolean {
     if (
       this.isFitedCopies() &&
       this.isFitedYears() &&
@@ -102,21 +103,21 @@ class Card implements ICard {
     }
     return false;
   }
-  isFitedCopies() {
+  isFitedCopies(): boolean {
     const inputs = document.querySelectorAll(".nouiinput__copies_input") as unknown as HTMLInputElement[];
     if (Number(this.count) < Number(inputs[0].value) || Number(this.count) > Number(inputs[1].value)) {
       return false;
     }
     return true;
   }
-  isFitedYears() {
+  isFitedYears(): boolean {
     const inputs = document.querySelectorAll(".nouiinput__years_input") as unknown as HTMLInputElement[];
     if (Number(this.year) < Number(inputs[0].value) || Number(this.year) > Number(inputs[1].value)) {
       return false;
     }
     return true;
   }
-  isFitedColor() {
+  isFitedColor(): boolean {
     const filters = document.querySelectorAll(".filter__color-btn") as unknown as HTMLElement[];
     const colors: string[] = [];
     filters.forEach((el) => {
@@ -134,7 +135,7 @@ class Card implements ICard {
     }
     return false;
   }
-  isFound() {
+  isFound(): boolean {
     const input = document.getElementById("search") as HTMLInputElement;
     const regexp = new RegExp(input.value, "i");
 
@@ -143,7 +144,7 @@ class Card implements ICard {
     }
     return false;
   }
-  isFitedForm() {
+  isFitedForm(): boolean {
     const filters = document.querySelectorAll(".filter__form-card") as unknown as HTMLElement[];
     const forms: string[] = [];
     filters.forEach((el) => {
@@ -161,7 +162,7 @@ class Card implements ICard {
     }
     return false;
   }
-  isFitedSize() {
+  isFitedSize(): boolean {
     const filters = document.querySelectorAll(".filter__checkbox") as unknown as HTMLInputElement[];
     const sizes: string[] = [];
     filters.forEach((el) => {
@@ -197,7 +198,7 @@ const sortByCopuesOfIncrease = (): void => {
   Card.collection.sort((a, b) => (Number(a.count) > Number(b.count) ? 1 : -1));
 };
 
-const sort = (e: Event) => {
+const sort = (e: Event): void => {
   const target = e.target as HTMLSelectElement;
   switch (target.value) {
     case "name-of-increase":
@@ -216,7 +217,7 @@ const sort = (e: Event) => {
   updateCards();
 };
 
-const noResult = () => {
+const noResult = (): void => {
   const conteiner = document.getElementById("toys-conteiner");
   if (conteiner) {
     conteiner.innerHTML = `
@@ -226,7 +227,7 @@ const noResult = () => {
   }
 };
 
-const renderCards = () => {
+const renderCards = (): void => {
   const conteiner = document.getElementById("toys-conteiner");
   let isEmpty = true;
   if (conteiner) {
@@ -243,7 +244,7 @@ const renderCards = () => {
   }
 };
 
-const updateCardsWithoutAnimation = () => {
+const updateCardsWithoutAnimation = (): void => {
   const favorite = document.getElementById("favorite") as HTMLInputElement;
   if (favorite.checked) {
     favorite.removeAttribute("checked");
@@ -253,23 +254,23 @@ const updateCardsWithoutAnimation = () => {
   Card.collection[0].showCountFavorite();
 };
 
-const updateCards = () => {
+const updateCards = (): void => {
   const anim = new Promise<void>((res) => {
     const cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
       card.classList.add("card_scale");
     });
-    setTimeout(() => res(), 300);
+    setTimeout((): void => res(), 300);
   });
   anim
-    .then(() => {
+    .then((): void => {
       updateCardsWithoutAnimation();
       const cards = document.querySelectorAll(".card");
       cards.forEach((card) => {
         card.classList.add("card_scale");
       });
     })
-    .then(() => {
+    .then((): void => {
       setTimeout(() => {
         const cards = document.querySelectorAll(".card");
         cards.forEach((card) => {
@@ -281,7 +282,7 @@ const updateCards = () => {
     });
 };
 
-const showFavoritewithoutAnimation = () => {
+const showFavoritewithoutAnimation = (): void => {
   const conteiner = document.getElementById("toys-conteiner");
   let isEmpty = true;
   if (conteiner) {
@@ -297,7 +298,7 @@ const showFavoritewithoutAnimation = () => {
     noResult();
   }
 };
-const showFavorite = () => {
+const showFavorite = (): void => {
   const anim = new Promise<void>((res) => {
     const cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
@@ -325,7 +326,7 @@ const showFavorite = () => {
     });
 };
 
-const saveFavorite = () => {
+const saveFavorite = (): boolean[] => {
   const arr: boolean[] = Card.collection.map((card) => {
     if (card.favorite) {
       return true;
@@ -336,7 +337,7 @@ const saveFavorite = () => {
   return arr;
 };
 
-const setFavorite = () => {
+const setFavorite = (): void => {
   const favorite: string | null = localStorage.getItem("favorite");
   if (!favorite) return;
   const arrFavorite: boolean[] = JSON.parse(favorite);

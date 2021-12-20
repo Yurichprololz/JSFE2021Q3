@@ -11,7 +11,7 @@ const renderMainPage = (): void => {
       </div>`;
   afterRenderMainPage();
 };
-const afterRenderMainPage = () => {
+const afterRenderMainPage = (): void => {
   const start = document.getElementById("start") as Element;
   start.addEventListener("click", renderToysPage);
 };

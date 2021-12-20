@@ -9,7 +9,7 @@ import { saveSetting } from "./save-setting";
 import { setSetting } from "./set-setting";
 import { resetSetting } from "./reset-setting";
 
-const renderToysPage = () => {
+const renderToysPage = (): void => {
   const header = document.getElementById("header") as HTMLElement;
   header.classList.add("non-main-content");
   const main = document.getElementById("main") as HTMLElement;
@@ -118,7 +118,7 @@ const renderToysPage = () => {
   afterRenderToysPage();
 };
 
-const afterRenderToysPage = () => {
+const afterRenderToysPage = (): void => {
   // Listerner on filters
   listenerForColorFilters();
   listenerForFormFilters();
