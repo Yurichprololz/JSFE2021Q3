@@ -14,6 +14,7 @@ const resetSetting = (): void => {
     localStorage.setItem("color", JSON.stringify([false, false, false, false, false]));
     localStorage.setItem("form", JSON.stringify([false, false, false, false, false]));
     setSetting();
+    localStorage.clear();
   });
 };
 
