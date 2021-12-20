@@ -3,9 +3,11 @@ import { listenerForFormFilters } from "./form-filter";
 import { listenerForSizeFilters } from "./size-filter";
 import initNoUiSlider from "./nouislider";
 import initSearch from "./search";
-import { updateCards, showFavorite } from "./card";
 import { initSort } from "./sort";
 import { resetFilters } from "./reset-filters";
+import { saveSetting } from "./save-setting";
+import { setSetting } from "./set-setting";
+import { resetSetting } from "./reset-setting";
 
 const renderToysPage = () => {
   const header = document.getElementById("header") as HTMLElement;
@@ -106,7 +108,7 @@ const renderToysPage = () => {
           <label class="filter__size-label" for="favorite">Любимые</label>
           <div class="filter__reset">
             <button class="button button_main filter__button" id="reset-filters">Сбросить фильтры</button>
-            <button class="button button_main filter__button">Сбросить настройки</button>
+            <button class="button button_main filter__button" id="reset-setting">Сбросить настройки</button>
           </div>
         </div>
         <div class="toys-conteiner" id="toys-conteiner">
@@ -130,14 +132,20 @@ const afterRenderToysPage = () => {
   //Listerner for reset filters button
   document.getElementById("reset-filters")?.addEventListener("click", resetFilters);
 
+  //Listerner for save filters
+  window.addEventListener("beforeunload", saveSetting);
+
+  resetSetting();
   // Dispatch event for sorting during rendering
-  const event = new Event("change");
-  const sort = document.getElementById("sort") as HTMLSelectElement;
-  sort.dispatchEvent(event);
+  // const event = new Event("change");
+  // const sort = document.getElementById("sort") as HTMLSelectElement;
+  // sort.dispatchEvent(event);
 
   // Focus on search after rendering - one of the requirements
   const search = document.getElementById("search") as HTMLInputElement;
   search.focus();
+
+  setSetting();
 };
 
 export { renderToysPage };

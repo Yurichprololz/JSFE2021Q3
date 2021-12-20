@@ -325,4 +325,26 @@ const showFavorite = () => {
     });
 };
 
-export { updateCards, sort, showFavorite, sortByNameOfIncrease };
+const saveFavorite = () => {
+  const arr: boolean[] = Card.collection.map((card) => {
+    if (card.favorite) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return arr;
+};
+
+const setFavorite = () => {
+  const favorite: string | null = localStorage.getItem("favorite");
+  if (!favorite) return;
+  const arrFavorite: boolean[] = JSON.parse(favorite);
+  arrFavorite.forEach((value, index) => {
+    if (value != Card.collection[index].favorite) {
+      Card.collection[index].favorite = !Card.collection[index].favorite;
+    }
+  });
+};
+
+export { updateCards, sort, showFavorite, sortByNameOfIncrease, saveFavorite, setFavorite, renderCards };
