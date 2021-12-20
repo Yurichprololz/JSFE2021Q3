@@ -36,28 +36,11 @@
     }
   }
 
-  &__count {
-  }
-
   &__text {
     @include mainText(12px);
     margin-top: 0;
   }
 
-  &__year {
-  }
-
-  &__form {
-  }
-
-  &__color {
-  }
-
-  &__size {
-  }
-
-  &__favorite {
-  }
   &__no-resault {
     border: #278d9f solid 3px;
     border-radius: 30px;

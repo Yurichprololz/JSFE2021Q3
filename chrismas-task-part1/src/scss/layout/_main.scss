@@ -4,6 +4,7 @@
   background: url(../assets/images/bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+
   &_toys {
     height: calc(100vh - 2 * $nonMainHeight);
     background: $backgraundColor;

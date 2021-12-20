@@ -34,6 +34,7 @@ class Card implements ICard {
   shape: string;
   favorite: boolean;
   static collection = data.map((el) => new Card(el));
+
   constructor(card: Icard) {
     (this.num = card.num),
       (this.name = card.name),
@@ -44,6 +45,7 @@ class Card implements ICard {
       (this.size = card.size),
       (this.favorite = card.favorite);
   }
+
   render(): void {
     const conteiner = document.getElementById("toys-conteiner") as HTMLDivElement;
 
@@ -69,12 +71,14 @@ class Card implements ICard {
       conteiner.append(div);
     }
   }
+
   showCountFavorite(): void {
     const counter = document.getElementById("toys-count") as Element;
     if (counter) {
       counter.textContent = String(this.getFavoriteCount());
     }
   }
+
   getFavoriteCount(): number {
     return Card.collection.filter((el) => el.favorite).length;
   }
@@ -90,6 +94,7 @@ class Card implements ICard {
     }
     this.showCountFavorite();
   }
+
   isFited(): boolean {
     if (
       this.isFitedCopies() &&
@@ -103,6 +108,7 @@ class Card implements ICard {
     }
     return false;
   }
+
   isFitedCopies(): boolean {
     const inputs = document.querySelectorAll(".nouiinput__copies_input") as unknown as HTMLInputElement[];
     if (Number(this.count) < Number(inputs[0].value) || Number(this.count) > Number(inputs[1].value)) {
@@ -110,6 +116,7 @@ class Card implements ICard {
     }
     return true;
   }
+
   isFitedYears(): boolean {
     const inputs = document.querySelectorAll(".nouiinput__years_input") as unknown as HTMLInputElement[];
     if (Number(this.year) < Number(inputs[0].value) || Number(this.year) > Number(inputs[1].value)) {
@@ -117,6 +124,7 @@ class Card implements ICard {
     }
     return true;
   }
+
   isFitedColor(): boolean {
     const filters = document.querySelectorAll(".filter__color-btn") as unknown as HTMLElement[];
     const colors: string[] = [];
@@ -135,6 +143,7 @@ class Card implements ICard {
     }
     return false;
   }
+
   isFound(): boolean {
     const input = document.getElementById("search") as HTMLInputElement;
     const regexp = new RegExp(input.value, "i");
@@ -144,6 +153,7 @@ class Card implements ICard {
     }
     return false;
   }
+
   isFitedForm(): boolean {
     const filters = document.querySelectorAll(".filter__form-card") as unknown as HTMLElement[];
     const forms: string[] = [];
@@ -162,6 +172,7 @@ class Card implements ICard {
     }
     return false;
   }
+
   isFitedSize(): boolean {
     const filters = document.querySelectorAll(".filter__checkbox") as unknown as HTMLInputElement[];
     const sizes: string[] = [];
@@ -298,6 +309,7 @@ const showFavoritewithoutAnimation = (): void => {
     noResult();
   }
 };
+
 const showFavorite = (): void => {
   const anim = new Promise<void>((res) => {
     const cards = document.querySelectorAll(".card");

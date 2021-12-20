@@ -8,6 +8,7 @@ const setColor = (): void => {
   } else {
     return;
   }
+
   const filters = document.querySelectorAll(".filter__color-btn") as unknown as HTMLDivElement[];
   setting.forEach((value, index) => {
     if (value) {
@@ -25,6 +26,7 @@ const setForm = (): void => {
     return;
   }
   const filters = document.querySelectorAll(".filter__form-card") as unknown as HTMLDivElement[];
+
   setting.forEach((value, index) => {
     if (value) {
       filters[index].click();
@@ -40,8 +42,10 @@ const setCopies = (): void => {
   } else {
     return;
   }
+
   const filters = document.querySelectorAll(".nouiinput__copies_input") as unknown as HTMLInputElement[];
   const change = new Event("change");
+
   setting.forEach((value, index) => {
     if (value) {
       filters[index].value = setting[index];
@@ -60,6 +64,7 @@ const setYears = (): void => {
   }
   const filters = document.querySelectorAll(".nouiinput__years_input") as unknown as HTMLInputElement[];
   const change = new Event("change");
+
   setting.forEach((value, index) => {
     if (value) {
       filters[index].value = setting[index];
@@ -81,12 +86,15 @@ const setSort = (): void => {
 const setSize = (): void => {
   const set = localStorage.getItem("size");
   let setting: boolean[];
+
   if (set) {
     setting = JSON.parse(set);
   } else {
     return;
   }
+
   const filters = document.querySelectorAll(".filter__checkbox") as unknown as HTMLInputElement[];
+
   setting.forEach((value, index) => {
     if (value) {
       filters[index].click();

@@ -37,11 +37,6 @@
     background-color: #3a5757;
   }
 
-  &__category {
-  }
-
-  &__category-input {
-  }
   &__category-label {
     @include mainText();
   }
@@ -64,12 +59,6 @@
 
   &__form-card-text {
     @include mainText(12px);
-  }
-
-  &__range {
-  }
-
-  &__range-input {
   }
 
   &__color {
@@ -105,12 +94,6 @@
     }
   }
 
-  &__size {
-  }
-
-  &__checkbox {
-  }
-
   &__size-label {
     @include mainText();
   }
@@ -119,9 +102,6 @@
     display: flex;
     justify-content: space-between;
     width: 90%;
-  }
-
-  &__button {
   }
 }
 

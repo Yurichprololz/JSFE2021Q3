@@ -123,9 +123,7 @@ const afterRenderToysPage = (): void => {
   listenerForColorFilters();
   listenerForFormFilters();
   listenerForSizeFilters();
-  // showFavorite();
   initNoUiSlider(); // initiation double range inputs
-  // updateCards();
   initSearch();
   initSort();
 
@@ -135,17 +133,15 @@ const afterRenderToysPage = (): void => {
   //Listerner for save filters
   window.addEventListener("beforeunload", saveSetting);
 
+  // Listerner for reset setting
   resetSetting();
-  // Dispatch event for sorting during rendering
-  // const event = new Event("change");
-  // const sort = document.getElementById("sort") as HTMLSelectElement;
-  // sort.dispatchEvent(event);
+
+  // Listerner for set setting
+  setSetting();
 
   // Focus on search after rendering - one of the requirements
   const search = document.getElementById("search") as HTMLInputElement;
   search.focus();
-
-  setSetting();
 };
 
 export { renderToysPage };
