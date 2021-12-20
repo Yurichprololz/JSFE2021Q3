@@ -1,8 +1,4 @@
-export default function createElement(
-  tag: string,
-  classList?: string,
-  attributes?: object
-) {
+export default function createElement<T>(tag: T, classList?: T, attributes?: object) {
   const el = document.createElement(`${tag}`);
   if (classList) {
     el.classList.add(`${classList}`);

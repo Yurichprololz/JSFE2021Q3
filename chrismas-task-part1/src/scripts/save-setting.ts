@@ -1,6 +1,8 @@
 import { saveFavorite } from "./card";
 
-const saveColor = () => {
+type MyArray<T> = T[];
+
+const saveColor = (): MyArray<boolean> => {
   const filters = document.querySelectorAll(".filter__color-btn") as unknown as HTMLDivElement[];
   const arr: boolean[] = [];
   filters.forEach((filter) => {
@@ -13,7 +15,7 @@ const saveColor = () => {
   return arr;
 };
 
-const saveForm = () => {
+const saveForm = (): MyArray<boolean> => {
   const filters = document.querySelectorAll(".filter__form-card") as unknown as HTMLDivElement[];
   const arr: boolean[] = [];
   filters.forEach((filter) => {
@@ -26,7 +28,7 @@ const saveForm = () => {
   return arr;
 };
 
-const saveSize = () => {
+const saveSize = (): MyArray<boolean> => {
   const filters = document.querySelectorAll(".filter__checkbox") as unknown as HTMLInputElement[];
   const arr: boolean[] = [];
   filters.forEach((filter) => {
@@ -44,17 +46,17 @@ const saveSort = () => {
   return sort.value;
 };
 
-const saveCopies = () => {
+const saveCopies = (): MyArray<string> => {
   const filters = document.querySelectorAll(".nouiinput__copies_input") as unknown as HTMLInputElement[];
   return [filters[0].value, filters[1].value];
 };
 
-const saveYears = () => {
+const saveYears = (): MyArray<string> => {
   const filters = document.querySelectorAll(".nouiinput__years_input") as unknown as HTMLInputElement[];
   return [filters[0].value, filters[1].value];
 };
 
-const saveSetting = () => {
+const saveSetting = (): void => {
   localStorage.setItem("color", JSON.stringify(saveColor()));
   localStorage.setItem("form", JSON.stringify(saveForm()));
   localStorage.setItem("size", JSON.stringify(saveSize()));

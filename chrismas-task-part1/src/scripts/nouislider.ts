@@ -1,7 +1,9 @@
 import noUiSlider, { target } from "nouislider";
 import { updateCards } from "./card";
 
-export default function init() {
+type v<T> = T;
+
+export default function init(): void {
   const sliders = document.querySelectorAll(".filter__range-input") as unknown as target[];
   const rangeOption = [
     [1, 12],
@@ -19,7 +21,7 @@ export default function init() {
     inputsCopy[handle].value = String(Math.round(unencoded[handle]));
     updateCards();
   };
-  const setNumbfromYears = (values: (string | number)[], handle: number, unencoded: number[]) => {
+  const setNumbfromYears = (values: v<string | number>[], handle: number, unencoded: number[]) => {
     inputsYears[handle].value = String(Math.round(unencoded[handle]));
     updateCards();
   };
@@ -45,14 +47,14 @@ export default function init() {
   }
   inputsCopy.forEach((input, index) => {
     input.addEventListener("change", () => {
-      const arr: (number | string)[] = ["null", "null"];
+      const arr: string[] = ["null", "null"];
       arr[index] = input.value;
       copyRange.noUiSlider?.set(arr);
     });
   });
   inputsYears.forEach((input, index) => {
     input.addEventListener("change", () => {
-      const arr: (number | string)[] = ["null", "null"];
+      const arr: string[] = ["null", "null"];
       arr[index] = input.value;
       yearsRange.noUiSlider?.set(arr);
     });
