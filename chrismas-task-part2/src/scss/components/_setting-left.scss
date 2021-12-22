@@ -34,9 +34,12 @@
 .volume {
   height: 30px;
   width: 30px;
-  background-image: url(../assets/images/svg/audio.svg);
+  background-image: url(../assets/images/svg/mute.svg);
   background-size: cover;
   margin: 0 30px;
+  &_active {
+    background-image: url(../assets/images/svg/audio.svg);
+  }
 }
 .showfall {
   height: 30px;
