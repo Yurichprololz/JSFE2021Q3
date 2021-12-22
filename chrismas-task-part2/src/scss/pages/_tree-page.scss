@@ -1,0 +1,24 @@
+.tree-page {
+  display: flex;
+  height: 100%;
+  padding: 0 40px;
+  &__column {
+    flex-grow: 1;
+  }
+
+  &__tree {
+    // height: 100%;
+    width: 600px;
+  }
+}
+.tree {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-image: url(../assets/images/bg/1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  &__img {
+    height: 80%;
+  }
+}

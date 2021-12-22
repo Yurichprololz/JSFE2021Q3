@@ -1,0 +1,46 @@
+.setting-left {
+  &__tree {
+  }
+
+  &__title {
+    @include headText(20px);
+    margin-bottom: 10px;
+  }
+
+  &__tree-wrap {
+  }
+
+  &__fon {
+  }
+
+  &__fon-wrap {
+  }
+
+  &__garland {
+  }
+
+  &__garland-wrap {
+  }
+  &__volume {
+  }
+
+  &__showfall {
+  }
+  &__buttons {
+    display: flex;
+    margin-top: 20px;
+  }
+}
+.volume {
+  height: 30px;
+  width: 30px;
+  background-image: url(../assets/images/svg/audio.svg);
+  background-size: cover;
+  margin: 0 30px;
+}
+.showfall {
+  height: 30px;
+  width: 30px;
+  background-image: url(../assets/images/svg/snowflake.svg);
+  background-size: cover;
+}

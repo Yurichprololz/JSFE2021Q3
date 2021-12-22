@@ -1,0 +1,43 @@
+.fon-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+  &__item {
+    @include conteinerForItem();
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    background-size: cover;
+    &_1 {
+      background-image: url(../assets/images/bg-icon/1.jpg);
+    }
+
+    &_2 {
+      background-image: url(../assets/images/bg-icon/2.jpg);
+    }
+
+    &_3 {
+      background-image: url(../assets/images/bg-icon/3.jpg);
+    }
+
+    &_4 {
+      background-image: url(../assets/images/bg-icon/4.jpg);
+    }
+
+    &_5 {
+      background-image: url(../assets/images/bg-icon/5.jpg);
+    }
+
+    &_6 {
+      background-image: url(../assets/images/bg-icon/6.jpg);
+    }
+
+    &_7 {
+      background-image: url(../assets/images/bg-icon/7.jpg);
+    }
+
+    &_8 {
+      background-image: url(../assets/images/bg-icon/8.jpg);
+    }
+  }
+}

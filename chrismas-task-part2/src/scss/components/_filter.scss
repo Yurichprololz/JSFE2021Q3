@@ -101,7 +101,7 @@
   &__reset {
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    max-width: 300px;
   }
 }
 
