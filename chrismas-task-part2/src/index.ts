@@ -7,3 +7,4 @@ import "./scripts/change-tree";
 import "./scripts/change-fon";
 import "./scripts/audio";
 import "./scripts/garland";
+import "./scripts/snowfall";
