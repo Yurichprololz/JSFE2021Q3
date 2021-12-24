@@ -6,3 +6,4 @@ import { renderMainPage } from "./scripts/mainPage";
 import "./scripts/change-tree";
 import "./scripts/change-fon";
 import "./scripts/audio";
+import "./scripts/garland";

@@ -1,0 +1,87 @@
+.garland {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  //   height: 80%;
+  //   width: 100%;
+
+  &__line {
+    position: absolute;
+    transform: translateX(-50%) rotate(270deg);
+    border-radius: 50%;
+    // background-color: rgba(0, 0, 0, 0.158);
+  }
+
+  &__lamp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    animation: light 2s ease infinite both;
+    &_red {
+      background-color: red;
+      box-shadow: 0px 0px 2px 2px rgb(100, 12, 16);
+    }
+    &_blue {
+      background-color: rgb(50, 50, 173);
+      box-shadow: 0px 0px 2px 2px rgb(14, 139, 189);
+    }
+    &_green {
+      background-color: rgb(65, 231, 87);
+      box-shadow: 0px 0px 2px 2px rgb(32, 107, 25);
+    }
+    &_yellow {
+      background-color: rgb(202, 214, 27);
+      box-shadow: 0px 0px 2px 2px rgb(207, 147, 15);
+    }
+    &_multi {
+      &:nth-child(1n) {
+        background-color: rgb(235, 107, 3);
+        box-shadow: 0px 0px 2px 2px rgb(22, 204, 164);
+      }
+      &:nth-child(2n) {
+        background-color: red;
+        box-shadow: 0px 0px 2px 2px rgb(100, 12, 16);
+      }
+      &:nth-child(3n) {
+        background-color: rgb(17, 17, 185);
+        box-shadow: 0px 0px 2px 2px rgb(14, 139, 189);
+      }
+      &:nth-child(4n) {
+        background-color: rgb(202, 214, 27);
+        box-shadow: 0px 0px 2px 2px rgb(207, 147, 15);
+      }
+      &:nth-child(5n - 1) {
+        background-color: rgb(235, 107, 3);
+        box-shadow: 0px 0px 2px 2px rgb(22, 204, 164);
+      }
+    }
+    &:nth-child(2n + 1) {
+      animation-duration: 1.7s;
+    }
+    &:nth-child(3n + 1) {
+      animation-duration: 1.5s;
+    }
+    &:nth-child(4n + 2) {
+      animation-duration: 1s;
+    }
+    &:nth-child(5n) {
+      animation-duration: 2.5s;
+    }
+  }
+}
+
+@keyframes light {
+  0% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}

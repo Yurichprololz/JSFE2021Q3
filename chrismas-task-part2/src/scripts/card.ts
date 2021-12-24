@@ -33,7 +33,7 @@ class Card implements ICard {
   size: string;
   shape: string;
   favorite: boolean;
-  static collection = data.map((el) => new Card(el));
+  static collection: Card[] = data.map((el) => new Card(el));
 
   constructor(card: Icard) {
     (this.num = card.num),
