@@ -3,6 +3,7 @@ const changeTreeHandle = (e: Event): void => {
   let target = e.target as HTMLDivElement;
   target = target.closest("div") as HTMLDivElement;
   tree.src = `./assets/images/tree/${target.dataset.path}.png`;
+  localStorage.setItem("treeSrc", tree.src);
 };
 
 const button = document.querySelectorAll(".tree-wrap_tree") as unknown as HTMLDivElement[];

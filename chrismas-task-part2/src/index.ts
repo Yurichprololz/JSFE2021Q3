@@ -8,3 +8,6 @@ import "./scripts/change-fon";
 import "./scripts/audio";
 import "./scripts/garland";
 import "./scripts/snowfall";
+
+import { setSetting } from "./scripts/set-setting-tree";
+setSetting();

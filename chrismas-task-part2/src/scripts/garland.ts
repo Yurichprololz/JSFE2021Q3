@@ -5,6 +5,7 @@ const galrlandHandle = (e: Event) => {
   garland.innerHTML = "";
   const target = e.target as HTMLButtonElement;
   const color = target.dataset.color as string;
+  localStorage.setItem("garland", color);
   const heightArr = [100, 170, 230, 300, 380, 470, 550];
   const degreeArr = [12, 10, 8, 6, 4, 3.5, 3];
   heightArr.forEach((el, index) => {

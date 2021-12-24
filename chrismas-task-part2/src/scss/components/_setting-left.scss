@@ -37,13 +37,19 @@
   background-image: url(../assets/images/svg/mute.svg);
   background-size: cover;
   margin: 0 30px;
+  cursor: pointer;
   &_active {
     background-image: url(../assets/images/svg/audio.svg);
+    filter: invert(15%) sepia(81%) saturate(3195%) hue-rotate(348deg) brightness(97%) contrast(111%);
   }
 }
-.showfall {
+.snowfall {
+  cursor: pointer;
   height: 30px;
   width: 30px;
   background-image: url(../assets/images/svg/snowflake.svg);
   background-size: cover;
+  &_active {
+    filter: invert(15%) sepia(81%) saturate(3195%) hue-rotate(348deg) brightness(97%) contrast(111%);
+  }
 }

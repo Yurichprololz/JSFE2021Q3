@@ -6,8 +6,10 @@ const changeAudio = (e: Event) => {
   target.classList.toggle("volume_active");
   if (target.classList.contains("volume_active")) {
     audio.play();
+    localStorage.setItem("play-audio", "true");
   } else {
     audio.pause();
+    localStorage.setItem("play-audio", "false");
   }
 };
 

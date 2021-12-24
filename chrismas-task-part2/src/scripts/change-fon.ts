@@ -4,6 +4,7 @@ const changeFonHandle = (e: Event): void => {
   target = target.closest("div") as HTMLDivElement;
   const img = new Image();
   img.src = `../assets/images/bg/${target.dataset.path}.jpg`;
+  localStorage.setItem("fonSrc", img.src);
   img.onload = () => {
     fon.style.backgroundImage = `url(${img.src})`;
   };

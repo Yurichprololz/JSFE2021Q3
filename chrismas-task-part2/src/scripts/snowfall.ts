@@ -18,12 +18,14 @@ const createSnow = (width: number) => {
 };
 
 const snowfallListerner = () => {
-  const button = document.getElementById("showfall-btn");
-  button?.addEventListener("click", () => {
+  const button = document.getElementById("showfall-btn") as HTMLDivElement;
+  button.addEventListener("click", () => {
     button.classList.toggle("snowfall_active");
     if (button.classList.contains("snowfall_active")) {
       snowfall();
+      localStorage.setItem("snowfall", "true");
     } else {
+      localStorage.setItem("snowfall", "false");
       const block = document.querySelector(".snowfall__block") as Element;
       block.remove();
     }
