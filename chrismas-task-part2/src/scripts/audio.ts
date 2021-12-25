@@ -1,5 +1,3 @@
-const AUDIO_BTN = document.getElementById("audio-btn") as HTMLDivElement;
-
 const changeAudio = (e: Event): void => {
   const target = e.target as HTMLDivElement;
   const audio = document.getElementById("audio") as HTMLAudioElement;
@@ -13,4 +11,8 @@ const changeAudio = (e: Event): void => {
   }
 };
 
-AUDIO_BTN.addEventListener("click", changeAudio);
+const audioListener = (): void => {
+  const AUDIO_BTN = document.getElementById("audio-btn") as HTMLDivElement;
+  AUDIO_BTN.addEventListener("click", changeAudio);
+};
+export { audioListener };

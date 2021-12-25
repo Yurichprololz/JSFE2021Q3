@@ -6,6 +6,9 @@
   @include notebook {
     max-width: 200px;
   }
+  @include tablet {
+    max-width: 150px;
+  }
 
   &__button {
     height: 25px;

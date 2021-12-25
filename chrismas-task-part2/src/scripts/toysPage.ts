@@ -10,8 +10,6 @@ import { setSetting } from "./set-setting";
 import { resetSetting } from "./reset-setting";
 
 const renderToysPage = (): void => {
-  const header = document.getElementById("header") as HTMLElement;
-  header.classList.add("non-main-content");
   const main = document.getElementById("main") as HTMLElement;
   main.classList.add("main_toys");
   main.innerHTML = `

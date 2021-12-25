@@ -43,7 +43,11 @@ const createLine = (height: number, increaseDegree: number, color: string): void
   }
   if (garland) garland.append(list);
 };
-const buttonG = document.querySelectorAll(".garland-wrap__button") as unknown as HTMLButtonElement[];
-buttonG.forEach((element) => {
-  element.addEventListener("click", galrlandHandle);
-});
+
+const garlandListerner = (): void => {
+  const buttonG = document.querySelectorAll(".garland-wrap__button") as unknown as HTMLButtonElement[];
+  buttonG.forEach((element) => {
+    element.addEventListener("click", galrlandHandle);
+  });
+};
+export { garlandListerner };

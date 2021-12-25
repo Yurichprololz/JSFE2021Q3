@@ -6,7 +6,11 @@ const changeTreeHandle = (e: Event): void => {
   localStorage.setItem("treeSrc", tree.src);
 };
 
-const button = document.querySelectorAll(".tree-wrap_tree") as unknown as HTMLDivElement[];
-button.forEach((element) => {
-  element.addEventListener("click", changeTreeHandle);
-});
+const changeTreeListerner = () => {
+  const button = document.querySelectorAll(".tree-wrap_tree") as unknown as HTMLDivElement[];
+  button.forEach((element) => {
+    element.addEventListener("click", changeTreeHandle);
+  });
+};
+
+export { changeTreeListerner };

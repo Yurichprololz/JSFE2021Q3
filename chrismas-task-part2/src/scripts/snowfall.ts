@@ -31,4 +31,4 @@ const snowfallListerner = (): void => {
     }
   });
 };
-snowfallListerner();
+export { snowfallListerner };

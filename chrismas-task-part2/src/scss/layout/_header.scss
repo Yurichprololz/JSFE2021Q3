@@ -1,7 +1,6 @@
 .header {
   display: flex;
   justify-content: space-between;
-  display: none;
 
   &__navigation {
     width: 300px;
@@ -49,6 +48,9 @@
 
   &__fir-tree {
     @include headText(26px);
+  }
+  &__button {
+    cursor: pointer;
   }
 }
 

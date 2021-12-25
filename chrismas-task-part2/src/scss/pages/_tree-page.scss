@@ -1,5 +1,6 @@
 .tree-page {
   display: flex;
+  justify-content: center;
   height: 100%;
   padding: 0 40px;
   @include notebook {
@@ -9,7 +10,6 @@
     padding: 0 20px;
   }
   &__column {
-    flex-grow: 1;
   }
 
   &__tree {
