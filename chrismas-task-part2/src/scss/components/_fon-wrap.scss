@@ -2,12 +2,26 @@
   display: flex;
   flex-wrap: wrap;
   max-width: 400px;
+  @include notebook {
+    max-width: 340px;
+  }
   &__item {
     @include conteinerForItem();
     width: 80px;
     height: 80px;
     margin: 5px;
     background-size: cover;
+    cursor: pointer;
+
+    @include notebook {
+      width: 60px;
+      height: 60px;
+      margin: 5px;
+    }
+    @include laptop {
+      margin: 3px;
+    }
+
     &_1 {
       background-image: url(../assets/images/bg-icon/1.jpg);
     }

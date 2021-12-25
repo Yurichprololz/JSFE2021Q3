@@ -1,4 +1,4 @@
-const setFon = () => {
+const setFon = (): void => {
   const fon = document.querySelector(".tree") as HTMLDivElement;
   if (localStorage.getItem("fonSrc")) {
     const img = new Image();
@@ -9,7 +9,7 @@ const setFon = () => {
   }
 };
 
-const setTree = () => {
+const setTree = (): void => {
   const tree = document.getElementById("tree") as HTMLImageElement;
   if (localStorage.getItem("treeSrc")) {
     const img = new Image();
@@ -20,7 +20,7 @@ const setTree = () => {
   }
 };
 
-const setSnowfall = () => {
+const setSnowfall = (): void => {
   const fall: string | null = localStorage.getItem("snowfall");
   if (!fall) return;
   const isFall = fall == "true" ? true : false;
@@ -29,12 +29,12 @@ const setSnowfall = () => {
     button.click();
   }
 };
-const startPlay = () => {
+const startPlay = (): void => {
   const button = document.getElementById("audio-btn") as HTMLDivElement;
   button.click();
   window.removeEventListener("click", startPlay);
 };
-const setAudio = () => {
+const setAudio = (): void => {
   const audio: string | null = localStorage.getItem("play-audio");
   if (!audio) return;
   const isPlay = audio == "true" ? true : false;
@@ -43,7 +43,7 @@ const setAudio = () => {
   }
 };
 
-const setSetting = () => {
+const setSetting = (): void => {
   setFon();
   setTree();
   setSnowfall();

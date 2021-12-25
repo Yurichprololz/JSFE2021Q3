@@ -16,3 +16,20 @@
   border: 3px solid $borderColor;
   border-radius: 10px;
 }
+
+//for response
+@mixin notebook {
+  @media (max-width: 1366px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}

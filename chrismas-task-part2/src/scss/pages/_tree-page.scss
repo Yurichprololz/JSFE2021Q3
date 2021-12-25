@@ -2,13 +2,25 @@
   display: flex;
   height: 100%;
   padding: 0 40px;
+  @include notebook {
+    padding: 0 25px;
+  }
+  @include laptop {
+    padding: 0 20px;
+  }
   &__column {
     flex-grow: 1;
   }
 
   &__tree {
-    // height: 100%;
     width: 600px;
+    @include notebook {
+      width: 400px;
+    }
+    @include tablet {
+      height: 70%;
+      margin: auto 0;
+    }
   }
 }
 .tree {

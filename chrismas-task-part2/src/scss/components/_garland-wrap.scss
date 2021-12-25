@@ -3,6 +3,9 @@
   justify-content: space-between;
   max-width: 250px;
   margin-bottom: 10px;
+  @include notebook {
+    max-width: 200px;
+  }
 
   &__button {
     height: 25px;

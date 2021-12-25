@@ -1,12 +1,24 @@
 import createEl from "./template";
 
-const galrlandHandle = (e: Event) => {
+const galrlandHandle = (e: Event): void => {
   const garland = document.getElementById("garland") as HTMLDivElement;
   garland.innerHTML = "";
   const target = e.target as HTMLButtonElement;
   const color = target.dataset.color as string;
   localStorage.setItem("garland", color);
-  const heightArr = [100, 170, 230, 300, 380, 470, 550];
+  const tree = document.getElementById("tree") as HTMLImageElement;
+  const height = tree.offsetHeight;
+  // I took offsetHeight and multiplied by percents for responsible layout
+  const heightArr = [
+    height * 0.15,
+    height * 0.25,
+    height * 0.35,
+    height * 0.45,
+    height * 0.6,
+    height * 0.75,
+    height * 0.9,
+  ];
+
   const degreeArr = [12, 10, 8, 6, 4, 3.5, 3];
   heightArr.forEach((el, index) => {
     createLine(heightArr[index], degreeArr[index], color);

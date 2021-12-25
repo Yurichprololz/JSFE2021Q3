@@ -1,6 +1,6 @@
 import createElement from "./template";
 
-const snowfall = () => {
+const snowfall = (): void => {
   const fon = document.querySelector(".tree") as HTMLDivElement;
   const snowfall = createElement<string>("div", "snowfall__block");
   fon.append(snowfall);
@@ -11,13 +11,13 @@ const snowfall = () => {
   setTimeout(() => clearInterval(interval), 8000);
 };
 
-const createSnow = (width: number) => {
+const createSnow = (width: number): HTMLElement => {
   const snow = createElement<string>("div", "snow");
   snow.style.left = Math.random() * (width + 250) - 250 + "px";
   return snow;
 };
 
-const snowfallListerner = () => {
+const snowfallListerner = (): void => {
   const button = document.getElementById("showfall-btn") as HTMLDivElement;
   button.addEventListener("click", () => {
     button.classList.toggle("snowfall_active");

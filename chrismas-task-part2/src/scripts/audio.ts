@@ -1,6 +1,6 @@
 const AUDIO_BTN = document.getElementById("audio-btn") as HTMLDivElement;
 
-const changeAudio = (e: Event) => {
+const changeAudio = (e: Event): void => {
   const target = e.target as HTMLDivElement;
   const audio = document.getElementById("audio") as HTMLAudioElement;
   target.classList.toggle("volume_active");

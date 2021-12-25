@@ -2,6 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   max-width: 300px;
+  @include notebook {
+    flex-wrap: nowrap;
+    max-width: 380px;
+  }
 
   &_tree {
     @include conteinerForItem();
@@ -11,6 +15,17 @@
     max-width: 80px;
     margin: 5px;
     cursor: pointer;
+    @include notebook {
+      max-width: 50px;
+      margin: 2px;
+    }
+    @include laptop {
+      max-width: 60px;
+      margin: 2px;
+    }
+    // @include tablet {
+    //   margin-top: 63px;
+    // }
   }
 
   &_img {
