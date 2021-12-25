@@ -11,6 +11,7 @@ interface Icard {
   favorite: boolean;
 }
 interface ICard extends Icard {
+  chosen: boolean;
   render: () => void;
   showCountFavorite: () => void;
   getFavoriteCount: () => number;
@@ -33,6 +34,8 @@ class Card implements ICard {
   size: string;
   shape: string;
   favorite: boolean;
+  chosen: boolean;
+
   static collection: Card[] = data.map((el) => new Card(el));
 
   constructor(card: Icard) {
@@ -44,6 +47,7 @@ class Card implements ICard {
       (this.color = card.color),
       (this.size = card.size),
       (this.favorite = card.favorite);
+    this.chosen = false;
   }
 
   render(): void {
@@ -62,7 +66,7 @@ class Card implements ICard {
             <p class="card__size card__text">Размер игрушки: ${this.size}</p>
             <p class="card__favorite card__text">Любимая: ${this.favorite ? "да" : "нет"}</p>
       `;
-      if (this.favorite) {
+      if (this.chosen) {
         div.classList.add("card_favorite");
       }
       div.addEventListener("click", () => {
@@ -80,16 +84,16 @@ class Card implements ICard {
   }
 
   getFavoriteCount(): number {
-    return Card.collection.filter((el) => el.favorite).length;
+    return Card.collection.filter((el) => el.chosen).length;
   }
 
   toogleFavorite(): void {
     const favorite = document.getElementById("favorite") as HTMLInputElement;
-    this.favorite = !this.favorite;
+    this.chosen = !this.chosen;
     if (this.getFavoriteCount() <= 20) {
       favorite.checked ? showFavorite() : renderCards();
     } else {
-      this.favorite = !this.favorite;
+      this.chosen = !this.chosen;
       alert("Извините, все слоты заполнены");
     }
     this.showCountFavorite();
@@ -340,7 +344,7 @@ const showFavorite = (): void => {
 
 const saveFavorite = (): boolean[] => {
   const arr: boolean[] = Card.collection.map((card) => {
-    if (card.favorite) {
+    if (card.chosen) {
       return true;
     } else {
       return false;
@@ -354,10 +358,17 @@ const setFavorite = (): void => {
   if (!favorite) return;
   const arrFavorite: boolean[] = JSON.parse(favorite);
   arrFavorite.forEach((value, index) => {
-    if (value != Card.collection[index].favorite) {
-      Card.collection[index].favorite = !Card.collection[index].favorite;
+    if (value != Card.collection[index].chosen) {
+      Card.collection[index].chosen = !Card.collection[index].chosen;
     }
   });
 };
 
-export { updateCards, sort, showFavorite, sortByNameOfIncrease, saveFavorite, setFavorite, renderCards };
+const getFavorite = (): Card[] => {
+  const collection = Card.collection.filter((el) => el.chosen);
+  if (collection.length !== 0) {
+    return collection;
+  }
+  return Card.collection.slice(0, 20);
+};
+export { updateCards, sort, showFavorite, sortByNameOfIncrease, saveFavorite, setFavorite, renderCards, getFavorite };
