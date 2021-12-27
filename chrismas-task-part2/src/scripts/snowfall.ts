@@ -26,8 +26,8 @@ const snowfallListerner = (): void => {
       localStorage.setItem("snowfall", "true");
     } else {
       localStorage.setItem("snowfall", "false");
-      const block = document.querySelector(".snowfall__block") as Element;
-      block.remove();
+      const block = document.querySelector(".snowfall__block") as Element | null;
+      if (block) block.remove();
     }
   });
 };

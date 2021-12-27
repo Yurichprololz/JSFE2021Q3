@@ -44,6 +44,8 @@ const startPlay = (): void => {
 };
 
 const setAudio = (count?: number): void => {
+  console.log(count);
+
   const audio: string | null = !count ? localStorage.getItem("play-audio") : localStorage.getItem(`play-audio${count}`);
   if (!audio) return;
   const isPlay = audio == "true" ? true : false;
@@ -59,7 +61,19 @@ const setSetting = (): void => {
   setTimeout(setAudio, 0);
 };
 
+const creanButtons = (): void => {
+  const audio = document.getElementById("audio-btn") as HTMLDivElement;
+  const showfall = document.getElementById("showfall-btn") as HTMLDivElement;
+  if (audio.classList.contains("volume_active")) {
+    audio.classList.remove("volume_active");
+  }
+  if (showfall.classList.contains("snowfall_active")) {
+    showfall.classList.remove("snowfall_active");
+  }
+};
+
 const setSettingForButton = <T>(count: T): void => {
+  creanButtons();
   if (typeof count == "number") {
     setSnowfall(count);
     setTimeout(() => setAudio(count), 0);
