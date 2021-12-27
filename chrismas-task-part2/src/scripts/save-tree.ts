@@ -5,6 +5,7 @@ const saveTree = () => {
   const wrap = document.getElementById("wrap-toys") as HTMLDivElement;
   const dragToys = document.getElementById("toys-conteiner") as HTMLDivElement;
   const tree = document.querySelector(".tree") as HTMLDivElement;
+
   const count = tree.dataset.count;
 
   localStorage.setItem(`wrap${count}`, `${wrap.innerHTML}`);
@@ -13,6 +14,11 @@ const saveTree = () => {
   localStorage.setItem(`play-audio${count}`, `${checkVolume()}`);
   localStorage.setItem(`snowfall${count}`, `${checkShowfall()}`);
   setSaveTreeListerner();
+};
+
+const removeSnowfall = () => {
+  const snowfall = document.querySelector(".snowfall__block") as HTMLDivElement;
+  snowfall.remove();
 };
 
 const checkVolume = (): boolean => {
@@ -38,6 +44,9 @@ const setSaveTree = <T>(count: T) => {
   dragToys.innerHTML = localStorage.getItem(`dragToys${count}`) as string;
   tree.innerHTML = localStorage.getItem(`tree${count}`) as string;
 
+  if (tree.querySelector(".snowfall__block")) {
+    removeSnowfall();
+  }
   const area = document.querySelector("area") as HTMLAreaElement;
   area.addEventListener("click", (e: Event) => e.preventDefault());
 
