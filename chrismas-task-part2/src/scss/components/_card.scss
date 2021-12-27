@@ -13,18 +13,23 @@
   margin: 10px;
   padding-bottom: 20px;
   transition: transform ease 0.3s 0.1s;
+
   @include notebook {
     height: 280px;
   }
+
   @include laptop {
     height: 300px;
   }
+
   @include tablet {
     width: 40%;
   }
+
   &_scale {
     transform: scale(0) rotate(360deg);
   }
+
   &__name {
     height: 20%;
     margin: 0;
@@ -33,6 +38,7 @@
 
   &__title {
     @include headText(18px);
+
     @include tablet {
       font-size: 15px;
     }
@@ -43,6 +49,7 @@
     height: auto;
     margin: 0 auto;
     margin-bottom: 5px;
+
     & img {
       width: 100%;
     }
@@ -61,6 +68,7 @@
     transform: translateY(200%);
     margin: 0 auto;
   }
+
   &_favorite {
     background-color: red;
   }

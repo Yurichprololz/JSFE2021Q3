@@ -10,8 +10,8 @@ const changeFonHandle = (e: Event): void => {
   };
 };
 
-const changeFonListerner = () => {
-  const button1 = document.querySelectorAll(".fon-wrap__item") as unknown as HTMLDivElement[];
+const changeFonListerner = (): void => {
+  const button1 = document.querySelectorAll(".fon-wrap__item") as NodeListOf<HTMLDivElement>;
   button1.forEach((element) => {
     element.addEventListener("click", changeFonHandle);
   });

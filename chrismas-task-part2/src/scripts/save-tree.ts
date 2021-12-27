@@ -1,7 +1,7 @@
 import { DragNDrop } from "./tree-page";
 import { setSettingForButton } from "./set-setting-tree";
 
-const saveTree = () => {
+const saveTree = (): void => {
   const wrap = document.getElementById("wrap-toys") as HTMLDivElement;
   const dragToys = document.getElementById("toys-conteiner") as HTMLDivElement;
   const tree = document.querySelector(".tree") as HTMLDivElement;
@@ -16,7 +16,7 @@ const saveTree = () => {
   setSaveTreeListerner();
 };
 
-const removeSnowfall = () => {
+const removeSnowfall = (): void => {
   const snowfall = document.querySelector(".snowfall__block") as HTMLDivElement;
   snowfall.remove();
 };
@@ -30,12 +30,12 @@ const checkShowfall = (): boolean => {
   return button.classList.contains("snowfall_active");
 };
 
-const saveTreeListerner = () => {
+const saveTreeListerner = (): void => {
   const button = document.getElementById("save") as HTMLButtonElement;
   button.addEventListener("click", saveTree);
 };
 
-const setSaveTree = <T>(count: T) => {
+const setSaveTree = <T>(count: T): void => {
   const wrap = document.getElementById("wrap-toys") as HTMLDivElement;
   const dragToys = document.getElementById("toys-conteiner") as HTMLDivElement;
   const tree = document.querySelector(".tree") as HTMLDivElement;
@@ -62,7 +62,7 @@ const setSaveTree = <T>(count: T) => {
   setSettingForButton(count);
 };
 
-const setSaveTreeListerner = () => {
+const setSaveTreeListerner = (): void => {
   const buttons = document.querySelectorAll(".setting-right__save") as NodeListOf<HTMLDivElement>;
   buttons.forEach((button, index) => {
     if (localStorage.getItem(`tree${index + 1}`)) {

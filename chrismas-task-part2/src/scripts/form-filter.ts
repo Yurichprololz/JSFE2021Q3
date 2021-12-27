@@ -1,7 +1,7 @@
 import { updateCards } from "./card";
 
 const listenerForFormFilters = (): void => {
-  const filters = document.querySelectorAll(".filter__form-card") as unknown as HTMLElement[];
+  const filters = document.querySelectorAll(".filter__form-card") as NodeListOf<HTMLElement>;
 
   filters.forEach((el) => {
     el.addEventListener("click", () => {

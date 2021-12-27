@@ -9,7 +9,7 @@ const setColor = (): void => {
     return;
   }
 
-  const filters = document.querySelectorAll(".filter__color-btn") as unknown as HTMLDivElement[];
+  const filters = document.querySelectorAll(".filter__color-btn") as NodeListOf<HTMLDivElement>;
   setting.forEach((value, index) => {
     if (value) {
       filters[index].click();
@@ -25,7 +25,7 @@ const setForm = (): void => {
   } else {
     return;
   }
-  const filters = document.querySelectorAll(".filter__form-card") as unknown as HTMLDivElement[];
+  const filters = document.querySelectorAll(".filter__form-card") as NodeListOf<HTMLDivElement>;
 
   setting.forEach((value, index) => {
     if (value) {
@@ -43,7 +43,7 @@ const setCopies = (): void => {
     return;
   }
 
-  const filters = document.querySelectorAll(".nouiinput__copies_input") as unknown as HTMLInputElement[];
+  const filters = document.querySelectorAll(".nouiinput__copies_input") as NodeListOf<HTMLInputElement>;
   const change = new Event("change");
 
   setting.forEach((value, index) => {
@@ -62,7 +62,7 @@ const setYears = (): void => {
   } else {
     return;
   }
-  const filters = document.querySelectorAll(".nouiinput__years_input") as unknown as HTMLInputElement[];
+  const filters = document.querySelectorAll(".nouiinput__years_input") as NodeListOf<HTMLInputElement>;
   const change = new Event("change");
 
   setting.forEach((value, index) => {
@@ -93,7 +93,7 @@ const setSize = (): void => {
     return;
   }
 
-  const filters = document.querySelectorAll(".filter__checkbox") as unknown as HTMLInputElement[];
+  const filters = document.querySelectorAll(".filter__checkbox") as NodeListOf<HTMLInputElement>;
 
   setting.forEach((value, index) => {
     if (value) {
@@ -102,7 +102,7 @@ const setSize = (): void => {
   });
 };
 
-const setSetting = () => {
+const setSetting = (): void => {
   if (localStorage.getItem("color")) {
     setColor();
   }

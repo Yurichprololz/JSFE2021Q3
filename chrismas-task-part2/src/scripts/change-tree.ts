@@ -38,8 +38,8 @@ const getCoords = (index: number): string => {
   ][index];
 };
 
-const changeTreeListerner = () => {
-  const button = document.querySelectorAll(".tree-wrap_tree") as unknown as HTMLDivElement[];
+const changeTreeListerner = (): void => {
+  const button = document.querySelectorAll(".tree-wrap_tree") as NodeListOf<HTMLDivElement>;
   button.forEach((element) => {
     element.addEventListener("click", changeTreeHandle);
   });

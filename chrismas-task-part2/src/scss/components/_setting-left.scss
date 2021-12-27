@@ -1,36 +1,15 @@
 .setting-left {
-  &__tree {
-  }
-
   &__title {
     @include headText(20px);
     margin-bottom: 10px;
   }
 
-  &__tree-wrap {
-  }
-
-  &__fon {
-  }
-
-  &__fon-wrap {
-  }
-
-  &__garland {
-  }
-
-  &__garland-wrap {
-  }
-  &__volume {
-  }
-
-  &__showfall {
-  }
   &__buttons {
     display: flex;
-    margin-top: 20px;
+    margin-top: 5px;
   }
 }
+
 .volume {
   height: 30px;
   width: 30px;
@@ -38,6 +17,7 @@
   background-size: cover;
   margin: 0 30px;
   cursor: pointer;
+
   &_active {
     background-image: url(../assets/images/svg/audio.svg);
     filter: invert(15%) sepia(81%) saturate(3195%) hue-rotate(348deg) brightness(97%) contrast(111%);
@@ -49,6 +29,7 @@
   width: 30px;
   background-image: url(../assets/images/svg/snowflake.svg);
   background-size: cover;
+
   &_active {
     filter: invert(15%) sepia(81%) saturate(3195%) hue-rotate(348deg) brightness(97%) contrast(111%);
   }

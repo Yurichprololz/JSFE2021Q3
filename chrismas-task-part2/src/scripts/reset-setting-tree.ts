@@ -1,4 +1,4 @@
-const resetSettingTree = () => {
+const resetSettingTree = (): void => {
   if (localStorage.getItem("treeSrc")) {
     localStorage.removeItem("treeSrc");
   }
@@ -16,7 +16,7 @@ const resetSettingTree = () => {
   }
 };
 
-const resetSettingListerner = () => {
+const resetSettingListerner = (): void => {
   const button = document.getElementById("reset-tree") as HTMLButtonElement;
   button.addEventListener("click", resetSettingTree);
 };

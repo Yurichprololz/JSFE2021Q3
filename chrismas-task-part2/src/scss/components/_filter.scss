@@ -3,9 +3,11 @@
   width: 25%;
   background-color: $backgraundColor;
   padding-left: 40px;
+
   @include tablet {
     width: 50%;
   }
+
   &__sort {
     display: flex;
     justify-content: space-between;
@@ -16,11 +18,13 @@
     @include headText(20px);
     margin: 0;
   }
+
   &__subtitle {
     @include mainText(18px);
     margin: 0;
     margin-top: 1em;
   }
+
   &__sort-by {
     @include mainText(12px);
     margin-right: 1.5em;
@@ -44,6 +48,7 @@
   &__category-label {
     @include mainText();
   }
+
   &__form {
     display: flex;
     justify-content: space-evenly;
@@ -59,6 +64,7 @@
   &__form-card-img {
     width: 25px;
     height: 25px;
+
     @include tablet {
       height: 40px;
       width: 40px;
@@ -67,9 +73,10 @@
 
   &__form-card-text {
     @include mainText(12px);
+
     @include laptop {
+      display: none;
     }
-    display: none;
   }
 
   &__color {
@@ -84,10 +91,12 @@
     border: 0;
     padding: 0;
     margin-right: 5px;
+
     @include tablet {
       height: 40px;
       width: 40px;
     }
+
     &_1 {
       background-color: white;
     }
@@ -133,6 +142,7 @@
     border-width: 0 4px 4px 0;
     transform: rotate(45deg);
   }
+
   &:nth-child(1)::after {
     border-color: black;
   }

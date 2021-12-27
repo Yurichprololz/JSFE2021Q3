@@ -52,7 +52,7 @@ const saveCopies = (): MyArray<string> => {
 };
 
 const saveYears = (): MyArray<string> => {
-  const filters = document.querySelectorAll(".nouiinput__years_input") as unknown as HTMLInputElement[];
+  const filters = document.querySelectorAll(".nouiinput__years_input") as NodeListOf<HTMLInputElement>;
   return [filters[0].value, filters[1].value];
 };
 

@@ -130,13 +130,13 @@ const afterRenderToysPage = (): void => {
   setSetting();
 };
 
-const renderToysCard = () => {
+const renderToysCard = (): void => {
   const collection: ICard[] = getFavorite();
   collection.forEach((el: ICard, index: number) => {
     createToy(el, index);
   });
 };
-const createToy = (el: ICard, index: number) => {
+const createToy = (el: ICard, index: number): void => {
   const conteiner = document.getElementById("toys-conteiner") as HTMLDivElement;
   const div = createElement<string>("div", "setting-right__item") as HTMLDivElement;
   div.dataset.index = `${index}`;
@@ -163,19 +163,19 @@ const createToy = (el: ICard, index: number) => {
   conteiner.append(div);
 };
 
-const checkCount = (el: HTMLDivElement) => {
+const checkCount = (el: HTMLDivElement): void => {
   const count = el.firstChild as HTMLParagraphElement;
   count.textContent = String(el.childElementCount - 1);
 };
 
-const removeAreaEvent = () => {
+const removeAreaEvent = (): void => {
   const area = document.getElementById("area") as HTMLAreaElement;
   area.addEventListener("click", (event: Event) => {
     event.preventDefault();
   });
 };
 
-function DragNDrop(event: MouseEvent) {
+function DragNDrop(event: MouseEvent): void {
   const img = event.target as HTMLImageElement;
   const map = document.getElementById("wrap-toys") as HTMLDivElement;
   const shiftX = event.clientX - img.getBoundingClientRect().left;
@@ -189,12 +189,12 @@ function DragNDrop(event: MouseEvent) {
 
   moveAt(event.pageX, event.pageY);
 
-  function moveAt(pageX: number, pageY: number) {
+  function moveAt(pageX: number, pageY: number): void {
     img.style.left = pageX - shiftX + "px";
     img.style.top = pageY - shiftY + "px";
   }
 
-  function onMouseMove(event: MouseEvent) {
+  function onMouseMove(event: MouseEvent): void {
     const x = event.pageX;
     const y = event.pageY;
     moveAt(x, y);
@@ -210,7 +210,7 @@ function DragNDrop(event: MouseEvent) {
 
   document.addEventListener("mousemove", onMouseMove);
 
-  img.onmouseup = function (event: MouseEvent) {
+  img.onmouseup = function (event: MouseEvent): void {
     const conteiners = Array.from(document.querySelectorAll(".setting-right__item")) as HTMLDivElement[];
     const parent = conteiners.find((el) => el.dataset.index == img.dataset.index) as HTMLDivElement;
 

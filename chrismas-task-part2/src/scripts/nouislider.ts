@@ -4,7 +4,7 @@ import { updateCards } from "./card";
 type v<T> = T;
 
 export default function init(): void {
-  const sliders = document.querySelectorAll(".filter__range-input") as unknown as target[];
+  const sliders = document.querySelectorAll(".filter__range-input") as NodeListOf<target>;
   const rangeOption = [
     [1, 12],
     [1940, new Date().getFullYear()],
@@ -13,8 +13,8 @@ export default function init(): void {
   const copyRange = document.getElementById("range-copy") as target;
   const yearsRange = document.getElementById("range-years") as target;
 
-  const inputsCopy = document.querySelectorAll(".nouiinput__copies_input") as unknown as HTMLInputElement[];
-  const inputsYears = document.querySelectorAll(".nouiinput__years_input") as unknown as HTMLInputElement[];
+  const inputsCopy = document.querySelectorAll(".nouiinput__copies_input") as NodeListOf<HTMLInputElement>;
+  const inputsYears = document.querySelectorAll(".nouiinput__years_input") as NodeListOf<HTMLInputElement>;
 
   ///handle function
   const setNumbfromCopy = (values: (string | number)[], handle: number, unencoded: number[]) => {

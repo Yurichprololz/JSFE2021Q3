@@ -29,7 +29,6 @@ const setTree = (): void => {
 };
 
 const setSnowfall = (count?: number): void => {
-  // const fall: string | null = localStorage.getItem("snowfall");
   const fall: string | null = !count ? localStorage.getItem("snowfall") : localStorage.getItem(`snowfall${count}`);
   if (!fall) return;
   const isFall = fall == "true" ? true : false;
@@ -45,7 +44,6 @@ const startPlay = (): void => {
 };
 
 const setAudio = (count?: number): void => {
-  // const audio: string | null = localStorage.getItem("play-audio");
   const audio: string | null = !count ? localStorage.getItem("play-audio") : localStorage.getItem(`play-audio${count}`);
   if (!audio) return;
   const isPlay = audio == "true" ? true : false;

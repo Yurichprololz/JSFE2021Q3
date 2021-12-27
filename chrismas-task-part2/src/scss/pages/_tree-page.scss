@@ -3,20 +3,22 @@
   justify-content: center;
   height: 100%;
   padding: 0 40px;
+
   @include notebook {
     padding: 0 25px;
   }
+
   @include laptop {
     padding: 0 20px;
-  }
-  &__column {
   }
 
   &__tree {
     width: 600px;
+
     @include notebook {
       width: 400px;
     }
+
     @include tablet {
       height: 70%;
       margin: auto 0;
@@ -32,13 +34,12 @@
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+
   &__img {
     width: 500px;
+
     @include notebook {
       width: 350px;
     }
-    // @include tablet {
-    //   width: 350px;
-    // }
   }
 }

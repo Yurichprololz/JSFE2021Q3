@@ -114,7 +114,7 @@ class Card implements ICard {
   }
 
   isFitedCopies(): boolean {
-    const inputs = document.querySelectorAll(".nouiinput__copies_input") as unknown as HTMLInputElement[];
+    const inputs = document.querySelectorAll(".nouiinput__copies_input") as NodeListOf<HTMLInputElement>;
     if (Number(this.count) < Number(inputs[0].value) || Number(this.count) > Number(inputs[1].value)) {
       return false;
     }
@@ -122,7 +122,7 @@ class Card implements ICard {
   }
 
   isFitedYears(): boolean {
-    const inputs = document.querySelectorAll(".nouiinput__years_input") as unknown as HTMLInputElement[];
+    const inputs = document.querySelectorAll(".nouiinput__years_input") as NodeListOf<HTMLInputElement>;
     if (Number(this.year) < Number(inputs[0].value) || Number(this.year) > Number(inputs[1].value)) {
       return false;
     }
@@ -130,7 +130,7 @@ class Card implements ICard {
   }
 
   isFitedColor(): boolean {
-    const filters = document.querySelectorAll(".filter__color-btn") as unknown as HTMLElement[];
+    const filters = document.querySelectorAll(".filter__color-btn") as NodeListOf<HTMLElement>;
     const colors: string[] = [];
     filters.forEach((el) => {
       if (el.classList.contains("active")) {
@@ -159,7 +159,7 @@ class Card implements ICard {
   }
 
   isFitedForm(): boolean {
-    const filters = document.querySelectorAll(".filter__form-card") as unknown as HTMLElement[];
+    const filters = document.querySelectorAll(".filter__form-card") as NodeListOf<HTMLElement>;
     const forms: string[] = [];
     filters.forEach((el) => {
       if (el.classList.contains("active_form")) {
@@ -178,7 +178,7 @@ class Card implements ICard {
   }
 
   isFitedSize(): boolean {
-    const filters = document.querySelectorAll(".filter__checkbox") as unknown as HTMLInputElement[];
+    const filters = document.querySelectorAll(".filter__checkbox") as NodeListOf<HTMLInputElement>;
     const sizes: string[] = [];
     filters.forEach((el) => {
       if (el.checked) {

@@ -7,7 +7,7 @@ const resetSearch = (): void => {
 };
 
 const resetFormFilters = (): void => {
-  const filters = document.querySelectorAll(".filter__form-card") as unknown as HTMLDivElement[];
+  const filters = document.querySelectorAll(".filter__form-card") as NodeListOf<HTMLDivElement>;
   filters.forEach((filter) => {
     if (filter.classList.contains("active_form")) {
       filter.classList.remove("active_form");
@@ -16,7 +16,7 @@ const resetFormFilters = (): void => {
 };
 
 const resetColorFilters = (): void => {
-  const filters = document.querySelectorAll(".filter__color-btn") as unknown as HTMLDivElement[];
+  const filters = document.querySelectorAll(".filter__color-btn") as NodeListOf<HTMLDivElement>;
   filters.forEach((filter) => {
     if (filter.classList.contains("active")) {
       filter.classList.remove("active");
@@ -25,7 +25,7 @@ const resetColorFilters = (): void => {
 };
 
 const resetSizeFilters = (): void => {
-  const filters = document.querySelectorAll(".filter__checkbox") as unknown as HTMLInputElement[];
+  const filters = document.querySelectorAll(".filter__checkbox") as NodeListOf<HTMLInputElement>;
   filters.forEach((filter) => {
     if (filter.checked) {
       filter.click();
@@ -34,7 +34,7 @@ const resetSizeFilters = (): void => {
 };
 
 const resetNoUiSlider = (): void => {
-  const sliders = document.querySelectorAll(".filter__range-input") as unknown as target[];
+  const sliders = document.querySelectorAll(".filter__range-input") as NodeListOf<target>;
   const rangeOption = [
     [1, 12],
     [1940, new Date().getFullYear()],

@@ -1,13 +1,17 @@
 .setting-right {
   padding: 0 40px;
+
   @include notebook {
     padding: 0 20px;
   }
+
   @include laptop {
     padding: 0 10px;
   }
+
   &__title {
     @include headText(20px);
+
     @include notebook {
       margin: 0.5em 0;
     }
@@ -33,6 +37,7 @@
     width: 50px;
     height: 50px;
     margin: 5px;
+
     @include notebook {
       width: 40px;
       height: 40px;
@@ -59,28 +64,45 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
     @include notebook {
       max-width: 200px;
     }
+
     @include tablet {
       justify-content: flex-start;
     }
   }
 
   &__save {
+    position: relative;
     @include conteinerForItem();
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 60px;
     margin: 5px;
+
     @include notebook {
       width: 50px;
       height: 50px;
     }
+
     &_active {
       background-color: #709598;
       cursor: pointer;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-image: url(../assets/images/toys/1.png);
+        background-size: cover;
+        width: 10px;
+        height: 10px;
+      }
     }
   }
 }
