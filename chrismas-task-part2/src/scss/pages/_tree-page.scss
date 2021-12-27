@@ -32,6 +32,12 @@
   background-size: cover;
   background-repeat: no-repeat;
   &__img {
-    height: 80%;
+    width: 500px;
+    @include notebook {
+      width: 350px;
+    }
+    // @include tablet {
+    //   width: 350px;
+    // }
   }
 }

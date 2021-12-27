@@ -1,3 +1,5 @@
+import { getCoords } from "./change-tree";
+
 const setFon = (): void => {
   const fon = document.querySelector(".tree") as HTMLDivElement;
   if (localStorage.getItem("fonSrc")) {
@@ -17,6 +19,9 @@ const setTree = (): void => {
     img.onload = () => {
       tree.src = `${img.src}`;
     };
+    const area = document.getElementById("area") as HTMLAreaElement;
+    const index = Number(localStorage.getItem("treeArea"));
+    area.coords = getCoords(index);
   }
 };
 

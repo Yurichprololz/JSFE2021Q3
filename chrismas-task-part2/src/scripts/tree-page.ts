@@ -4,6 +4,9 @@ import { audioListener } from "./audio";
 import { snowfallListerner } from "./snowfall";
 import { garlandListerner } from "./garland";
 import { setSetting } from "./set-setting-tree";
+import { getFavorite } from "./card";
+import createElement from "./template";
+import { ICard } from "./card";
 
 const renderTreePage = (): void => {
   const main = document.getElementById("main") as HTMLElement;
@@ -67,14 +70,16 @@ const renderTreePage = (): void => {
     </div>
   </div>
   <div class="tree-page__tree tree">
-    <img class="tree__img" id="tree" src="./assets/images/tree/1.png" alt="tree" />
+    <img class="tree__img" id="tree" src="./assets/images/tree/1.png" alt="tree" usemap="#image-map" />
+    <map name="image-map" id="map">
+    <area id="area" target="" alt="" title="" href="" coords="252,3,240,10,237,48,214,44,209,64,217,78,197,80,206,99,213,130,206,144,172,127,157,140,188,172,170,192,197,217,162,219,120,209,106,230,190,262,125,262,127,279,178,291,120,309,123,339,179,335,149,362,83,348,73,370,125,396,116,428,31,430,20,459,60,465,52,490,90,505,81,532,11,537,5,571,56,575,32,594,49,617,94,589,100,605,65,621,72,645,123,629,104,671,137,687,164,646,181,701,212,700,224,664,240,668,237,692,281,694,288,659,303,698,333,695,372,688,369,660,434,670,451,653,423,635,456,634,465,609,468,582,439,570,490,567,490,534,438,532,424,504,410,476,448,473,450,440,408,437,411,406,346,418,333,411,363,392,423,373,424,345,379,355,376,327,353,330,352,305,387,305,392,277,341,266,403,240,390,215,351,231,346,218,347,182,329,181,359,157,345,135,309,165,313,126,279,128,274,107,305,83,297,67,272,74,284,54,264,39" shape="poly">
+</map>
     <div class="garland" id="garland">
     </div>
   </div>
   <div class="tree-page__column setting-right">
-    <h3 class="setting-right__title">Игрушки</h3>
-    <div class="setting-right__toys">
-      <div class="setting-right__item"></div>
+    <h3 class="setting-right__title" >Игрушки</h3>
+    <div class="setting-right__toys" id="toys-conteiner">
     </div>
     <h3 class="setting-right__title">Вы нарядили</h3>
     <div class="setting-right__local">
@@ -114,6 +119,107 @@ const afterRenderToysPage = (): void => {
   snowfallListerner();
   garlandListerner();
   setSetting();
+  renderToysCard();
+  // removeAreaEvent();
 };
+
+const renderToysCard = () => {
+  const collection: ICard[] = getFavorite();
+  collection.forEach((el: ICard, index: number) => {
+    createToy(el, index);
+  });
+};
+const createToy = (el: ICard, index: number) => {
+  const conteiner = document.getElementById("toys-conteiner") as HTMLDivElement;
+  const div = createElement<string>("div", "setting-right__item") as HTMLDivElement;
+  div.dataset.index = `${index}`;
+  const count = createElement<string>("p", "setting-right__count") as HTMLParagraphElement;
+  count.textContent = el.count;
+  div.append(count);
+  for (let i = 0; i < Number(el.count); i++) {
+    const img = new Image();
+    img.dataset.index = `${index}`;
+    img.draggable = true;
+    img.classList.add("setting-right__img");
+    img.src = `./assets/images/toys/${el.num}.png`;
+    img.addEventListener("mousedown", DragNDrop);
+
+    img.ondragstart = function (e: Event) {
+      e.preventDefault();
+    };
+
+    img.onload = () => {
+      div.append(img);
+    };
+  }
+
+  conteiner.append(div);
+};
+
+const checkCount = (el: HTMLDivElement) => {
+  const count = el.firstChild as HTMLParagraphElement;
+  count.textContent = String(el.childElementCount - 1);
+};
+
+const removeAreaEvent = () => {
+  const area = document.getElementById("area") as HTMLAreaElement;
+  area.addEventListener("click", (event: Event) => {
+    event.preventDefault();
+  });
+};
+
+function DragNDrop(event: MouseEvent) {
+  const img = event.target as HTMLImageElement;
+  const map = document.getElementById("map") as HTMLMapElement;
+  const shiftX = event.clientX - img.getBoundingClientRect().left;
+  const shiftY = event.clientY - img.getBoundingClientRect().top;
+
+  img.style.zIndex = "1000";
+  img.style.height = "40px";
+  img.style.width = "40px";
+
+  // map.append(img);
+  document.body.append(img);
+
+  moveAt(event.pageX, event.pageY);
+
+  function moveAt(pageX: number, pageY: number) {
+    img.style.left = pageX - shiftX + "px";
+    img.style.top = pageY - shiftY + "px";
+  }
+
+  function onMouseMove(event: MouseEvent) {
+    const x = event.pageX;
+    const y = event.pageY;
+    moveAt(x, y);
+    isOnTree(event) ? (img.style.cursor = "copy") : (img.style.cursor = "no-drop");
+  }
+  const isOnTree = (event: MouseEvent): boolean => {
+    img.hidden = true;
+    const elementMouseIsOver = document.elementFromPoint(event.pageX, event.pageY) as Element;
+    img.hidden = false;
+
+    return elementMouseIsOver == document.querySelector("area");
+  };
+
+  document.addEventListener("mousemove", onMouseMove);
+
+  img.onmouseup = function (event: MouseEvent) {
+    const conteiners = Array.from(document.querySelectorAll(".setting-right__item")) as HTMLDivElement[];
+    const parent = conteiners.find((el) => el.dataset.index == img.dataset.index) as HTMLDivElement;
+
+    if (!isOnTree(event)) {
+      img.style.width = "80%";
+      img.style.height = "80%";
+      img.style.left = "";
+      img.style.top = "";
+      parent.append(img);
+    }
+    img.style.cursor = "auto";
+    checkCount(parent);
+    document.removeEventListener("mousemove", onMouseMove);
+    img.onmouseup = null;
+  };
+}
 
 export { renderTreePage };

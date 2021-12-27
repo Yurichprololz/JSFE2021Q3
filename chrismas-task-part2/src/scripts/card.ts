@@ -372,3 +372,4 @@ const getFavorite = (): Card[] => {
   return Card.collection.slice(0, 20);
 };
 export { updateCards, sort, showFavorite, sortByNameOfIncrease, saveFavorite, setFavorite, renderCards, getFavorite };
+export { ICard };
