@@ -44,8 +44,6 @@ const startPlay = (): void => {
 };
 
 const setAudio = (count?: number): void => {
-  console.log(count);
-
   const audio: string | null = !count ? localStorage.getItem("play-audio") : localStorage.getItem(`play-audio${count}`);
   if (!audio) return;
   const isPlay = audio == "true" ? true : false;
