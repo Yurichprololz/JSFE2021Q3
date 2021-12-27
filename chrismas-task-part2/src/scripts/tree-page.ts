@@ -6,6 +6,7 @@ import { garlandListerner } from "./garland";
 import { setSetting } from "./set-setting-tree";
 import { getFavorite } from "./card";
 import createElement from "./template";
+import { resetSettingListerner } from "./reset-setting-tree";
 import { ICard } from "./card";
 
 const renderTreePage = (): void => {
@@ -103,8 +104,8 @@ const renderTreePage = (): void => {
       </div>
     </div>
     <div class="filter__reset">
-      <button class="button button_main filter__button" id="reset-filters">Сохранить</button>
-      <button class="button button_main filter__button" id="reset-setting">Сбросить настройки</button>
+      <button class="button button_main filter__button" id="save">Сохранить</button>
+      <button class="button button_main filter__button" id="reset-tree">Сбросить настройки</button>
     </div>
   </div>
 </div>
@@ -120,7 +121,8 @@ const afterRenderToysPage = (): void => {
   garlandListerner();
   setSetting();
   renderToysCard();
-  // removeAreaEvent();
+  resetSettingListerner();
+  removeAreaEvent();
 };
 
 const renderToysCard = () => {
