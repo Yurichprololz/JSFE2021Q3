@@ -49,5 +49,10 @@ const garlandListerner = (): void => {
   buttonG.forEach((element) => {
     element.addEventListener("click", galrlandHandle);
   });
+  const nullGarland = document.querySelector(".garland-wrap__button_null") as HTMLButtonElement;
+  nullGarland.addEventListener("click", () => {
+    const garland = document.getElementById("garland") as HTMLDivElement;
+    garland.innerHTML = "";
+  });
 };
 export { garlandListerner };

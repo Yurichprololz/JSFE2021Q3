@@ -68,6 +68,7 @@ const renderTreePage = (): void => {
         <button class="garland-wrap__button garland-wrap__button_green" data-color="green"></button>
         <button class="garland-wrap__button garland-wrap__button_yellow" data-color="yellow"></button>
         <button class="garland-wrap__button garland-wrap__button_multi" data-color="multi"></button>
+        <button class="garland-wrap__button_null"></button>
       </div>
     </div>
   </div>
