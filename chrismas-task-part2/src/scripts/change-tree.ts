@@ -1,15 +1,19 @@
 const changeTreeHandle = (e: Event): void => {
   const area = document.getElementById("area") as HTMLAreaElement;
   const tree = document.getElementById("tree") as HTMLImageElement;
+  const treeWrap = document.querySelector(".tree") as HTMLDivElement;
+
   let target = e.target as HTMLDivElement;
   target = target.closest("div") as HTMLDivElement;
   const index = Number(target.dataset.path) - 1;
 
+  treeWrap.dataset.count = `${target.dataset.path}`;
   area.coords = getCoords(index);
   tree.src = `./assets/images/tree/${target.dataset.path}.png`;
 
   localStorage.setItem("treeSrc", tree.src);
   localStorage.setItem("treeArea", `${index}`);
+  localStorage.setItem("count", `${treeWrap.dataset.count}`);
 };
 
 const getCoords = (index: number): string => {
