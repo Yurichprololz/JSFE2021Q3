@@ -60,6 +60,8 @@ const setSaveTree = <T>(count: T): void => {
     };
   });
   setSettingForButton(count);
+  const changeFonButtons = document.querySelectorAll(".fon-wrap__item") as NodeListOf<HTMLDivElement>;
+  changeFonButtons[Number(count) - 1].click();
 };
 
 const setSaveTreeListerner = (): void => {
