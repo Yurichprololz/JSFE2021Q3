@@ -67,7 +67,10 @@ const setSaveTreeListerner = (): void => {
   buttons.forEach((button, index) => {
     if (localStorage.getItem(`tree${index + 1}`)) {
       button.classList.add("setting-right__save_active");
-      button.addEventListener("click", () => setSaveTree<number>(index + 1));
+      button.onclick = () => setSaveTree<number>(index + 1);
+    } else if (button.classList.contains("setting-right__save_active")) {
+      button.classList.remove("setting-right__save_active");
+      button.onclick = null;
     }
   });
 };
