@@ -1,4 +1,11 @@
-html{
-    font-family: 'Roboto',sans-serif;
-    font-weight: normal;
+html {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  height: 100%;
+}
+body {
+  height: 100%;
+  background-color: rgba(46, 130, 151, 0.562);
+  background-size: 100%;
+  padding: 10px 40px;
 }

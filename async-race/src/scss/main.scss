@@ -1,7 +1,11 @@
-@import './abstracts/reset';
-@import './abstracts/typography';
-@import './vendors/bootstrap/bootstrap.scss';
+@import "./abstracts/reset";
+@import "./abstracts/typography";
+@import "./vendors/bootstrap/bootstrap.scss";
 
-@import './base/base';
+@import "./base/base";
 
-@import './layout/footer';
+@import "./components/contol-panel";
+@import "./components/race";
+@import "./components/winners-page";
+
+@import "./layout/footer";
