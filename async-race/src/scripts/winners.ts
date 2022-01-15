@@ -1,23 +1,14 @@
-import { createElement, clearElement } from "./utils";
-
-const renderWinners = (): void => {
-  const main = document.getElementById("main") as HTMLElement | null;
-  const winners = createWinners();
-  if (main) {
-    clearElement(main);
-    main.append(winners);
-  }
-};
+import { clearElement, createElement } from './utils';
 
 const createWinners = (): HTMLElement => {
-  const element = createElement("div", "winners");
-  const title = createElement("h2", "winners__title");
-  const page = createElement("h3", "winners__page");
+  const element = createElement('div', 'winners');
+  const title = createElement('h2', 'winners__title');
+  const page = createElement('h3', 'winners__page');
 
-  title.textContent = "Winners";
-  page.textContent = "Page#";
+  title.textContent = 'Winners';
+  page.textContent = 'Page#';
 
-  const table = createElement("table", "table table-dark table-striped");
+  const table = createElement('table', 'table table-dark table-striped');
   table.innerHTML = `
   <thead>
     <tr>
@@ -55,4 +46,12 @@ const createWinners = (): HTMLElement => {
   return element;
 };
 
+export default function renderWinners(): void {
+  const main = document.getElementById('main') as HTMLElement | null;
+  const winners = createWinners();
+  if (main) {
+    clearElement(main);
+    main.append(winners);
+  }
+}
 export { renderWinners };

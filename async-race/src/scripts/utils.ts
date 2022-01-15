@@ -8,15 +8,18 @@ function createElement<T>(tag: T, classList?: T, atr?: TheObject): HTMLElement {
     el.className = `${classList}`;
   }
   if (atr) {
-    for (let key in atr) {
-      el.setAttribute(`${key}`, `${atr[key]}`);
-    }
+    const [key] = Object.entries(atr);
+    key.forEach((k) => {
+      el.setAttribute(`${k}`, `${atr[k]}`);
+    });
   }
-
   return el;
 }
 
-const clearElement = (element: Element) => {
-  element.innerHTML = "";
+const clearElement = (element: HTMLElement) => {
+  const child = Array.from(element.childNodes);
+  child.forEach((elem) => {
+    elem.remove();
+  });
 };
 export { createElement, clearElement };
