@@ -19,6 +19,9 @@ interface IWinner {
 
 type IWinners = IWinner[];
 
+interface Istate{
+  state: string
+}
 export {
-  ICar, ICars, IEngine, IWinner, IWinners,
+  ICar, ICars, IEngine, IWinner, IWinners, Istate,
 };

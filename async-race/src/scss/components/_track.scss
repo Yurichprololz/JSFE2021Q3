@@ -1,0 +1,24 @@
+.track{
+    position: relative;
+    border-bottom: 3px dashed black;
+    &__model{
+        font-family: "Rampart One", sans-serif;
+        font-size: 20px;
+        margin-left: 20px;
+    }
+
+    &__car{
+        position: absolute;
+        left: 50px;
+        bottom: -17px;
+    }
+    &__buttons{
+        
+        // & .btn-danger{
+        //     height: 20px;
+        // }
+    }
+    &__sm-buttons{
+        margin-bottom: 25px;
+    }
+}

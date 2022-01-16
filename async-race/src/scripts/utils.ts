@@ -22,4 +22,7 @@ const clearElement = (element: HTMLElement) => {
     elem.remove();
   });
 };
-export { createElement, clearElement };
+
+const genRandonElemOfArray = <T>(arr:T[]):T => arr[Math.floor(Math.random() * arr.length)];
+
+export { createElement, clearElement, genRandonElemOfArray };

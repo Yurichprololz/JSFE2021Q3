@@ -1,8 +1,13 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { createElement, clearElement } from './utils';
-import { getCars } from './api';
-import { ICar } from './interfaces';
+import { getCars, genCars/* , getCar */ } from './api';
+import { ICar/* , Istate */ } from './interfaces';
 // import carSvg from '../assets/img/car.svg';
+import state from './state';
+// import { decreasePage, increasePage } from './cars';
+// import { increasePage, decreasePage } from './cars';
 
+let { page } = state;
 type Tdata = {
   class: String;
   color: String;
@@ -40,21 +45,8 @@ const createInputsLine = (data: Tdata): HTMLDivElement => {
   return element;
 };
 
-const createGroupButtons = (): HTMLDivElement => {
-  const element = document.createElement('div');
-  element.className = 'btn-group control-panel__buttons';
-  element.setAttribute('role', 'group');
-  element.setAttribute('aria-label', 'group buttons');
-  element.innerHTML = `
-        <button type="button" class="btn btn-dark control-panel__button">race</button>
-        <button type="button" class="btn btn-dark control-panel__button">reset</button>
-        <button type="button" class="btn btn-dark control-panel__button">generate car</button>`;
-
-  return element;
-};
-
 const createSVG = (color:string) => `
-<svg width="60px" height="60px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="${color}" 
+<svg class="track__car" width="60px" height="60px" viewBox="0 0 512 512"  xmlns="http://www.w3.org/2000/svg"><path fill="${color}" 
 d="M188.287 169.428c-28.644-.076-60.908 2.228-98.457 8.01-4.432.62-47.132 24.977-58.644 41.788-11.512 16.812-15.45 48.813-15.45 
 48.813-3.108 13.105-1.22 34.766-.353 36.872 1.17 4.56 7.78 8.387 19.133 11.154C35.84 295.008 53.29 278.6 74.39 278.574c22.092 0 40 
 17.91 40 40-.014 1.764-.145 3.525-.392 5.272.59.008 1.26.024 1.82.03l239.266 1.99c-.453-2.405-.685-4.845-.693-7.292 0-22.09 17.91-40 
@@ -62,17 +54,40 @@ d="M188.287 169.428c-28.644-.076-60.908 2.228-98.457 8.01-4.432.62-47.132 24.977
 11.5.29 16.014.81l7.287 48.352c-41.43-5.093-83.647-9.663-105.964-27.5.35-5.5 7.96-13.462 16.506-16.506 4.84-1.724 40.167-5.346 66.158-5.156zm34.625.348c25.012.264 62.032 2.69 87.502 13.94 12.202 5.65 35.174 18.874 50.537 30.55l-6.35 10.535c-41.706-1.88-97.288-4.203-120.1-6.78l-11.59-48.245zM74.39 
 294.574a24 24 0 0 0-24 24 24 24 0 0 0 24 24 24 24 0 0 0 24-24 24 24 0 0 0-24-24zm320 0a24 24 0 0 0-24 24 24 24 0 0 0 24 24 24 24 0 0 0 24-24 24 24 0 0 0-24-24z"/></svg>`;
 
+const createRaceButtons = (model:HTMLElement) => {
+  const contiener = createElement('div', 'track__buttons');
+  const contienerEngine = createElement('div', 'track__sm-buttons');
+  const select = createElement('button', 'race__select btn  btn-outline-warning');
+  const reset = createElement('button', 'race__reset btn btn-outline-warning');
+  const A = createElement('button', 'race__A btn-outline-danger');
+  const B = createElement('button', 'race__B btn-outline-danger');
+
+  select.textContent = 'select';
+  reset.textContent = 'reset';
+  A.textContent = 'A';
+  B.textContent = 'B';
+
+  contiener.append(select);
+  contiener.append(reset);
+  contienerEngine.append(A);
+  contienerEngine.append(B);
+  contienerEngine.append(model);
+  contiener.append(contienerEngine);
+
+  return contiener;
+};
 const createTrack = (car:ICar) => {
   const { name, color } = car;
   const track = createElement('div', 'track');
   const model = createElement('span', 'track__model');
+  model.textContent = name;
   const imgCar = createElement('object');
+  const buttons = createRaceButtons(model);
   imgCar.innerHTML = createSVG(color);// new Svg(carSvg);
 
-  model.textContent = name;
-
+  track.append(buttons);
   track.append(imgCar);
-  track.append(model);
+  // track.append(model);
 
   return track;
 };
@@ -80,21 +95,22 @@ const createTrack = (car:ICar) => {
 const createRace = async (): Promise<HTMLElement> => {
   const race = createElement('div', 'race');
   const title = createElement('h2', 'race__title');
-  const page = createElement('h3', 'race__page');
+  const pageTitle = createElement('h3', 'race__page');
   const content = createElement('div', 'race__content', { id: 'race' });
 
   title.textContent = 'Garage';
-  page.textContent = 'Page #';
+  pageTitle.textContent = 'Page #';
 
   race.append(title);
-  race.append(page);
+  race.append(pageTitle);
   race.append(content);
-
-  const data = await getCars();
+  // const car = await getCar(1);
+  // console.log(car);
+  const data = await getCars(page);
   const arrTracks = data.map((el) => createTrack(el));
 
   arrTracks.forEach((track) => {
-    race.append(track);
+    content.append(track);
   });
 
   return race;
@@ -112,16 +128,87 @@ const createControlPanel = (): HTMLDivElement => {
   return element;
 };
 
+const refreshRace = async () => {
+  const oldRace = document.getElementById('race');
+  oldRace?.remove();
+  const race = document.querySelector('.race');
+  const content = createElement('div', 'race__content', { id: 'race' });
+
+  const data = await getCars(page);
+  const arrTracks = data.map((el) => createTrack(el));
+
+  arrTracks.forEach((track) => {
+    content.append(track);
+  });
+  race?.append(content);
+};
+
+const createGroupButtons = (): HTMLDivElement => {
+  const element = document.createElement('div');
+  element.className = 'btn-group control-panel__buttons';
+  element.setAttribute('role', 'group');
+  element.setAttribute('aria-label', 'group buttons');
+  const raceBTN = createElement('button', 'btn btn-dark control-panel__button', { id: 'raceBTN' });
+  const resetBTN = createElement('button', 'btn btn-dark control-panel__button', { id: 'resetBTN' });
+  const generateBTN = createElement('button', 'btn btn-dark control-panel__button', { id: 'generateBTN' });
+  raceBTN.textContent = 'race';
+  resetBTN.textContent = 'reset';
+  generateBTN.textContent = 'generate car';
+  // element.innerHTML = `
+  //       <button type="button" class="btn btn-dark control-panel__button">race</button>
+  //       <button type="button" class="btn btn-dark control-panel__button">reset</button>
+  //       <button type="button" class="btn btn-dark control-panel__button">generate car</button>`;
+
+  generateBTN.addEventListener('click', async () => {
+    await genCars();
+    await refreshRace();
+  });
+
+  element.append(raceBTN);
+  element.append(resetBTN);
+  element.append(generateBTN);
+
+  return element;
+};
+
+function increasePage():void {
+  page += 1;
+  refreshRace();
+}
+const decreasePage = ():void => {
+  if (page > 1) {
+    page -= 1;
+  }
+  refreshRace();
+};
+
+const createNavForPage = ():HTMLElement => {
+  const wrap = createElement('div');
+  const prev = createElement('button', 'btn');
+  const next = createElement('button', 'btn');
+
+  prev.addEventListener('click', decreasePage);
+  next.addEventListener('click', increasePage);
+  prev.textContent = 'prev';
+  next.textContent = 'next';
+
+  wrap.append(prev);
+  wrap.append(next);
+  return wrap;
+};
+
 async function renderGarage(): Promise<void> {
   const main = document.getElementById('main') as HTMLElement | null;
   const controlPanel = createControlPanel() as HTMLDivElement;
+  const navForPage = createNavForPage();
   const race = createRace();
   if (main) {
     clearElement(main);
-    main?.append(controlPanel);
-    main?.append(await race);
+    main.append(controlPanel);
+    main.append(await race);
+    main.append(navForPage);
   }
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export { renderGarage };
+export { renderGarage, createTrack };
