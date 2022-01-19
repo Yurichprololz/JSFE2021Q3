@@ -1,13 +1,15 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import { createElement, clearElement } from './utils';
-import { getCars, genCars/* , getCar */ } from './api';
+import {
+  getCars, genCars, /* , getCar */
+  createCustomCar, deleteCar, updateCar,
+} from './api';
 import { ICar/* , Istate */ } from './interfaces';
 // import carSvg from '../assets/img/car.svg';
 import state from './state';
 // import { decreasePage, increasePage } from './cars';
-// import { increasePage, decreasePage } from './cars';
 
-let { page } = state;
+// let { page } = state;
+
 type Tdata = {
   class: String;
   color: String;
@@ -36,11 +38,10 @@ const createInputsLine = (data: Tdata): HTMLDivElement => {
             placeholder="Name of car"
             aria-label="Name of car"
             aria-describedby="basic-addon2"
+            id="${data.textButton}-name"
           />
-          <input type="color" class="control-panel__color" value="${data.color}" name="" id="" />
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary control-panel__button" type="button">${data.textButton}</button>
-          </div>
+          <input type="color" class="control-panel__color" id="${data.textButton}-clr" value="${data.color}" name="" />
+            <button class="btn btn-outline-secondary control-panel__button" id="${data.textButton}-btn" ${data.textButton === 'update' ? 'disabled' : ''}  type="button">${data.textButton}</button>
           `;
   return element;
 };
@@ -55,17 +56,21 @@ d="M188.287 169.428c-28.644-.076-60.908 2.228-98.457 8.01-4.432.62-47.132 24.977
 294.574a24 24 0 0 0-24 24 24 24 0 0 0 24 24 24 24 0 0 0 24-24 24 24 0 0 0-24-24zm320 0a24 24 0 0 0-24 24 24 24 0 0 0 24 24 24 24 0 0 0 24-24 24 24 0 0 0-24-24z"/></svg>`;
 
 const createRaceButtons = (model:HTMLElement) => {
-  const contiener = createElement('div', 'track__buttons');
-  const contienerEngine = createElement('div', 'track__sm-buttons');
-  const select = createElement('button', 'race__select btn  btn-outline-warning');
-  const reset = createElement('button', 'race__reset btn btn-outline-warning');
-  const A = createElement('button', 'race__A btn-outline-danger');
-  const B = createElement('button', 'race__B btn-outline-danger');
+  const contiener = createElement('div', 'track__buttons') as HTMLDivElement;
+  const contienerEngine = createElement('div', 'track__sm-buttons') as HTMLDivElement;
+  const select = createElement('button', 'race__select btn  btn-warning') as HTMLButtonElement;
+  const reset = createElement('button', 'race__remove btn btn-warning') as HTMLButtonElement;
+  const A = createElement('button', 'race__A btn-outline-danger') as HTMLButtonElement;
+  const B = createElement('button', 'race__B btn-outline-danger') as HTMLButtonElement;
 
   select.textContent = 'select';
-  reset.textContent = 'reset';
+  reset.textContent = 'remove';
   A.textContent = 'A';
   B.textContent = 'B';
+
+  B.disabled = true;
+  select.addEventListener('click', addTargetCar);
+  reset.addEventListener('click', removeCar);
 
   contiener.append(select);
   contiener.append(reset);
@@ -77,13 +82,14 @@ const createRaceButtons = (model:HTMLElement) => {
   return contiener;
 };
 const createTrack = (car:ICar) => {
-  const { name, color } = car;
+  const { name, color, id } = car;
   const track = createElement('div', 'track');
+  track.dataset.id = `${id}`;
   const model = createElement('span', 'track__model');
   model.textContent = name;
   const imgCar = createElement('object');
   const buttons = createRaceButtons(model);
-  imgCar.innerHTML = createSVG(color);// new Svg(carSvg);
+  imgCar.innerHTML = createSVG(color);
 
   track.append(buttons);
   track.append(imgCar);
@@ -98,15 +104,18 @@ const createRace = async (): Promise<HTMLElement> => {
   const pageTitle = createElement('h3', 'race__page');
   const content = createElement('div', 'race__content', { id: 'race' });
 
-  title.textContent = 'Garage';
-  pageTitle.textContent = 'Page #';
-
   race.append(title);
   race.append(pageTitle);
   race.append(content);
-  // const car = await getCar(1);
-  // console.log(car);
-  const data = await getCars(page);
+
+  const cars = await getCars(state.page);
+  const { data, total } = cars;
+
+  title.textContent = `Garage(${total})`;
+  pageTitle.textContent = `Page #${state.page}`;
+
+  refreshCount(total);
+
   const arrTracks = data.map((el) => createTrack(el));
 
   arrTracks.forEach((track) => {
@@ -122,28 +131,57 @@ const createControlPanel = (): HTMLDivElement => {
   const lineUpdate: HTMLDivElement = createInputsLine(DATA_WITH_LINE.update);
   const groupButtons: HTMLDivElement = createGroupButtons();
 
+  const createBtn = lineCreate.querySelector('#create-btn');
+  const updateBTN = lineUpdate.querySelector('#update-btn');
+
+  updateBTN?.addEventListener('click', async () => {
+    const { car } = state;
+    if (car) {
+      changeDisabledUpdate(true);
+      await updateCar(car);
+      refreshRace();
+    }
+  });
+  createBtn?.addEventListener('click', async () => {
+    await createCustomCar();
+    refreshRace();
+  });
   element.append(lineCreate);
   element.append(lineUpdate);
   element.append(groupButtons);
   return element;
 };
 
-const refreshRace = async () => {
+function refreshCount(total:string) {
+  const raceTitle = document.querySelector('.race__title');
+  const pageTitle = document.querySelector('.race__page');
+  if (pageTitle) {
+    pageTitle.textContent = `Page #${state.page}`;
+  }
+  if (raceTitle && total) {
+    raceTitle.textContent = `Garage(${total})`;
+  }
+}
+
+async function refreshRace() {
   const oldRace = document.getElementById('race');
   oldRace?.remove();
   const race = document.querySelector('.race');
   const content = createElement('div', 'race__content', { id: 'race' });
 
-  const data = await getCars(page);
+  const cars = await getCars(state.page);
+  const { data, total } = cars;
+  refreshCount(total);
+
   const arrTracks = data.map((el) => createTrack(el));
 
   arrTracks.forEach((track) => {
     content.append(track);
   });
   race?.append(content);
-};
+}
 
-const createGroupButtons = (): HTMLDivElement => {
+function createGroupButtons(): HTMLDivElement {
   const element = document.createElement('div');
   element.className = 'btn-group control-panel__buttons';
   element.setAttribute('role', 'group');
@@ -158,7 +196,6 @@ const createGroupButtons = (): HTMLDivElement => {
   //       <button type="button" class="btn btn-dark control-panel__button">race</button>
   //       <button type="button" class="btn btn-dark control-panel__button">reset</button>
   //       <button type="button" class="btn btn-dark control-panel__button">generate car</button>`;
-
   generateBTN.addEventListener('click', async () => {
     await genCars();
     await refreshRace();
@@ -169,15 +206,15 @@ const createGroupButtons = (): HTMLDivElement => {
   element.append(generateBTN);
 
   return element;
-};
+}
 
 function increasePage():void {
-  page += 1;
+  state.page += 1;
   refreshRace();
 }
 const decreasePage = ():void => {
-  if (page > 1) {
-    page -= 1;
+  if (state.page > 1) {
+    state.page -= 1;
   }
   refreshRace();
 };
@@ -210,5 +247,37 @@ async function renderGarage(): Promise<void> {
   }
 }
 
-// eslint-disable-next-line import/prefer-default-export
+function removeDisabledSelect() {
+  const selects = document.querySelectorAll('.race__select') as NodeListOf<HTMLButtonElement>;
+  selects.forEach((select) => {
+    if (select.disabled) {
+      select.removeAttribute('disabled');
+    }
+  });
+}
+
+function changeDisabledUpdate(mod:boolean) {
+  const updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
+  updateBtn.disabled = mod;
+}
+
+function addTargetCar(event: Event): void {
+  const target = event.target as HTMLButtonElement;
+  if (target) {
+    const track = target.parentElement?.parentElement;
+    const id = track?.dataset.id;
+    if (id) state.car = id;
+    removeDisabledSelect();
+    changeDisabledUpdate(false);
+    target.disabled = true;
+  }
+}
+
+function removeCar(event: Event): void {
+  addTargetCar(event);
+  deleteCar(state.car);
+  refreshRace();
+  // removeDisabledSelect();
+}
+
 export { renderGarage, createTrack };

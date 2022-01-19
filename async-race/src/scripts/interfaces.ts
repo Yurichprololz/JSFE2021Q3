@@ -1,11 +1,14 @@
 interface ICar {
   name: string;
   color: string;
-  id: number;
+  id?: number;
+  // total?: string | null;
 }
 
-type ICars = ICar[];
-
+type ICars = {
+  data: ICar[];
+  total: string;
+};
 interface IEngine {
   velocity: Number;
   distance: Number;
