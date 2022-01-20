@@ -10,14 +10,14 @@ type ICars = {
   total: string;
 };
 interface IEngine {
-  velocity: Number;
-  distance: Number;
+  velocity: number;
+  distance: number;
 }
 
 interface IWinner {
-  id: Number;
-  wins: Number;
-  time: Number;
+  id: number;
+  wins: number;
+  time: number;
 }
 
 type IWinners = IWinner[];
@@ -25,6 +25,11 @@ type IWinners = IWinner[];
 interface Istate{
   state: string
 }
+
+interface Idrive{
+  success:boolean
+}
+
 export {
-  ICar, ICars, IEngine, IWinner, IWinners, Istate,
+  ICar, ICars, IEngine, IWinner, IWinners, Istate, Idrive,
 };

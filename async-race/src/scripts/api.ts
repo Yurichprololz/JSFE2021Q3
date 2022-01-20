@@ -1,17 +1,18 @@
 import {
-  ICar, ICars, //* ICars, IEngine, IWinner, IWinners, */ /* Istate */
+  ICar, ICars, Idrive, IEngine, /* IWinner, IWinners, */ /* Istate, */
 } from './interfaces';
 import { genRandonElemOfArray } from './utils';
 import brandCar from './brand-car';
 import modelCar from './model-car';
 import colors from './colors';
 // import state from './state';
+// import state from './state';
 
 const LIMIT = 7;
 const BASE_URL = 'http://127.0.0.1:3000';
 const GARAGE_PATH = `${BASE_URL}/garage`;
 // const WINNERS_PATH = `${BASE_URL}/winners`;
-// const ENGINE_PATH = `${BASE_URL}/engine`;
+const ENGINE_PATH = `${BASE_URL}/engine`;
 
 const getCars = async (page:number): Promise<ICars> => {
   const response = await fetch(`${GARAGE_PATH}?_page=${page}&_limit=${LIMIT}`);
@@ -98,6 +99,35 @@ const updateCar = async (id:string) => {
   });
 };
 
+const startAndStopEngine = async (id:string, status:string):Promise<IEngine> => {
+  const response = await fetch(
+    `${ENGINE_PATH}?id=${id}&status=${status}`,
+    {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  );
+  const data:IEngine = await response.json();
+  return data;
+};
+
+const requestDrive = async (id:string) => {
+  const response = await fetch(
+    `${ENGINE_PATH}?id=${id}&status=drive`,
+    {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  );
+  const data:Idrive = await response.json();
+  return data;
+};
+
 export {
   getCars, getCar, genCars, createCustomCar, deleteCar, updateCar,
+  startAndStopEngine as startEngine, requestDrive,
 };

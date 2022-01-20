@@ -25,4 +25,13 @@ const clearElement = (element: HTMLElement) => {
 
 const genRandonElemOfArray = <T>(arr:T[]):T => arr[Math.floor(Math.random() * arr.length)];
 
-export { createElement, clearElement, genRandonElemOfArray };
+const createImage = (src:string, clas:string):HTMLImageElement => {
+  const img = new Image();
+  img.className = clas;
+  img.src = src;
+  return img;
+};
+
+export {
+  createElement, clearElement, genRandonElemOfArray, createImage,
+};
