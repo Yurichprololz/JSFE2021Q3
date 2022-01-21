@@ -31,13 +31,10 @@ const createMain = (): HTMLElement => {
   return element;
 };
 
-function renderBasicLayout(): void {
+export default function renderBasicLayout(): void {
   const footer = createFooter();
   const main = createMain();
 
   document.body.append(footer);
   document.body.append(main);
 }
-
-// eslint-disable-next-line import/prefer-default-export
-export { renderBasicLayout };

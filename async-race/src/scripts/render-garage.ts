@@ -1,18 +1,15 @@
 import { createElement, clearElement, createImage } from './utils';
 import {
   getCars, genCars, /* , getCar */
-  createCustomCar, deleteCar, updateCar, startEngine, requestDrive,
+  createCustomCar, deleteCar, updateCar, startEngine, requestDrive, checkWinner,
 } from './api';
 import {
-  ICar, /* , Istate */
+  ICar, /* Idrive, */ /* , Istate */
   IEngine,
+  IwinRace,
 } from './interfaces';
-// import flag from './assets/img/flag-of-the-finish.png';
-// import carSvg from '../assets/img/car.svg';
 import state from './state';
-// import { decreasePage, increasePage } from './cars';
-
-// let { page } = state;
+import alertWinner from './alert-winner';
 
 type Tdata = {
   class: String;
@@ -50,7 +47,7 @@ const createInputsLine = (data: Tdata): HTMLDivElement => {
   return element;
 };
 
-const createSVG = (color:string) => `
+const createSVG = (color:string):string => `
 <svg class="track__car" width="60px" height="60px" viewBox="0 0 512 512"  xmlns="http://www.w3.org/2000/svg"><path fill="${color}" 
 d="M188.287 169.428c-28.644-.076-60.908 2.228-98.457 8.01-4.432.62-47.132 24.977-58.644 41.788-11.512 16.812-15.45 48.813-15.45 
 48.813-3.108 13.105-1.22 34.766-.353 36.872 1.17 4.56 7.78 8.387 19.133 11.154C35.84 295.008 53.29 278.6 74.39 278.574c22.092 0 40 
@@ -59,7 +56,7 @@ d="M188.287 169.428c-28.644-.076-60.908 2.228-98.457 8.01-4.432.62-47.132 24.977
 11.5.29 16.014.81l7.287 48.352c-41.43-5.093-83.647-9.663-105.964-27.5.35-5.5 7.96-13.462 16.506-16.506 4.84-1.724 40.167-5.346 66.158-5.156zm34.625.348c25.012.264 62.032 2.69 87.502 13.94 12.202 5.65 35.174 18.874 50.537 30.55l-6.35 10.535c-41.706-1.88-97.288-4.203-120.1-6.78l-11.59-48.245zM74.39 
 294.574a24 24 0 0 0-24 24 24 24 0 0 0 24 24 24 24 0 0 0 24-24 24 24 0 0 0-24-24zm320 0a24 24 0 0 0-24 24 24 24 0 0 0 24 24 24 24 0 0 0 24-24 24 24 0 0 0-24-24z"/></svg>`;
 
-const createRaceButtons = (model:HTMLElement) => {
+const createRaceButtons = (model:HTMLElement):HTMLDivElement => {
   const contiener = createElement('div', 'track__buttons') as HTMLDivElement;
   const contienerEngine = createElement('div', 'track__sm-buttons') as HTMLDivElement;
   const select = createElement('button', 'race__select btn  btn-warning') as HTMLButtonElement;
@@ -88,7 +85,7 @@ const createRaceButtons = (model:HTMLElement) => {
   return contiener;
 };
 
-const createTrack = (car:ICar) => {
+const createTrack = (car:ICar):HTMLElement => {
   const { name, color, id } = car;
   const track = createElement('div', 'track');
   track.dataset.id = `${id}`;
@@ -161,7 +158,7 @@ const createControlPanel = (): HTMLDivElement => {
   return element;
 };
 
-function refreshCount(total:string) {
+function refreshCount(total:string):void {
   const raceTitle = document.querySelector('.race__title');
   const pageTitle = document.querySelector('.race__page');
   if (pageTitle) {
@@ -172,7 +169,7 @@ function refreshCount(total:string) {
   }
 }
 
-async function refreshRace() {
+async function refreshRace(): Promise<void> {
   const oldRace = document.getElementById('race');
   oldRace?.remove();
   const race = document.querySelector('.race');
@@ -256,7 +253,7 @@ async function renderGarage(): Promise<void> {
   }
 }
 
-function removeDisabledSelect() {
+function removeDisabledSelect():void {
   const selects = document.querySelectorAll('.race__select') as NodeListOf<HTMLButtonElement>;
   selects.forEach((select) => {
     if (select.disabled) {
@@ -265,7 +262,7 @@ function removeDisabledSelect() {
   });
 }
 
-function changeDisabledUpdate(mod:boolean) {
+function changeDisabledUpdate(mod:boolean):void {
   const updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
   updateBtn.disabled = mod;
 }
@@ -288,31 +285,52 @@ function removeCar(event: Event): void {
   refreshRace();
 }
 
-async function movedCar(data:IEngine, track:HTMLElement, id:string):Promise<void> {
+async function movedCar(data:IEngine, track:HTMLElement, id:string): Promise<void | IwinRace> {
   const A = track.querySelector('.race__A') as HTMLButtonElement;
   const car = track?.querySelector('.track__car') as SVGElement;
+  const name = track?.querySelector('.track__model')?.textContent as string;
   const trackRect = track.getBoundingClientRect();
   const unpassedDistance = 150;
   const STOP_POINT = trackRect.width - unpassedDistance;
 
   const { velocity, distance } = data;
-  const speed = distance / velocity;
+  let speed = distance / velocity;
 
   const finish = Date.now();
   let requestId: number;
-  function animate(): void {
+  async function animate() {
     const start = Date.now() - finish;
     car.style.transform = `translateX(${STOP_POINT * (start / speed)}px)`;
 
     requestId = requestAnimationFrame(animate);
-    if (STOP_POINT < STOP_POINT * (start / speed) || A.disabled === false) {
+
+    if (STOP_POINT < STOP_POINT * (start / speed) || speed === Infinity) {
       cancelAnimationFrame(requestId);
+      if (speed === Infinity) {
+        car.style.transform = 'translateX(0px)';
+      }
+    }
+    if (A.disabled === false) {
+      const status = 'stopped';
+      const dataOnStop = await startEngine(id, status);
+      speed = dataOnStop.distance / dataOnStop.velocity;
     }
   }
   animate();
-  await requestDrive(id)
+  const a = requestDrive(id)
+    .then((dataDrive):IwinRace => {
+      const { success } = dataDrive;
+      return {
+        success,
+        id,
+        speed,
+        name,
+      };
+    })
     .catch(() => cancelAnimationFrame(requestId));
+  return a;
 }
+
 async function startedEngine(event:Event):Promise<void> {
   const target = event.target as HTMLButtonElement;
   const track = target.parentElement?.parentElement?.parentElement as HTMLElement;
@@ -322,21 +340,49 @@ async function startedEngine(event:Event):Promise<void> {
   const data = await startEngine(id, status);
   target.disabled = true;
   B.disabled = false;
-  movedCar(data, track, id);
-  // await requestDrive(id)
-  // .catch(() => cancelAnimationFrame())
+  await movedCar(data, track, id);
 }
-async function stoppedCar(event:Event) {
+
+async function allStart(): Promise<void> {
+  const tracks = document.querySelectorAll('.track') as NodeListOf<HTMLDivElement>;
+  const arr = Array.from(tracks);
+  arr.forEach((track) => {
+    const a = track.querySelector('.race__A') as HTMLButtonElement;
+    a.disabled = true;
+  });
+  // A.forEach((btn) => btn.disabled = true);
+  const a = arr.map((el) => el.dataset.id) as string[];
+  const status = 'started';
+  // const arrPr:Promise<void | Idrive>[] = [];
+  let isFirst = true;
+  a.forEach(async (id, index) => {
+    const data = await startEngine(id, status);
+    // arrPr.push(movedCar(data, tracks[index], id));
+    const res = await movedCar(data, tracks[index], id);
+    if (res && isFirst) {
+      isFirst = false;
+      alertWinner(res);
+      checkWinner(res);
+    }
+  });
+  // console.log(arrPr);
+  // const winner = Promise.race(arrPr)
+  //   .then(((data) => data));
+  // console.log(winner);
+  arr.forEach((track) => {
+    const b = track.querySelector('.race__B') as HTMLButtonElement;
+    b.disabled = false;
+  });
+}
+
+async function stoppedCar(event:Event): Promise<void> {
   const target = event.target as HTMLButtonElement;
   const track = target.parentElement?.parentElement?.parentElement as HTMLElement;
   const A = track.querySelector('.race__A') as HTMLButtonElement;
   const car = track?.querySelector('.track__car') as SVGElement;
-  const id = track?.dataset.id as string;
-  const status = 'stopped';
   A.disabled = false;
-  await startEngine(id, status);
   target.disabled = true;
   car.style.transform = 'translateX(0px)';
 }
 
-export { renderGarage, createTrack };
+export { renderGarage, createTrack, allStart };

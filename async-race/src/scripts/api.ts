@@ -1,7 +1,7 @@
 import {
-  ICar, ICars, Idrive, IEngine, /* IWinner, IWinners, */ /* Istate, */
+  ICar, ICars, Idrive, IEngine, IpropsOfCar, IWinner, IwinRace,
 } from './interfaces';
-import { genRandonElemOfArray } from './utils';
+import { genRandonElemOfArray, msConvertToSec } from './utils';
 import brandCar from './brand-car';
 import modelCar from './model-car';
 import colors from './colors';
@@ -11,7 +11,7 @@ import colors from './colors';
 const LIMIT = 7;
 const BASE_URL = 'http://127.0.0.1:3000';
 const GARAGE_PATH = `${BASE_URL}/garage`;
-// const WINNERS_PATH = `${BASE_URL}/winners`;
+const WINNERS_PATH = `${BASE_URL}/winners`;
 const ENGINE_PATH = `${BASE_URL}/engine`;
 
 const getCars = async (page:number): Promise<ICars> => {
@@ -29,7 +29,7 @@ const getCar = async (id:number): Promise<ICar> => {
   return data;
 };
 
-const getArrayCars = () => {
+const getArrayCars = ():IpropsOfCar[] => {
   const data = [];
   while (data.length < 100) {
     const model = genRandonElemOfArray(modelCar);
@@ -42,7 +42,7 @@ const getArrayCars = () => {
   return data;
 };
 
-const genCars = async () => {
+const genCars = async ():Promise<void> => {
   const data = getArrayCars();
   data.forEach((obj) => {
     fetch(GARAGE_PATH, {
@@ -55,7 +55,7 @@ const genCars = async () => {
   });
 };
 
-const createCustomCar = async () => {
+const createCustomCar = async ():Promise<void> => {
   const nameInput = document.getElementById('create-name') as HTMLButtonElement;
   const colorInput = document.getElementById('create-clr') as HTMLButtonElement;
   if (!nameInput.value) {
@@ -75,13 +75,13 @@ const createCustomCar = async () => {
   });
 };
 
-const deleteCar = async (id:string) => {
+const deleteCar = async (id:string):Promise<void> => {
   await fetch(`${GARAGE_PATH}/${id}`, {
     method: 'DELETE',
   });
 };
 
-const updateCar = async (id:string) => {
+const updateCar = async (id:string):Promise<void> => {
   const nameInput = document.getElementById('update-name') as HTMLButtonElement;
   const colorInput = document.getElementById('update-clr') as HTMLButtonElement;
   const oldProp = await getCar(Number(id));
@@ -113,7 +113,7 @@ const startAndStopEngine = async (id:string, status:string):Promise<IEngine> => 
   return data;
 };
 
-const requestDrive = async (id:string) => {
+const requestDrive = async (id:string):Promise<Idrive> => {
   const response = await fetch(
     `${ENGINE_PATH}?id=${id}&status=drive`,
     {
@@ -127,7 +127,57 @@ const requestDrive = async (id:string) => {
   return data;
 };
 
+const updateWinner = async (winner:IwinRace, oldData:IWinner):Promise<void> => {
+  const { id, wins } = oldData;
+  const data = {
+    id,
+    wins: wins + 1,
+    time: Math.min(msConvertToSec(winner.speed), oldData.time),
+  };
+  fetch(`${WINNERS_PATH}/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+};
+
+const createWinner = async (winner:IwinRace):Promise<void> => {
+  const { id, speed } = winner;
+  const obj:IWinner = {
+    id: Number(id),
+    wins: 1,
+    time: msConvertToSec(speed),
+  };
+
+  fetch(WINNERS_PATH, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(obj),
+  });
+};
+
+const checkWinner = async (winner:IwinRace):Promise<void> => {
+  const { id } = winner;
+  const responce = await fetch(`${WINNERS_PATH}/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const oldWinner:IWinner = await responce.json();
+
+  if (!oldWinner.id) {
+    createWinner(winner);
+  } else {
+    updateWinner(winner, oldWinner);
+  }
+};
+
 export {
   getCars, getCar, genCars, createCustomCar, deleteCar, updateCar,
-  startAndStopEngine as startEngine, requestDrive,
+  startAndStopEngine as startEngine, requestDrive, checkWinner,
 };

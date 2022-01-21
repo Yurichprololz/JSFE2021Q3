@@ -2,7 +2,6 @@ interface ICar {
   name: string;
   color: string;
   id?: number;
-  // total?: string | null;
 }
 
 type ICars = {
@@ -30,6 +29,16 @@ interface Idrive{
   success:boolean
 }
 
+interface IwinRace extends Idrive {
+  id: string
+  speed: number
+  name: string
+}
+interface IpropsOfCar {
+  name: string
+  color: string
+}
+
 export {
-  ICar, ICars, IEngine, IWinner, IWinners, Istate, Idrive,
+  ICar, ICars, IEngine, IWinner, IWinners, Istate, Idrive, IwinRace, IpropsOfCar,
 };

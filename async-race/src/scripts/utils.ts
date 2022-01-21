@@ -16,7 +16,7 @@ function createElement<T>(tag: T, classList?: T, atr?: TheObject): HTMLElement {
   return el;
 }
 
-const clearElement = (element: HTMLElement) => {
+const clearElement = (element: HTMLElement):void => {
   const child = Array.from(element.childNodes);
   child.forEach((elem) => {
     elem.remove();
@@ -32,6 +32,12 @@ const createImage = (src:string, clas:string):HTMLImageElement => {
   return img;
 };
 
+const msConvertToSec = (ms:number | string):number => {
+  const msNum = Number(ms);
+  const value = Number((msNum / 1000).toFixed(2));
+  return value;
+};
+
 export {
-  createElement, clearElement, genRandonElemOfArray, createImage,
+  createElement, clearElement, genRandonElemOfArray, createImage, msConvertToSec,
 };
