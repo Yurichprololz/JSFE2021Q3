@@ -5,10 +5,9 @@ import { genRandonElemOfArray, msConvertToSec } from './utils';
 import brandCar from './brand-car';
 import modelCar from './model-car';
 import colors from './colors';
-// import state from './state';
-// import state from './state';
 
 const LIMIT = 7;
+const WINNERS_LIMIT = 10;
 const BASE_URL = 'http://127.0.0.1:3000';
 const GARAGE_PATH = `${BASE_URL}/garage`;
 const WINNERS_PATH = `${BASE_URL}/winners`;
@@ -75,8 +74,11 @@ const createCustomCar = async ():Promise<void> => {
   });
 };
 
-const deleteCar = async (id:string):Promise<void> => {
-  await fetch(`${GARAGE_PATH}/${id}`, {
+const deleteCar = (id:string):void => {
+  fetch(`${GARAGE_PATH}/${id}`, {
+    method: 'DELETE',
+  });
+  fetch(`${WINNERS_PATH}/${id}`, {
     method: 'DELETE',
   });
 };
@@ -177,7 +179,13 @@ const checkWinner = async (winner:IwinRace):Promise<void> => {
   }
 };
 
+const getWinners = async (page:number, sortBy:string = 'id', orderBy:string = 'ASC'):Promise<IWinner[]> => {
+  const response = await fetch(`${WINNERS_PATH}?_page=${page}&_limit=${WINNERS_LIMIT}&_sort=${sortBy}&_order=${orderBy}`);
+  const data = await response.json();
+  return data;
+};
+
 export {
   getCars, getCar, genCars, createCustomCar, deleteCar, updateCar,
-  startAndStopEngine as startEngine, requestDrive, checkWinner,
+  startAndStopEngine as startEngine, requestDrive, checkWinner, getWinners,
 };

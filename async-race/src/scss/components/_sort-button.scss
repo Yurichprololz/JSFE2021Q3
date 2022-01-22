@@ -1,0 +1,14 @@
+.sort{
+    cursor: pointer;
+}
+
+.sort.DESC::after{
+    content: '  🠕';
+    width: 10px;
+    height: 10px;
+}
+.sort.ASC::after{
+    content: '  🠗';
+    width: 10px;
+    height: 10px; 
+}
