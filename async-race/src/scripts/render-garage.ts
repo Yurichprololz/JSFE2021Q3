@@ -198,10 +198,9 @@ function createGroupButtons(): HTMLDivElement {
   raceBTN.textContent = 'race';
   resetBTN.textContent = 'reset';
   generateBTN.textContent = 'generate car';
-  // element.innerHTML = `
-  //       <button type="button" class="btn btn-dark control-panel__button">race</button>
-  //       <button type="button" class="btn btn-dark control-panel__button">reset</button>
-  //       <button type="button" class="btn btn-dark control-panel__button">generate car</button>`;
+
+  raceBTN.addEventListener('click', allStart);
+  resetBTN.addEventListener('click', allReset);
   generateBTN.addEventListener('click', async () => {
     await genCars();
     await refreshRace();
@@ -350,25 +349,26 @@ async function allStart(): Promise<void> {
     const a = track.querySelector('.race__A') as HTMLButtonElement;
     a.disabled = true;
   });
-  // A.forEach((btn) => btn.disabled = true);
   const a = arr.map((el) => el.dataset.id) as string[];
   const status = 'started';
-  // const arrPr:Promise<void | Idrive>[] = [];
   let isFirst = true;
+  const resetBTN = document.getElementById('resetBTN') as HTMLButtonElement;
+  resetBTN.disabled = true;
+  let count = 0;
   a.forEach(async (id, index) => {
     const data = await startEngine(id, status);
-    // arrPr.push(movedCar(data, tracks[index], id));
     const res = await movedCar(data, tracks[index], id);
+    count += 1;
     if (res && isFirst) {
       isFirst = false;
       alertWinner(res);
       checkWinner(res);
     }
+    if (count === a.length) {
+      resetBTN.disabled = false;
+    }
   });
-  // console.log(arrPr);
-  // const winner = Promise.race(arrPr)
-  //   .then(((data) => data));
-  // console.log(winner);
+
   arr.forEach((track) => {
     const b = track.querySelector('.race__B') as HTMLButtonElement;
     b.disabled = false;
@@ -385,4 +385,9 @@ async function stoppedCar(event:Event): Promise<void> {
   car.style.transform = 'translateX(0px)';
 }
 
-export { renderGarage, createTrack, allStart };
+function allReset() {
+  const buttons = document.querySelectorAll('.race__B') as NodeListOf<HTMLButtonElement>;
+  buttons.forEach((btn) => btn.click());
+}
+
+export { renderGarage, createTrack };
