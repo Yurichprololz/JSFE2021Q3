@@ -8,8 +8,8 @@ function createElement<T>(tag: T, classList?: T, atr?: TheObject): HTMLElement {
     el.className = `${classList}`;
   }
   if (atr) {
-    const [key] = Object.entries(atr);
-    key.forEach((k) => {
+    const keys = Object.keys(atr);
+    keys.forEach((k) => {
       el.setAttribute(`${k}`, `${atr[k]}`);
     });
   }
