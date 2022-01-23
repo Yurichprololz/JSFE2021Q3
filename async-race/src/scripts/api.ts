@@ -57,10 +57,7 @@ const genCars = async ():Promise<void> => {
 const createCustomCar = async ():Promise<void> => {
   const nameInput = document.getElementById('create-name') as HTMLButtonElement;
   const colorInput = document.getElementById('create-clr') as HTMLButtonElement;
-  if (!nameInput.value) {
-    alert('Enter name of your car');
-    return;
-  }
+
   const carData = {
     name: `${nameInput.value}`,
     color: `${colorInput.value}`,

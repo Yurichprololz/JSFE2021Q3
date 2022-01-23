@@ -1,10 +1,12 @@
-import { createElement, clearElement, createImage } from './utils';
 import {
-  getCars, genCars, /* , getCar */
+  createElement, clearElement, createImage, validateForInput,
+} from './utils';
+import {
+  getCars, genCars,
   createCustomCar, deleteCar, updateCar, startEngine, requestDrive, checkWinner,
 } from './api';
 import {
-  ICar, /* Idrive, */ /* , Istate */
+  ICar,
   IEngine,
   IwinRace,
 } from './interfaces';
@@ -85,8 +87,6 @@ const createTrack = (car:ICar):HTMLElement => {
   model.textContent = name;
   const buttons = createRaceButtons(model);
   const imgCar = createCar(color, 'track__car');
-  // createElement('object');
-  // imgCar.innerHTML = createSVG(color);
 
   const flagImg = createImage('./assets/img/flag-of-the-finish.png', 'track__flag');
 
@@ -123,6 +123,7 @@ const createRace = async (): Promise<HTMLElement> => {
 
   return race;
 };
+
 const createControlPanel = (): HTMLDivElement => {
   const element = document.createElement('div');
   element.classList.add('control-panel');
@@ -132,6 +133,11 @@ const createControlPanel = (): HTMLDivElement => {
 
   const createBtn = lineCreate.querySelector('#create-btn');
   const updateBTN = lineUpdate.querySelector('#update-btn');
+  const createName = lineCreate.querySelector('#create-name') as HTMLInputElement;
+  const changeName = lineUpdate.querySelector('#update-name') as HTMLInputElement;
+
+  validateForInput(createName);
+  validateForInput(changeName);
 
   updateBTN?.addEventListener('click', async () => {
     const { car } = state;
@@ -213,8 +219,8 @@ function increasePage():void {
 const decreasePage = ():void => {
   if (state.page > 1) {
     state.page -= 1;
+    refreshRace();
   }
-  refreshRace();
 };
 
 const createNavForPage = ():HTMLElement => {
@@ -284,16 +290,13 @@ async function movedCar(data:IEngine, track:HTMLElement, id:string): Promise<voi
   const trackRect = track.getBoundingClientRect();
   const unpassedDistance = 150;
   const STOP_POINT = trackRect.width - unpassedDistance;
-
-  const { velocity, distance } = data;
-  let speed = distance / velocity;
+  let speed = data.distance / data.velocity;
 
   const finish = Date.now();
   let requestId: number;
   async function animate() {
     const start = Date.now() - finish;
     car.style.transform = `translateX(${STOP_POINT * (start / speed)}px)`;
-
     requestId = requestAnimationFrame(animate);
 
     if (STOP_POINT < STOP_POINT * (start / speed) || speed === Infinity) {
@@ -309,18 +312,14 @@ async function movedCar(data:IEngine, track:HTMLElement, id:string): Promise<voi
     }
   }
   animate();
-  const a = requestDrive(id)
-    .then((dataDrive):IwinRace => {
-      const { success } = dataDrive;
-      return {
-        success,
-        id,
-        speed,
-        name,
-      };
-    })
+  const responce = requestDrive(id)
+    .then(():IwinRace => ({
+      id,
+      speed,
+      name,
+    }))
     .catch(() => cancelAnimationFrame(requestId));
-  return a;
+  return responce;
 }
 
 async function startedEngine(event:Event):Promise<void> {

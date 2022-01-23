@@ -29,7 +29,7 @@ interface Idrive{
   success:boolean
 }
 
-interface IwinRace extends Idrive {
+interface IwinRace {
   id: string
   speed: number
   name: string

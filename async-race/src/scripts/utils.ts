@@ -38,6 +38,23 @@ const msConvertToSec = (ms:number | string):number => {
   return value;
 };
 
+const validateForInput = (input: HTMLInputElement):void => {
+  if (input) {
+    input.addEventListener('blur', (event:Event) => {
+      const target = event.target as HTMLInputElement;
+      if (!target.value) {
+        target.style.borderColor = 'red';
+      } else {
+        target.style.borderColor = '#86b7fe';
+      }
+    });
+    input.addEventListener('focus', (event:Event) => {
+      const target = event.target as HTMLInputElement;
+      target.style.borderColor = 'inherit';
+    });
+  }
+};
+
 export {
-  createElement, clearElement, genRandonElemOfArray, createImage, msConvertToSec,
+  createElement, clearElement, genRandonElemOfArray, createImage, msConvertToSec, validateForInput,
 };
