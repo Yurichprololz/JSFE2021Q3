@@ -21,6 +21,7 @@ const refreshBoard = async ():Promise<void> => {
   }
   const newTbody = await createTablesBody();
   table.append(newTbody);
+  checkNavButton();
 };
 
 const increasePage = ():void => {
@@ -39,8 +40,8 @@ const decreasePage = ():void => {
 
 const createNavForPage = ():HTMLElement => {
   const nav = createElement('div');
-  const prev = createElement('button', 'btn');
-  const next = createElement('button', 'btn');
+  const prev = createElement('button', 'btn btn-secondary prev');
+  const next = createElement('button', 'btn btn-secondary next');
 
   prev.addEventListener('click', decreasePage);
   next.addEventListener('click', increasePage);
@@ -181,6 +182,24 @@ const createWinners = async (): Promise<HTMLElement> => {
   element.append(nav);
   return element;
 };
+function checkNavButton() {
+  const prev = document.querySelector('.prev') as HTMLButtonElement | null;
+  const next = document.querySelector('.next') as HTMLButtonElement | null;
+  if (prev) {
+    if (state.pageWithWinnerPage === 1) {
+      prev.disabled = true;
+    } else {
+      prev.disabled = false;
+    }
+  }
+  if (next) {
+    if (Number(state.countWinners) - 1 < state.pageWithWinnerPage * WINNERS_LIMIT) {
+      next.disabled = true;
+    } else {
+      next.disabled = false;
+    }
+  }
+}
 
 export default async function renderWinners(): Promise<void> {
   const main = document.getElementById('main') as HTMLElement | null;
@@ -189,4 +208,5 @@ export default async function renderWinners(): Promise<void> {
     clearElement(main);
     main.append(await winners);
   }
+  checkNavButton();
 }

@@ -178,13 +178,13 @@ async function refreshRace(): Promise<void> {
   const cars = await getCars(state.page);
   const { data, total } = cars;
   refreshCount(total);
-
   const arrTracks = data.map((el) => createTrack(el));
 
   arrTracks.forEach((track) => {
     content.append(track);
   });
   race?.append(content);
+  checkNavButton();
 }
 
 function createGroupButtons(): HTMLDivElement {
@@ -227,10 +227,29 @@ const decreasePage = ():void => {
   }
 };
 
+function checkNavButton():void {
+  const prev = document.querySelector('.prev') as HTMLButtonElement | null;
+  const next = document.querySelector('.next') as HTMLButtonElement | null;
+  if (prev) {
+    if (state.page === 1) {
+      prev.disabled = true;
+    } else {
+      prev.disabled = false;
+    }
+  }
+  if (next) {
+    if (Number(state.countCar) - 1 < state.page * LIMIT) {
+      next.disabled = true;
+    } else {
+      next.disabled = false;
+    }
+  }
+}
+
 const createNavForPage = ():HTMLElement => {
   const wrap = createElement('div');
-  const prev = createElement('button', 'btn');
-  const next = createElement('button', 'btn');
+  const prev = createElement('button', 'btn btn-secondary prev') as HTMLButtonElement;
+  const next = createElement('button', 'btn btn-secondary next') as HTMLButtonElement;
 
   prev.addEventListener('click', decreasePage);
   next.addEventListener('click', increasePage);
@@ -253,6 +272,7 @@ async function renderGarage(): Promise<void> {
     main.append(await race);
     main.append(navForPage);
   }
+  checkNavButton();
 }
 
 function removeDisabledSelect():void {
@@ -381,7 +401,7 @@ async function stoppedCar(event:Event): Promise<void> {
   car.style.transform = 'translateX(0px)';
 }
 
-function allReset() {
+function allReset():void {
   const buttons = document.querySelectorAll('.race__B') as NodeListOf<HTMLButtonElement>;
   buttons.forEach((btn) => btn.click());
 }
