@@ -3,7 +3,7 @@ import {
 } from './utils';
 import {
   getCars, genCars,
-  createCustomCar, deleteCar, updateCar, startEngine, requestDrive, checkWinner,
+  createCustomCar, deleteCar, updateCar, startEngine, requestDrive, checkWinner, LIMIT,
 } from './api';
 import {
   ICar,
@@ -160,6 +160,7 @@ const createControlPanel = (): HTMLDivElement => {
 function refreshCount(total:string):void {
   const raceTitle = document.querySelector('.race__title');
   const pageTitle = document.querySelector('.race__page');
+  state.countCar = total;
   if (pageTitle) {
     pageTitle.textContent = `Page #${state.page}`;
   }
@@ -212,10 +213,13 @@ function createGroupButtons(): HTMLDivElement {
   return element;
 }
 
-function increasePage():void {
-  state.page += 1;
-  refreshRace();
-}
+const increasePage = ():void => {
+  if (Number(state.countCar) > state.page * LIMIT) {
+    state.page += 1;
+    refreshRace();
+  }
+};
+
 const decreasePage = ():void => {
   if (state.page > 1) {
     state.page -= 1;

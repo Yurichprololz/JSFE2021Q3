@@ -1,5 +1,5 @@
 import { renderGarage } from './render-garage';
-import { renderWinners } from './winners';
+import renderWinners from './winners';
 
 const listernerForNav = (footer: HTMLElement): void => {
   const children = footer.children as HTMLCollection;

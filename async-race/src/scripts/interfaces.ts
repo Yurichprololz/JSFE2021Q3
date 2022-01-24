@@ -19,7 +19,10 @@ interface IWinner {
   time: number;
 }
 
-type IWinners = IWinner[];
+type IWinners = {
+  data: IWinner[];
+  total: string;
+};
 
 interface Istate{
   state: string

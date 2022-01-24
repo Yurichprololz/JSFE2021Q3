@@ -1,18 +1,58 @@
 import { clearElement, createElement } from './utils';
 import state from './state';
-import { getWinners, getCar } from './api';
-import { ICar, IWinner } from './interfaces';
+import { getWinners, getCar, WINNERS_LIMIT } from './api';
+import { ICar, IWinner, IWinners } from './interfaces';
 import createCar from './get-SVG-car';
 
-const refreshBoard = async () => {
+const refreshCount = () => {
+  const countPage = document.querySelector('.winners__page');
+  if (countPage) {
+    countPage.textContent = `Page#${state.pageWithWinnerPage}`;
+  }
+};
+
+const refreshBoard = async ():Promise<void> => {
   const table = document.querySelector('table') as HTMLElement;
-  const tbody = document.querySelector('tbody') as HTMLElement;
-  tbody.remove();
+  const tbody = document.querySelector('tbody') as HTMLElement | null;
+  refreshCount();
+
+  if (tbody) {
+    tbody.remove();
+  }
   const newTbody = await createTablesBody();
   table.append(newTbody);
 };
 
-const cleanStylesSortButton = (el:HTMLElement) => {
+const increasePage = ():void => {
+  if (Number(state.countWinners) > state.pageWithWinnerPage * WINNERS_LIMIT) {
+    state.pageWithWinnerPage += 1;
+    refreshBoard();
+  }
+};
+
+const decreasePage = ():void => {
+  if (state.pageWithWinnerPage > 1) {
+    state.pageWithWinnerPage -= 1;
+    refreshBoard();
+  }
+};
+
+const createNavForPage = ():HTMLElement => {
+  const nav = createElement('div');
+  const prev = createElement('button', 'btn');
+  const next = createElement('button', 'btn');
+
+  prev.addEventListener('click', decreasePage);
+  next.addEventListener('click', increasePage);
+  prev.textContent = 'prev';
+  next.textContent = 'next';
+
+  nav.append(prev);
+  nav.append(next);
+  return nav;
+};
+
+const cleanStylesSortButton = (el:HTMLElement):void => {
   const sortBTN = document.querySelectorAll('.sort') as NodeListOf<HTMLElement>;
   sortBTN.forEach((btn) => {
     if (btn !== el) {
@@ -26,7 +66,7 @@ const cleanStylesSortButton = (el:HTMLElement) => {
   });
 };
 
-const checkOrder = async (event:Event) => {
+const checkOrder = async (event:Event):Promise<void> => {
   const el = event.target as HTMLElement;
   cleanStylesSortButton(el);
   if (!el.classList.contains('DESC') && !el.classList.contains('ASC')) {
@@ -75,18 +115,26 @@ const createTablesHead = ():HTMLElement => {
   return head;
 };
 
-async function createTablesBody() {
+const getOrderNumber = (i:number):string => {
+  const numb = String((state.pageWithWinnerPage - 1) * WINNERS_LIMIT + i + 1);
+  return numb;
+};
+
+async function createTablesBody():Promise<HTMLElement> {
   const tbody = createElement('tbody');
-  const winners: IWinner[] = await getWinners(
+  const dataWinners: IWinners = await getWinners(
     state.pageWithWinnerPage,
     state.sortBy,
     state.orderBy,
   );
+
+  state.countWinners = dataWinners.total;
+  const winners:IWinner[] = dataWinners.data;
   winners.forEach(async (winner, index) => {
     const car: ICar = await getCar(winner.id);
     const tr = createElement('tr');
     const th = createElement('th', '', { scope: 'row' });
-    th.textContent = String(index + 1);
+    th.textContent = getOrderNumber(index);
     const image = createElement('td');
     const imageCar = createCar(car.color, 'winners__car');
     const name = createElement('td');
@@ -121,14 +169,16 @@ const createWinners = async (): Promise<HTMLElement> => {
   const title = createElement('h2', 'winners__title');
   const page = createElement('h3', 'winners__page');
 
-  title.textContent = 'Winners';
-  page.textContent = 'Page#';
+  const table = await createTable();
 
-  const table = createTable();
+  title.textContent = `Winners(${state.countWinners})`;
+  page.textContent = `Page#${state.pageWithWinnerPage}`;
+  const nav = createNavForPage();
 
   element.append(title);
   element.append(page);
-  element.append(await table);
+  element.append(table);
+  element.append(nav);
   return element;
 };
 
@@ -140,4 +190,3 @@ export default async function renderWinners(): Promise<void> {
     main.append(await winners);
   }
 }
-export { renderWinners };

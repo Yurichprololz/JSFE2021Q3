@@ -1,5 +1,5 @@
 import {
-  ICar, ICars, Idrive, IEngine, IpropsOfCar, IWinner, IwinRace,
+  ICar, ICars, Idrive, IEngine, IpropsOfCar, IWinner, IWinners, IwinRace,
 } from './interfaces';
 import { genRandonElemOfArray, msConvertToSec } from './utils';
 import brandCar from './brand-car';
@@ -22,6 +22,7 @@ const getCars = async (page:number): Promise<ICars> => {
     total,
   };
 };
+
 const getCar = async (id:number): Promise<ICar> => {
   const response = await fetch(`${GARAGE_PATH}/${id}`);
   const data = await response.json();
@@ -176,13 +177,17 @@ const checkWinner = async (winner:IwinRace):Promise<void> => {
   }
 };
 
-const getWinners = async (page:number, sortBy:string = 'id', orderBy:string = 'ASC'):Promise<IWinner[]> => {
+const getWinners = async (page:number, sortBy:string = 'id', orderBy:string = 'ASC'):Promise<IWinners> => {
   const response = await fetch(`${WINNERS_PATH}?_page=${page}&_limit=${WINNERS_LIMIT}&_sort=${sortBy}&_order=${orderBy}`);
   const data = await response.json();
-  return data;
+  const total = response.headers.get('X-Total-Count') || '0';
+  return {
+    data,
+    total,
+  };
 };
 
 export {
   getCars, getCar, genCars, createCustomCar, deleteCar, updateCar,
-  startAndStopEngine as startEngine, requestDrive, checkWinner, getWinners,
+  startAndStopEngine as startEngine, requestDrive, checkWinner, getWinners, WINNERS_LIMIT, LIMIT,
 };
