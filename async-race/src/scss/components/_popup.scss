@@ -11,12 +11,13 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: twinkle ease .7s 10 alternate;
+    opacity: 1;
     @keyframes twinkle {
-        0%{
+        0%, 20%{
             opacity: 1;
         }
         100%{
-            opacity: .2;
+            opacity: .3;
         }
     }
 }
