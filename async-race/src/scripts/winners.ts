@@ -182,7 +182,7 @@ const createWinners = async (): Promise<HTMLElement> => {
   element.append(nav);
   return element;
 };
-function checkNavButton() {
+function checkNavButton():void {
   const prev = document.querySelector('.prev') as HTMLButtonElement | null;
   const next = document.querySelector('.next') as HTMLButtonElement | null;
   if (prev) {
@@ -200,8 +200,28 @@ function checkNavButton() {
     }
   }
 }
+const saveStateDataForInputs = ():void => {
+  const createNameInput = document.getElementById('create-name') as HTMLInputElement | null;
+  const createColorInput = document.getElementById('create-clr') as HTMLInputElement | null;
+  const updateNameInput = document.getElementById('update-name') as HTMLInputElement | null;
+  const updateColorInput = document.getElementById('update-clr') as HTMLInputElement | null;
+
+  if (createNameInput) {
+    state.createName = createNameInput.value;
+  }
+  if (createColorInput) {
+    state.createColor = createColorInput.value;
+  }
+  if (updateNameInput) {
+    state.updateName = updateNameInput.value;
+  }
+  if (updateColorInput) {
+    state.updateColor = updateColorInput.value;
+  }
+};
 
 export default async function renderWinners(): Promise<void> {
+  saveStateDataForInputs();
   const main = document.getElementById('main') as HTMLElement | null;
   const winners = createWinners();
   if (main) {

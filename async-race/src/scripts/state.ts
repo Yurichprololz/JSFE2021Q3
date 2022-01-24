@@ -6,4 +6,8 @@ export default {
   countWinners: '1',
   sortBy: 'id',
   orderBy: 'ASC',
+  createName: '',
+  createColor: '#e66465',
+  updateName: '',
+  updateColor: '#f6b73c',
 };

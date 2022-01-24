@@ -16,19 +16,16 @@ import createCar from './get-SVG-car';
 
 type Tdata = {
   class: String;
-  color: String;
   textButton: String;
 };
 
 const DATA_WITH_LINE = {
   create: {
     class: 'control-panel__create',
-    color: '#e66465',
     textButton: 'create',
   },
   update: {
     class: 'control-panel__update',
-    color: '#f6b73c',
     textButton: 'update',
   },
 };
@@ -44,7 +41,7 @@ const createInputsLine = (data: Tdata): HTMLDivElement => {
             aria-describedby="basic-addon2"
             id="${data.textButton}-name"
           />
-          <input type="color" class="control-panel__color" id="${data.textButton}-clr" value="${data.color}" name="" />
+          <input type="color" class="control-panel__color" id="${data.textButton}-clr"/>
             <button class="btn btn-outline-secondary control-panel__button" id="${data.textButton}-btn" ${data.textButton === 'update' ? 'disabled' : ''}  type="button">${data.textButton}</button>
           `;
   return element;
@@ -122,6 +119,26 @@ const createRace = async (): Promise<HTMLElement> => {
   });
 
   return race;
+};
+
+const addStateDataForInputs = ():void => {
+  const createNameInput = document.getElementById('create-name') as HTMLInputElement | null;
+  const createColorInput = document.getElementById('create-clr') as HTMLInputElement | null;
+  const updateNameInput = document.getElementById('update-name') as HTMLInputElement | null;
+  const updateColorInput = document.getElementById('update-clr') as HTMLInputElement | null;
+
+  if (createNameInput) {
+    createNameInput.value = state.createName;
+  }
+  if (createColorInput) {
+    createColorInput.value = state.createColor;
+  }
+  if (updateNameInput) {
+    updateNameInput.value = state.updateName;
+  }
+  if (updateColorInput) {
+    updateColorInput.value = state.updateColor;
+  }
 };
 
 const createControlPanel = (): HTMLDivElement => {
@@ -273,6 +290,7 @@ async function renderGarage(): Promise<void> {
     main.append(navForPage);
   }
   checkNavButton();
+  addStateDataForInputs();
 }
 
 function removeDisabledSelect():void {
